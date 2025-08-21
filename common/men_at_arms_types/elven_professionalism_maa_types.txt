@@ -1,0 +1,246 @@
+﻿# standard costs
+@maa_buy_cost = 150
+@maa_low_maintenance_cost = 1.0
+@maa_high_maintenance_cost = 5.0
+
+@cultural_spark_maa_extra_ai_score = 80
+
+@provisions_cost_infantry_cheap = 3
+@provisions_cost_infantry_moderate = 7
+@provisions_cost_infantry_expensive = 12
+@provisions_cost_infantry_bankrupting = 15
+
+@provisions_cost_cavalry_cheap = 7
+@provisions_cost_cavalry_moderate = 15
+@provisions_cost_cavalry_expensive = 21
+@provisions_cost_cavalry_bankrupting = 30
+
+@provisions_cost_special_cheap = 6
+@provisions_cost_special_moderate = 12
+@provisions_cost_special_expensive = 18
+@provisions_cost_special_bankrupting = 24
+
+elven_shieldguard = {
+    type = pikemen
+    stack = 100
+
+    damage = 15
+    toughness = 45
+    pursuit = 0
+    screen = 20
+
+    terrain_bonus = {
+        forest = { toughness = 10 damage = 10 pursuit = 10 screen = 15 }
+        taiga = { toughness = 10 damage = 10 pursuit = 10 screen = 15 }
+        jungle = { toughness = 10 damage = 10 pursuit = 10 screen = 15 }
+    }
+
+    counters = {
+        light_cavalry = 1
+        heavy_cavalry = 1
+        camel_cavalry = 1
+        elephant_cavalry = 1
+        skirmishers = 0.5
+        archers = 0.5
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_elven_shieldguard }
+    }
+
+    buy_cost = { gold = pikemen_recruitment_cost }
+    low_maintenance_cost = { gold = pikemen_low_maint_cost }
+    high_maintenance_cost = { gold = pikemen_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_moderate
+
+    ai_quality = { value = culture_ai_weight_pikemen }
+    icon = elven_shieldguard
+}
+
+elven_swordguard = { # elven greatswords? hell yeah
+    type = skirmishers
+    # icon = elven_swordguard
+    stack = 100 # default unit size
+
+    damage = 30 # big swords, decent damage
+    toughness = 10 # lightly armored, no shields
+    pursuit = 20 # limited chase ability
+    screen = 5 # poor at holding lines
+
+    terrain_bonus = {
+        forest = { toughness = 10 damage = 15 pursuit = 10 screen = 15 }
+        taiga = { toughness = 10 damage = 15 pursuit = 10 screen = 15 }
+        jungle = { toughness = 10 damage = 15 pursuit = 10 screen = 15 }
+    }
+
+    counters = {
+        heavy_infantry = 1
+        pikemen = 1
+        # skirmishers = 1 # optional, off for now
+        archers = 0.5
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_elven_swordguard }
+    }
+
+    buy_cost = { gold = warband_ravagers_recruitment_cost }
+    low_maintenance_cost = { gold = warband_ravagers_low_maint_cost }
+    high_maintenance_cost = { gold = warband_ravagers_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_cheap
+
+    ai_quality = { value = culture_ai_weight_skirmishers }
+    icon = elven_swordguard
+}
+
+
+highguard_of_valor = {
+    type = heavy_infantry
+    stack = 100
+
+    damage = 50
+    toughness = 30
+    pursuit = 10
+    screen = 20
+
+    terrain_bonus = {
+        forest = { damage = 20 toughness = 10 pursuit = 20 screen = 10 }
+        taiga = { damage = 20 toughness = 10 pursuit = 20 screen = 10 }
+        jungle = { damage = 20 toughness = 10 pursuit = 20 screen = 10 }
+    }
+
+    counters = {
+        archer_cavalry = 1
+        pikemen = 1
+        light_cavalry = 1
+        archers = 1
+        # heavy_infantry = 1 # Optional: uncomment if you want equal footing with heavy infantry
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+    }
+
+    buy_cost = { gold = heavy_infantry_recruitment_cost }
+    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_bankrupting
+
+    ai_quality = { value = culture_ai_weight_heavy_infantry }
+    icon = highguard_of_valor
+}
+
+exalted_bear_highriders = {
+    type = elephant_cavalry
+    stack = 25
+
+	damage = 300
+	toughness = 100
+	pursuit = 120
+	screen = 20
+
+    siege_value = 0.3
+
+    terrain_bonus = {
+        forest = { damage = 100 }
+        taiga = { damage = 100 }
+        jungle = { damage = 100 }
+    }
+   
+    winter_bonus = {
+        normal_winter = { toughness = 10 screen = 10 }
+        harsh_winter = { toughness = 15 screen = 10 }
+    }
+
+    counters = {
+        heavy_cavalry = 2
+        heavy_infantry = 1
+        skirmishers = 1
+        pikemen = 0.5
+        elephant_cavalry = 0.5
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_exalted_bear_highriders }
+    }
+
+    buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }
+    low_maintenance_cost = { gold = elf_very_heavy_cavalry_low_maint_cost }
+    high_maintenance_cost = { gold = elf_very_heavy_cavalry_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_expensive
+
+    ai_quality = { value = culture_ai_weight_heavy_cavalry }
+    icon = exalted_bear_highriders
+}
+
+griffin_knights = {
+    type = heavy_cavalry
+    stack = 50
+
+    damage = 150
+    toughness = 40
+    pursuit = 90
+    screen = 10
+    siege_value = 0.2
+
+    terrain_bonus = {
+        forest = { damage = 30 toughness = 10 screen = 10 }
+        taiga = { damage = 30 toughness = 10 screen = 10 }
+        jungle = { damage = 30 toughness = 10 screen = 10 }
+    }
+
+    counters = {
+        archers = 2
+        skirmishers = 1.5
+        pikemen = 0.5
+        heavy_infantry = 0.5
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_griffin_knights }
+    }
+
+    buy_cost = { gold = elf_heavy_cavalry_recruitment_cost }
+    low_maintenance_cost = { gold = elf_heavy_cavalry_low_maint_cost }
+    high_maintenance_cost = { gold = elf_heavy_cavalry_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_expensive
+
+    ai_quality = { value = culture_ai_weight_heavy_cavalry }
+    icon = griffin_knights
+}
+
+honored_drake_lancers = {
+    type = heavy_cavalry
+    stack = 25
+
+    damage = 400
+    toughness = 80
+    pursuit = 50
+    screen = 10
+    siege_value = 0.5
+
+    terrain_bonus = {
+        forest = { damage = 100 toughness = 20 screen = 20 }
+        taiga = { damage = 100 toughness = 20 screen = 20 }
+        jungle = { damage = 100 toughness = 20 screen = 20 }
+    }
+
+    counters = {
+        heavy_infantry = 2
+        light_cavalry = 1.5
+        pikemen = 0.75
+        heavy_cavalry = 0.5
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_honored_drake_lancers }
+    }
+
+    buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }
+    low_maintenance_cost = { gold = elf_very_heavy_cavalry_low_maint_cost }
+    high_maintenance_cost = { gold = elf_very_heavy_cavalry_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_expensive
+
+    ai_quality = { value = culture_ai_weight_elephant_cavalry }
+    icon = honored_drake_lancers
+}

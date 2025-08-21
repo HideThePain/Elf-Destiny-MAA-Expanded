@@ -1,0 +1,150 @@
+﻿serelion_longbowmen = {
+    type = archers
+    stack = 100
+
+    damage = 40
+    toughness = 30
+    pursuit = 0
+    screen = 0
+
+    terrain_bonus = {
+        forest = { damage = 20 toughness = 10 pursuit = 10 }
+        jungle = { damage = 20 toughness = 10 pursuit = 10 }
+        taiga = { damage = 20 toughness = 10 pursuit = 10 }
+
+        plains = { damage = 40 toughness = 20 pursuit = 20 screen = 20}
+        farmlands = { damage = 40 toughness = 20 pursuit = 20 screen = 20}
+        drylands = { damage = 40 toughness = 20 pursuit = 20 screen = 20}
+        steppe = { damage = 40 toughness = 20 pursuit = 20 screen = 20}
+    }
+
+    counters = {
+        skirmishers = 1
+        light_cavalry = 1.5
+        heavy_cavalry = 0.5
+        archers = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_serelion
+    }
+
+    buy_cost = { gold = elf_bowmen_recruitment_cost }
+    low_maintenance_cost = { gold = elf_bowmen_low_maint_cost }
+    high_maintenance_cost = { gold = elf_bowmen_high_maint_cost }
+    provision_cost = @provisions_cost_special_expensive
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = serelion_longbowmen
+}
+
+
+masters_of_the_serelion_sword = {
+    type = heavy_infantry
+    stack = 50
+
+    damage = 115
+    toughness = 70
+    pursuit = 15
+    screen = 15
+
+    terrain_bonus = {
+        forest = { toughness = 15 damage = 10 }
+        taiga = { toughness = 15 damage = 10 }
+        jungle = { toughness = 15 damage = 10 }
+
+        plains = { damage = 15 pursuit = 10 }
+        farmlands = { toughness = 10 damage = 5 screen = 5 }
+        hills = { toughness = 15 damage = 10 pursuit = 5 }
+        mountains = { toughness = 15 screen = 10 }
+
+        wetlands = { toughness = -10 screen = -10 }
+        floodplains = { toughness = -10 screen = -10 }
+        oasis = { toughness = -5 }
+
+        desert = { toughness = -10 damage = -10 }
+        desert_mountains = { toughness = -15 damage = -10 }
+
+        drylands = { toughness = 5 }
+        steppe = { damage = 5 }
+    }
+
+    winter_bonus = {
+        normal_winter = { toughness = 10 screen = 10 }
+        harsh_winter = { toughness = 15 screen = 15 damage = -5 pursuit = -5 }
+    }
+
+    counters = {
+        skirmishers = 1
+        archers = 1
+        light_infantry = 1
+        light_cavalry = 0.5
+        heavy_cavalry = 0.5
+        pikemen = 0.25
+        heavy_infantry = 0.5
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_serelion
+    }
+
+    buy_cost = { gold = heavy_infantry_recruitment_cost }
+    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_elite
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = masters_of_the_serelion_sword
+}
+
+
+cavalrymen_of_the_serelions = {
+    type = heavy_cavalry
+    stack = 50
+
+    damage = 80
+    toughness = 40
+    pursuit = 60
+    screen = 20
+
+    terrain_bonus = {
+        plains = { damage = 25 pursuit = 15 }
+        farmlands = { damage = 20 pursuit = 15 screen = 10 }
+        hills = { damage = 15 pursuit = 10 toughness = 10 }
+        drylands = { damage = 10 pursuit = 10 }
+        steppe = { damage = 10 pursuit = 10 }
+        wetlands = { toughness = 5 }
+        floodplains = { pursuit = 10 screen = 10 }
+        oasis = { pursuit = 10 screen = 10 }
+        forest = { toughness = 5 }
+        jungle = { toughness = 5 damage = -5 }
+        taiga = { toughness = 5 damage = -5 }
+        desert = { toughness = -10 damage = -15 }
+        mountains = { toughness = -15 damage = -20 }
+        desert_mountains = { toughness = -20 damage = -25 }
+    }
+
+    winter_bonus = {
+        normal_winter = { toughness = 3 screen = 3 damage = -5 }
+        harsh_winter = { toughness = -10 screen = -10 damage = -15 pursuit = -15 }
+    }
+
+    counters = {
+        archers = 2
+        skirmishers = 1.5
+        pikemen = 0.5
+        light_cavalry = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_serelion
+    }
+
+    buy_cost = { gold = elf_heavy_cavalry_recruitment_cost }
+    low_maintenance_cost = { gold = elf_heavy_cavalry_low_maint_cost }
+    high_maintenance_cost = { gold = elf_heavy_cavalry_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_expensive
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = cavalrymen_of_the_serelions
+}

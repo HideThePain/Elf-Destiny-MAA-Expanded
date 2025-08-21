@@ -1,0 +1,87 @@
+alfar_warriors_of_the_old_ways = {
+    type = heavy_infantry
+    stack = 100
+
+    damage = 50
+    toughness = 30
+    pursuit = 10
+    screen = 20
+
+    terrain_bonus = {
+        mountains = { toughness = 20 damage = 10 pursuit = 10 screen = 10 }
+        hills = { toughness = 20 damage = 10 pursuit = 10 screen = 10 }
+        desert_mountains = { toughness = 20 damage = 10 pursuit = 10 screen = 10 }
+
+        forest = { toughness = 10 damage = 10 }
+        taiga = { toughness = 10 damage = 10  }
+        jungle = { toughness = 10 damage = 10 }
+
+    }
+
+    winter_bonus = {
+        normal_winter = { toughness = 10 screen = 10 }
+        harsh_winter = { toughness = 10 screen = 10 }
+    }
+
+    counters = {
+        heavy_infantry = 1
+        pikemen = 1
+        light_cavalry = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = heavy_infantry_recruitment_cost }
+    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_expensive
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = warriors_of_the_daelurin
+}
+
+alfar_tribal_climbers = {
+    type = light_cavalry
+    stack = 50
+
+	damage = 60
+	toughness = 30
+	pursuit = 30
+	screen = 40
+
+
+    terrain_bonus = {
+        forest = { damage = 20 toughness = 20 }
+        taiga = { damage = 20 toughness = 20 }
+        jungle = { damage = 20 toughness = 20 }
+
+        mountains = { damage = 20 pursuit = 35 screen = 15 }
+        hills = { damage = 20 pursuit = 35 screen = 15 }
+        desert_mountains = { damage = 20 pursuit = 35 screen = 15 }
+    }
+
+    winter_bonus = {
+        normal_winter = { toughness = 10 screen = 10 }
+        harsh_winter = { toughness = 10 screen = 10 }
+    }
+
+    counters = {
+        archers = 1
+        archer_cavalry = 2
+        skirmishers = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = elf_horse_archers_recruitment_cost }
+    low_maintenance_cost = { gold = elf_horse_archers_low_maint_cost }
+    high_maintenance_cost = { gold = elf_horse_archers_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_cheap
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = daelurin_wolf_riders
+}

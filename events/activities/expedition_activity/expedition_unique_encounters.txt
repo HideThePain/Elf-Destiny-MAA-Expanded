@@ -1,0 +1,1150 @@
+﻿namespace = expedition_unique_encounters
+
+# Culture evolution discovery
+expedition_unique_encounters.001 = {
+	type = activity_event
+
+	title = expedition_unique_encounters.001.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = {
+						AND = {
+							exists = scope:tradition_one
+							exists = scope:tradition_two
+							exists = scope:tradition_three
+							exists = scope:tradition_four
+						}
+					}
+				}
+				desc = expedition_unique_encounters.001.empty.desc
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						exists = scope:tradition_one
+						exists = scope:tradition_two
+						exists = scope:tradition_three
+						exists = scope:tradition_four
+					}
+				}
+				desc = expedition_unique_encounters.001.desc
+			}
+		}
+	}
+
+	theme = cultural_discovery
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = thinking
+	}
+
+	# Get all unchosen elf culture tradition picks into a list
+	immediate = {
+		debug_log = "Culture tradition event"
+		# # Mark culture traditions as discovered for this elf ruin site
+		# if = { # fortress_tomb_of_the_emperor
+		# 	limit = {
+		# 		scope:activity.activity_location.barony = title:b_bellinzona
+		# 	}
+		# 	set_global_variable = {
+		# 		name = 01_culture_discovery_found
+		# 		value = yes
+		# 	}
+		# }
+		# if = {  # Ancient elf city ruins_of_valfuria
+		# 	limit = {
+		# 		scope:activity.activity_location.barony = title:b_gnezdovo
+		# 	}
+		# 	set_global_variable = {
+		# 		name = 02_culture_discovery_found
+		# 		value = yes
+		# 	}
+		# }
+
+		# Lets grab 4 undiscovered culture traditions
+		pick_random_elven_tradition = yes
+		pick_random_elven_tradition = yes
+		pick_random_elven_tradition = yes
+		pick_random_elven_tradition = yes
+
+		random_in_list = {
+			list = selected_elven_traditions
+			save_scope_as = tradition_one
+		}
+
+		random_in_list = {
+			list = selected_elven_traditions
+			limit = {
+				NOT = {
+					this = scope:tradition_one
+				}
+			}
+			save_scope_as = tradition_two
+		}
+
+		random_in_list = {
+			list = selected_elven_traditions
+			limit = {
+				NOT = {
+					OR = {
+						this = scope:tradition_one
+						this = scope:tradition_two
+					}
+				}
+			}
+			save_scope_as = tradition_three
+		}
+
+		random_in_list = {
+			list = selected_elven_traditions
+			limit = {
+				NOT = {
+					OR = {
+						this = scope:tradition_one
+						this = scope:tradition_two
+						this = scope:tradition_three
+					}
+				}
+			}
+			save_scope_as = tradition_four
+		}
+
+
+		# Ends Activity
+		# scope:activity = {
+		# 	set_variable = {
+		# 		name = status
+		# 		value = flag:expedition_is_over
+		# 	}
+		# }
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_adventurer_guilds
+						}
+						desc = expedition_unique_encounters.001.adventure_guilds
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_tribal_ascension
+						}
+						desc = expedition_unique_encounters.001.tribal_ascension
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_fey_agoras
+						}
+						desc = expedition_unique_encounters.001.fey_agoras
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_beast_tamers
+						}
+						desc = expedition_unique_encounters.001.beast_tamers
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_woodland_bounty
+						}
+						desc = expedition_unique_encounters.001.woodland_bounty
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_elf_craftsmanship
+						}
+						desc = expedition_unique_encounters.001.elf_craftsmanship
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_people_of_the_bow
+						}
+						desc = expedition_unique_encounters.001.people_of_the_bow
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_guardians_of_the_abyss
+						}
+						desc = expedition_unique_encounters.001.guardians_of_the_abyss
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_elven_professionalism
+						}
+						desc = expedition_unique_encounters.001.elven_professionalism
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_one = culture_tradition:tradition_knights_of_the_sky
+						}
+						desc = expedition_unique_encounters.001.knights_of_the_sky
+					}
+					desc = expedition_unique_encounters.001.unexpected_tradition_name
+				}
+			}
+		}
+
+		trigger = {
+			exists = scope:tradition_one
+		}
+
+		scope:host.culture = {
+			add_culture_tradition = scope:tradition_one
+		}
+
+		mark_tradition_as_discovered = {
+			TRADITION = scope:tradition_one
+		}
+
+		change_global_variable = {name = discovered_ancient_tradition_count add = 1}
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_adventurer_guilds
+						}
+						desc = expedition_unique_encounters.001.adventure_guilds
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_tribal_ascension
+						}
+						desc = expedition_unique_encounters.001.tribal_ascension
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_fey_agoras
+						}
+						desc = expedition_unique_encounters.001.fey_agoras
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_beast_tamers
+						}
+						desc = expedition_unique_encounters.001.beast_tamers
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_woodland_bounty
+						}
+						desc = expedition_unique_encounters.001.woodland_bounty
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_elf_craftsmanship
+						}
+						desc = expedition_unique_encounters.001.elf_craftsmanship
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_people_of_the_bow
+						}
+						desc = expedition_unique_encounters.001.people_of_the_bow
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_guardians_of_the_abyss
+						}
+						desc = expedition_unique_encounters.001.guardians_of_the_abyss
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_elven_professionalism
+						}
+						desc = expedition_unique_encounters.001.elven_professionalism
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_two = culture_tradition:tradition_knights_of_the_sky
+						}
+						desc = expedition_unique_encounters.001.knights_of_the_sky
+					}
+					desc = expedition_unique_encounters.001.unexpected_tradition_name
+				}
+			}
+		}
+
+		trigger = {
+			exists = scope:tradition_two
+		}
+
+		scope:host.culture = {
+			add_culture_tradition = scope:tradition_two
+		}
+
+		mark_tradition_as_discovered = {
+			TRADITION = scope:tradition_two
+		}
+
+		change_global_variable = {name = discovered_ancient_tradition_count add = 1}
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_adventurer_guilds
+						}
+						desc = expedition_unique_encounters.001.adventure_guilds
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_tribal_ascension
+						}
+						desc = expedition_unique_encounters.001.tribal_ascension
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_fey_agoras
+						}
+						desc = expedition_unique_encounters.001.fey_agoras
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_beast_tamers
+						}
+						desc = expedition_unique_encounters.001.beast_tamers
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_woodland_bounty
+						}
+						desc = expedition_unique_encounters.001.woodland_bounty
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_elf_craftsmanship
+						}
+						desc = expedition_unique_encounters.001.elf_craftsmanship
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_people_of_the_bow
+						}
+						desc = expedition_unique_encounters.001.people_of_the_bow
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_guardians_of_the_abyss
+						}
+						desc = expedition_unique_encounters.001.guardians_of_the_abyss
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_elven_professionalism
+						}
+						desc = expedition_unique_encounters.001.elven_professionalism
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_three = culture_tradition:tradition_knights_of_the_sky
+						}
+						desc = expedition_unique_encounters.001.knights_of_the_sky
+					}
+					desc = expedition_unique_encounters.001.unexpected_tradition_name
+				}
+			}
+		}
+
+		trigger = {
+			exists = scope:tradition_three
+		}
+
+		scope:host.culture = {
+			add_culture_tradition = scope:tradition_three
+		}
+
+		mark_tradition_as_discovered = {
+			TRADITION = scope:tradition_three
+		}
+
+		change_global_variable = {name = discovered_ancient_tradition_count add = 1}
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_adventurer_guilds
+						}
+						desc = expedition_unique_encounters.001.adventure_guilds
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_tribal_ascension
+						}
+						desc = expedition_unique_encounters.001.tribal_ascension
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_fey_agoras
+						}
+						desc = expedition_unique_encounters.001.fey_agoras
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_beast_tamers
+						}
+						desc = expedition_unique_encounters.001.beast_tamers
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_woodland_bounty
+						}
+						desc = expedition_unique_encounters.001.woodland_bounty
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_elf_craftsmanship
+						}
+						desc = expedition_unique_encounters.001.elf_craftsmanship
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_people_of_the_bow
+						}
+						desc = expedition_unique_encounters.001.people_of_the_bow
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_guardians_of_the_abyss
+						}
+						desc = expedition_unique_encounters.001.guardians_of_the_abyss
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_elven_professionalism
+						}
+						desc = expedition_unique_encounters.001.elven_professionalism
+					}
+					triggered_desc = {
+						trigger = {
+							scope:tradition_four = culture_tradition:tradition_knights_of_the_sky
+						}
+						desc = expedition_unique_encounters.001.knights_of_the_sky
+					}
+					desc = expedition_unique_encounters.001.unexpected_tradition_name
+				}
+			}
+		}
+
+		trigger = {
+			exists = scope:tradition_four
+		}
+
+		scope:host.culture = {
+			add_culture_tradition = scope:tradition_four
+		}
+
+		mark_tradition_as_discovered = {
+			TRADITION = scope:tradition_four
+		}
+
+		change_global_variable = {name = discovered_ancient_tradition_count add = 1}
+	}
+
+	option = {
+		name = expedition_unique_encounters.001.nvm
+	}
+
+	option = {
+		name = expedition_unique_encounters.001.no_more_traditions
+
+		trigger = {
+			NOT = {
+				exists = scope:tradition_one
+				exists = scope:tradition_two
+				exists = scope:tradition_three
+				exists = scope:tradition_four
+			}
+		}
+
+		scope:host.capital_county = {
+			change_development_progress = 25
+		}
+	}
+
+}
+
+# TODO: Refactor this into controller that picks item
+# Unique Items
+# expedition_unique_encounters.002 = { # Bloodstone Sceptor
+# 	type = activity_event
+
+# 	title = "Bloodstone Sceptor Discovery"
+# 	desc = "Bloodstone Sceptor Discovery DESC"
+
+# 	theme = hunt_activity
+
+# 	widget = {
+# 		gui = "event_window_widget_activity_intent"
+# 		container = "custom_widgets_container"
+# 	}
+
+# 	left_portrait = {
+# 		character = scope:host
+# 		animation = thinking
+# 	}
+
+# 	option = {
+# 		name = expedition.030.takeSceptor
+
+# 		scope:host = {
+# 			create_artifact = {	
+# 				name = "Bloodstone Sceptor"
+# 				description = placeholder
+# 				creator = scope:creator
+# 				visuals = regalia
+# 				type = regalia
+# 				modifier = elf_artifact_placeholder_modifier
+# 				wealth = 100
+# 				quality = 100
+# 				save_scope_as = bloodstone_sceptor
+# 			}
+# 		}
+
+# 		# scope:activity = {
+# 		# 	set_variable = {
+# 		# 		name = status
+# 		# 		value = flag:expedition_is_over
+# 		# 	}
+# 		# }
+
+# 		set_global_variable = {
+# 			name = 01_bloodstone_sceptor_found
+# 			value = yes
+# 		}
+# 	}
+# }
+
+expedition_unique_encounters.0021 = { # Portal Capacitor
+	type = activity_event
+
+	title = expedition_unique_encounters.0021.title
+	desc = expedition_unique_encounters.0021.desc
+
+	# TODO Replace
+	theme = hunt_activity
+	override_background = { reference = corridor_night }
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = thinking
+	}
+
+	artifact = {
+		target = scope:newly_created_artifact
+		position = lower_center_portrait
+	}
+
+	immediate = {
+		create_portal_spark_capacitor_effect = { OWNER = scope:host }
+
+		if = {
+			limit = { exists = scope:newly_created_artifact }
+			scope:activity = {
+				add_to_variable_list = {
+					name = artifact_rewards
+					target = scope:newly_created_artifact
+				}
+			}
+		}
+
+		scope:activity.activity_location.barony = {
+			set_variable = {
+				name = portal_capacitor_found_here 
+				value = yes
+			}
+		}
+
+		set_global_variable = {
+			name = portal_capacitor_found
+			value = yes
+		}
+	}
+
+	option = {
+		name = expedition_unique_encounters.0021.takeCapacitor
+	}
+}
+
+expedition_unique_encounters.0022 = { # Portal Navigation Relay
+	type = activity_event
+
+	title = expedition_unique_encounters.0022.title
+	desc = expedition_unique_encounters.0022.desc
+
+	# TODO Replace
+	theme = hunt_activity
+	override_background = { reference = corridor_night }
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = thinking
+	}
+
+	artifact = {
+		target = scope:newly_created_artifact
+		position = lower_center_portrait
+	}
+
+	immediate = {
+		create_portal_navigation_relay_effect = { OWNER = scope:host }
+
+		if = {
+			limit = { exists = scope:newly_created_artifact }
+			scope:activity = {
+				add_to_variable_list = {
+					name = artifact_rewards
+					target = scope:newly_created_artifact
+				}
+			}
+		}
+
+		scope:activity.activity_location.barony = {
+			set_variable = {
+				name = portal_navigation_relay_found_here 
+				value = yes
+			}
+		}
+
+		set_global_variable = {
+			name = portal_navigation_relay_found
+			value = yes
+		}
+	}
+
+	option = {
+		name = expedition_unique_encounters.0022.takeNavigationRelay
+	}
+}
+
+# Map to Other Ruins
+# expedition_unique_encounters.003 = { #
+# 	type = activity_event
+
+# 	title = "Lost Map Discovery"
+# 	desc = "Lost Map Discovery DESC"
+
+# 	theme = hunt_activity
+
+# 	widget = {
+# 		gui = "event_window_widget_activity_intent"
+# 		container = "custom_widgets_container"
+# 	}
+
+# 	left_portrait = {
+# 		character = scope:host
+# 		animation = thinking
+# 	}
+
+# 	immediate = {
+# 		set_global_variable = {
+# 			name = 01_other_ruins_location_found
+# 			value = yes
+# 		}
+# 	}
+
+# 	option = {
+# 		name = expedition.040.more_to_discover
+# 	}
+# }
+
+expedition_unique_encounters.003 = { # Encounter Valar Controller
+	hidden = yes
+	
+	immediate = {
+		random_list = {
+			100 = { # Vána Goddess of Prosperity
+				trigger_event = expedition_unique_encounters.0031
+			}
+			100 = { # Tulas Astaldo God of War
+				trigger_event = expedition_unique_encounters.0032
+			}
+		}
+	}
+}
+
+expedition_unique_encounters.0031 = { # Find Vána Shrine
+	type = activity_event
+	
+	title = expedition_unique_encounters.0031.title
+	desc = expedition_unique_encounters.0031.desc
+	
+	trigger = {
+		scope:host.culture = {
+			NOT = {
+				has_cultural_tradition = tradition_blessing_of_vana
+			}
+		}
+	}
+
+	theme = shrine_of_vana
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = thinking
+	}
+
+	option = { # connect with shrine
+		name = expedition_unique_encounters.0031.pray
+
+		trigger_event = expedition_unique_encounters.00311
+	}
+
+	option = { # leave
+		name = expedition_unique_encounters.0031.leave
+	}
+}
+
+expedition_unique_encounters.00311 = { # Vána
+	type = activity_event
+
+	title = expedition_unique_encounters.00311.title
+	desc = {
+		triggered_desc = {
+			trigger = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = encountered_valars
+						target = flag:vána
+					}
+				}
+			}
+			desc = expedition_unique_encounters.0031.pray_intro.desc
+		}
+		triggered_desc = {
+			trigger = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = encountered_valars
+						target = flag:vána
+					}
+				}
+			}
+			desc = expedition_unique_encounters.00311.first_visit.desc
+		}
+		triggered_desc = {
+			trigger = {
+				is_target_in_global_variable_list = {
+					name = encountered_valars
+					target = flag:vána
+				}
+			}
+			desc = expedition_unique_encounters.00311.additional_visits.desc
+		}
+		triggered_desc = {
+			trigger = {
+				root.culture = {
+					has_cultural_tradition = tradition_blessing_of_tulkas_astaldo
+				}
+			}
+			desc = expedition_unique_encounters.00311.already_worship_tulkas_astaldo.desc
+		}
+	}
+
+	theme = shrine_of_vana
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		create_character = {
+			name = "Vána"
+			template = vana_projection
+			dynasty = none
+			location = root.location
+			save_scope_as = valar
+		}
+		hidden_effect = {		
+			scope:valar = {
+				copy_inheritable_appearance_from = character:vana
+				add_character_flag = is_vana
+				set_immortal_age = 17
+			}
+		}
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = shock
+	}
+
+	right_portrait = {
+		character = scope:valar
+		animation = personality_content
+	}
+
+	option = { # Take as deity
+		name = expedition_unique_encounters.00311.take_as_deity
+		root.culture = {
+			add_culture_tradition = tradition_blessing_of_vana
+		}
+		if = {
+			limit = {
+				root.culture = {
+					has_cultural_tradition = tradition_blessing_of_tulkas_astaldo
+				}
+			}
+			root.culture = {
+				remove_culture_tradition = tradition_blessing_of_tulkas_astaldo
+			}
+		}
+		trigger_event = expedition_unique_encounters.00318
+	}
+
+	option = { # refuse
+		name = expedition_unique_encounters.00311.refuse
+
+		trigger_event = expedition_unique_encounters.00319
+	}
+
+	after = {
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = encountered_valars
+				target = flag:vána
+			}
+		}
+	}
+}
+
+expedition_unique_encounters.0032 = { # Find Tulkas Astaldo Shrine
+	type = activity_event
+
+	title = expedition_unique_encounters.0032.title
+	desc = expedition_unique_encounters.0032.desc
+
+	trigger = {
+		scope:host.culture = {
+			NOT = {
+				has_cultural_tradition = tradition_blessing_of_tulkas_astaldo
+			}
+		}
+	}
+
+	theme = shrine_of_tulkas
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = thinking
+	}
+
+	option = { # connect with shrine
+		name = expedition_unique_encounters.0032.pray
+
+		trigger_event = expedition_unique_encounters.00321
+	}
+
+	option = { # leave
+		name = expedition_unique_encounters.0032.leave
+	}
+}
+
+expedition_unique_encounters.00321 = { # Tulkas Astaldo
+	type = activity_event
+
+	title = expedition_unique_encounters.00321.title
+	desc = {
+		triggered_desc = {
+			trigger = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = encountered_valars
+						target = flag:tulkas_astaldo
+					}
+				}
+			}
+			desc = expedition_unique_encounters.0031.pray_intro.desc
+		}
+		triggered_desc = {
+			trigger = {
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = encountered_valars
+						target = flag:tulkas_astaldo
+					}
+				}
+			}
+			desc = expedition_unique_encounters.00321.first_visit.desc
+		}
+		triggered_desc = {
+			trigger = {
+				is_target_in_global_variable_list = {
+					name = encountered_valars
+					target = flag:tulkas_astaldo
+				}
+			}
+			desc = expedition_unique_encounters.00321.additional_visits.desc
+		}
+		triggered_desc = {
+			trigger = {
+				root.culture = {
+					has_cultural_tradition = tradition_blessing_of_vana
+				}
+			}
+			desc = expedition_unique_encounters.00321.already_worship_vana.desc
+		}
+	}
+
+	theme = shrine_of_tulkas
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		create_character = {
+			name = "Tulkas"
+			template = tulkas_projection
+			dynasty = none
+			location = root.location
+			save_scope_as = valar
+		}
+		hidden_effect = {			
+			scope:valar = {
+				copy_inheritable_appearance_from = character:tulkas_astaldo
+				add_character_flag = is_tulkas_astaldo
+				set_immortal_age = 30
+			}
+		}
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = shock
+	}
+
+	right_portrait = {
+		character = scope:valar
+		animation = throne_room_two_handed_passive_1
+	}
+
+	option = { # Take as deity
+		name = expedition_unique_encounters.00321.take_as_deity
+		root.culture = {
+			add_culture_tradition = tradition_blessing_of_tulkas_astaldo
+		}
+		if = {
+			limit = {
+				root.culture = {
+					has_cultural_tradition = tradition_blessing_of_vana
+				}
+			}
+			root.culture = {
+				remove_culture_tradition = tradition_blessing_of_vana
+			}
+		}
+		trigger_event = expedition_unique_encounters.00328
+	}
+
+	option = { # refuse
+		name = expedition_unique_encounters.00321.refuse
+		trigger_event = expedition_unique_encounters.00329
+	}
+
+	after = {
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = encountered_valars
+				target = flag:tulkas_astaldo
+			}
+		}
+	}
+}
+
+expedition_unique_encounters.00319 = { # Refuse Vána
+	type = activity_event
+
+	title = expedition_unique_encounters.00399.title
+	desc = expedition_unique_encounters.00399.desc
+
+	theme = shrine_of_vana
+	
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = shock
+	}
+
+	right_portrait = {
+		character = scope:valar
+		animation = disapproval
+	}
+
+	option = { # Take as deity
+		name = expedition_unique_encounters.00399.ok
+	}
+
+	after = {
+		scope:valar = {
+			death = {
+				death_reason = spirit_faded
+			}
+		}
+	}
+}
+
+expedition_unique_encounters.00329 = { # Refuse Tulkas Astaldo
+	type = activity_event
+
+	title = expedition_unique_encounters.00399.title
+	desc = expedition_unique_encounters.00399.desc
+
+	theme = shrine_of_tulkas
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+
+	}
+
+	left_portrait = {
+		character = scope:host
+		animation = shock
+	}
+
+	right_portrait = {
+		character = scope:valar
+		animation = disapproval
+	}
+
+	option = { # Take as deity
+		name = expedition_unique_encounters.00399.ok
+	}
+
+	after = {
+		scope:valar = {
+			death = {
+				death_reason = spirit_faded
+			}
+		}
+	}
+}
+
+
+expedition_unique_encounters.00318 = { # Accept Vána
+	type = activity_event
+
+	title = expedition_unique_encounters.00398.title
+	desc = expedition_unique_encounters.00398.desc
+
+	theme = shrine_of_vana
+	
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+
+	}
+
+	right_portrait = {
+		character = scope:valar
+		animation = happiness
+	}
+
+	option = {
+		name = expedition_unique_encounters.00398.ok
+	}
+
+	after = {
+		scope:valar = {
+			death = {
+				death_reason = spirit_faded
+			}
+		}
+	}
+}
+
+expedition_unique_encounters.00328 = { # Accept Tulkas Astaldo
+	type = activity_event
+
+	title = expedition_unique_encounters.00398.title
+	desc = expedition_unique_encounters.00398.desc
+
+	theme = shrine_of_tulkas
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+
+	}
+
+	right_portrait = {
+		character = scope:valar
+		animation = happiness
+	}
+
+	option = {
+		name = expedition_unique_encounters.00398.ok
+	}
+
+	after = {
+		hidden_effect = {
+			scope:valar = {
+				death = {
+					death_reason = spirit_faded
+				}
+			}
+		}
+	}
+}

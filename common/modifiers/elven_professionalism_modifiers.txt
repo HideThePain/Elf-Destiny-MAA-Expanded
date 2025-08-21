@@ -1,0 +1,13 @@
+﻿elf_professionalism_modifier = {
+	icon = martial_positive
+	men_at_arms_cap = 6
+	men_at_arms_limit = 4
+#	men_at_arms_maintenance_cost = 0.25 # maybe a reason not to take this decision
+}
+
+elf_legion_modifier = {
+	icon = martial_positive
+	men_at_arms_cap = 10
+	men_at_arms_limit = 6
+#	men_at_arms_maintenance_cost = 0.50
+}

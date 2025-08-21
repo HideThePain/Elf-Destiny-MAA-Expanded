@@ -1,0 +1,57 @@
+﻿l_english:
+ tradition_elven_professionalism_name:0 "Ancient Elven War Tactics"
+ tradition_elven_professionalism_desc:0 "This culture has adopted standardized equipment and training to field armies of professional soldiers, but refuses to raise levies."
+ 
+ culture_parameter_unlock_maa_elven_shieldguard:0 "[GetMaA('elven_shieldguard').GetName] as [men_at_arms|E]"
+ elven_shieldguard:1 "Elven Shieldguard"
+ elven_shieldguard_flavor:1 "The Elven Shieldguard are the elite heavy infantry of the elven culture's army, wielding large shields and spears. They are trained to hold the line against any foe, and are known for their unbreakable discipline and unwavering loyalty to their commanders."
+ 
+ culture_parameter_unlock_maa_elven_swordguard:0 "[GetMaA('elven_swordguard').GetName] as [men_at_arms|E]"
+ elven_swordguard:1 "Elven Swordguard"
+ elven_swordguard_flavor:1 "The Elven Swordguard are the vanguard of the elven culture's army. Lightly armored and wielding greatswords, they are trained to strike quickly and decisively, cutting through enemy lines with ease."
+ 
+ culture_parameter_unlock_maa_highguard_of_valor:0 "[GetMaA('highguard_of_valor').GetName] as [men_at_arms|E]"
+ highguard_of_valor:1 "Highguard of Valor"
+ highguard_of_valor_flavor:1 "The Highguard of Valor are the elite infantry of the elven culture's army. Clad in heavy armor and wielding the best equipment they can muster, they are the ideal image of discipline and martial mastery."
+ 
+ culture_parameter_unlock_maa_exalted_bear_highriders:0 "[GetMaA('exalted_bear_highriders').GetName] as [men_at_arms|E]"
+ exalted_bear_highriders:1 "Exalted Bear Highriders"
+ exalted_bear_highriders_flavor:1 "The Exalted Bear Highriders are the elite cavalry of more... rustic elven culture armies. Riding into battle on the backs of massive bears, they can terrify even the most stalwart foe."
+ 
+ culture_parameter_unlock_maa_griffin_knights:0 "[GetMaA('griffin_knights').GetName] as [men_at_arms|E]"
+ griffin_knights:1 "Griffin Knights"
+ griffin_knights_flavor:1 "The Griffin Knights fight with sword and claw. Their mighty warbeasts are trained to strike from the skies, swooping down on their enemies with the speed and ferocity of a storm."
+ 
+ culture_parameter_unlock_maa_honored_drake_lancers:0 "[GetMaA('honored_drake_lancers').GetName] as [men_at_arms|E]"
+ honored_drake_lancers:1 "Honored Drake Lancers"
+ honored_drake_lancers_flavor:1 "The Honored Drake Lancers are possibly the rarest force in any elven culture army. With drakes believed to be long-since wiped out, the elves that ride them are a sight to behold."
+ 
+ culture_parameter_elven_professionalism_decision:0 "Characters of this culture may take the Elven Professionalism Decision to increase the number of men-at-arms that they can field, but reduce the number of levies that they can raise."
+ 
+ tradition_knights_of_the_sky_name:0 "Knights of the Sky"
+ tradition_knights_of_the_sky_desc:0 "The techniques to breed griffins and drakes were thought to have been lost for aeons. No longer."
+ 
+ tradition_knights_serelion:0 "Knights of the Serelion"
+ tradition_knights_serelion_desc:0 "The Knights of house Serelion"
+ 
+ tradition_knights_valerith:0 "Knights of the Valerith"
+ tradition_knights_valerith_desc:0 "The Knights of house Valerith"
+ 
+ tradition_knights_gwynthorn:0 "Knights of the Gwynthorn"
+ tradition_knights_gwynthorn_desc:0 "The Knights of house Gwynthorn"
+ 
+ tradition_knights_lormelis:0 "Knights of the Lormelis"
+ tradition_knights_lormelis_desc:0 "The Knights of house Lormelis"
+ 
+ tradition_knights_thundarael:0 "Knights of the Thundarael"
+ tradition_knights_thundarael_desc:0 "The Knights of house Thundarael"
+ 
+ tradition_knights_belanor:0 "Knights of Belanor"
+ tradition_knights_belanor_desc:0 "The Knights of Belanor"
+ 
+ tradition_knights_elros:0 "Knights of Elros"
+ tradition_knights_elros_desc:0 "The Knights of Elros"
+ 
+ tradition_knights_kesselrine:0 "Knights of the Kesselrine"
+ tradition_knights_kesselrine_desc:0 "The Knights of house Kesselrine"
+ 

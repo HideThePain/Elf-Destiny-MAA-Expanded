@@ -1,0 +1,136 @@
+tuathan_seelie_warriors = {
+    type = heavy_infantry
+    stack = 100
+
+    damage = 45
+    toughness = 55
+    pursuit = 5
+    screen = 15
+
+    terrain_bonus = {
+        forest = { damage = 10 toughness = 10 }
+        taiga = { damage = 10 toughness = 10 }
+        jungle = { damage = 10 toughness = 10 }
+
+        plains = { damage = 20 toughness = 10 pursuit = 5 }
+        hills = { damage = 20 toughness = 10 pursuit = 5 }
+        wetlands = { damage = 20 toughness = 10 pursuit = 5 }
+    }
+
+    counters = {
+        heavy_infantry = 1
+        pikemen = 1.5
+        light_cavalry = 0.5
+        archers = 1
+        skirmishers = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = heavy_infantry_recruitment_cost }
+    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_expensive
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = warriors_of_the_daelurin
+}
+
+tuathan_seelie_archons = {
+    type = spark_wielders
+    stack = 50
+
+    damage = 10
+    toughness = 20
+    pursuit = 30
+    screen = 30
+
+    terrain_bonus = {
+        forest = { toughness = 20 screen = 10 damage = 20 }
+        taiga = { toughness = 20 screen = 10 damage = 20 }
+        jungle = { toughness = 20 screen = 10 damage = 20 }
+
+        plains = { toughness = 20 screen = 10 pursuit = 25 damage = 20}
+        hills = { toughness = 20 screen = 10 pursuit = 25 damage = 20}
+        wetlands = { toughness = 20 screen = 10 pursuit = 25 damage = 20}
+    }
+
+    counters = {
+        light_cavalry = 1
+        skirmishers = 1
+        archers = 1
+        pikemen = 1
+        heavy_infantry = 1
+        heavy_cavalry = 1
+        elephant_cavalry = 1
+        spark_wielders = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = elf_horse_archers_recruitment_cost }
+    low_maintenance_cost = { gold = elf_horse_archers_low_maint_cost }
+    high_maintenance_cost = { gold = elf_horse_archers_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_cheap
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = daelurin_wolf_riders
+}
+
+tuathan_seelie_archers = {
+    type = archers
+    stack = 100
+
+    damage = 33          # reduced from 45
+    toughness = 22       # reduced from 30
+    pursuit = 25         # reduced from 35
+    screen = 12          # reduced from 15
+
+    terrain_bonus = {
+        forest = { toughness = 18 damage = 10 pursuit = 5 }
+        taiga = { toughness = 18 damage = 10 pursuit = 5 }
+        jungle = { toughness = 18 damage = 10 pursuit = 5 }
+
+        hills = { toughness = 12 damage = 5 }
+        mountains = { toughness = 18 damage = 8 }
+
+        wetlands = { toughness = 6 screen = 5 }
+        floodplains = { toughness = 6 screen = 5 }
+        farmlands = { toughness = 6 damage = 3 }
+        oasis = { toughness = 3 }
+        plains = { toughness = 3 }
+        drylands = { toughness = 3 }
+        steppe = { toughness = 3 }
+
+        desert = { toughness = -12 damage = -8 }
+        desert_mountains = { toughness = -20 damage = -12 }
+    }
+
+    winter_bonus = {
+        normal_winter = { toughness = 5 screen = 5 }
+        harsh_winter = { toughness = 8 screen = 8 damage = -4 }
+    }
+
+    counters = {
+        archers = 1
+        light_cavalry = 1
+        skirmishers = 1.5
+        heavy_infantry = 0.5
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = warband_ravagers_recruitment_cost }
+    low_maintenance_cost = { gold = warband_ravagers_low_maint_cost }
+    high_maintenance_cost = { gold = warband_ravagers_high_maint_cost }
+    provision_cost = @provisions_cost_special_expensive
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = daelurin_highlanders
+}

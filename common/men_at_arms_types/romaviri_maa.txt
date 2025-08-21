@@ -1,0 +1,118 @@
+romaviri_palatines = {
+    type = heavy_infantry
+    stack = 100
+
+    damage = 60
+    toughness = 40
+    pursuit = 5
+    screen = 5
+
+    terrain_bonus = {
+        forest = { toughness = 10 damage = 5 pursuit = 5 screen = 5 }
+        taiga = { toughness = 10 damage = 5 pursuit = 5 screen = 5 }
+        jungle = { toughness = 10 damage = 5 pursuit = 5 screen = 5 }
+
+        plains = { toughness = 10 damage = 20 pursuit = 10 screen = 10 }
+        drylands = { toughness = 10 damage = 20 pursuit = 10 screen = 10 }
+        steppe = { toughness = 10 damage = 20 pursuit = 10 screen = 10 }
+        farmlands = { toughness = 10 damage = 20 pursuit = 10 screen = 10}
+    }
+
+    counters = {
+        heavy_infantry = 1
+        pikemen = 1
+        archers = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = heavy_infantry_recruitment_cost }
+    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_expensive
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = warriors_of_the_daelurin
+}
+
+romaviri_turms = {
+    type = archer_cavalry
+    stack = 50
+	
+	damage = 100
+	toughness = 60
+	pursuit = 35
+	screen = 40
+	
+	terrain_bonus = {
+        forest = { damage = 20 }
+        taiga = { damage = 20 }
+        jungle = { damage = 20 }
+
+		steppe = { damage = 100 screen = 20 }
+		plains = { damage = 100 screen = 20 }
+		drylands = { damage = 100 screen = 20 }
+        farmlands = { damage = 100 screen = 20 }
+	}
+
+    counters = {
+        archers = 1
+        light_cavalry = 1.5
+        heavy_cavalry = 0.5
+        skirmishers = 2
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = elf_horse_archers_recruitment_cost }
+    low_maintenance_cost = { gold = elf_horse_archers_low_maint_cost }
+    high_maintenance_cost = { gold = elf_horse_archers_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_cheap
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = daelurin_wolf_riders
+}
+
+romaviri_steel_archers = {
+    type = archers
+    stack = 100
+
+    damage = 30
+    toughness = 20
+    pursuit = 10
+    screen = 10
+
+    terrain_bonus = {
+        forest = { toughness = 10 damage = 20 pursuit = 5 }
+        taiga = { toughness = 10 damage = 20 pursuit = 5 }
+        jungle = { toughness = 10 damage = 20 pursuit = 5 }
+
+        farmlands = { toughness = 20 damage = 40 screen = 10}
+        plains = { toughness = 20 damage = 40 screen = 10 }
+        drylands = { toughness = 20 damage = 40 screen = 10 }
+        steppe = { toughness = 20 damage = 40 screen = 10 }
+    }
+
+    counters = {
+        archers = 1
+        light_cavalry = 1
+        skirmishers = 1.5
+        heavy_infantry = 0.5
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_daelurin
+    }
+
+    buy_cost = { gold = warband_ravagers_recruitment_cost }
+    low_maintenance_cost = { gold = warband_ravagers_low_maint_cost }
+    high_maintenance_cost = { gold = warband_ravagers_high_maint_cost }
+    provision_cost = @provisions_cost_special_expensive
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = daelurin_highlanders
+}
