@@ -1,0 +1,895 @@
+tradition_astrion_northern_tribes = {
+    category = elven
+
+    layers = {
+        0 = steward
+        1 = western
+        4 = northern_tribes.dds
+    }
+
+    is_shown = {
+        has_mpo_dlc_trigger = yes
+        any_culture_county = {
+            OR = {
+                has_county_modifier = mpo_siberian_permafrost_modifier
+                has_county_modifier = mpo_siberian_permafrost_modifier_bad
+            }
+        }
+        is_any_elf_type = yes
+    }
+
+    can_pick = {
+        any_culture_county = {
+            percent >= 0.2
+            has_county_modifier = mpo_siberian_permafrost_modifier_bad
+        }
+        is_any_elf_type = yes
+    }
+
+    parameters = {
+        permafrost_modifier_mechanic = yes
+        permafrost_modifier_removal_condition = yes
+        permafrost_unlock_tribal_building = yes
+        winter_soldier_trait_more_common = yes
+        winter_trait_bonuses = yes
+        can_recruit_winter_specialist = yes
+        resistant_to_winter_privation = yes
+        forest_fighter_trait_more_common = yes
+        forest_trait_bonuses = yes
+        can_recruit_forest_specialist = yes
+        forest_nomadic_cultrad_stationing_bonus = yes
+        can_recruit_prisoners_easily = yes
+        better_knights_from_decision = yes
+        pardoning_gives_loyalty = yes
+        logging_camps_building_bonuses = yes
+        forest_hunt_success_chance = yes
+        watermills_forestries_unlock = yes
+        unlock_maa_astrion_innovation = yes
+    }
+
+    character_modifier = {
+        taiga_advantage = 5
+        forest_advantage = 5
+        winter_advantage = 5
+        taiga_travel_danger = taiga_medium_danger_reduction
+        forest_travel_danger = jungle_medium_danger_reduction
+        jungle_travel_danger = jungle_medium_danger_reduction
+        taiga_construction_gold_cost = -0.4
+        forest_construction_gold_cost = -0.4
+        levy_size = -0.5
+        levy_reinforcement_rate = -0.5
+        accolade_glory_gain_mult = 0.1
+    }
+
+    province_modifier = {
+        forest_supply_limit_mult = 0.25
+        taiga_supply_limit_mult = 0.25
+        forest_tax_mult = 0.05
+        taiga_tax_mult = 0.05
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                multiply = 2
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+
+            if = {
+                limit = {
+                    culture_tradition_reduction_trigger = { TRADITION = tradition_mpo_northern_tribes }
+                }
+                multiply = {
+                    value = 0.5
+                    desc = inspired_by_culture_desc
+                }
+            }
+
+            if = {
+                limit = {
+                    NOT = {
+                        any_culture_county = {
+                            percent >= 0.5
+                            OR = {
+                                has_county_modifier = mpo_siberian_permafrost_modifier
+                                has_county_modifier = mpo_siberian_permafrost_modifier_bad
+                            }
+                        }
+                    }
+                }
+                add = {
+                    value = tradition_unfulfilled_criteria_penalty
+                    desc = mpo_northern_tribes_percentage_desc
+                }
+            }
+
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
+        value = 0 #ai either has it on game start or should not pursue it
+    }
+}
+
+tradition_alfar_northern_tribes = {
+    category = elven
+
+    layers = {
+        0 = steward
+        1 = western
+        4 = northern_tribes.dds
+    }
+
+    is_shown = {
+        has_mpo_dlc_trigger = yes
+        any_culture_county = {
+            OR = {
+                has_county_modifier = mpo_siberian_permafrost_modifier
+                has_county_modifier = mpo_siberian_permafrost_modifier_bad
+            }
+        }
+        is_any_elf_type = yes
+    }
+
+    can_pick = {
+        any_culture_county = {
+            percent >= 0.2
+            has_county_modifier = mpo_siberian_permafrost_modifier_bad
+        }
+        is_any_elf_type = yes
+    }
+
+    parameters = {
+        permafrost_modifier_mechanic = yes
+        permafrost_modifier_removal_condition = yes
+        permafrost_unlock_tribal_building = yes
+        unlock_maa_alfar_innovation = yes
+        winter_soldier_trait_more_common = yes
+        winter_trait_bonuses = yes
+        can_recruit_winter_specialist = yes
+        resistant_to_winter_privation = yes
+        forest_fighter_trait_more_common = yes
+        forest_trait_bonuses = yes
+        can_recruit_forest_specialist = yes
+        forest_nomadic_cultrad_stationing_bonus = yes
+        strong_traits_more_valued = yes
+        strong_traits_more_common = yes
+        logging_camps_building_bonuses = yes
+        forest_hunt_success_chance = yes
+        watermills_forestries_unlock = yes
+    }
+
+    character_modifier = {
+        taiga_advantage = 5
+        forest_advantage = 5
+        hills_advantage = 5
+        mountains_advantage = 5
+        winter_advantage = 5
+
+        taiga_travel_danger = taiga_medium_danger_reduction
+        forest_travel_danger = forest_medium_danger_reduction
+        hills_travel_danger = hills_medium_danger_reduction
+        mountains_travel_danger = mountains_medium_danger_reduction
+        taiga_construction_gold_cost = -0.3
+        forest_construction_gold_cost = -0.3
+        levy_size = -0.5
+        levy_reinforcement_rate = -0.5
+    }
+
+    province_modifier = {
+        forest_supply_limit_mult = 0.25
+        taiga_supply_limit_mult = 0.25
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                multiply = 2
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+
+            if = {
+                limit = {
+                    culture_tradition_reduction_trigger = { TRADITION = tradition_mpo_northern_tribes }
+                }
+                multiply = {
+                    value = 0.5
+                    desc = inspired_by_culture_desc
+                }
+            }
+
+            if = {
+                limit = {
+                    NOT = {
+                        any_culture_county = {
+                            percent >= 0.5
+                            OR = {
+                                has_county_modifier = mpo_siberian_permafrost_modifier
+                                has_county_modifier = mpo_siberian_permafrost_modifier_bad
+                            }
+                        }
+                    }
+                }
+                add = {
+                    value = tradition_unfulfilled_criteria_penalty
+                    desc = mpo_northern_tribes_percentage_desc
+                }
+            }
+
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
+        value = 0 #ai either has it on game start or should not pursue it
+    }
+}
+
+tradition_deepwood_foresters = {
+    category = elven
+
+    layers = {
+        0 = martial
+        1 = western
+        4 = forest.dds
+    }
+
+    #Replaces Forest Folk
+    is_shown = {
+        is_any_elf_type = yes
+    }
+    can_pick = {
+        is_any_elf_type = yes
+        custom_description = {
+            text = culture_in_forest_desc
+            any_culture_county = {
+                any_county_province = {
+                    OR = {
+                        terrain = forest
+                        terrain = taiga
+                    }
+                }
+            }
+        }
+    }
+
+    parameters = {
+        can_recruit_forest_specialist = yes
+        forest_fighter_trait_more_common = yes
+        winter_soldier_trait_more_common = yes
+        winter_trait_bonuses = yes
+        can_recruit_winter_specialist = yes
+        resistant_to_winter_privation = yes
+        forest_trait_bonuses = yes
+        forest_nomadic_cultrad_stationing_bonus = yes
+        logging_camps_building_bonuses = yes
+        forest_hunt_success_chance = yes
+        watermills_forestries_unlock = yes
+        unlock_maa_deepwood_innovation = yes
+    }
+    character_modifier = {
+        forest_travel_danger = forest_high_danger_reduction
+        taiga_travel_danger = taiga_high_danger_reduction
+        taiga_provisions_use_mult = -0.2
+		forest_provisions_use_mult = -0.2
+        forest_fertility_growth_mult = medium_culture_county_fertility_value_mult
+		taiga_fertility_growth_mult = medium_culture_county_fertility_value_mult
+    }
+    county_modifier = {
+        forest_development_growth_factor = 0.3
+        taiga_development_growth_factor = 0.3
+    }
+    province_modifier = {
+        forest_construction_gold_cost = -0.3
+        taiga_construction_gold_cost = -0.3
+        forest_holding_construction_gold_cost = -0.3
+        taiga_holding_construction_gold_cost = -0.3
+        forest_supply_limit_mult = 0.25
+		taiga_supply_limit_mult = 0.25
+        forest_tax_mult = 0.05
+        taiga_tax_mult = 0.05
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            if = {
+                limit = {
+                    NOR = {
+                        culture_pillar:ethos_bellicose = { is_in_list = traits }
+                        culture_pillar:ethos_stoic = { is_in_list = traits }
+                        culture_pillar:ethos_communal = { is_in_list = traits }
+                    }
+                }
+                add = {
+                    value = tradition_incompatible_ethos_penalty
+                    desc = not_bellicose_stoic_or_communal_desc
+                }
+            }
+            if = {
+                limit = {
+                    NOT = {
+                        any_culture_county = {
+                            percent >= 0.3
+                            any_county_province = {
+                                OR = {
+                                    terrain = forest
+                                    terrain = taiga
+                                }
+                            }
+                        }
+                    }
+                }
+                add = {
+                    value = tradition_unfulfilled_criteria_penalty
+                    desc = forest_percentage_desc
+                }
+            }
+
+            if = {
+                limit = {
+                    culture_tradition_reduction_trigger = { TRADITION = tradition_forest_wardens }
+                }
+                multiply = {
+                    value = 0.5
+                    desc = inspired_by_culture_desc
+                }
+            }
+
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
+        value = 400
+        if = {
+            limit = {
+                NOT = {
+                    scope:character = {
+                        any_sub_realm_county = {
+                            culture = scope:character.culture
+                            any_county_province = {
+                                OR = {
+                                    terrain = forest
+                                    terrain = taiga
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            multiply = 0
+        }
+    }
+}
+
+
+tradition_lormelis_polders = { #Dutch Unique Tradition, bonuses to buildings along coastline, Unlocks MAA innovation
+	category = elven
+
+	layers = {
+		0 = steward
+		1 = mena
+		4 = svamp.dds
+	}
+
+	is_shown = {
+        is_any_elf_type = yes
+	}
+
+	can_pick = {
+		is_any_elf_type = yes
+		custom_description = {
+			text = culture_on_coast_desc
+			any_culture_county = {
+				any_county_province = {
+					is_coastal = yes
+				}
+			}
+		}
+	}
+	
+	parameters = {
+		unlock_adaptive_militia_innovation = yes
+		coastal_agriculture_building_bonuses = yes
+		coastal_holding_bonuses = yes
+        maritime_mercantilism_coastal_holdings = yes
+		maritime_mercantilism_avaricious_bonus = yes
+        next_level_trade_ports = yes
+        trade_ports_stationed_maa_bonus = yes
+		trade_ports_enabled_for_tribals = yes
+        coastal_holdings_give_defensive_bonus = yes
+	}
+
+	character_modifier = {
+        coastal_advantage = 10
+		supply_capacity_mult = 0.5
+		skirmishers_damage_mult = 0.2
+		skirmishers_screen_mult = 0.2
+		wetlands_travel_danger = wetlands_medium_danger_reduction
+		floodplains_travel_danger = floodplains_medium_danger_reduction
+        sea_travel_danger = medium_sea_danger_reduction
+		coastal_sea_travel_danger = medium_sea_danger_reduction
+		taiga_provisions_use_mult = -0.1
+		forest_provisions_use_mult = -0.1
+        embarkation_cost_mult = -0.85
+	}
+
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_communal = { is_in_list = traits }
+						culture_pillar:ethos_bureaucratic = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_communal_bureaucratic_or_stoic_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_culture_county = {
+							percent >= 0.3
+							any_county_province = {
+								is_coastal = yes
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = coastal_percentage_desc
+				}
+			}
+
+			if = {
+				limit = {
+					culture_tradition_reduction_trigger = { TRADITION = tradition_polders }
+				}
+				multiply = {
+					value = 0.5
+					desc = inspired_by_culture_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 400
+		if = {
+			limit = {
+				NOT = {
+					scope:character = {
+						any_sub_realm_county = {
+							percent >= 0.3
+							any_county_province = {
+								is_coastal = yes
+							}
+						}
+					}
+				}
+			}
+			multiply = 0
+		}
+		if = {
+			limit = {
+				scope:character = {
+					any_sub_realm_county = {
+						percent >= 0.6
+						any_county_province = {
+							is_coastal = yes
+						}
+					}
+				}
+			}
+			multiply = 3
+		}
+	}
+}
+
+
+tradition_romaviri_strategy = {
+	category = elven
+
+	layers = {
+		0 = martial
+		1 = mediterranean
+		4 = soldiers3.dds
+	}
+
+    is_shown = {
+        is_any_elf_type = yes
+        has_ep3_dlc_trigger = yes
+	}
+    
+	can_pick = {
+		is_any_elf_type = yes
+		custom_description = {
+			text = culture_on_coast_desc
+			any_culture_county = {
+				any_county_province = {
+					is_farmlands = yes
+				}
+			}
+		}
+	}
+
+	parameters = {
+		next_level_barracks = yes
+		formation_fighting_strategist = yes
+		formation_nomadic_cultrad_stationing_bonus = yes
+        estate_building_upgrade_development_gain = yes
+        can_make_republican_vassals = yes
+		unlock_innovation_pike_columns = yes
+		city_buildings_more_powerful = yes
+		city_buildings_less_control = yes
+		republican_vassals_pay_more = yes
+		more_parochial_vassals = yes
+		next_level_cities = yes
+        unlock_maa_romaviri_innovation = yes
+	}
+
+	character_modifier = {
+		counter_efficiency = 0.15
+		pursue_efficiency = -0.15
+		archers_damage_mult = 0.1
+		archers_toughness_mult = 0.15
+		pikemen_damage_mult = 0.15
+		pikemen_toughness_mult = 0.2
+		nomadic_horde_toughness_mult = 0.05
+		nomadic_horde_damage_mult = 0.05
+        monthly_influence_mult = 0.1
+		diplomatic_range_mult = 0.2
+		cultural_head_fascination_mult = -0.10
+        levy_size = -0.7
+		men_at_arms_recruitment_cost = -0.25
+		men_at_arms_maintenance = -0.25
+		levy_reinforcement_rate = -0.7
+		heavy_infantry_max_size_add = 2
+		heavy_cavalry_max_size_add = 2
+        archers_max_size_add = 2
+        city_holding_build_gold_cost = -0.05
+		city_holding_holding_build_gold_cost = -0.05
+		barons_and_minor_landholders_opinion = -20
+		parochial_opinion = -20
+		parochial_tax_contribution_mult = 0.1
+		parochial_levy_contribution_mult = 0.1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_courtly = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_courtly_or_communal_desc
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						scope:character = {
+							number_maa_soldiers_of_base_type = {
+								type = pikemen
+								value >= 500
+							}	
+							number_maa_soldiers_of_base_type = {
+								type = archers
+								value >= 500
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = culture_head_archers_and_pikemen_desc
+				}
+			}
+
+			if = {
+				limit = {
+					culture_tradition_reduction_trigger = { TRADITION = tradition_formation_fighting }
+				}
+				multiply = {
+					value = 0.5
+					desc = inspired_by_culture_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 200
+		if = {
+			limit = {
+				scope:character = {
+					OR = {
+						number_maa_soldiers_of_base_type = {
+							type = light_cavalry
+							value >= 300
+						}	
+						number_maa_soldiers_of_base_type = {
+							type = skirmishers
+							value >= 400
+						}
+					}
+				}
+			}
+			multiply = 0
+		}
+		if = {
+			limit = {
+				OR = {
+					culture_has_skirmisher_maa = yes
+					culture_has_light_cavalry_maa = yes
+				}
+			}
+			multiply = 0
+		}
+		else_if = {
+			limit = {
+				NOR = {
+					culture_has_archer_maa = yes
+					culture_has_pikemen_maa = yes
+				}
+			}
+			multiply = 0.25
+		}
+		else_if = {
+			limit = {
+				scope:character ?= {
+					ai_has_warlike_personality = yes
+				}
+			}
+			multiply = 4
+		}
+	}
+}
+
+tradition_tuathan_resilience = {
+	category = elven
+
+	layers = {
+		0 = martial
+		1 = mena
+		4 = fierce_independence.dds
+	}
+	
+	is_shown = {
+		has_fp3_dlc_trigger = yes
+		is_any_elf_type = yes
+	}
+
+	can_pick = {
+		NOT = {
+			has_cultural_tradition = tradition_staunch_traditionalists
+		}
+        is_any_elf_type = yes
+	}
+	
+	parameters = {
+        can_recruit_open_specialist = yes
+		unlock_horse_pastures_building = yes
+        rough_terrain_expert_trait_more_common = yes
+		hill_trait_bonuses = yes
+		can_recruit_hill_specialist = yes
+		hills_nomadic_cultrad_stationing_bonus = yes
+        pastures_building_bonuses = yes
+		farm_estates_pastures_unlock = yes
+		better_herders_pasturalists = yes
+        negate_health_penalty_add = 0.15
+        ancient_miners_quarries_building_bonuses = yes
+		can_build_quarries_everywhere = yes
+        bonuses_from_patriarch_matriarch_trait = yes
+		cultural_house_personal_scheme_success_chance = yes
+		landing_house_members_give_prestige = yes
+		penalty_for_revoking_titles_from_house_members = yes
+		loyal_trait_more_valued = yes
+		tribal_holding_stationed_bonus = yes
+        has_access_to_runestones = yes
+        unlock_maa_tuathan_innovation = yes
+	}
+
+	character_modifier = {
+		controlled_province_advantage = 10
+		same_culture_opinion = 10
+		opinion_of_liege = -10
+        archers_max_size_add = 2
+        archer_cavalry_toughness_mult = 0.2
+		light_cavalry_toughness_mult = 0.1
+        levy_size = -0.5
+        levy_reinforcement_rate = -0.5
+        supply_capacity_mult = 0.5
+        coastal_advantage = 5
+        coastal_sea_travel_danger = low_sea_danger_reduction
+        character_travel_speed_mult = 0.1
+        ai_boldness = 25
+        accolade_glory_gain_mult = 0.1
+	}
+	
+	cost = {
+		prestige = {
+			add = {
+				value = tradition_base_cost
+				desc = BASE
+				format = "BASE_VALUE_FORMAT"
+			}
+			if = {
+				limit = {
+					NOR = {
+						culture_pillar:ethos_bellicose = { is_in_list = traits }
+						culture_pillar:ethos_communal = { is_in_list = traits }
+						culture_pillar:ethos_stoic = { is_in_list = traits }
+					}
+				}
+				add = {
+					value = tradition_incompatible_ethos_penalty
+					desc = not_bellicose_stoic_or_communal_desc
+				}
+			}
+			if = {
+				limit = {
+					scope:character = {
+						any_sub_realm_county = {
+							NOT = {
+								culture = scope:character.culture
+							}
+						}
+					}
+				}
+				add = {
+					value = tradition_unfulfilled_criteria_penalty
+					desc = has_other_cultures_in_realm_desc
+				}
+			}
+
+			if = {
+				limit = {
+					culture_tradition_reduction_trigger = { TRADITION = tradition_fp3_fierce_independence }
+				}
+				multiply = {
+					value = 0.5
+					desc = inspired_by_culture_desc
+				}
+			}
+			
+			multiply = tradition_replacement_cost_if_relevant
+		}
+	}
+	
+	ai_will_do = {
+		value = 400
+		if = {
+			limit = {
+				NOR = {
+					culture_pillar:ethos_stoic = { is_in_list = traits }
+					culture_pillar:ethos_communal = { is_in_list = traits }
+				}
+			}
+			multiply = 0.5
+		}
+	}
+}
+
+# tradition_valerith_northern_tribes = { // valerith,astrion,atlareth, romaviri might or might not need this.
+# 	category = regional
+
+# 	layers = {
+# 		0 = steward
+# 		1 = western
+# 		4 = northern_tribes.dds
+# 	}
+
+# 	is_shown = {
+# 		has_mpo_dlc_trigger = yes
+# 		any_culture_county = {
+# 			OR = {
+# 				has_county_modifier = mpo_siberian_permafrost_modifier
+# 				has_county_modifier = mpo_siberian_permafrost_modifier_bad
+# 			}
+# 		}
+# 	}
+
+# 	can_pick = {
+# 		any_culture_county = {
+# 			percent >= 0.2
+# 			has_county_modifier = mpo_siberian_permafrost_modifier_bad
+# 		}
+# 	}
+
+# 	parameters = {
+# 		permafrost_modifier_mechanic = yes
+# 		permafrost_modifier_removal_condition = yes
+# 		permafrost_unlock_tribal_building = yes
+# 	}
+
+# 	character_modifier = {
+# 		taiga_advantage = 5
+# 		winter_advantage = 5
+# 		taiga_travel_danger = taiga_medium_danger_reduction
+# 		hills_travel_danger = hills_medium_danger_reduction
+# 		taiga_construction_gold_cost = -0.3
+# 		forest_construction_gold_cost = -0.3
+#         jungle_construction_gold_cost = -0.3
+# 	}
+
+# 	cost = {
+# 		prestige = {
+# 			add = {
+# 				value = tradition_base_cost
+# 				multiply = 2
+# 				desc = BASE
+# 				format = "BASE_VALUE_FORMAT"
+# 			}
+
+# 			if = {
+# 				limit = {
+# 					culture_tradition_reduction_trigger = { TRADITION = tradition_mpo_northern_tribes }
+# 				}
+# 				multiply = {
+# 					value = 0.5
+# 					desc = inspired_by_culture_desc
+# 				}
+# 			}
+
+# 			if = {
+# 				limit = {
+# 					NOT = {
+# 						any_culture_county = {
+# 							percent >= 0.5
+# 							OR = {
+# 								has_county_modifier = mpo_siberian_permafrost_modifier
+# 								has_county_modifier = mpo_siberian_permafrost_modifier_bad
+# 							}
+# 						}
+# 					}
+# 				}
+# 				add = {
+# 					value = tradition_unfulfilled_criteria_penalty
+# 					desc = mpo_northern_tribes_percentage_desc
+# 				}
+# 			}
+
+# 			multiply = tradition_replacement_cost_if_relevant
+# 		}
+# 	}
+
+# 	ai_will_do = {
+# 		value = 0 #ai either has it on game start or should not pursue it
+# 	}
+# }
+
