@@ -1,16 +1,16 @@
 ﻿valerith_rangers = {
     type = archers
-    stack = 100
+    stack = 50
 
-    damage = 50
-    toughness = 10
-    pursuit = 10
+    damage = 150
+    toughness = 50
+    pursuit = 40
     screen = 0
 
     terrain_bonus = {
-        forest = { damage = 30 toughness = 10 pursuit = 10 screen = 10}
-        jungle = { damage = 30 toughness = 10 pursuit = 10 screen = 10}
-        taiga = { damage = 30 toughness = 10 pursuit = 10 screen = 10}
+        forest = { damage = 60 toughness = 20 pursuit = 20 screen = 20}
+        jungle = { damage = 60 toughness = 20 pursuit = 20 screen = 20}
+        taiga = { damage = 60 toughness = 20 pursuit = 20 screen = 20}
     }
 
     counters = {
@@ -18,7 +18,7 @@
         light_cavalry = 1
         heavy_infantry = 1
         archers = 1
-        pikeman = 1
+        pikemen = 1
     }
 
     can_recruit = {
@@ -38,15 +38,15 @@ valerith_shining_priests = {
     type = spark_wielders
     stack = 50
 
-    damage = 10
-    toughness = 40
+    damage = 20
+    toughness = 80
     pursuit = 0
     screen = 40
 
     terrain_bonus = {
-        forest = { toughness = 40 screen = 20 damage = 25 }
-        taiga = { toughness = 40 screen = 20 damage = 25 }
-        jungle = { toughness = 40 screen = 20 damage = 25 }
+        forest = { damage = 50 toughness = 80 pursuit = 10 screen = 25 }
+        taiga = { damage = 50 toughness = 80 pursuit = 10 screen = 25 }
+        jungle = { damage = 50 toughness = 80 pursuit = 10 screen = 25 }
     }
 
     counters = {
@@ -76,23 +76,23 @@ valerith_shining_priests = {
 
 valerith_gendarmes = {
     type = heavy_cavalry
-    stack = 50
+    stack = 25
 
-    damage = 200
-    toughness = 80
+    damage = 400
+    toughness = 140
     pursuit = 20
     screen = 20
 
     terrain_bonus = {
-        forest = { damage = 50 toughness = 10 pursuit = 10 screen = 10}
-        forest = { damage = 50 toughness = 10 pursuit = 10 screen = 10}
-        forest = { damage = 50 toughness = 10 pursuit = 10 screen = 10}
+        forest = { damage = 120 toughness = 40 pursuit = 40 screen = 40 }
+        taiga = { damage = 120 toughness = 40 pursuit = 40 screen = 40 }
+        jungle = { damage = 120 toughness = 40 pursuit = 40 screen = 40 }
     }
     counters = {
         archers = 2
-        skirmishers = 1.5
-        pikemen = 0.5
-        light_cavalry = 0.75
+        skirmishers = 2
+        pikemen = 1
+        light_cavalry = 1
     }
 
     can_recruit = {

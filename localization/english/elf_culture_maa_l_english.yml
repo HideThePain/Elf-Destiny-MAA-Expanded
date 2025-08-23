@@ -1,0 +1,58 @@
+﻿l_english:
+
+ ### Atlareth ###  
+ atlareth_atlantic_katapeltes:0 "Katapeltes"
+ atlareth_atlantic_katapeltes_flavor:0 "Swift heavy infantry trained in the ways of the Lormelis. Their discipline and resilience make them as deadly as an Ocean Storm."
+
+ atlareth_atlantic_heavy_crossbowmen:0 "Atlantean Heavy Crossbowmen"
+ atlareth_atlantic_heavy_crossbowmen_flavor:0 "Mystical warriors who wield both beauty and illusion, the Sirens of War disorient enemies with arcane song and charm before tearing them apart with blades forged beneath the waves."
+
+ atlareth_azure_serpent_guard:0 "Azure Serpent Guard"
+ atlareth_azure_serpent_guard_flavor:0 "Mystical warriors who wield both beauty and illusion, the Sirens of War disorient enemies with arcane song and charm before tearing them apart with blades forged beneath the waves."
+
+ ### Álfar ###
+ alfar_warriors_of_the_old_ways:0 "Warriors of the Old Ways"
+ alfar_warriors_of_the_old_ways_flavor:0 "Towering elites born of shadowed mountains and ancient rituals. Their discipline and strength make them a terror on any battlefield."
+
+ alfar_tribal_climbers:0 "Tribal Climbers"
+ alfar_tribal_climbers_flavor:0 "Savage cavalry mounted on horses, capable of navigating even the harshest terrain with speed and brutality."
+
+ ### Gwynthorn Elves ###
+ tuathan_seelie_warriors:0 "Seelie Warriors"
+ tuathan_seelie_warriors_flavor:0 "Elite forest-bound heavy infantry trained in the ancient traditions of the Gwynthorn. Their discipline and resilience make them deadly in rough terrain."
+ 
+ tuathan_seelie_archons:0 "Archons"
+ tuathan_seelie_archons_flavor:0 "Swift and precise, these mounted archers combine elven agility with mobile tactics, harassing enemies from afar before vanishing into the woods."
+ 
+ tuathan_seelie_archers:0 "Seelie Archers"
+ tuathan_seelie_archers_flavor:0 "Heavily armored pikemen drawn from Gwynthorn noble lines, these warriors specialize in holding ground and countering cavalry charges with unwavering resolve."
+ 
+ ### Deepwood ###
+ deepwood_elven_caretakers:0 "Caretakers"
+ deepwood_elven_caretakers_flavor:0 "Silent and deadly, the Valerith Rangers are masters of forest warfare. With unmatched marksmanship and keen instincts, they rain death from the shadows before vanishing into the trees."
+ 
+ deepwood_elven_solar_dancers:0 "Solar Dancers"
+ deepwood_elven_solar_dancers_flavor:0 "Mystic warriors devoted to the spark, the Shining Priests wield sacred power to shield allies and disorient foes. Their mere presence on the battlefield inspires awe and dread."
+ 
+ deepwood_elven_hornets:0 "Hornets"
+ deepwood_elven_hornets_flavor:0 "The shining elite of Valerith chivalry, these heavily armored cavalry strike with refined precision. Proud, swift, and utterly lethal in open terrain, they embody the martial nobility of their house."
+
+#  ### Astrion ###
+#  thundarael_moon_knights:0 "Moon Knights"
+#  thundarael_moon_knights_flavor:0 "Clad in shimmering silver armor, the Moon Knights of Thundarael are elite heavy infantry who draw strength from the night and the highlands. They are unyielding in battle and revered in legend."
+ 
+#  thundarael_winged_warriors:0 "Winged Warriors"
+#  thundarael_winged_warriors_flavor:0 "Fast-moving skirmishers with the agility of birds and the precision of hawks. The Winged Warriors strike quickly and vanish into the terrain, especially adept in forests and hills."
+ 
+#  thundarael_griffin_riders:0 "Thundarael Griffin Riders"
+#  thundarael_griffin_riders_flavor:0 "Soaring above the battlefield on the backs of majestic griffins, these elite cavalry units deliver devastating charges from the sky. Though vulnerable in dense forests, their impact on open terrain is legendary."
+ 
+ ### Romaviri ###
+ romaviri_steel_archers:0 "Steel Archers"
+ romaviri_steel_archers_flavor:0 "Renowned for their precision and agility, the Serelion Longbowmen are expert archers trained in forest and hill warfare. Their long-range volleys strike with deadly accuracy."
+ 
+ romaviri_palatines:0 "Palatines"
+ romaviri_palatines_flavor:0 "These elite swordsmen embody the martial traditions of Serelion nobility. Their prowess in melee combat is unmatched, making them formidable on open and rough terrain alike."
+ 
+ romaviri_turms:0 "Turms"
+ romaviri_turms_flavor:0 "Noble riders armored in polished steel, the Cavalrymen of the Serellions deliver decisive charges that scatter enemy lines. Their training makes them especially effective in open terrain."

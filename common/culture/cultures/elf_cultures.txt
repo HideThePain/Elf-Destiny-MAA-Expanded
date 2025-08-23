@@ -1,0 +1,211 @@
+﻿culture_elf = {
+	color = elf
+	
+	ethos = ethos_spiritual
+	heritage = heritage_elf
+	language = language_high_elven
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_the_old_ways
+	}
+	
+	name_list = name_list_elf
+	
+	coa_gfx = { elf_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { dde_hre_clothing_gfx french_clothing_gfx western_clothing_gfx byzantine_clothing_gfx iberian_christian_clothing_gfx fp1_norse_clothing_gfx northern_clothing_gfx }
+	unit_gfx = { western_unit_gfx }
+	
+	ethnicities = {
+		50 = blond_elf
+		20 = redhead_elf
+		20 = blackhair_elf
+		10 = brunette_elf
+	}
+}
+
+# Daelurin
+# Álfar: https://en.wikipedia.org/wiki/Elf
+elf_culture_daelurin = {
+	color = elf_culture_daelurin
+	
+	ethos = ethos_bellicose
+	heritage = heritage_elf
+	language = language_high_elven
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_the_old_ways
+		tradition_warriors_by_merit
+		tradition_warrior_culture
+		tradition_tribal_ascension
+	}
+	
+	name_list = name_list_elf
+	
+	coa_gfx = { elf_group_coa_gfx }
+	building_gfx = { norse_building_gfx }
+	clothing_gfx = { fp1_norse_clothing_gfx northern_clothing_gfx western_clothing_gfx }
+	unit_gfx = { northern_unit_gfx }
+	
+	ethnicities = {
+		5 = blond_elf
+		15 = redhead_elf
+		40 = blackhair_elf
+		40 = brunette_elf
+	}
+}
+
+# Serelion
+# Romaviri: Combines "Roma" (Latin for Rome) with "viri" (men), symbolizing their lineage tracing back to the Roman Empire. "Romaviri" implies a proud and ancient heritage tied to Roman traditions and values.
+# Romenic Elf
+elf_culture_serelion = {
+	color = elf_culture_serelion
+	
+	ethos = ethos_bellicose
+	heritage = heritage_elf
+	language = language_high_elven
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_the_old_ways
+		tradition_roman_legacy
+		tradition_republican_legacy
+		# tradition_ep3_roman_ceremonies
+	}
+
+	dlc_tradition = {
+		trait = tradition_ep3_roman_ceremonies
+		requires_dlc_flag = roads_to_power
+		fallback = tradition_byzantine_succession
+	}
+	
+	name_list = name_list_elf
+	
+	coa_gfx = { elf_group_coa_gfx }
+	building_gfx = { byzantine_building_gfx }
+	clothing_gfx = { byzantine_clothing_gfx western_clothing_gfx }
+	unit_gfx = { eastern_unit_gfx }
+	
+	ethnicities = {
+		5 = blond_elf
+		10 = redhead_elf
+		60 = blackhair_elf
+		25 = brunette_elf
+	}
+}
+
+# Gwynthorn
+# https://en.wikipedia.org/wiki/Aos_S%C3%AD
+# Tuatha Dé Danann: https://en.wikipedia.org/wiki/Tuatha_D%C3%A9_Danann
+elf_culture_gwynthorn = {
+	color = elf_culture_gwynthorn
+	
+	ethos = ethos_egalitarian
+	heritage = heritage_elf
+	language = language_high_elven
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_the_old_ways
+		tradition_runestones
+		tradition_strong_kinship
+	}
+	
+	name_list = name_list_elf
+	
+	coa_gfx = { elf_group_coa_gfx }
+	building_gfx = { western_building_gfx }
+	clothing_gfx = { dde_hre_clothing_gfx french_clothing_gfx western_clothing_gfx }
+	unit_gfx = { western_unit_gfx }
+	
+	ethnicities = {
+		5 = blond_elf
+		75 = redhead_elf
+		10 = blackhair_elf
+		10 = brunette_elf
+	}
+}
+
+# Astrion: Evoking "astral" or celestial realms, suggesting a culture attuned to cosmic energies and higher planes of existence.
+elf_culture_thundarael = {
+	color = elf_culture_thundarael
+	
+	ethos = ethos_spiritual
+	heritage = heritage_elf
+	language = language_high_elven
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_the_old_ways
+		tradition_fp3_beacon_of_learning
+		tradition_sorcerous_metallurgy
+	}
+	
+	name_list = name_list_elf
+	
+	coa_gfx = { elf_group_coa_gfx }
+	building_gfx = { iranian_building_gfx }
+	clothing_gfx = { iranian_clothing_gfx iberian_christian_clothing_gfx western_clothing_gfx }
+	unit_gfx = { western_unit_gfx }
+	
+	ethnicities = {
+		5 = blond_elf
+		5 = redhead_elf
+		55 = blackhair_elf
+		35 = brunette_elf
+	}
+}
+
+
+elf_culture_valerith = {
+	color = elf_culture_valerith
+	
+	ethos = ethos_courtly
+	heritage = heritage_elf
+	language = language_high_elven
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_the_old_ways
+		tradition_welcoming
+		tradition_beguiling_nature
+	}
+	
+	name_list = name_list_elf
+	
+	coa_gfx = { elf_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { iberian_christian_clothing_gfx western_clothing_gfx }
+	unit_gfx = { western_unit_gfx }
+	
+	ethnicities = {
+		85 = blond_elf
+		5 = redhead_elf
+		5 = blackhair_elf
+		5 = brunette_elf
+	}
+}
+
+elf_culture_lormelis = {
+	color = elf_culture_lormelis
+	
+	ethos = ethos_courtly
+	heritage = heritage_elf
+	language = language_high_elven
+	martial_custom = martial_custom_male_only
+	traditions = {
+		tradition_the_old_ways
+		tradition_chivalry
+		tradition_by_the_sword
+	}
+	
+	name_list = name_list_elf
+	
+	coa_gfx = { elf_group_coa_gfx }
+	building_gfx = { mediterranean_building_gfx }
+	clothing_gfx = { iberian_christian_clothing_gfx western_clothing_gfx }
+	unit_gfx = { western_unit_gfx }
+	
+	ethnicities = {
+		85 = blond_elf
+		5 = redhead_elf
+		5 = blackhair_elf
+		5 = brunette_elf
+	}
+}

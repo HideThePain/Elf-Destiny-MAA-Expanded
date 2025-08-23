@@ -22,17 +22,17 @@
 
 elven_shieldguard = {
     type = pikemen
-    stack = 100
+    stack = 50
 
-    damage = 15
-    toughness = 45
+    damage = 115
+    toughness = 145
     pursuit = 0
-    screen = 20
+    screen = 60
 
     terrain_bonus = {
-        forest = { toughness = 10 damage = 10 pursuit = 10 screen = 15 }
-        taiga = { toughness = 10 damage = 10 pursuit = 10 screen = 15 }
-        jungle = { toughness = 10 damage = 10 pursuit = 10 screen = 15 }
+        forest = { damage = 20 toughness = 20  pursuit = 20 screen = 30 }
+        taiga = { damage = 20 toughness = 20  pursuit = 20 screen = 30 }
+        jungle = { damage = 20 toughness = 20  pursuit = 20 screen = 30 }
     }
 
     counters = {
@@ -59,18 +59,17 @@ elven_shieldguard = {
 
 elven_swordguard = { # elven greatswords? hell yeah
     type = skirmishers
-    # icon = elven_swordguard
-    stack = 100 # default unit size
+    stack = 50
 
-    damage = 30 # big swords, decent damage
-    toughness = 10 # lightly armored, no shields
-    pursuit = 20 # limited chase ability
-    screen = 5 # poor at holding lines
+    damage = 70
+    toughness = 45
+    pursuit = 35
+    screen = 15
 
     terrain_bonus = {
-        forest = { toughness = 10 damage = 15 pursuit = 10 screen = 15 }
-        taiga = { toughness = 10 damage = 15 pursuit = 10 screen = 15 }
-        jungle = { toughness = 10 damage = 15 pursuit = 10 screen = 15 }
+        forest = { damage = 30 toughness = 20 pursuit = 20 screen = 30 }
+        taiga = { damage = 30 toughness = 20 pursuit = 20 screen = 30 }
+        jungle = { damage = 30 toughness = 20 pursuit = 20 screen = 30 }
     }
 
     counters = {
@@ -96,17 +95,17 @@ elven_swordguard = { # elven greatswords? hell yeah
 
 highguard_of_valor = {
     type = heavy_infantry
-    stack = 100
+    stack = 50
 
-    damage = 50
-    toughness = 30
+    damage = 150
+    toughness = 90
     pursuit = 10
     screen = 20
 
     terrain_bonus = {
-        forest = { damage = 20 toughness = 10 pursuit = 20 screen = 10 }
-        taiga = { damage = 20 toughness = 10 pursuit = 20 screen = 10 }
-        jungle = { damage = 20 toughness = 10 pursuit = 20 screen = 10 }
+        forest = { damage = 40 toughness = 20 pursuit = 40 screen = 20 }
+        taiga = { damage = 40 toughness = 20 pursuit = 40 screen = 20 }
+        jungle = { damage = 40 toughness = 20 pursuit = 40 screen = 20 }
     }
 
     counters = {
@@ -132,24 +131,24 @@ highguard_of_valor = {
 
 exalted_bear_highriders = {
     type = elephant_cavalry
-    stack = 25
+    stack = 10
 
-	damage = 300
-	toughness = 100
+	damage = 700
+	toughness = 400
 	pursuit = 120
 	screen = 20
 
     siege_value = 0.3
 
     terrain_bonus = {
-        forest = { damage = 100 }
-        taiga = { damage = 100 }
-        jungle = { damage = 100 }
+        forest = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
+        taiga = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
+        jungle = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
     }
    
     winter_bonus = {
-        normal_winter = { toughness = 10 screen = 10 }
-        harsh_winter = { toughness = 15 screen = 10 }
+        normal_winter = { toughness = 30 screen = 20 }
+        harsh_winter = { toughness = 30 screen = 20 }
     }
 
     counters = {
@@ -175,18 +174,18 @@ exalted_bear_highriders = {
 
 griffin_knights = {
     type = heavy_cavalry
-    stack = 50
+    stack = 25
 
-    damage = 150
-    toughness = 40
-    pursuit = 90
-    screen = 10
+    damage = 350
+    toughness = 80
+    pursuit = 120
+    screen = 40
     siege_value = 0.2
 
     terrain_bonus = {
-        forest = { damage = 30 toughness = 10 screen = 10 }
-        taiga = { damage = 30 toughness = 10 screen = 10 }
-        jungle = { damage = 30 toughness = 10 screen = 10 }
+        forest = { damage = 60 toughness = 20 pursuit = 80 screen = 20 }
+        taiga = { damage = 60 toughness = 20 pursuit = 80 screen = 20 }
+        jungle = { damage = 60 toughness = 20 pursuit = 80  screen = 20 }
     }
 
     counters = {
@@ -210,25 +209,25 @@ griffin_knights = {
 }
 
 honored_drake_lancers = {
-    type = heavy_cavalry
-    stack = 25
+    type = elephant_cavalry
+    stack = 5
 
-    damage = 400
-    toughness = 80
-    pursuit = 50
-    screen = 10
+    damage = 1400
+    toughness = 800
+    pursuit = 60
+    screen = 20
     siege_value = 0.5
 
     terrain_bonus = {
-        forest = { damage = 100 toughness = 20 screen = 20 }
-        taiga = { damage = 100 toughness = 20 screen = 20 }
-        jungle = { damage = 100 toughness = 20 screen = 20 }
+        forest = { damage = 200 toughness = 40 pursuit = 20 screen = 40 }
+        taiga = { damage = 200 toughness = 40 pursuit = 20 screen = 40 }
+        jungle = { damage = 200 toughness = 40 pursuit = 20 screen = 40 }
     }
 
     counters = {
         heavy_infantry = 2
         light_cavalry = 1.5
-        pikemen = 0.75
+        pikemen = 1
         heavy_cavalry = 0.5
     }
 

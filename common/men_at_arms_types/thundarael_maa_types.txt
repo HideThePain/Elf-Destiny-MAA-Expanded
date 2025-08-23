@@ -1,21 +1,21 @@
 ﻿thundarael_moon_knights = {
     type = heavy_infantry
-    stack = 100
+    stack = 50
 
-    damage = 50
-    toughness = 30
-    pursuit = 0
-    screen = 30
+    damage = 200
+    toughness = 70
+    pursuit = 30
+    screen = 0
 
     terrain_bonus = {
-        forest = { damage = 10 toughness = 10  pursuit = 10 screen = 10}
-        taiga = { damage = 10 toughness = 10  pursuit = 10 screen = 10}
-        jungle = { damage = 10 toughness = 10  pursuit = 10 screen = 10}
+        forest = { damage = 20 toughness = 20 pursuit = 20 screen = 20 }
+        taiga = { damage = 20 toughness = 20 pursuit = 20 screen = 20 }
+        jungle = { damage = 20 toughness = 20 pursuit = 20 screen = 20 }
     }
 
     winter_bonus = {
-        normal_winter = { damage = 30 toughness = 30  pursuit = 30 screen = 30}
-        harsh_winter = { damage = 30 toughness = 30  pursuit = 30 screen = 30}
+        normal_winter = { damage = 60 toughness = 60  pursuit = 60 screen = 60}
+        harsh_winter = { damage = 60 toughness = 60  pursuit = 60 screen = 60}
     }
 
     counters = {
@@ -40,22 +40,22 @@
 
 thundarael_winged_warriors = {
     type = skirmishers
-    stack = 100
+    stack = 50
 
-    damage = 15
-    toughness = 20
+    damage = 75
+    toughness = 80
     pursuit = 30
-    screen = 0
+    screen = 10
 
     terrain_bonus = {
-        forest = { damage = 15 toughness = 15  pursuit = 15 screen = 15}
-        taiga = { damage = 15 toughness = 15  pursuit = 15 screen = 15}
-        jungle = { damage = 15 toughness = 15  pursuit = 15 screen = 15}
+        forest = { damage = 30 toughness = 30  pursuit = 30 screen = 30 }
+        taiga = { damage = 30 toughness = 30  pursuit = 30 screen = 30 }
+        jungle = { damage = 30 toughness = 30  pursuit = 30 screen = 30 }
     }
 
     winter_bonus = {
-        normal_winter = { damage = 30 toughness = 30  pursuit = 30 screen = 30}
-        harsh_winter = { damage = 30 toughness = 30  pursuit = 30 screen = 30}
+        normal_winter = { damage = 60 toughness = 60  pursuit = 60 screen = 60 }
+        harsh_winter = { damage = 60 toughness = 60  pursuit = 60 screen = 60 }
     }
 
     counters = {
@@ -80,23 +80,23 @@ thundarael_winged_warriors = {
 thundarael_griffin_riders = {
 
     type = heavy_cavalry
-    stack = 50
+    stack = 25
 
-    damage = 160
-    toughness = 40
-    pursuit = 90
-    screen = 10
+    damage = 380
+    toughness = 100
+    pursuit = 100
+    screen = 30
     siege_value = 0.3
 
     terrain_bonus = {
-        forest = { damage = 30 toughness = 10 screen = 10 }
-        taiga = { damage = 30 toughness = 10 screen = 10 }
-        jungle = { damage = 30 toughness = 10 screen = 10 }
+        forest = { damage = 60 toughness = 20 pursuit = 60 screen = 20 }
+        taiga = { damage = 60 toughness = 20 pursuit = 60 screen = 20 }
+        jungle = { damage = 60 toughness = 20 pursuit = 60  screen = 20 }
     }
 
     winter_bonus = {
-        normal_winter = { damage = 30 toughness = 30  pursuit = 30 screen = 30}
-        harsh_winter = { damage = 30 toughness = 30  pursuit = 30 screen = 30}
+        normal_winter = { damage = 60 toughness = 60  pursuit = 60 screen = 60}
+        harsh_winter = { damage = 60 toughness = 60  pursuit = 60 screen = 60}
     }
 
     counters = {

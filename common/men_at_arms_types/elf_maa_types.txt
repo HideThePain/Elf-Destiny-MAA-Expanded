@@ -17,35 +17,19 @@
 
 fey_archers = {
     type = archers
-    stack = 125
+    stack = 50
 
-    damage = 35
-    toughness = 12
-    pursuit = 30
+    damage = 135
+    toughness = 20
+    pursuit = 50
     screen = 20
 
     siege_value = 0.3
 
     terrain_bonus = {
-        forest = { damage = 10 pursuit = 10 screen = 10 }
-        jungle = { damage = 10 pursuit = 10 screen = 10 }
-        taiga = { damage = 10 pursuit = 10 screen = 10 }
-
-        hills = { screen = 5 }
-        mountains = { screen = 5 }
-        drylands = { screen = 5 }
-        plains = { pursuit = 5 }
-        steppe = { pursuit = 5 }
-        desert = { screen = 5 }
-        desert_mountains = { screen = 5 }
-        wetlands = { screen = 5 }
-        floodplains = { screen = 5 }
-        farmlands = { screen = 5 }
-    }
-
-    winter_bonus = {
-        normal_winter = { toughness = 10 screen = 10 }
-        harsh_winter = { toughness = 10 screen = 15 }
+        forest = { damage = 40 toughness = 40 pursuit = 40 screen = 40 }
+        jungle = { damage = 40 toughness = 40 pursuit = 40 screen = 40 }
+        taiga = { damage = 40 toughness = 40 pursuit = 40 screen = 40 }
     }
 
     counters = {
@@ -71,34 +55,17 @@ fey_archers = {
 
 elite_bow_knights = {
     type = archers
-    stack = 100
+    stack = 50
 
-    damage = 55
-    toughness = 28
-    pursuit = 20
-    screen = 18
+    damage = 150
+    toughness = 30
+    pursuit = 40
+    screen = 10
 
     terrain_bonus = {
-        forest = { damage = 15 pursuit = 10 screen = 5 }
-        jungle = { damage = 15 pursuit = 10 screen = 5 }
-        taiga = { damage = 15 pursuit = 10 screen = 5 }
-
-        hills = { damage = 10 screen = 5 }
-        mountains = { screen = 5 }
-        plains = { pursuit = 5 }
-        farmlands = { screen = 5 }
-        drylands = { screen = 5 }
-        desert = { screen = 5 }
-
-        desert_mountains = { screen = 5 }
-        steppe = { pursuit = 5 }
-        wetlands = { screen = 5 }
-        floodplains = { screen = 5 }
-    }
-
-    winter_bonus = {
-        normal_winter = { toughness = 10 screen = 10 }
-        harsh_winter = { toughness = 10 screen = 15 }
+        forest = { damage = 40 toughness = 40 pursuit = 40 screen = 40 }
+        jungle = { damage = 40 toughness = 40 pursuit = 40 screen = 40 }
+        taiga = { damage = 40 toughness = 40 pursuit = 40 screen = 40 }
     }
 
     counters = {
@@ -124,39 +91,21 @@ elite_bow_knights = {
 wolf_riders = {
     type = light_cavalry
     icon = wolf_riders
-    stack = 100
+    stack = 50
 
-    damage = 55       # Weaker than Daelurin (60)
-    toughness = 30    # Slightly lower than Daelurin (35)
-    pursuit = 65      # Same pursuit, strong mobility but lighter cavalry
-    screen = 20       # Less screening than heavy cavalry
-
+    damage = 140
+    toughness = 100
+    pursuit = 130
+    screen = 70
     terrain_bonus = {
-        forest = { damage = 20 pursuit = 40 screen = 25 }
-        taiga = { damage = 20 pursuit = 40 screen = 25 }
-        jungle = { damage = 20 pursuit = 40 screen = 25 }
-
-        drylands = { damage = 15 pursuit = 15 screen = 10 }
-        plains = { damage = 15 pursuit = 15 screen = 10 }
-        hills = { damage = -15 pursuit = 0 screen = 0 }
-        mountains = { damage = -50 toughness = -15 pursuit = -10 screen = -15 }
-        desert_mountains = { damage = -50 toughness = -15 pursuit = -10 screen = -15 }
-        desert = { damage = -10 toughness = -10 pursuit = -15 screen = -20 }
-        wetlands = { damage = 5 toughness = 5 }
-        steppe = { pursuit = 15 screen = 15 }
-        floodplains = { pursuit = 15 screen = 10 }
-        oasis = { pursuit = 15 screen = 10 }
-        farmlands = { pursuit = 15 screen = 10 damage = 5 }
-    }
-
-    winter_bonus = {
-        normal_winter = { toughness = 5 screen = 5 }
-        harsh_winter = { toughness = 10 screen = 10 damage = -5 pursuit = -10 }
+        forest = { damage = 80 toughness = 20 pursuit = 160 screen = 50 }
+        taiga = { damage = 80 toughness = 20 pursuit = 160 screen = 50 }
+        jungle = { damage = 80 toughness = 20 pursuit = 160 screen = 50 }
     }
 
     counters = {
-        skirmishers = 1.2
-        heavy_infantry = 0.8
+        skirmishers = 1
+        heavy_infantry = 1
         archers = 1
     }
 
@@ -175,41 +124,24 @@ wolf_riders = {
 direwolf_riders = {
     type = heavy_cavalry
     icon = direwolf_riders
-    stack = 50
+    stack = 25
 
-    damage = 110
-    toughness = 35
+    damage = 410
+    toughness = 75
     pursuit = 75
     screen = 40
 
     terrain_bonus = {
-        forest = { damage = 25 pursuit = 45 screen = 35 }
-        taiga = { damage = 25 pursuit = 45 screen = 35 }
-        jungle = { damage = 25 pursuit = 45 screen = 35 }
-
-        drylands = { damage = 20 pursuit = 10 }
-        plains = { damage = 20 pursuit = 10 }
-        hills = { damage = -20 }
-        mountains = { damage = -75 pursuit = -15 screen = -10 }
-        desert_mountains = { damage = -75 pursuit = -15 screen = -10 }
-        desert = { damage = -10 toughness = -10 pursuit = -20 screen = -20 }
-        wetlands = { damage = 5 toughness = 5 }
-        steppe = { pursuit = 15 screen = 15 }
-        floodplains = { pursuit = 15 screen = 15 }
-        oasis = { pursuit = 15 screen = 15 }
-        farmlands = { pursuit = 10 screen = 10 damage = 5 }
-    }
-
-    winter_bonus = {
-        normal_winter = { toughness = 5 screen = 5 }
-        harsh_winter = { toughness = 10 screen = 10 damage = -5 pursuit = -10 }
+        forest = { damage = 50 toughness = 10 pursuit = 90 screen = 70 }
+        taiga = { damage = 50 toughness = 10 pursuit = 90 screen = 70 }
+        jungle = { damage = 50 toughness = 10 pursuit = 90 screen = 70 }
     }
 
     counters = {
         skirmishers = 1.5
         heavy_infantry = 1
         light_cavalry = 1
-        archers = 0.8
+        archers = 1
     }
 
     can_recruit = {
@@ -230,23 +162,19 @@ direwolf_riders = {
 
 elk_archers = {
     type = archer_cavalry
-    icon = elk_archers
+    stack = 50
 
-    damage = 55
-    toughness = 10
-    pursuit = 60
+    damage = 155
+    toughness = 70
+    pursuit = 100
     screen = 60
 
     terrain_bonus = {
-        steppe = { damage = 25 pursuit = 5 screen = 5}
-        plains = { damage = 20 pursuit = 5 screen = 5}
-        drylands = { damage = 20 pursuit = 5 screen = 5 }
-        forest = { damage = 30 pursuit = 10 screen = 10 }
-        taiga = { damage = 30 pursuit = 10 screen = 10 }
-        jungle = { damage = 30 pursuit = 10 screen = 10 }
-        wetlands = { damage = 5 pursuit = 10 screen = 10}
-        mountains = { damage = -20 pursuit = -20 }
-        desert_mountains = { damage = -20 pursuit = -20 }
+        forest = { damage = 50 toughness = 20 pursuit = 20 screen = 20 }
+        taiga = { damage = 50 toughness = 20 pursuit = 20 screen = 20 }
+        jungle = { damage = 50 toughness = 20 pursuit = 20 screen = 20 }
+
+        steppe = { damage = 50 toughness = 20 pursuit = 20 screen = 20 }
     }
 
     counters = {
@@ -263,42 +191,23 @@ elk_archers = {
     high_maintenance_cost = { gold = elf_horse_archers_high_maint_cost }
     provision_cost = @provisions_cost_cavalry_cheap
 
-    stack = 100
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = elk_archers
 }
 
 warband_ravagers = {
-    icon = warband_ravagers
     type = skirmishers
+    stack = 50
 
-    damage = 15
-    toughness = 6
-    pursuit = 15
-    screen = 5
+    damage = 65
+    toughness = 55
+    pursuit = 45
+    screen = 10
 
     terrain_bonus = {
-        forest = { damage = 20 pursuit = 10 screen = 10 }
-        jungle = { damage = 20 pursuit = 10 screen = 10 }
-        taiga = { damage = 20 pursuit = 10 screen = 10 }
-
-        wetlands = { damage = 15 pursuit = 10 screen = 10 }
-        floodplains = { damage = 10 toughness = 5 }
-        farmlands = { toughness = 5 damage = 5 screen = 5 }
-        oasis = { toughness = 5 }
-
-        hills = { toughness = 5 }
-        mountains = { toughness = 5 }
-
-        plains = { damage = -10 }
-        steppe = { damage = -10 }
-
-        desert = { toughness = -10 damage = -15 }
-        desert_mountains = { toughness = -15 damage = -20 }
-    }
-
-    winter_bonus = {
-        normal_winter = { toughness = 5 screen = 5 }
-        harsh_winter = { toughness = 8 screen = 8 damage = -5 pursuit = -5 }
+        forest = { damage = 40 toughness = 10 pursuit = 20 screen = 20 }
+        jungle = { damage = 40 toughness = 10 pursuit = 20 screen = 20 }
+        taiga = { damage = 40 toughness = 10 pursuit = 20 screen = 20 }
     }
 
     counters = {
@@ -314,44 +223,25 @@ warband_ravagers = {
     high_maintenance_cost = { prestige = warband_ravagers_high_maint_cost }
     provision_cost = @provisions_cost_infantry_cheap
 
-    stack = 150
+    stack = 50
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = warband_ravagers
 }
 
 warband_vanguard = {
-    icon = warband_vanguard
     type = pikemen
+    stack = 50
 
-    damage = 25
-    toughness = 10
+    damage = 125
+    toughness = 110
     pursuit = 0
     screen = 0
 
     terrain_bonus = {
-        forest = { damage = 20 pursuit = 10 screen = 10 }
-        jungle = { damage = 20 pursuit = 10 screen = 10 }
-        taiga = { damage = 20 pursuit = 10 screen = 10 }
-
-        wetlands = { damage = 15 pursuit = 10 screen = 10 }
-        floodplains = { damage = 10 toughness = 5 screen = 5 }
-        farmlands = { toughness = 5 damage = 5 screen = 5 }
-        oasis = { toughness = 5 }
-
-        hills = { damage = 20 pursuit = 10 screen = 10 }
-        mountains = { toughness = 10 }
-
-        plains = { damage = -10 }
-        steppe = { damage = -10 }
-
-        desert = { toughness = -10 damage = -15 }
-        desert_mountains = { toughness = -15 damage = -20 }
+        forest = { damage = 30 toughness = 10 pursuit = 20 screen = 20 }
+        jungle = { damage = 30 toughness = 10 pursuit = 20 screen = 20 }
+        taiga = { damage = 30 toughness = 10 pursuit = 20 screen = 20 }
     }
-
-    winter_bonus = {
-        normal_winter = { toughness = 5 screen = 5 }
-        harsh_winter = { toughness = 8 screen = 8 damage = -5 pursuit = -5 }
-    }
-
     counters = {
         light_cavalry = 1
         heavy_cavalry = 1
@@ -368,6 +258,47 @@ warband_vanguard = {
     high_maintenance_cost = { prestige = warband_vanguard_high_maint_cost }
     provision_cost = @provisions_cost_infantry_cheap
 
-    stack = 150
+    stack = 50
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = warband_vanguard
+}
+
+abyssal_guardians = {
+    type = pikemen
+    stack = 50
+
+    damage = 140
+    toughness = 150
+    pursuit = 0
+    screen = 60
+
+    terrain_bonus = {
+        forest = { damage = 10 toughness = 20 screen = 20 }
+        forest = { damage = 10 toughness = 20 screen = 20 }
+        forest = { damage = 10 toughness = 20 screen = 20 }
+
+        wetlands = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
+        floodplains = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
+        oasis = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
+    }
+
+    counters = {
+        light_cavalry = 2
+        heavy_cavalry = 1.5
+        archer_cavalry = 1.5
+        camel_cavalry = 1.5
+        elephant_cavalry = 1
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_abyssal_guardians }
+    }
+
+    buy_cost = { gold = schiltron_recruitment_cost }
+    low_maintenance_cost = { gold = schiltron_low_maint_cost }
+    high_maintenance_cost = { gold = schiltron_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_cheap
+
+    ai_quality = { value = culture_ai_weight_pikemen }
+    icon = abyssal_guardians
 }

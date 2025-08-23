@@ -2,20 +2,19 @@
     type = spark_wielders
     stack = 50
 
-    damage = 30
-    toughness = 40
-    pursuit = 0
-    screen = 20
-
+    damage = 60
+    toughness = 50
+    pursuit = 40
+    screen = 50
 
     terrain_bonus = {
-        forest = { damage = 10 toughness = 10 }
-        taiga = { damage = 10 toughness = 10 }
-        jungle = { damage = 10 toughness = 10 }
+        forest = { damage = 20 toughness = 20 }
+        taiga = { damage = 20 toughness = 20 }
+        jungle = { damage = 20 toughness = 20 }
 
-        wetlands = { damage = 40 toughness = 15 pursuit = 20 screen = 10}
-        floodplains = { damage = 40 toughness = 15 pursuit = 20 screen = 10 }
-        oasis = { damage = 40 toughness = 15 pursuit = 20 screen = 10 }
+        wetlands = { damage = 80 toughness = 30 pursuit = 40 screen = 20}
+        floodplains = { damage = 80 toughness = 30 pursuit = 40 screen = 20 }
+        oasis = { damage = 80 toughness = 30 pursuit = 40 screen = 20 }
     }
 
     counters = {
@@ -45,21 +44,21 @@
 
 lormelis_tideborn_raiders = {
     type = skirmishers
-    stack = 100
+    stack = 50
 
-    damage = 20         
-    toughness = 15      
-    pursuit = 20        
-    screen = 10
+    damage = 70         
+    toughness = 60      
+    pursuit = 40        
+    screen = 20
 
     terrain_bonus = {
-        forest = { damage = 10 toughness = 10 pursuit = 20}
-        taiga = { damage = 10 toughness = 10 pursuit = 20}
-        jungle = { damage = 10 toughness = 10 pursuit = 20 }
+        forest = { damage = 20 toughness = 20 pursuit = 40}
+        taiga = { damage = 20 toughness = 20 pursuit = 40}
+        jungle = { damage = 20 toughness = 20 pursuit = 40 }
 
-        wetlands = { damage = 30 toughness = 25 pursuit = 20 screen = 5}
-        floodplains = { damage = 30 toughness = 25 pursuit = 20 screen = 5}
-        oasis = { damage = 30 toughness = 25 pursuit = 20 screen = 5}
+        wetlands = { damage = 60 toughness = 50 pursuit = 40 screen = 10 }
+        floodplains = { damage = 60 toughness = 50 pursuit = 40 screen = 10 }
+        oasis = { damage = 60 toughness = 50 pursuit = 40 screen = 10 }
     }
 
     counters = {
@@ -83,21 +82,21 @@ lormelis_tideborn_raiders = {
 
 lormelis_atlantean_leviathans = {
     type = heavy_infantry
-    stack = 100
+    stack = 25
 
-    damage = 55
-    toughness = 30
+    damage = 355
+    toughness = 230
     pursuit = 20
-    screen = 5
+    screen = 10
 
     terrain_bonus = {
-        forest = { damage = 5 toughness = 10 screen = 10 }
-        forest = { damage = 5 toughness = 10 screen = 10 }
-        forest = { damage = 5 toughness = 10 screen = 10 }
+        forest = { damage = 15 toughness = 30 screen = 30 }
+        taiga = { damage = 15 toughness = 30 screen = 30 }
+        jungle = { damage = 15 toughness = 30 screen = 30 }
 
-        wetlands = { damage = 25 toughness = 25 screen = 15 pursuit = 10}
-        floodplains = { damage = 25 toughness = 25 screen = 15 pursuit = 10}
-        oasis = { damage = 25 toughness = 25 screen = 15 pursuit = 10}
+        wetlands = { damage = 75 toughness = 75 screen = 45 pursuit = 30}
+        floodplains = { damage = 75 toughness = 75 screen = 45 pursuit = 30}
+        oasis = { damage = 75 toughness = 75 screen = 45 pursuit = 30}
     }
 
     counters = {
@@ -120,3 +119,81 @@ lormelis_atlantean_leviathans = {
     icon = lormelis_atlantean_leviathans
 }
 
+lormelis_magic_knigths = {
+    type = heavy_infantry
+    stack = 10
+
+    damage = 1000
+    toughness = 1100
+    pursuit = 50
+    screen = 200
+
+    terrain_bonus = {
+        forest = { damage = 100 toughness = 60  pursuit = 60 screen = 100 }
+        taiga = { damage = 100 toughness = 60  pursuit = 60 screen = 100 }
+        jungle = { damage = 100 toughness = 60  pursuit = 60 screen = 100 }
+
+        wetlands = { damage = 200 toughness = 100  pursuit = 120 screen = 300 }
+        floodplains = { damage = 200 toughness = 100  pursuit = 120 screen = 300 }
+        oasis = { damage = 200 toughness = 100  pursuit = 120 screen = 300 }
+    }
+
+    counters = {
+        skirmishers = 1
+        archers = 1
+        light_infantry = 1
+        light_cavalry = 0.5
+        heavy_cavalry = 0.5
+        pikemen = 0.5
+        heavy_infantry = 0.5
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_lormelis
+    }
+
+    buy_cost = { gold = heavy_infantry_recruitment_cost }
+    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+    provision_cost = @provisions_cost_infantry_elite
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = lormelis_magic_knigths
+}
+
+archers_of_the_lormelis = {
+    type = archers
+    stack = 25
+
+    damage = 340
+    toughness = 80
+    pursuit = 20
+    screen = 50
+
+    terrain_bonus = {
+        forest = { damage = 40 pursuit = 40 screen = 40}
+        taiga = { damage = 40 pursuit = 40 screen = 40}
+        jungle = { damage = 40 pursuit = 40 screen = 40}
+
+        floodplains = { damage = 160 toughness = 40 pursuit = 80 screen = 60 }
+        wetlands = { damage = 160 toughness = 40 pursuit = 80 screen = 60 }
+        oasis = { damage = 160 toughness = 40 pursuit = 80 screen = 60 }
+    }
+
+    counters = {
+        archers = 1
+        light_infantry = 1
+        pikemen = 1
+        heavy_infantry = 1
+        heavy_cavalry = 1
+        elephant_cavalry = 1
+    }
+
+    buy_cost = { gold = elf_horse_archers_recruitment_cost }
+    low_maintenance_cost = { gold = elf_horse_archers_low_maint_cost }
+    high_maintenance_cost = { gold = elf_horse_archers_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_cheap
+
+    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+    icon = archers_of_the_lormelis
+}

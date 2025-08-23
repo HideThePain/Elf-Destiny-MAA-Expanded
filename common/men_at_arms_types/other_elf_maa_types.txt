@@ -91,11 +91,11 @@
 #     provision_cost = @provisions_cost_infantry_bankrupting
 
 #     ai_quality = { value = culture_ai_weight_heavy_infantry }
-#     icon = knights_of_the_tree
+#     icon = blades_of_ismir
 # }
 
 # guardians_of_the_white_tree = {
-#     type = pikeman
+#     type = pikemen
 #     stack = 100
 
 #     damage = 90
@@ -123,7 +123,7 @@
 #     provision_cost = @provisions_cost_infantry_bankrupting
 
 #     ai_quality = { value = culture_ai_weight_heavy_infantry }
-#     icon = knights_of_the_tree
+#     icon = guardians_of_the_white_tree
 # }
 
 # lords_of_the_steelbow = {
@@ -155,109 +155,159 @@
 #     provision_cost = @provisions_cost_infantry_bankrupting
 
 #     ai_quality = { value = culture_ai_weight_heavy_infantry }
-#     icon = knights_of_the_tree
+#     icon = lords_of_the_steelbow
 # }
 
-the_dark_knights = {
-    type = heavy_infantry
-    stack = 100
+# lancers_of_the_honey_field = {
+#     type = archers
+#     stack = 100
 
-    damage = 40
-    toughness = 30
-    pursuit = 20
-    screen = 20
+#     damage = 90
+#     toughness = 70
+#     pursuit = 5
+#     screen = 25
 
-    terrain_bonus = {
-        forest = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
-        taiga = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
-        jungle = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
-    }
+#     terrain_bonus = {
+#         forest = { damage = 20 toughness = 20 }
+#         hills = { toughness = 10 }
+#     }
 
-    counters = {
-        heavy_infantry = 1.5
-        archers = 1
-        pikemen = 0.5
-    }
+#     counters = {
+#         archers = 2
+#         light_cavalry = 1
+#     }
 
-    can_recruit = {
-        culture = { has_cultural_tradition = tradition_elf_superiority }
-    }
+#     can_recruit = {
+#         house ?= house:
+#     }
 
-    buy_cost = { gold = heavy_infantry_recruitment_cost }
-    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
-    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
-    provision_cost = @provisions_cost_infantry_expensive
+#     buy_cost = { gold = heavy_infantry_recruitment_cost }
+#     low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#     high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#     provision_cost = @provisions_cost_infantry_bankrupting
 
-    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = the_dark_knights
-}
+#     ai_quality = { value = culture_ai_weight_heavy_infantry }
+#     icon = lancers_of_the_honey_field
+# }
 
-the_dark_bowmen = {
-    type = archers
-    stack = 100
+# kessertine_knights = {
+#     type = heavy_infantry
+#     stack = 100
 
-    damage = 40
-    toughness = 10
-    pursuit = 10
-    screen = 10
+#     damage = 40
+#     toughness = 30
+#     pursuit = 20
+#     screen = 20
 
-    terrain_bonus = {
-        forest = { damage = 20 toughness = 10 pursuit = 5 screen = 15 }
-        taiga = { damage = 20 toughness = 10 pursuit = 5 screen = 15 }
-        jungle = { damage = 20 toughness = 10 pursuit = 5 screen = 15 }
-    }
+#     terrain_bonus = {
+#         forest = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
+#         taiga = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
+#         jungle = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
+#     }
 
-    counters = {
-        skirmishers = 1
-        light_cavalry = 1
-        archers = 1
-        archer_cavalry = 0.5
-    }
+#     counters = {
+#         heavy_infantry = 1.5
+#         archers = 1
+#         pikemen = 0.5
+#     }
 
-    can_recruit = {
-        culture = { has_cultural_tradition = tradition_elf_superiority }
-    }
+#     buy_cost = { gold = heavy_infantry_recruitment_cost }
+#     low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#     high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#     provision_cost = @provisions_cost_infantry_expensive
 
-    buy_cost = { gold = elf_bowmen_recruitment_cost }
-    low_maintenance_cost = { gold = elf_bowmen_low_maint_cost }
-    high_maintenance_cost = { gold = elf_bowmen_high_maint_cost }
-    provision_cost = @provisions_cost_special_expensive
+#     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+#     icon = kessertine_knights
+# }
 
-    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = the_dark_bowmen
-}
+# kessertine_bowmen = {
+#     type = archers
+#     stack = 100
 
-the_dark_lancers = {
-    type = heavy_cavalry
-    stack = 50
+#     damage = 40
+#     toughness = 10
+#     pursuit = 10
+#     screen = 10
 
-    damage = 180
-    toughness = 60
-    pursuit = 50
-    screen = 30
+#     terrain_bonus = {
+#         forest = { damage = 20 toughness = 10 pursuit = 5 screen = 15 }
+#         taiga = { damage = 20 toughness = 10 pursuit = 5 screen = 15 }
+#         jungle = { damage = 20 toughness = 10 pursuit = 5 screen = 15 }
+#     }
 
-    terrain_bonus = {
-        forest = { damage = 60 }
-        taiga = { damage = 60 }
-        jungle = { damage = 60 }
-    }
+#     counters = {
+#         skirmishers = 1
+#         light_cavalry = 1
+#         archers = 1
+#         archer_cavalry = 0.5
+#     }
 
-    counters = {
-        heavy_infantry = 2
-        archers = 1.5
-        pikemen = 0.5
-        light_cavalry = 0.75
-    }
+#     buy_cost = { gold = elf_bowmen_recruitment_cost }
+#     low_maintenance_cost = { gold = elf_bowmen_low_maint_cost }
+#     high_maintenance_cost = { gold = elf_bowmen_high_maint_cost }
+#     provision_cost = @provisions_cost_special_expensive
 
-    can_recruit = {
-        culture = { has_cultural_tradition = tradition_elf_superiority }
-    }
+#     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+#     icon = kessertine_bowmen
+# }
 
-    buy_cost = { gold = elf_heavy_cavalry_recruitment_cost }
-    low_maintenance_cost = { gold = elf_heavy_cavalry_low_maint_cost }
-    high_maintenance_cost = { gold = elf_heavy_cavalry_high_maint_cost }
-    provision_cost = @provisions_cost_cavalry_bankrupting
+# kessertine_lancers = {
+#     type = heavy_cavalry
+#     stack = 50
 
-    ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = the_dark_lancers
-}
+#     damage = 180
+#     toughness = 60
+#     pursuit = 50
+#     screen = 30
+
+#     terrain_bonus = {
+#         forest = { damage = 60 }
+#         taiga = { damage = 60 }
+#         jungle = { damage = 60 }
+#     }
+
+#     counters = {
+#         heavy_infantry = 2
+#         archers = 1.5
+#         pikemen = 0.5
+#         light_cavalry = 0.75
+#     }
+
+#     buy_cost = { gold = elf_heavy_cavalry_recruitment_cost }
+#     low_maintenance_cost = { gold = elf_heavy_cavalry_low_maint_cost }
+#     high_maintenance_cost = { gold = elf_heavy_cavalry_high_maint_cost }
+#     provision_cost = @provisions_cost_cavalry_bankrupting
+
+#     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+#     icon = kessertine_lancers
+# }
+
+# aeluran_justiciar = {
+#     type = heavy_infantry
+#     stack = 100
+
+#     damage = 40
+#     toughness = 30
+#     pursuit = 20
+#     screen = 20
+
+#     terrain_bonus = {
+#         forest = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
+#         taiga = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
+#         jungle = { damage = 5 toughness = 15 pursuit = 10 screen = 10 }
+#     }
+
+#     counters = {
+#         heavy_infantry = 1.5
+#         archers = 1
+#         pikemen = 0.5
+#     }
+
+#     buy_cost = { gold = heavy_infantry_recruitment_cost }
+#     low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
+#     high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+#     provision_cost = @provisions_cost_infantry_expensive
+
+#     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
+#     icon = kessertine_knights
+# }

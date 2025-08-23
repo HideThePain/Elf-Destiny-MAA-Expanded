@@ -1,26 +1,26 @@
-alfar_warriors_of_the_old_ways = {
+﻿alfar_warriors_of_the_old_ways = {
     type = heavy_infantry
-    stack = 100
+    stack = 50
 
-    damage = 50
-    toughness = 30
-    pursuit = 10
-    screen = 20
+    damage = 150
+    toughness = 90
+    pursuit = 30
+    screen = 30
 
     terrain_bonus = {
-        mountains = { toughness = 20 damage = 10 pursuit = 10 screen = 10 }
-        hills = { toughness = 20 damage = 10 pursuit = 10 screen = 10 }
-        desert_mountains = { toughness = 20 damage = 10 pursuit = 10 screen = 10 }
+        mountains = { damage = 30 toughness = 60 pursuit = 30 screen = 30 }
+        hills = { damage = 30 toughness = 60 pursuit = 30 screen = 30 }
+        desert_mountains = { damage = 30 toughness = 60 pursuit = 30 screen = 30 }
 
-        forest = { toughness = 10 damage = 10 }
-        taiga = { toughness = 10 damage = 10  }
-        jungle = { toughness = 10 damage = 10 }
+        forest = { damage = 30 toughness = 30  }
+        taiga = { damage = 30 toughness = 30 }
+        jungle = { damage = 30 toughness = 30 }
 
     }
 
     winter_bonus = {
-        normal_winter = { toughness = 10 screen = 10 }
-        harsh_winter = { toughness = 10 screen = 10 }
+        normal_winter = { toughness = 30 screen = 30 }
+        harsh_winter = { toughness = 30 screen = 30 }
     }
 
     counters = {
@@ -29,42 +29,38 @@ alfar_warriors_of_the_old_ways = {
         light_cavalry = 1
     }
 
-    can_recruit = {
-        has_trait = royal_elf_daelurin
-    }
-
     buy_cost = { gold = heavy_infantry_recruitment_cost }
     low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
     high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
     provision_cost = @provisions_cost_infantry_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = warriors_of_the_daelurin
+    icon = alfar_warriors_of_the_old_ways
 }
 
 alfar_tribal_climbers = {
     type = light_cavalry
-    stack = 50
+    stack = 25
 
-	damage = 60
-	toughness = 30
-	pursuit = 30
+	damage = 180
+	toughness = 110
+	pursuit = 100
 	screen = 40
 
 
     terrain_bonus = {
-        forest = { damage = 20 toughness = 20 }
-        taiga = { damage = 20 toughness = 20 }
-        jungle = { damage = 20 toughness = 20 }
+        forest = { damage = 60 toughness = 60 }
+        taiga = { damage = 60 toughness = 60 }
+        jungle = { damage = 60 toughness = 60 }
 
-        mountains = { damage = 20 pursuit = 35 screen = 15 }
-        hills = { damage = 20 pursuit = 35 screen = 15 }
-        desert_mountains = { damage = 20 pursuit = 35 screen = 15 }
+        mountains = { damage = 60 toughness = 20 pursuit = 105 screen = 45 }
+        hills = { damage = 60 toughness = 20 pursuit = 105 screen = 45 }
+        desert_mountains = { damage = 60 toughness = 20 pursuit = 105 screen = 45 }
     }
 
     winter_bonus = {
-        normal_winter = { toughness = 10 screen = 10 }
-        harsh_winter = { toughness = 10 screen = 10 }
+        normal_winter = { toughness = 30 screen = 30 }
+        harsh_winter = { toughness = 30 screen = 30 }
     }
 
     counters = {
@@ -73,15 +69,11 @@ alfar_tribal_climbers = {
         skirmishers = 1
     }
 
-    can_recruit = {
-        has_trait = royal_elf_daelurin
-    }
-
     buy_cost = { gold = elf_horse_archers_recruitment_cost }
     low_maintenance_cost = { gold = elf_horse_archers_low_maint_cost }
     high_maintenance_cost = { gold = elf_horse_archers_high_maint_cost }
     provision_cost = @provisions_cost_cavalry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = daelurin_wolf_riders
+    icon = alfar_tribal_climbers
 }

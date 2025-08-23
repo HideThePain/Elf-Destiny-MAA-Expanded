@@ -4,11 +4,17 @@
  lormelis_tideborn_raiders:0 "Tideborn Raiders"
  lormelis_tideborn_raiders_flavor:0 "Trained in coastal ambush and naval boarding actions, the Tideborn Raiders strike from sea and shore alike, stealing supplies and striking terror into the hearts of landlocked armies."
 
- lormelis_atlantean_leviathans:0 "Atlantean Leviathans"
+ lormelis_atlantean_leviathans:0 "Leviathans"
  lormelis_atlantean_leviathans_flavor:0 "Swift heavy infantry trained in the ways of the Lormelis. Their discipline and resilience make them as deadly as an Ocean Storm."
 
  lormelis_sirens_of_war:0 "Sirens of War"
  lormelis_sirens_of_war_flavor:0 "Mystical warriors who wield both beauty and illusion, the Sirens of War disorient enemies with arcane song and charm before tearing them apart with blades forged beneath the waves."
+
+ archers_of_the_lormelis:0 "Archers of The Lormelis"
+ archers_of_the_lormelis_flavor:0 "Archers of The Lormelis"
+
+ lormelis_magic_knights:0 "Magic Knights"
+ lormelis_magic_knights_flavor:0 "Magic Knights"
 
  ### Daelurin Elves ###
  warriors_of_the_daelurin:0 "Warriors of the Daelurin"
@@ -17,7 +23,7 @@
  daelurin_wolf_riders:0 "Daelurin Wolf Riders"
  daelurin_wolf_riders_flavor:0 "Savage cavalry mounted on war-wolves, capable of navigating even the harshest terrain with speed and brutality."
 
- daelurin_highlanders:0 "Daelurin Highlanders"
+ daelurin_highlanders:0 "Highlanders"
  daelurin_highlanders_flavor:0 "Hardened skirmishers from the highlands, these fighters wield immense axes and unshakable loyalty to their kin."
  
  ### Gwynthorn Elves ###
@@ -27,18 +33,24 @@
  gwynthorn_horse_archers:0 "Gwynthorn Horse Archers"
  gwynthorn_horse_archers_flavor:0 "Swift and precise, these mounted archers combine elven agility with mobile tactics, harassing enemies from afar before vanishing into the woods."
  
- gwynthorn_noble_infantry:0 "Gwynthorn Noble Infantry"
+ gwynthorn_noble_infantry:0 "Noble Infantry"
  gwynthorn_noble_infantry_flavor:0 "Heavily armored pikemen drawn from Gwynthorn noble lines, these warriors specialize in holding ground and countering cavalry charges with unwavering resolve."
  
  ### Dark Elves / Superiority Tradition ###
- the_dark_knights:0 "Dark Knights"
- the_dark_knights_flavor:0 "A terrifying force of elite heavy infantry. These warriors clad in obsidian armor crash into enemy lines with unrelenting fury and precision."
+ kessertine_knights:0 "Kessertine Knights"
+ kessertine_knights_flavor:0 "A terrifying force of elite heavy infantry. These warriors clad in obsidian armor crash into enemy lines with unrelenting fury and precision."
  
- the_dark_bowmen:0 "Dark Bowmen"
- the_dark_bowmen_flavor:0 "Masters of ranged warfare, these archers from the dark elven realms deliver precise and deadly volleys while striking fear into their enemies."
+ kessertine_bowmen:0 "Kessertine Bowmen"
+ kessertine_bowmen_flavor:0 "Masters of ranged warfare, these archers from the dark elven realms deliver precise and deadly volleys while striking fear into their enemies."
  
- the_dark_lancers:0 "Dark Lancers"
- the_dark_lancers_flavor:0 "Powerful shock cavalry bred for devastation on the plains. Their vicious lances and cruel tactics make them feared even among allies."
+ kessertine_lancers:0 "Kessertine Lancers"
+ kessertine_lancers_flavor:0 "Powerful shock cavalry bred for devastation on the plains. Their vicious lances and cruel tactics make them feared even among allies."
+
+ kessertine_crimson_eye:0 "Kessertine Crimson Eye"
+ kessertine_crimson_eye_flavor:0 "Kessertine Crimson Eye"
+
+ aeluran_justiciars:0 "Aeluran Justiciars"
+ aeluran_justiciars_flavor:0 "Aeluran Justiciars"
  
  ### (Commented-out Examples) ###
  # the_black_riders:0 "The Black Riders"
@@ -47,8 +59,17 @@
  # knights_of_the_tree:0 "Knights of the Tree"
  # knights_of_the_tree_flavor:0 "Holy protectors of the sacred forests, these warriors are chosen by ancient rites to defend nature with unmatched devotion and strength."
 
+ # blades_of_ismir:0 "Blades of Ismir"
+
+ # guardians_of_the_white_tree:0 "Guardians of the White Tree"
+ 
+ # lords_of_the_steelbow:0 "Lords of The Steelbow"
+ 
+ # lancers_of_the_honey_field:0 "Lancers of The Honey Field"
+
+
  ### Valerith Elves ###
- valerith_rangers:0 "Valerith Rangers"
+ valerith_rangers:0 "Rangers"
  valerith_rangers_flavor:0 "Silent and deadly, the Valerith Rangers are masters of forest warfare. With unmatched marksmanship and keen instincts, they rain death from the shadows before vanishing into the trees."
  
  valerith_shining_priests:0 "Shining Priests"

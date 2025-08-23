@@ -6,7 +6,7 @@ innovation_romaviri_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = unlock_romaviri_maa_innovation
+
 	}
 
 	unlock_maa = romaviri_palatines
@@ -22,7 +22,7 @@ innovation_tuathan_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = unlock_tuathan_maa_innovation
+
 	}
 
 	unlock_maa = tuathan_seelie_warriors
@@ -38,7 +38,7 @@ innovation_deepwood_elven_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = unlock_deepwood_elven_maa_innovation
+
 	}
 
 	unlock_maa = deepwood_elven_caretakers
@@ -54,7 +54,7 @@ innovation_alfar_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = unlock_alfar_maa_innovation
+
 	}
 
 	unlock_maa = alfar_warriors_of_the_old_ways
@@ -69,7 +69,7 @@ innovation_atlareth_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = unlock_atlareth_maa_innovation
+
 	}
 
 	unlock_maa = atlareth_atlantic_katapeltes
@@ -79,14 +79,19 @@ innovation_atlareth_maa = {
 	flag = global_maa
 }
 
-# innovation_direwolf_riders = { 
-# 	group = culture_group_regional
-# 	culture_era = culture_era_tribal
-# 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
+innovation_kessertine_maa = {
+	group = culture_group_regional
+	culture_era = culture_era_tribal
+	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
-# 	potential = { 
-# 		has_cultural_parameter = יהודים
-# 	}
+	potential = {
+		always = no
+	}
 
-# 	unlock_maa = direwolf_riders
-# }
+	unlock_maa = kessertine_bowmen
+	unlock_maa = kessertine_knights
+	unlock_maa = kessertine_lancers
+	unlock_maa = kessertine_crimson_eye
+
+	flag = global_maa
+}
