@@ -63,7 +63,6 @@ masters_of_the_serelion_sword = {
     counters = {
         skirmishers = 1
         archers = 1
-        light_infantry = 1
         light_cavalry = 1
         heavy_cavalry = 1
         pikemen = 1

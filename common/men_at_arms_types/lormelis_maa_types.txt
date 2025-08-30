@@ -181,12 +181,13 @@ archers_of_the_lormelis = {
     }
 
     counters = {
-        archers = 1
         light_infantry = 1
         pikemen = 1
         heavy_infantry = 1
-        heavy_cavalry = 1
-        elephant_cavalry = 1
+    }
+
+    can_recruit = {
+        has_trait = royal_elf_lormelis
     }
 
     buy_cost = { gold = elf_horse_archers_recruitment_cost }

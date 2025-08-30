@@ -515,3 +515,43 @@ texticon = {
         fontsize = 16
     }
 }
+
+texticon = {
+    icon = alfar_mountain_archers_icon
+    iconsize = {
+        texture = "gfx/interface/icons/regimenttypes/alfar_mountain_archers.dds"
+        size = { 25 25 }
+        offset = { 0 6 }
+        fontsize = 16
+    }
+}
+
+texticon = {
+    icon = astrion_enchanted_crossbowmen_icon
+    iconsize = {
+        texture = "gfx/interface/icons/regimenttypes/astrion_enchanted_crossbowmen.dds"
+        size = { 25 25 }
+        offset = { 0 6 }
+        fontsize = 16
+    }
+}
+
+texticon = {
+    icon = astrion_exalted_bear_highriders_icon
+    iconsize = {
+        texture = "gfx/interface/icons/regimenttypes/astrion_exalted_bear_highriders.dds"
+        size = { 25 25 }
+        offset = { 0 6 }
+        fontsize = 16
+    }
+}
+
+texticon = {
+    icon = astrion_heavy_halberdiers_icon
+    iconsize = {
+        texture = "gfx/interface/icons/regimenttypes/astrion_heavy_halberdiers.dds"
+        size = { 25 25 }
+        offset = { 0 6 }
+        fontsize = 16
+    }
+}

@@ -350,25 +350,7 @@ tradition_deepwood_foresters = {
     }
 
     ai_will_do = {
-        value = 400
-        if = {
-            limit = {
-                NOT = {
-                    scope:character = {
-                        any_sub_realm_county = {
-                            culture = scope:character.culture
-                            any_county_province = {
-                                OR = {
-                                    terrain = forest
-                                    terrain = taiga
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            multiply = 0
-        }
+        value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
@@ -399,7 +381,6 @@ tradition_lormelis_polders = { #Dutch Unique Tradition, bonuses to buildings alo
 	}
 	
 	parameters = {
-		unlock_adaptive_militia_innovation = yes
 		coastal_agriculture_building_bonuses = yes
 		coastal_holding_bonuses = yes
         maritime_mercantilism_coastal_holdings = yes
@@ -408,6 +389,7 @@ tradition_lormelis_polders = { #Dutch Unique Tradition, bonuses to buildings alo
         trade_ports_stationed_maa_bonus = yes
 		trade_ports_enabled_for_tribals = yes
         coastal_holdings_give_defensive_bonus = yes
+        unlock_maa_atlareth_innovation = yes
 	}
 
 	character_modifier = {
@@ -422,6 +404,9 @@ tradition_lormelis_polders = { #Dutch Unique Tradition, bonuses to buildings alo
 		taiga_provisions_use_mult = -0.1
 		forest_provisions_use_mult = -0.1
         embarkation_cost_mult = -0.85
+        no_disembark_penalty = yes
+        no_water_crossing_penalty = yes
+        raid_speed = 0.5
 	}
 
 	cost = {
@@ -476,36 +461,8 @@ tradition_lormelis_polders = { #Dutch Unique Tradition, bonuses to buildings alo
 	}
 	
 	ai_will_do = {
-		value = 400
-		if = {
-			limit = {
-				NOT = {
-					scope:character = {
-						any_sub_realm_county = {
-							percent >= 0.3
-							any_county_province = {
-								is_coastal = yes
-							}
-						}
-					}
-				}
-			}
-			multiply = 0
-		}
-		if = {
-			limit = {
-				scope:character = {
-					any_sub_realm_county = {
-						percent >= 0.6
-						any_county_province = {
-							is_coastal = yes
-						}
-					}
-				}
-			}
-			multiply = 3
-		}
-	}
+        value = 0 #ai either has it on game start or should not pursue it
+    }
 }
 
 
@@ -633,51 +590,8 @@ tradition_romaviri_strategy = {
 	}
 	
 	ai_will_do = {
-		value = 200
-		if = {
-			limit = {
-				scope:character = {
-					OR = {
-						number_maa_soldiers_of_base_type = {
-							type = light_cavalry
-							value >= 300
-						}	
-						number_maa_soldiers_of_base_type = {
-							type = skirmishers
-							value >= 400
-						}
-					}
-				}
-			}
-			multiply = 0
-		}
-		if = {
-			limit = {
-				OR = {
-					culture_has_skirmisher_maa = yes
-					culture_has_light_cavalry_maa = yes
-				}
-			}
-			multiply = 0
-		}
-		else_if = {
-			limit = {
-				NOR = {
-					culture_has_archer_maa = yes
-					culture_has_pikemen_maa = yes
-				}
-			}
-			multiply = 0.25
-		}
-		else_if = {
-			limit = {
-				scope:character ?= {
-					ai_has_warlike_personality = yes
-				}
-			}
-			multiply = 4
-		}
-	}
+        value = 0 #ai either has it on game start or should not pursue it
+    }
 }
 
 tradition_tuathan_resilience = {
@@ -792,17 +706,8 @@ tradition_tuathan_resilience = {
 	}
 	
 	ai_will_do = {
-		value = 400
-		if = {
-			limit = {
-				NOR = {
-					culture_pillar:ethos_stoic = { is_in_list = traits }
-					culture_pillar:ethos_communal = { is_in_list = traits }
-				}
-			}
-			multiply = 0.5
-		}
-	}
+        value = 0 #ai either has it on game start or should not pursue it
+    }
 }
 
 # tradition_valerith_northern_tribes = { // valerith,astrion,atlareth, romaviri might or might not need this.

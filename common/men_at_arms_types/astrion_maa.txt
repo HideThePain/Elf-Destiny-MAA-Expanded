@@ -107,5 +107,5 @@ astrion_heavy_halberdiers = {
     provision_cost = @provisions_cost_infantry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = atlareth_azure_serpent_guard
+    icon = astrion_heavy_halberdiers
 }

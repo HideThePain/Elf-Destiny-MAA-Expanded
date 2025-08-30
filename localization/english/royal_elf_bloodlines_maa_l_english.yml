@@ -11,10 +11,13 @@
  lormelis_sirens_of_war_flavor:0 "Mystical warriors who wield both beauty and illusion, the Sirens of War disorient enemies with arcane song and charm before tearing them apart with blades forged beneath the waves."
 
  archers_of_the_lormelis:0 "Archers of The Lormelis"
- archers_of_the_lormelis_flavor:0 "Archers of The Lormelis"
+ archers_of_the_lormelis_flavor:0 "Elite archers whose arrows weave a death sentence. Their bows are carved from ancient trees, and the bowstring sings with magic. Each arrow fired carries an ice spell or a curse. Living bastions of elven power and precision."
 
- lormelis_magic_knights:0 "Magic Knights"
- lormelis_magic_knights_flavor:0 "Magic Knights"
+ lormelis_magic_knights:0 "Lormelis Magic Knights"
+ lormelis_magic_knights_flavor:0 "An elite order of elves that wield magic and weapons. Their armor is enhanced by ancient enchantments, and their blades burn with magical flames. In battle, they are a fast—moving force that crushes the enemy with elements and steel. The living legacy of the legendary sorcerer King Lormelion."
+
+ abyssal_guardians:0 "Abyssal Guardians"
+ abyssal_guardians_flavor:0 "Elite deep warriors sworn to protect the secrets of the sea. Their lapis lazuli armor is invulnerable to magic, and their tridents strike the very soul of the enemy. They fight in a tidal wave, fog and pitch darkness. Eternal defenders of the deepest depths."
 
  ### Daelurin Elves ###
  warriors_of_the_daelurin:0 "Warriors of the Daelurin"

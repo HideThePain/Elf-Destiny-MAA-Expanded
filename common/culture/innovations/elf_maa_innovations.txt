@@ -6,7 +6,7 @@ innovation_romaviri_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = { unlock_maa_romaviri_innovation }
+		has_cultural_parameter = unlock_maa_romaviri_innovation
 	}
 
 	unlock_maa = romaviri_palatines
@@ -22,7 +22,7 @@ innovation_tuathan_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = { unlock_maa_tuathan_innovation }
+		has_cultural_parameter = unlock_maa_tuathan_innovation
 	}
 
 	unlock_maa = tuathan_seelie_warriors
@@ -38,7 +38,7 @@ innovation_deepwood_elven_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = { unlock_maa_deepwood_innovation }
+		has_cultural_parameter = unlock_maa_deepwood_innovation
 	}
 
 	unlock_maa = deepwood_elven_caretakers
@@ -54,11 +54,12 @@ innovation_alfar_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = { unlock_maa_alfar_innovation }
+		has_cultural_parameter = unlock_maa_alfar_innovation
 	}
-
+	
 	unlock_maa = alfar_warriors_of_the_old_ways
 	unlock_maa = alfar_tribal_climbers
+	unlock_maa = alfar_mountain_archers
 
 	flag = global_maa
 }
@@ -69,12 +70,16 @@ innovation_atlareth_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = { unlock_maa_atlareth_innovation }
+		has_cultural_parameter = unlock_maa_atlareth_innovation
 	}
 
 	unlock_maa = atlareth_atlantic_katapeltes
 	unlock_maa = atlareth_atlantic_heavy_crossbowmen
 	unlock_maa = atlareth_azure_serpent_guard
+
+	
+	custom = unlocks_naval_raiding
+	custom = unlocks_sailable_major_rivers
 
 	flag = global_maa
 }
@@ -85,7 +90,7 @@ innovation_astrion_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = { unlock_maa_astrion_innovation }
+		has_cultural_parameter = unlock_maa_astrion_innovation
 	}
 
 	unlock_maa = astrion_enchanted_crossbowmen
