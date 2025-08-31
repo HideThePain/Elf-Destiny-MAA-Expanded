@@ -307,7 +307,7 @@ tradition_alfar_battlefiends = {
     layers = {
 		0 = forest_bottom_layer.dds
 		1 = pattern_elf_1.dds
-        4 = tradition_alfar_alfar_battlefiends_item.dds
+        4 = tradition_alfar_battlefiends_item.dds
     }
 
     is_shown = {
@@ -486,8 +486,8 @@ tradition_deepwood_guest_rites = {
     category = elven
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = blessing_bottom_layer.dds
+        1 = pattern_blessing_1.dds
         4 = tradition_deepwood_guest_rites_item.dds
     }
 
@@ -849,8 +849,8 @@ tradition_romaviri_bureaucracy = {
 	category = elven
 
 	layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = blessing_bottom_layer.dds
+        1 = pattern_blessing_1.dds
 		4 = tradition_romaviri_bureaucracy_item.dds
 	}
 
@@ -1027,7 +1027,7 @@ tradition_tuathan_brain_and_brawn = {
 	layers = {
 		0 = forest_bottom_layer.dds
 		1 = pattern_elf_1.dds
-		4 = tuathan_brain_and_brawn_item.dds
+		4 = tradition_tuathan_brain_and_brawn_item.dds
 	}
 	
 	is_shown = {

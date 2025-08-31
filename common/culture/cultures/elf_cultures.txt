@@ -35,11 +35,10 @@ elf_culture_daelurin = {
 	martial_custom = martial_custom_male_only
 	traditions = {
 		tradition_the_old_ways
-		tradition_warriors_by_merit
-		tradition_warrior_culture
 		tradition_tribal_ascension
 		tradition_alfar_homeland_defense
 		tradition_alfar_union_of_elves
+		tradition_alfar_battlefiends
 	}
 	
 	name_list = name_list_elf
@@ -71,6 +70,7 @@ elf_culture_serelion = {
 		tradition_the_old_ways
 		tradition_romaviri_strategy
 		tradition_romaviri_affluence
+		tradition_romaviri_bureaucracy
 	}
 
 	dlc_tradition = {
@@ -108,6 +108,7 @@ elf_culture_gwynthorn = {
 		tradition_the_old_ways
 		tradition_tuathan_resilience
 		tradition_tuathan_prosperity
+		tradition_tuathan_brain_and_brawn
 	}
 	
 	name_list = name_list_elf
@@ -135,10 +136,9 @@ elf_culture_thundarael = {
 	martial_custom = martial_custom_male_only
 	traditions = {
 		tradition_the_old_ways
-		tradition_fp3_beacon_of_learning
-		tradition_sorcerous_metallurgy
 		tradition_astrion_elemental_mastery
 		tradition_astrion_magic_engineering
+		tradition_astrion_alchemical_aptitude
 	}
 	
 	name_list = name_list_elf
@@ -166,10 +166,10 @@ elf_culture_valerith = {
 	martial_custom = martial_custom_male_only
 	traditions = {
 		tradition_the_old_ways
-		tradition_welcoming
 		tradition_beguiling_nature
 		tradition_deepwood_foresters
 		tradition_deepwood_terraforming
+		tradition_deepwood_guest_rites
 	}
 	
 	name_list = name_list_elf
@@ -196,10 +196,9 @@ elf_culture_lormelis = {
 	martial_custom = martial_custom_male_only
 	traditions = {
 		tradition_the_old_ways
-		tradition_chivalry
-		tradition_by_the_sword
 		tradition_atlareth_coastal_mastery
 		tradition_atlareth_raiding_expertise
+		tradition_atlareth_glory_seeking
 	}
 	
 	name_list = name_list_elf
