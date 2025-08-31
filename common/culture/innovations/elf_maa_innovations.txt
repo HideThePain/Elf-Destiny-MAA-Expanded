@@ -38,7 +38,7 @@ innovation_deepwood_elven_maa = {
 	icon = "gfx/interface/icons/culture_innovations/innovation_elven_adaptability.dds"
 
 	potential = {
-		has_cultural_parameter = unlock_maa_deepwood_innovation
+		has_cultural_parameter = unlock_maa_deepwood_elven_innovation
 	}
 
 	unlock_maa = deepwood_elven_caretakers

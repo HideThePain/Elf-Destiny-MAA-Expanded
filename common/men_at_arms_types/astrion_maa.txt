@@ -34,7 +34,7 @@ astrion_exalted_bear_highriders = {
     provision_cost = @provisions_cost_cavalry_expensive
 
     ai_quality = { value = culture_ai_weight_heavy_cavalry }
-    icon = exalted_bear_highriders
+    icon = astrion_exalted_bear_highriders
 }
 
 astrion_enchanted_crossbowmen = {
@@ -70,7 +70,7 @@ astrion_enchanted_crossbowmen = {
     provision_cost = @provisions_cost_infantry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = atlareth_atlantic_heavy_crossbowmen
+    icon = astrion_enchanted_crossbowmen
 }
 
 astrion_heavy_halberdiers = {

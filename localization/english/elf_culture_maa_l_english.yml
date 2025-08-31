@@ -2,92 +2,97 @@
 
  ### Atlareth ###  
  atlareth_atlantic_katapeltes:0 "Katapeltes"
- atlareth_atlantic_katapeltes_flavor:0 "Elite heavy infantry trained to shatter enemy formations. With mace and sword, the Katapeltes embody Atlareth discipline, advancing like tidal waves that break upon the shore of war."
+ atlareth_atlantic_katapeltes_flavor:0 "#F Elite heavy infantry trained to shatter enemy formations. With mace and sword, the Katapeltes embody Atlareth discipline, advancing like tidal waves that break upon the shore of war."
 
  atlareth_atlantic_heavy_crossbowmen:0 "Atlantean Heavy Crossbowmen"
- atlareth_atlantic_heavy_crossbowmen_flavor:0 "Forged in the depths of Atlareth’s foundries, these crossbowmen wield weapons of immense power. Their bolts pierce steel and scale alike, striking with the weight of the ocean itself."
+ atlareth_atlantic_heavy_crossbowmen_flavor:0 "#F Forged in the depths of Atlareth’s foundries, these crossbowmen wield weapons of immense power. Their bolts pierce steel and scale alike, striking with the weight of the ocean itself."
 
  atlareth_azure_serpent_guard:0 "Azure Serpent Guard"
- atlareth_azure_serpent_guard_flavor:0 "Clad in azure armor and bearing the mark of the sea-serpent, these guardians are the sworn protectors of Atlareth’s nobility. Their presence is as commanding as the leviathans of the deep, and their spears strike with swift, serpentine grace."
+ atlareth_azure_serpent_guard_flavor:0 "#F Clad in azure armor and bearing the mark of the sea-serpent, these guardians are the sworn protectors of Atlareth’s nobility. Their presence is as commanding as the leviathans of the deep, and their spears strike with swift, serpentine grace."
 
  ### Álfar ###
  alfar_warriors_of_the_old_ways:0 "Warriors of the Old Ways"
- alfar_warriors_of_the_old_ways_flavor:0 "Towering elites born of shadowed mountains and ancient rituals. Their discipline and strength make them a terror on any battlefield."
+ alfar_warriors_of_the_old_ways_flavor:0 "#F Towering elites born of shadowed mountains and ancient rituals. Their discipline and strength make them a terror on any battlefield."
 
  alfar_tribal_climbers:0 "Tribal Climbers"
- alfar_tribal_climbers_flavor:0 "Savage cavalry mounted on horses, capable of navigating even the harshest terrain with speed and brutality."
+ alfar_tribal_climbers_flavor:0 "#F Savage cavalry mounted on horses, capable of navigating even the harshest terrain with speed and brutality."
 
  alfar_mountain_archers:0 "Mountain Archers"
- alfar_mountain_archers_flavor:0 "Masters of the peaks, these archers rain death from above with unerring precision. Their bows sing across the mountain winds, striking foes long before they can draw near."
+ alfar_mountain_archers_flavor:0 "#F Masters of the peaks, these archers rain death from above with unerring precision. Their bows sing across the mountain winds, striking foes long before they can draw near."
 
  ### Gwynthorn Elves ###
  tuathan_seelie_warriors:0 "Seelie Warriors"
- tuathan_seelie_warriors_flavor:0 "Clad in radiant armor forged with fae enchantments, the Seelie Warriors march as living embodiments of noble grace. Their shining blades cut through shadow and steel alike, carrying the will of the Seelie Courts onto the battlefield."
+ tuathan_seelie_warriors_flavor:0 "#F Clad in radiant armor forged with fae enchantments, the Seelie Warriors march as living embodiments of noble grace. Their shining blades cut through shadow and steel alike, carrying the will of the Seelie Courts onto the battlefield."
  
  tuathan_seelie_archons:0 "Archons"
- tuathan_seelie_archons_flavor:0 "Mystic priestesses and battle-sorceresses of the Tuatha, the Archons wield staffs imbued with ancient fae fire. They channel the raw essence of the Otherworld into devastating spells, their presence both beautiful and terrifying."
+ tuathan_seelie_archons_flavor:0 "#F Mystic priestesses and battle-sorceresses of the Tuatha, the Archons wield staffs imbued with ancient fae fire. They channel the raw essence of the Otherworld into devastating spells, their presence both beautiful and terrifying."
 
  tuathan_seelie_archers:0 "Seelie Archers"
- tuathan_seelie_archers_flavor:0 "Elite bowmasters of the Seelie host, these archers fire spark arrows drawn from their enchanted bows. Their volleys rain down with the brilliance of starlight, piercing armor and spirit with unerring precision."
+ tuathan_seelie_archers_flavor:0 "#F Elite bowmasters of the Seelie host, these archers fire spark arrows drawn from their enchanted bows. Their volleys rain down with the brilliance of starlight, piercing armor and spirit with unerring precision."
  
  ### Deepwood ###
  deepwood_elven_caretakers:0 "Caretakers"
- deepwood_elven_caretakers_flavor:0 "Silent wardens of the deep forest, the Caretakers strike unseen from the shadows. Masters of ambush and stealth, their arrows find hearts long before their enemies sense danger."
+ deepwood_elven_caretakers_flavor:0 "#F Silent wardens of the deep forest, the Caretakers strike unseen from the shadows. Masters of ambush and stealth, their arrows find hearts long before their enemies sense danger."
  
  deepwood_elven_solar_dancers:0 "Solar Dancers"
- deepwood_elven_solar_dancers_flavor:0 "Graceful spellcasters who weave the spark and cast illusions, the Solar Dancers bend the flow of battle with enchantments. They shield their kin, bewilder their foes, and shine as living embodiments of the forest’s magic."
+ deepwood_elven_solar_dancers_flavor:0 "#F Graceful spellcasters who weave the spark and cast illusions, the Solar Dancers bend the flow of battle with enchantments. They shield their kin, bewilder their foes, and shine as living embodiments of the forest’s magic."
 
  deepwood_elven_hornets:0 "Hornets"
- deepwood_elven_hornets_flavor:0 "Like a swarm descending from the trees, the Hornets strike with sudden and merciless fury. Their long spears pierce through armor and formation alike, pinning enemies in place for the kill."
+ deepwood_elven_hornets_flavor:0 "#F Like a swarm descending from the trees, the Hornets strike with sudden and merciless fury. Their long spears pierce through armor and formation alike, pinning enemies in place for the kill."
  
  ### Astrion ###
  astrion_exalted_bear_highriders:0 "Astrion Exalted Bear Highriders"
- astrion_exalted_bear_highriders_flavor:0 "Mounted upon colossal war-bears clad in enchanted barding, the Exalted Bear Highriders are the pride of Astrion might. Their thundering charge crushes infantry lines, while their sheer presence spreads terror through enemy ranks."
+ astrion_exalted_bear_highriders_flavor:0 "#F Mounted upon colossal war-bears clad in enchanted barding, the Exalted Bear Highriders are the pride of Astrion might. Their thundering charge crushes infantry lines, while their sheer presence spreads terror through enemy ranks."
 
  astrion_enchanted_crossbowmen:0 "Enchanted Crossbowmen"
- astrion_enchanted_crossbowmen_flavor:0 "Forged by the finest Astrion smiths, these crossbows are imbued with runes of precision and power. Their bolts pierce armor and shields with ease, each shot carrying both steel and sorcery to devastating effect."
+ astrion_enchanted_crossbowmen_flavor:0 "#F Forged by the finest Astrion smiths, these crossbows are imbued with runes of precision and power. Their bolts pierce armor and shields with ease, each shot carrying both steel and sorcery to devastating effect."
 
  astrion_heavy_halberdiers:0 "Heavy Halberdiers"
- astrion_heavy_halberdiers_flavor:0 "Disciplined formations of Astrion heavy infantry wielding halberds of masterwork steel. Capable of cutting down cavalry and holding ground with unwavering resolve, they embody the perfect blend of craftsmanship, strength, and elven discipline."
+ astrion_heavy_halberdiers_flavor:0 "#F Disciplined formations of Astrion heavy infantry wielding halberds of masterwork steel. Capable of cutting down cavalry and holding ground with unwavering resolve, they embody the perfect blend of craftsmanship, strength, and elven discipline."
 
  ### Romaviri ###
  romaviri_steel_archers:0 "Steel Archers"
- romaviri_steel_archers_flavor:0 "Disciplined and relentless, the Steel Archers wield composite bows reinforced with elven craftsmanship. Their volleys form a wall of steel-tipped death, breaking enemy ranks before the clash of blades."
+ romaviri_steel_archers_flavor:0 "#F Disciplined and relentless, the Steel Archers wield composite bows reinforced with elven craftsmanship. Their volleys form a wall of steel-tipped death, breaking enemy ranks before the clash of blades."
  
  romaviri_palatines:0 "Palatines"
- romaviri_palatines_flavor:0 "Guardians of crown and empire, the Palatines are the elite household warriors of the Romaviri. Clad in resplendent armor, they fight with unyielding loyalty and unmatched discipline."
+ romaviri_palatines_flavor:0 "#F Guardians of crown and empire, the Palatines are the elite household warriors of the Romaviri. Clad in resplendent armor, they fight with unyielding loyalty and unmatched discipline."
  
  romaviri_turms:0 "Turms"
- romaviri_turms_flavor:0 "Swift and cunning, the Turms are light cavalry who harry foes with sudden strikes and ambushes. Masters of maneuver, they embody the blend of elven grace and imperial strategy."
+ romaviri_turms_flavor:0 "#F Swift and cunning, the Turms are light cavalry who harry foes with sudden strikes and ambushes. Masters of maneuver, they embody the blend of elven grace and imperial strategy."
 
  tradition_deepwood_foresters_name:0 "Deepwood Foresters"
- tradition_deepwood_foresters_desc:0 "This elven culture has spent untold centuries taking care of forests, their expertise is unmatched by their peers as a result."
-
- tradition_alfar_northern_tribes_name:0 "Álfar Unity"
- tradition_alfar_northern_tribes_desc:0 "Through thick and thin these elves survive united and strong, masters of the terrain, none can match their fierceness."
-
- tradition_romaviri_strategy_name:0 "Romaviri Strategy"
- tradition_romaviri_strategy_name:0 "Masters of warfare, this ancient elven culture has trained untold heroes of the past with utmost discipline and proficiency, their armies are unparalelled and their conquests legendary."
-
- tradition_lormelis_polders_name:0 "Atlareth Terraforming"
- tradition_lormelis_polders_desc:0 "Just like their ancient ancestors, these elfs have mastered the sea and the coast, enabling them to make the most inhospitable of coasts into paradises for their people."
-
- tradition_tuathan_resilience_name:0 "Tuathan Resillience"
- tradition_tuathan_resilience_desc:0 "Beset by enemies at all sides since time immemorial, these elves have proven time and time again they will not go down without a fight. Blessed by the fae, their homelands thrive under their guidance"
-
- tradition_astrion_northern_tribes_name:0 "Astrion Magic Engineering"
- tradition_astrion_northern_tribes_desc:0 "These elfs have mastered craftsmanship and magic, ever in pursuit of knowledge, their mastery of the elements is unparalleled, any that challenge them in their home will fall by metal and magic in equal measure."
-
- culture_parameter_unlock_maa_astrion_innovation:0 "This tradition allows this elven [culture|E] to unlock the $innovation_astrion_maa$ [innovation|E]"
-
- culture_parameter_unlock_maa_alfar_innovation:0 "This tradition allows this elven [culture|E] to unlock the $innovation_alfar_maa$ [innovation|E]"
-
- culture_parameter_unlock_maa_romaviri_innovation:0 "This tradition allows this elven [culture|E] to unlock the $innovation_romaviri_maa$ [innovation|E]"
-
- culture_parameter_unlock_maa_atlareth_innovation:0 "This tradition allows this elven [culture|E] to unlock the $innovation_atlareth_maa$ [innovation|E]"
-
- culture_parameter_unlock_maa_deepwood_elven_innovation:0 "This tradition allows this elven [culture|E] to unlock the $innovation_deepwood_elven_maa$ [innovation|E]"
-
- culture_parameter_unlock_maa_tuathan_innovation:0 "This tradition allows this elven [culture|E] to unlock the $innovation_tuathan_maa$ [innovation|E]"
+ tradition_deepwood_foresters_desc:0 "This elven culture has spent untold centuries caring for the forests. Their expertise is unmatched by any of their peers."
  
- culture_parameter_unlock_maa_kessertine_innovation:0 "This tradition allows this elven [culture|E] to unlock the $innovation_kessertine_maa$ [innovation|E]"
+ tradition_deepwood_terraforming_name:0 "Deepwood Terraforming"
+ tradition_deepwood_terraforming_desc:0 "With enough technique and expertise, these elves can mold any forest in the world into the grandest of sanctuaries."
+ 
+ tradition_alfar_union_of_elves_name:0 "Álfar Union of Elves"
+ tradition_alfar_union_of_elves_desc:0 "Through thick and thin, these elves remain united and strong. Loyalty and endurance are among the greatest virtues of these hardy folk."
+ 
+ tradition_alfar_homeland_defense_name:0 "Álfar Homeland Defense"
+ tradition_alfar_homeland_defense_desc:0 "Masters of their terrain, none can match their ferocity. Any who dare to trespass into their homeland will be met with a swift end."
+ 
+ tradition_romaviri_strategy_name:0 "Romaviri Strategy"
+ tradition_romaviri_strategy_desc:0 "Masters of warfare, this ancient elven culture has trained countless heroes of the past with discipline and proficiency. Their armies are unparalleled, and their conquests legendary."
+ 
+ tradition_romaviri_affluence_name:0 "Romaviri Affluence"
+ tradition_romaviri_affluence_desc:0 "With an unmatched eye for nobility and refinement, a Romaviri can be recognized by impeccable etiquette and a sumptuous entourage."
+ 
+ tradition_atlareth_coastal_mastery_name:0 "Atlareth Coastal Mastery"
+ tradition_atlareth_coastal_mastery_desc:0 "Like their ancient ancestors, these elves have mastered the sea and the coast, turning even the most inhospitable shores into paradises for their people."
+ 
+ tradition_atlareth_raiding_expertise_name:0 "Atlareth Raiding Expertise"
+ tradition_atlareth_raiding_expertise_desc:0 "From Ireland to Cathay, these elves have, since time immemorial, laid waste to ports and seized the greatest of treasures."
+ 
+ tradition_tuathan_resilience_name:0 "Tuathan Resilience"
+ tradition_tuathan_resilience_desc:0 "Beset by enemies on all sides since time immemorial, these elves have proven again and again that they will not fall without a fight."
+ 
+ tradition_tuathan_prosperity_name:0 "Tuathan Prosperity"
+ tradition_tuathan_prosperity_desc:0 "Blessed by the fae, their homelands flourish under their care. Riches and treasures beyond count are but a mundane sight for these masters of prosperity."
+ 
+ tradition_astrion_magic_engineering_name:0 "Astrion Magic Engineering"
+ tradition_astrion_magic_engineering_desc:0 "These elves have mastered both craftsmanship and magic. Their buildings are the finest in all of elfdom, and their engineering skills are second to none."
+ 
+ tradition_astrion_elemental_mastery_name:0 "Astrion Elemental Mastery"
+ tradition_astrion_elemental_mastery_desc:0 "Ever in pursuit of knowledge, these elves have mastered the elements. Their power is unparalleled, and any who challenge them in their homeland will fall to metal and magic alike."
+ 

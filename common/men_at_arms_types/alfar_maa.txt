@@ -115,5 +115,5 @@ alfar_mountain_archers = {
     provision_cost = @provisions_cost_infantry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = alfar_mountain_crossbowmen
+    icon = alfar_mountain_archers
 }

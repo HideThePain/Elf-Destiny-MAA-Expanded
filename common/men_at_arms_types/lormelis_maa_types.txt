@@ -119,7 +119,7 @@ lormelis_atlantean_leviathans = {
     icon = lormelis_atlantean_leviathans
 }
 
-lormelis_magic_knigths = {
+lormelis_magic_knights = {
     type = heavy_infantry
     stack = 10
 
@@ -158,7 +158,7 @@ lormelis_magic_knigths = {
     provision_cost = @provisions_cost_infantry_elite
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = lormelis_magic_knigths
+    icon = lormelis_magic_knights
 }
 
 archers_of_the_lormelis = {
