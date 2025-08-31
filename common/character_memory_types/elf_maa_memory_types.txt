@@ -1,0 +1,28 @@
+found_highguard_of_valor_memory = {
+	categories = { positive decision martial }
+	icon = "martial.dds"
+
+	description = {
+		random_valid = {
+			desc = found_highguard_of_valor_memory_desc
+		}
+	}
+
+	second_perspective_description = {
+		random_valid = {
+			desc = found_highguard_of_valor_memory_desc_second_perspective
+		}
+	}
+
+	third_perspective_description = {
+		random_valid = {
+			desc = found_highguard_of_valor_memory_desc_third_perspective
+		}
+	}
+
+	participants = { }
+
+	duration = {
+		years = memory_default_duration
+	}
+}

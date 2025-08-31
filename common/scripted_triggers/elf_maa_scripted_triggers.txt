@@ -1,0 +1,14 @@
+ep3_highuardian_trigger = {
+	OR = {
+		culture = {
+			OR = {
+				has_cultural_tradition = tradition_elven_professionalism
+				has_cultural_tradition = tradition_old_ways
+				has_cultural_pillar = heritage_elf
+			}
+		}
+		has_trait = highguardian
+	}
+	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+	is_physically_able_adult = yes
+}

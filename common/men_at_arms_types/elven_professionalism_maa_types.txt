@@ -118,6 +118,10 @@ highguard_of_valor = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        exists = scope:title
+        scope:title = {
+            has_variable = founded_highguardian_guard
+        }
     }
 
     buy_cost = { gold = heavy_infantry_recruitment_cost }
@@ -133,10 +137,10 @@ exalted_bear_highriders = {
     type = elephant_cavalry
     stack = 10
 
-	damage = 700
-	toughness = 400
-	pursuit = 120
-	screen = 20
+    damage = 700
+    toughness = 400
+    pursuit = 120
+    screen = 20
 
     siege_value = 0.3
 
@@ -145,7 +149,7 @@ exalted_bear_highriders = {
         taiga = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
         jungle = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
     }
-   
+
     winter_bonus = {
         normal_winter = { toughness = 30 screen = 20 }
         harsh_winter = { toughness = 30 screen = 20 }

@@ -33,7 +33,6 @@ tradition_elven_professionalism = {
 		# Below are MAA that are unlocked by this tradition
 		unlock_maa_elven_shieldguard = yes
 		unlock_maa_elven_swordguard = yes
-		unlock_maa_highguard_of_valor = yes
 		unlock_maa_exalted_bear_highriders = yes
 	}
 

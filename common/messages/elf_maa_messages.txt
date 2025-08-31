@@ -1,0 +1,7 @@
+msg_akolouthos_steels_highguardians = {
+	icon = "alliance"
+	title = event_message_title
+	desc = event_message_effect
+	style = good
+	message_filter_type = court_position_held
+}

@@ -1,0 +1,3188 @@
+HeirMessageInterface = {
+    type = character
+
+    random_valid = yes
+    #############
+    #	Base	#
+    #############
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_UNDERAGE
+        trigger = {
+            is_adult = no
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_USELESS
+        trigger = {
+            NOR = {
+                diplomacy >= 5
+                stewardship >= 5
+                intrigue >= 5
+                learning >= 5
+                martial >= 5
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_DREAD
+        trigger = {
+            dread >= medium_dread
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_GENDER
+        trigger = {
+            OR = {
+                AND = {
+                    is_female = yes
+                    OR = {
+                        has_realm_law = male_only_law
+                        has_realm_law = male_preference_law
+                    }
+                }
+                AND = {
+                    is_female = no
+                    OR = {
+                        has_realm_law = female_only_law
+                        has_realm_law = female_preference_law
+                    }
+                }
+            }
+        }
+    }
+    #############
+    # Education #
+    #############
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_MILITARY
+        trigger = {
+            NOT = {
+                has_trait = craven
+            }
+            martial >= 12
+            has_trait = education_martial
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_LEARNING
+        trigger = {
+            NOT = {
+                has_trait = lazy
+            }
+            learning >= 12
+            has_trait = education_learning
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_STEWARDSHIP
+        trigger = {
+            NOT = {
+                has_trait = gluttonous
+            }
+            stewardship >= 12
+            has_trait = education_stewardship
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_INTRIGUE
+        trigger = {
+            NOT = {
+                has_trait = honest
+            }
+            intrigue >= 12
+            has_trait = education_intrigue
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_DIPLOMACY
+        trigger = {
+            NOT = {
+                has_trait = deceitful
+            }
+            diplomacy >= 12
+            has_trait = education_diplomacy
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_STRONG_AND_SMART
+        trigger = {
+            OR = {
+                has_trait = physique_good
+                has_trait = strong
+            }
+            OR = {
+                has_trait = intellect_good
+                has_trait = shrewd
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_WEAK_AND_DUMB
+        trigger = {
+            OR = {
+                has_trait = physique_bad
+                has_trait = weak
+            }
+            OR = {
+                has_trait = intellect_bad
+                has_trait = dull
+            }
+        }
+    }
+    #############
+    # Lifestyle #
+    #############
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_REVELER
+        trigger = {
+            is_adult = yes
+            has_trait = lifestyle_reveler
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ADMINISTRATOR
+        trigger = {
+            is_adult = yes
+            has_stewardship_lifestyle_trait_trigger = yes
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_SCHOLAR
+        trigger = {
+            is_adult = yes
+            has_learning_lifestyle_trait_trigger = yes
+            NOT = { government_has_flag = government_is_theocracy }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_VARANGIAN
+        trigger = {
+            is_adult = yes
+            has_trait = varangian
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_HIGHGUARDIAN
+        trigger = {
+            is_adult = yes
+            has_trait = highguardian
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_LUNATIC
+        trigger = {
+            has_trait = lunatic
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_POSSESSED_BAD
+        trigger = {
+            has_trait = possessed
+            NOT = { faith = { has_doctrine = tenet_adorcism } }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_POSSESSED_GOOD
+        trigger = {
+            has_trait = possessed
+            faith = { has_doctrine = tenet_adorcism }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_FAIR
+        trigger = {
+            is_adult = yes
+            has_trait = beauty_good
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ADVENTURER
+        trigger = {
+            is_adult = yes
+            has_trait = adventurer
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_UGLY_DECEITFUL
+        trigger = {
+            is_adult = yes
+            has_trait = beauty_bad
+            has_trait = deceitful
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_GLUTTON_GREEDY
+        trigger = {
+            is_adult = yes
+            has_trait = gluttonous
+            has_trait = greedy
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CYNICAL_JUST
+        trigger = {
+            is_adult = yes
+            has_trait = cynical
+            has_trait = just
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CONTENT_ARBITRARY
+        trigger = {
+            is_adult = yes
+            has_trait = content
+            has_trait = arbitrary
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CRAVEN_MILITARY_ED
+        trigger = {
+            is_adult = yes
+            has_trait = craven
+            has_trait = education_martial
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_SHY_CONTENT
+        trigger = {
+            is_adult = yes
+            has_trait = shy
+            has_trait = content
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ZEALOUS_PARANOID
+        trigger = {
+            is_adult = yes
+            has_trait = zealous
+            has_trait = paranoid
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ZEALOUS_GENEROUS
+        trigger = {
+            is_adult = yes
+            has_trait = zealous
+            has_trait = generous
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ARROGANT_BRAVE
+        trigger = {
+            is_adult = yes
+            has_trait = arrogant
+            has_trait = brave
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CYNICAL_CRUEL
+        trigger = {
+            is_adult = yes
+            has_trait = cynical
+            OR = {
+                has_trait = callous
+                has_trait = sadistic
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_HUMBLE_STUBBORN
+        trigger = {
+            is_adult = yes
+            has_trait = humble
+            has_trait = stubborn
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_DECEITFUL_CALLOUS
+        trigger = {
+            is_adult = yes
+            has_trait = deceitful
+            has_trait = callous
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_PATIENT_TRUSTING
+        trigger = {
+            is_adult = yes
+            has_trait = patient
+            has_trait = trusting
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_PARANOID_STRESSED
+        trigger = {
+            is_adult = yes
+            has_trait = paranoid
+            stress >= medium_stress
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_STUBBORN_COMPASSIONATE
+        trigger = {
+            is_adult = yes
+            has_trait = stubborn
+            has_trait = compassionate
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_STRONG_BRAVE
+        trigger = {
+            is_adult = yes
+            OR = {
+                has_trait = strong
+                has_trait = giant
+            }
+            OR = {
+                has_trait = brave
+                has_trait = berserker
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_TEMPERATE_LUSTFUL
+        trigger = {
+            is_adult = yes
+            has_trait = temperate
+            has_trait = lustful
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_GENEROUS_JUST
+        trigger = {
+            is_adult = yes
+            has_trait = generous
+            has_trait = just
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_DILIGENT_GREEDY
+        trigger = {
+            is_adult = yes
+            has_trait = diligent
+            has_trait = greedy
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CRAVEN_HONEST
+        trigger = {
+            is_adult = yes
+            has_trait = craven
+            has_trait = honest
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_SHY_TRUSTING
+        trigger = {
+            is_adult = yes
+            has_trait = shy
+            has_trait = trusting
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_GREGARIOUS_HONEST
+        trigger = {
+            is_adult = yes
+            has_trait = gregarious
+            has_trait = honest
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CYNICAL_ARBITRARY
+        trigger = {
+            is_adult = yes
+            has_trait = cynical
+            OR = {
+                has_trait = arbitrary
+                has_trait = fickle
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CRUEL_WRATHFUL
+        trigger = {
+            is_adult = yes
+            OR = {
+                AND = {
+                    has_trait = callous
+                    has_trait = wrathful
+                }
+                AND = {
+                    has_trait = callous
+                    has_trait = vengeful
+                }
+                has_trait = sadistic
+                has_trait = torturer
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_WRATHFUL_ZEALOUS
+        trigger = {
+            is_adult = yes
+            AND = {
+                has_trait = vengeful
+                has_trait = wrathful
+            }
+            has_trait = zealous
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_PARANOID_DECEITFUL
+        trigger = {
+            is_adult = yes
+            has_trait = paranoid
+            has_trait = deceitful
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CALLOUS_LONER
+        trigger = {
+            is_adult = yes
+            has_trait = callous
+            NOT = { has_trait = gregarious }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_VENGEFUL
+        trigger = {
+            is_adult = yes
+            has_trait = vengeful
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_BLIND_WEAK
+        trigger = {
+            is_adult = yes
+            has_trait = blind
+            OR = {
+                has_trait = weak
+                has_trait = physique_bad
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_EXCOMMUNICATED
+        trigger = {
+            is_adult = yes
+            has_trait = excommunicated
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_BERSERKER
+        trigger = {
+            is_adult = yes
+            has_trait = berserker
+            NOT = { has_trait = craven }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CANNIBAL
+        trigger = {
+            is_adult = yes
+            has_trait = cannibal
+            NOT = {
+                faith = { has_doctrine_parameter = cannibalism_legal }
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CRIMINAL
+        trigger = {
+            is_adult = yes
+            AND = {
+                has_trait = kinslayer
+                NOT = { faith = { has_doctrine = doctrine_kinslaying_accepted } }
+            }
+            AND = {
+                has_trait = deviant
+                NOT = { faith = { has_doctrine_parameter = deviancy_accepted } }
+            }
+            AND = {
+                has_trait = sodomite
+                NOT = { faith = { has_doctrine = doctrine_homosexuality_accepted } }
+            }
+            AND = {
+                has_trait = incestuous
+                NOT = { faith = { has_doctrine = doctrine_consanguinity_unrestricted } }
+            }
+            AND = {
+                OR = {
+                    has_trait = adulterer
+                    has_trait = fornicator
+                }
+                is_female = no
+                NOT = { faith = { has_doctrine = doctrine_adultery_men_accepted } }
+            }
+            AND = {
+                OR = {
+                    has_trait = adulterer
+                    has_trait = fornicator
+                }
+                is_female = yes
+                NOT = { faith = { has_doctrine = doctrine_adultery_women_accepted } }
+            }
+            AND = {
+                has_trait = murderer
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_WITCH
+        trigger = {
+            is_adult = yes
+            AND = {
+                has_trait = witch
+                NOT = { faith = { has_doctrine_parameter = witchcraft_accepted } }
+            }
+        }
+    }
+    #####################
+    # Generic Fallbacks #
+    #####################
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_COMPASSIONATE
+        trigger = {
+            is_adult = yes
+            has_trait = compassionate
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ARROGANT
+        trigger = {
+            is_adult = yes
+            has_trait = arrogant
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CYNICAL
+        trigger = {
+            is_adult = yes
+            has_trait = cynical
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_GREGARIOUS
+        trigger = {
+            is_adult = yes
+            has_trait = gregarious
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ZEALOUS
+        trigger = {
+            is_adult = yes
+            has_trait = zealous
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_AMBITIOUS
+        trigger = {
+            is_adult = yes
+            has_trait = ambitious
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_DILIGENT
+        trigger = {
+            is_adult = yes
+            has_trait = diligent
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_DECEITFUL
+        trigger = {
+            is_adult = yes
+            OR = {
+                has_trait = deceitful
+                has_intrigue_lifestyle_trait_trigger = yes
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_SHY
+        trigger = {
+            is_adult = yes
+            has_trait = shy
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_HUMBLE
+        trigger = {
+            is_adult = yes
+            has_trait = humble
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_ARBITRARY
+        trigger = {
+            is_adult = yes
+            has_trait = arbitrary
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_TEMPERATE
+        trigger = {
+            is_adult = yes
+            has_trait = temperate
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CHASTE
+        trigger = {
+            is_adult = yes
+            OR = {
+                has_trait = chaste
+                has_trait = family_first
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_LUSTFUL
+        trigger = {
+            is_adult = yes
+            OR = {
+                has_trait = lustful
+                has_trait = seducer
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CONTENT
+        trigger = {
+            is_adult = yes
+            has_trait = content
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_PATIENT
+        trigger = {
+            is_adult = yes
+            has_trait = patient
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_BRAVE
+        trigger = {
+            is_adult = yes
+            has_trait = brave
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_JUST
+        trigger = {
+            is_adult = yes
+            has_trait = just
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_GLUTTONOUS
+        trigger = {
+            is_adult = yes
+            has_trait = gluttonous
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CALLOUS
+        trigger = {
+            is_adult = yes
+            has_trait = callous
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CRAVEN
+        trigger = {
+            is_adult = yes
+            has_trait = craven
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_GREEDY
+        trigger = {
+            is_adult = yes
+            has_trait = greedy
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_CRUEL
+        trigger = {
+            is_adult = yes
+            has_trait = sadistic
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_TRUSTING
+        trigger = {
+            is_adult = yes
+            has_trait = trusting
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_HONEST
+        trigger = {
+            is_adult = yes
+            has_trait = honest
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_LAZY
+        trigger = {
+            is_adult = yes
+            has_trait = lazy
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_GENEROUS
+        trigger = {
+            is_adult = yes
+            has_trait = generous
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_WRATHFUL
+        trigger = {
+            is_adult = yes
+            has_trait = wrathful
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_PARANOID
+        trigger = {
+            is_adult = yes
+            has_trait = paranoid
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_STUBBORN
+        trigger = {
+            is_adult = yes
+            has_trait = stubborn
+        }
+    }
+    ##################
+    # Circumstancial #
+    ##################
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_PIETY
+        trigger = {
+            is_adult = yes
+            piety_level >= 3
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_PRESTIGE
+        trigger = {
+            is_adult = yes
+            prestige_level >= 5
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_FRIENDS
+        trigger = {
+            num_of_relation_friend >= 3
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_TYRANT
+        trigger = {
+            tyranny >= medium_tyranny
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_RICH
+        trigger = {
+            gold >= 5000
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_CHILDREN
+        trigger = {
+            any_child = { count >= 8 }
+            NOR = {
+                government_has_flag = government_is_republic
+                government_has_flag = government_is_theocracy
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_RIVALS
+        trigger = {
+            num_of_relation_rival >= 3
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_COMBAT_SKILLS
+        trigger = {
+            is_adult = yes
+            OR = {
+                prowess >= high_skill_rating
+                has_trait = lifestyle_blademaster
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_POOR_HEALTH
+        trigger = {
+            health <= poor_health
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_BASTARD
+        trigger = {
+            OR = {
+                has_trait = bastard
+                has_trait = legitimized_bastard
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_VIKING
+        trigger = {
+            is_adult = yes
+            has_trait = viking
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_CRUSADER
+        trigger = {
+            is_adult = yes
+            OR = {
+                has_trait = faith_warrior
+                has_trait = crusader_king
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_THREE_SKILLS
+        trigger = {
+            calc_true_if = {
+                amount >= 3
+                amount < 5
+                diplomacy >= 10
+                stewardship >= 10
+                intrigue >= 10
+                learning >= 10
+                martial >= 10
+            }
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_FIVE_SKILLS
+        trigger = {
+            diplomacy >= 10
+            stewardship >= 10
+            intrigue >= 10
+            learning >= 10
+            martial >= 10
+        }
+    }
+    text = {
+        localization_key = SUCCESSION_EVENT_WINDOW_HEIR_UNIMPRESSIVE
+        trigger = {
+            is_adult = yes
+            piety_level < 3
+            prestige_level < 5
+            num_of_relation_friend < 3
+            gold < 5000
+            prowess < high_skill_rating
+            NOR = {
+                has_trait = faith_warrior
+                has_trait = crusader_king
+                has_trait = viking
+                has_trait = lifestyle_blademaster
+            }
+        }
+        weight_multiplier = {
+            factor = 0.001
+        }
+    }
+}
+
+SteleCommemoratesAncestors = {
+    type = character
+    random_valid = yes
+
+    # FALLBACK BLOCK
+    ## Generic Fallback
+    text = {
+        localization_key = SteleCommemoratesAncestors_GenericFallback
+        trigger = { always = no }
+        weight_multiplier = { base = 0 }
+        fallback = yes
+    }
+    ## Child Fallback
+    text = {
+        localization_key = SteleCommemoratesAncestors_ChildFallback
+        trigger = {
+            var:ancestor_to_bury = { is_adult = no }
+        }
+        weight_multiplier = { base = 0 }
+    }
+    # LIFESTYLES BLOCK
+    ## Diplomat
+    text = {
+        localization_key = SteleCommemoratesAncestors_Diplomat
+        trigger = {
+            var:ancestor_to_bury = { has_trait = diplomat }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Family First
+    text = {
+        localization_key = SteleCommemoratesAncestors_FamilyFirst
+        trigger = {
+            var:ancestor_to_bury = { has_trait = family_first }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Reveler
+    text = {
+        localization_key = SteleCommemoratesAncestors_Reveler
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lifestyle_reveler }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Blademaster
+    text = {
+        localization_key = SteleCommemoratesAncestors_Blademaster
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lifestyle_blademaster }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Hunter
+    text = {
+        localization_key = SteleCommemoratesAncestors_Hunter
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lifestyle_hunter }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Strategist
+    text = {
+        localization_key = SteleCommemoratesAncestors_Strategist
+        trigger = {
+            var:ancestor_to_bury = { has_trait = strategist }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Overseer
+    text = {
+        localization_key = SteleCommemoratesAncestors_Overseer
+        trigger = {
+            var:ancestor_to_bury = { has_trait = overseer }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Gallant
+    text = {
+        localization_key = SteleCommemoratesAncestors_Gallant
+        trigger = {
+            var:ancestor_to_bury = { has_trait = gallant }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Architect
+    text = {
+        localization_key = SteleCommemoratesAncestors_Architect
+        trigger = {
+            var:ancestor_to_bury = { has_trait = architect }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Administrator
+    text = {
+        localization_key = SteleCommemoratesAncestors_Administrator
+        trigger = {
+            var:ancestor_to_bury = { has_trait = administrator }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Avaricious
+    text = {
+        localization_key = SteleCommemoratesAncestors_Avaricious
+        trigger = {
+            var:ancestor_to_bury = { has_trait = avaricious }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Schemer
+    text = {
+        localization_key = SteleCommemoratesAncestors_Schemer
+        trigger = {
+            var:ancestor_to_bury = { has_trait = schemer }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Seducer
+    text = {
+        localization_key = SteleCommemoratesAncestors_Seducer
+        trigger = {
+            var:ancestor_to_bury = { has_trait = seducer }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Torturer
+    text = {
+        localization_key = SteleCommemoratesAncestors_Torturer
+        trigger = {
+            var:ancestor_to_bury = { has_trait = torturer }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Whole of Body: excluded because it's really, really difficult to write a memorial for this that doesn't sound unfortunately lewd.
+    ## Scholar
+    text = {
+        localization_key = SteleCommemoratesAncestors_Scholar
+        trigger = {
+            var:ancestor_to_bury = { has_trait = scholar }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Theologian
+    text = {
+        localization_key = SteleCommemoratesAncestors_Theologian
+        trigger = {
+            var:ancestor_to_bury = { has_trait = theologian }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Mystic
+    text = {
+        localization_key = SteleCommemoratesAncestors_Mystic
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lifestyle_mystic }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Physician
+    text = {
+        localization_key = SteleCommemoratesAncestors_Physician
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lifestyle_physician }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Herbalist
+    text = {
+        localization_key = SteleCommemoratesAncestors_Herbalist
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lifestyle_herbalist }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    # PERSONALITY BLOCK
+    ## Lustful
+    text = {
+        localization_key = SteleCommemoratesAncestors_Lustful
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lustful }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Chaste
+    text = {
+        localization_key = SteleCommemoratesAncestors_Chaste
+        trigger = {
+            var:ancestor_to_bury = { has_trait = chaste }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Gluttonous
+    text = {
+        localization_key = SteleCommemoratesAncestors_Gluttonous
+        trigger = {
+            var:ancestor_to_bury = { has_trait = gluttonous }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Temperate
+    text = {
+        localization_key = SteleCommemoratesAncestors_Temperate
+        trigger = {
+            var:ancestor_to_bury = { has_trait = temperate }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Greedy
+    text = {
+        localization_key = SteleCommemoratesAncestors_Greedy
+        trigger = {
+            var:ancestor_to_bury = { has_trait = greedy }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Generous
+    text = {
+        localization_key = SteleCommemoratesAncestors_Generous
+        trigger = {
+            var:ancestor_to_bury = { has_trait = generous }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Lazy
+    text = {
+        localization_key = SteleCommemoratesAncestors_Lazy
+        trigger = {
+            var:ancestor_to_bury = { has_trait = lazy }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Diligent
+    text = {
+        localization_key = SteleCommemoratesAncestors_Diligent
+        trigger = {
+            var:ancestor_to_bury = { has_trait = diligent }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Wrathful
+    text = {
+        localization_key = SteleCommemoratesAncestors_Wrathful
+        trigger = {
+            var:ancestor_to_bury = { has_trait = wrathful }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Calm
+    text = {
+        localization_key = SteleCommemoratesAncestors_Calm
+        trigger = {
+            var:ancestor_to_bury = { has_trait = calm }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Patient
+    text = {
+        localization_key = SteleCommemoratesAncestors_Patient
+        trigger = {
+            var:ancestor_to_bury = { has_trait = patient }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Impatient
+    text = {
+        localization_key = SteleCommemoratesAncestors_Impatient
+        trigger = {
+            var:ancestor_to_bury = { has_trait = impatient }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Arrogant
+    text = {
+        localization_key = SteleCommemoratesAncestors_Arrogant
+        trigger = {
+            var:ancestor_to_bury = { has_trait = arrogant }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Humble
+    text = {
+        localization_key = SteleCommemoratesAncestors_Humble
+        trigger = {
+            var:ancestor_to_bury = { has_trait = humble }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Deceitful
+    text = {
+        localization_key = SteleCommemoratesAncestors_Deceitful
+        trigger = {
+            var:ancestor_to_bury = { has_trait = deceitful }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Honest
+    text = {
+        localization_key = SteleCommemoratesAncestors_Honest
+        trigger = {
+            var:ancestor_to_bury = { has_trait = honest }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Craven
+    text = {
+        localization_key = SteleCommemoratesAncestors_Craven
+        trigger = {
+            var:ancestor_to_bury = { has_trait = craven }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Brave
+    text = {
+        localization_key = SteleCommemoratesAncestors_Brave
+        trigger = {
+            var:ancestor_to_bury = { has_trait = brave }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Shy
+    text = {
+        localization_key = SteleCommemoratesAncestors_Shy
+        trigger = {
+            var:ancestor_to_bury = { has_trait = shy }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Gregarious
+    text = {
+        localization_key = SteleCommemoratesAncestors_Gregarious
+        trigger = {
+            var:ancestor_to_bury = { has_trait = gregarious }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Ambitious
+    text = {
+        localization_key = SteleCommemoratesAncestors_Ambitious
+        trigger = {
+            var:ancestor_to_bury = { has_trait = ambitious }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Content
+    text = {
+        localization_key = SteleCommemoratesAncestors_Content
+        trigger = {
+            var:ancestor_to_bury = { has_trait = content }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Arbitrary
+    text = {
+        localization_key = SteleCommemoratesAncestors_Arbitrary
+        trigger = {
+            var:ancestor_to_bury = { has_trait = arbitrary }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Just
+    text = {
+        localization_key = SteleCommemoratesAncestors_Just
+        trigger = {
+            var:ancestor_to_bury = { has_trait = just }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Cynical
+    text = {
+        localization_key = SteleCommemoratesAncestors_Cynical
+        trigger = {
+            var:ancestor_to_bury = { has_trait = cynical }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Zealous
+    text = {
+        localization_key = SteleCommemoratesAncestors_Zealous
+        trigger = {
+            var:ancestor_to_bury = { has_trait = zealous }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Paranoid
+    text = {
+        localization_key = SteleCommemoratesAncestors_Paranoid
+        trigger = {
+            var:ancestor_to_bury = { has_trait = paranoid }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Trusting
+    text = {
+        localization_key = SteleCommemoratesAncestors_Trusting
+        trigger = {
+            var:ancestor_to_bury = { has_trait = trusting }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Compassionate
+    text = {
+        localization_key = SteleCommemoratesAncestors_Compassionate
+        trigger = {
+            var:ancestor_to_bury = { has_trait = compassionate }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Callous
+    text = {
+        localization_key = SteleCommemoratesAncestors_Callous
+        trigger = {
+            var:ancestor_to_bury = { has_trait = callous }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Sadistic
+    text = {
+        localization_key = SteleCommemoratesAncestors_Sadistic
+        trigger = {
+            var:ancestor_to_bury = { has_trait = sadistic }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Stubborn
+    text = {
+        localization_key = SteleCommemoratesAncestors_Stubborn
+        trigger = {
+            var:ancestor_to_bury = { has_trait = stubborn }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Fickle
+    text = {
+        localization_key = SteleCommemoratesAncestors_Fickle
+        trigger = {
+            var:ancestor_to_bury = { has_trait = fickle }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Vengeful
+    text = {
+        localization_key = SteleCommemoratesAncestors_Vengeful
+        trigger = {
+            var:ancestor_to_bury = { has_trait = vengeful }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Forgiving
+    text = {
+        localization_key = SteleCommemoratesAncestors_Forgiving
+        trigger = {
+            var:ancestor_to_bury = { has_trait = forgiving }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    # STRESS BLOCK
+    ## Drunkard
+    text = {
+        localization_key = SteleCommemoratesAncestors_Drunkard
+        trigger = {
+            var:ancestor_to_bury = { has_trait = drunkard }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Hashishiyah
+    text = {
+        localization_key = SteleCommemoratesAncestors_Hashishiyah
+        trigger = {
+            var:ancestor_to_bury = { has_trait = hashishiyah }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Rakish
+    text = {
+        localization_key = SteleCommemoratesAncestors_Rakish
+        trigger = {
+            var:ancestor_to_bury = { has_trait = rakish }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Reclusive
+    text = {
+        localization_key = SteleCommemoratesAncestors_Reclusive
+        trigger = {
+            var:ancestor_to_bury = { has_trait = reclusive }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Irritable
+    text = {
+        localization_key = SteleCommemoratesAncestors_Irritable
+        trigger = {
+            var:ancestor_to_bury = { has_trait = irritable }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Flagellant
+    text = {
+        localization_key = SteleCommemoratesAncestors_Flagellant
+        trigger = {
+            var:ancestor_to_bury = { has_trait = flagellant }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Profligate
+    text = {
+        localization_key = SteleCommemoratesAncestors_Profligate
+        trigger = {
+            var:ancestor_to_bury = { has_trait = profligate }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Improvident
+    text = {
+        localization_key = SteleCommemoratesAncestors_Improvident
+        trigger = {
+            var:ancestor_to_bury = { has_trait = improvident }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Contrite
+    text = {
+        localization_key = SteleCommemoratesAncestors_Contrite
+        trigger = {
+            var:ancestor_to_bury = { has_trait = contrite }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Comfort Eater
+    text = {
+        localization_key = SteleCommemoratesAncestors_ComfortEater
+        trigger = {
+            var:ancestor_to_bury = { has_trait = comfort_eater }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Inappetetic
+    text = {
+        localization_key = SteleCommemoratesAncestors_Inappetetic
+        trigger = {
+            var:ancestor_to_bury = { has_trait = inappetetic }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Journaller
+    text = {
+        localization_key = SteleCommemoratesAncestors_Journaller
+        trigger = {
+            var:ancestor_to_bury = { has_trait = journaller }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Confider
+    text = {
+        localization_key = SteleCommemoratesAncestors_Confider
+        trigger = {
+            var:ancestor_to_bury = { has_trait = confider }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    ## Athletic
+    text = {
+        localization_key = SteleCommemoratesAncestors_Athletic
+        trigger = {
+            var:ancestor_to_bury = { has_trait = athletic }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_normal_weight_value }
+        }
+    }
+    # RELIGIOUS BLOCK
+    ## Saoshyant
+    text = {
+        localization_key = SteleCommemoratesAncestors_Saoshyant
+        trigger = {
+            var:ancestor_to_bury = { has_trait = saoshyant }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_always_upweight_weight_value }
+        }
+    }
+    # FAME BLOCK
+    ## Berserker
+    text = {
+        localization_key = SteleCommemoratesAncestors_Berserker
+        trigger = {
+            var:ancestor_to_bury = { has_trait = berserker }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Shieldmaiden
+    text = {
+        localization_key = SteleCommemoratesAncestors_Shieldmaiden
+        trigger = {
+            var:ancestor_to_bury = { has_trait = shieldmaiden }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Varangian
+    text = {
+        localization_key = SteleCommemoratesAncestors_Varangian
+        trigger = {
+            var:ancestor_to_bury = { has_trait = varangian }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Poet
+    text = {
+        localization_key = SteleCommemoratesAncestors_Poet
+        trigger = {
+            var:ancestor_to_bury = { has_trait = poet }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Kinslayer
+    text = {
+        localization_key = SteleCommemoratesAncestors_Kinslayer
+        trigger = {
+            var:ancestor_to_bury = { has_trait = kinslayer }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Deviant
+    text = {
+        localization_key = SteleCommemoratesAncestors_Deviant
+        trigger = {
+            var:ancestor_to_bury = { has_trait = deviant }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Cannibal
+    text = {
+        localization_key = SteleCommemoratesAncestors_Cannibal
+        trigger = {
+            var:ancestor_to_bury = { has_trait = cannibal }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Incestuous
+    text = {
+        localization_key = SteleCommemoratesAncestors_Incestuous
+        trigger = {
+            var:ancestor_to_bury = { has_trait = incestuous }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Murderer
+    text = {
+        localization_key = SteleCommemoratesAncestors_Murderer
+        trigger = {
+            var:ancestor_to_bury = { has_trait = murderer }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    ## Viking
+    text = {
+        localization_key = SteleCommemoratesAncestors_Viking
+        trigger = {
+            var:ancestor_to_bury = { has_trait = viking }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Reincarnation
+    text = {
+        localization_key = SteleCommemoratesAncestors_Reincarnation
+        trigger = {
+            var:ancestor_to_bury = { has_trait = reincarnation }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Adventurer
+    text = {
+        localization_key = SteleCommemoratesAncestors_Adventurer
+        trigger = {
+            var:ancestor_to_bury = { has_trait = adventurer }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Heresiarch
+    text = {
+        localization_key = SteleCommemoratesAncestors_Heresiarch
+        trigger = {
+            var:ancestor_to_bury = { has_trait = heresiarch }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Peasant Leader
+    text = {
+        localization_key = SteleCommemoratesAncestors_PeasantLeader
+        trigger = {
+            var:ancestor_to_bury = { has_trait = peasant_leader }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Witch
+    text = {
+        localization_key = SteleCommemoratesAncestors_Witch
+        trigger = {
+            var:ancestor_to_bury = { has_trait = witch }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_upweight_weight_value }
+        }
+    }
+    # SPECIAL BLOCK
+    ## Crusader Monarch
+    text = {
+        localization_key = SteleCommemoratesAncestors_CrusaderMonarch
+        trigger = {
+            var:ancestor_to_bury = { has_trait = crusader_king }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_always_upweight_weight_value }
+        }
+    }
+    ## Chakravarti
+    text = {
+        localization_key = SteleCommemoratesAncestors_Chakravarti
+        trigger = {
+            var:ancestor_to_bury = { has_trait = chakravarti }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_always_upweight_weight_value }
+        }
+    }
+    ## Greatest of Khans
+    text = {
+        localization_key = SteleCommemoratesAncestors_GreatestOfKhans
+        trigger = {
+            var:ancestor_to_bury = { has_trait = greatest_of_khans }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_always_upweight_weight_value }
+        }
+    }
+    ## Paragon
+    text = {
+        localization_key = SteleCommemoratesAncestors_Paragon
+        trigger = {
+            var:ancestor_to_bury = { has_trait = paragon }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+    ## Highguardian
+    text = {
+        localization_key = SteleCommemoratesAncestors_Highguardian
+        trigger = {
+            var:ancestor_to_bury = { has_trait = highguardian }
+        }
+        weight_multiplier = {
+            base = 0
+            modifier = { add = fp1_stele_desc_heavy_upweight_weight_value }
+        }
+    }
+}
+
+ContestHorseRaceName = {
+    type = character
+    ## FAITH
+    # BUDDHISM
+    text = {
+        trigger = { var:contest_horse_race_name = flag:kanthaka }
+        localization_key = warhorse_name_kanthaka
+    }
+    # GODS/SAINTS
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_fate_god }
+        localization_key = racehorse_name_faith_fate_god
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_knowledge_god }
+        localization_key = racehorse_name_faith_knowledge_god
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_night_god }
+        localization_key = racehorse_name_faith_night_god
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_trickster_god }
+        localization_key = racehorse_name_faith_trickster_god
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_war_god }
+        localization_key = racehorse_name_faith_war_god
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_water_god }
+        localization_key = racehorse_name_faith_water_god
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_wealth_god }
+        localization_key = racehorse_name_faith_wealth_god
+    }
+    # HINDUISM
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dadhi_kra }
+        localization_key = warhorse_name_dadhi_kra
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:devadatta }
+        localization_key = warhorse_name_devadatta
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dyauspitar }
+        localization_key = racehorse_name_dyauspitar
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:keshi }
+        localization_key = warhorse_name_keshi
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:uchchaihshravas }
+        localization_key = warhorse_name_uchchaihshravas
+    }
+    # ISLAM
+    text = {
+        trigger = { var:contest_horse_race_name = flag:abbayan }
+        localization_key = racehorse_name_abbayan
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:al_murtajiz }
+        localization_key = racehorse_name_al_murtajiz
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:al_sakb }
+        localization_key = racehorse_name_al_sakb
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:al_yasub }
+        localization_key = racehorse_name_al_yasub
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:buraq }
+        localization_key = warhorse_name_buraq
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hadban }
+        localization_key = racehorse_name_hadban
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:haizum }
+        localization_key = warhorse_name_haizum
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hamdani }
+        localization_key = racehorse_name_hamdani
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:kuhaylan }
+        localization_key = racehorse_name_kuhaylan
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:lihaf }
+        localization_key = racehorse_name_lihaf
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:lizaz }
+        localization_key = racehorse_name_lizaz
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:seqlawi }
+        localization_key = racehorse_name_seqlawi
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:zuljanah }
+        localization_key = warhorse_name_zuljanah
+    }
+    # NORSE
+    text = {
+        trigger = { var:contest_horse_race_name = flag:alsvidr }
+        localization_key = racehorse_name_alsvidr
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:arvakr }
+        localization_key = racehorse_name_arvakr
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:falhofnir }
+        localization_key = racehorse_name_falhofnir
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:glad }
+        localization_key = racehorse_name_glad
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:glaer }
+        localization_key = racehorse_name_glaer
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:gulltoppr }
+        localization_key = racehorse_name_gulltoppr
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hofvarpnir }
+        localization_key = racehorse_name_hofvarpnir
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hrimfaxi }
+        localization_key = racehorse_name_hrimfaxi
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:skinfaxi }
+        localization_key = racehorse_name_skinfaxi
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sleipnir }
+        localization_key = warhorse_name_sleipnir
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:svadilfari }
+        localization_key = racehorse_name_svadilfari
+    }
+    ## CULTURE
+    # ARABIC
+    text = {
+        trigger = { var:contest_horse_race_name = flag:al_dinari }
+        localization_key = racehorse_name_al_dinari
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:al_hujays }
+        localization_key = racehorse_name_al_hujays
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:al_ward }
+        localization_key = racehorse_name_al_ward
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:awaj }
+        localization_key = racehorse_name_awaj
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dhi_al_uqqal }
+        localization_key = racehorse_name_dhi_al_uqqal
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sabal }
+        localization_key = racehorse_name_sabal
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:zad_al_rakib }
+        localization_key = racehorse_name_zad_al_rakib
+    }
+    # CELTIC
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dub_sainglend }
+        localization_key = racehorse_name_dub_sainglend
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:enbarr }
+        localization_key = racehorse_name_enbarr
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:gringolet }
+        localization_key = racehorse_name_gringolet
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hengroen }
+        localization_key = racehorse_name_hengroen
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:kelpie }
+        localization_key = racehorse_name_kelpie
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:liath_macha }
+        localization_key = racehorse_name_liath_macha
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:llamrei }
+        localization_key = warhorse_name_llamrei
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:morvarch }
+        localization_key = racehorse_name_morvarch
+    }
+    # FRANKISH
+    text = {
+        trigger = { var:contest_horse_race_name = flag:baucent }
+        localization_key = racehorse_name_baucent
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:bayard }
+        localization_key = racehorse_name_bayard
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sorel }
+        localization_key = racehorse_name_sorel
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:tencendur }
+        localization_key = warhorse_name_tencendur
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:veillantif }
+        localization_key = warhorse_name_veillantif
+    }
+    # GRECO-ROMAN
+    text = {
+        trigger = { var:contest_horse_race_name = flag:arion }
+        localization_key = racehorse_name_arion
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:asturcus }
+        localization_key = racehorse_name_asturcus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:balius }
+        localization_key = warhorse_name_balius
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:boreas }
+        localization_key = warhorse_name_boreas
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:bucephalus }
+        localization_key = warhorse_name_bucephalus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:caesar }
+        localization_key = racehorse_name_caesar
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:chiron }
+        localization_key = racehorse_name_chiron
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:epona }
+        localization_key = racehorse_name_epona
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:equuleus }
+        localization_key = racehorse_name_equuleus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hippocampus }
+        localization_key = racehorse_name_hippocampus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:incitatus }
+        localization_key = warhorse_name_incitatus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:notus }
+        localization_key = racehorse_name_notus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:pedasos }
+        localization_key = racehorse_name_pedasos
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:pegasus }
+        localization_key = racehorse_name_pegasus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:rhaebus }
+        localization_key = racehorse_name_rhaebus
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:seianian }
+        localization_key = warhorse_name_seianian
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sterope }
+        localization_key = racehorse_name_sterope
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:xanthos }
+        localization_key = warhorse_name_xanthos
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:zephryus }
+        localization_key = racehorse_name_zephryus
+    }
+    # IBERIAN
+    text = { # Altivo - El Dorado
+        trigger = { var:contest_horse_race_name = flag:altivo }
+        localization_key = racehorse_name_altivo
+    }
+    text = { # Babieca - El Cid's
+        trigger = { var:contest_horse_race_name = flag:babieca }
+        localization_key = racehorse_name_babieca
+    }
+    text = { # Rocinante - Don Quixote's
+        trigger = { var:contest_horse_race_name = flag:rocinante }
+        localization_key = racehorse_name_rocinante
+    }
+    # INDO-ARYAN
+    text = { # Atak - Pratap's
+        trigger = { var:contest_horse_race_name = flag:atak }
+        localization_key = racehorse_name_atak
+    }
+    text = { # Chetak - Pratap's
+        trigger = { var:contest_horse_race_name = flag:chetak }
+        localization_key = racehorse_name_chetak
+    }
+    text = { # Leili - Ranjit's
+        trigger = { var:contest_horse_race_name = flag:laili }
+        localization_key = racehorse_name_laili
+    }
+    text = { # Natak - Pratap's
+        trigger = { var:contest_horse_race_name = flag:natak }
+        localization_key = racehorse_name_natak
+    }
+    # MONGOLIC
+    text = { # Aranjagaan - Jangar's
+        trigger = { var:contest_horse_race_name = flag:aranjagaan }
+        localization_key = warhorse_name_aranjagaan
+    }
+    text = { # Oyomaa - Jangar's
+        trigger = { var:contest_horse_race_name = flag:oyomaa }
+        localization_key = racehorse_name_oyomaa
+    }
+    text = { # Tolin Khul - folk song
+        trigger = { var:contest_horse_race_name = flag:tolin_khul }
+        localization_key = racehorse_name_tolin_khul
+    }
+    # PERSIAN
+    text = { # Rahbar - Akbar's
+        trigger = { var:contest_horse_race_name = flag:rahbar }
+        localization_key = racehorse_name_rahbar
+    }
+    text = { # Rakhsh - Rostam's
+        trigger = { var:contest_horse_race_name = flag:rakhsh }
+        localization_key = racehorse_name_rakhsh
+    }
+    # SCANDINAVIAN
+    text = { # Grani - Sigurd's
+        trigger = { var:contest_horse_race_name = flag:grani }
+        localization_key = racehorse_name_grani
+    }
+    # SLAVIC
+    text = {
+        trigger = { var:contest_horse_race_name = flag:burko }
+        localization_key = warhorse_name_burko
+    }
+    text = { # Sivko-Burko - Ivan the Fool's
+        trigger = { var:contest_horse_race_name = flag:sivko_burko }
+        localization_key = racehorse_name_sivko_burko
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sivko }
+        localization_key = racehorse_name_sivko
+    }
+    # TURKIC
+    text = { # G'irot - Koroghlu's
+        trigger = { var:contest_horse_race_name = flag:girot }
+        localization_key = racehorse_name_girot
+    }
+    text = { # Tulpar - mythological
+        trigger = { var:contest_horse_race_name = flag:tulpar }
+        localization_key = racehorse_name_tulpar
+    }
+    ## COLOR
+    text = {
+        trigger = { var:contest_horse_race_name = flag:bay }
+        localization_key = racehorse_name_bay
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:black }
+        localization_key = racehorse_name_black
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:blue }
+        localization_key = racehorse_name_blue
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:brindle }
+        localization_key = racehorse_name_brindle
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:buckskin }
+        localization_key = racehorse_name_buckskin
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:chestnut }
+        localization_key = racehorse_name_chestnut
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:cloud }
+        localization_key = racehorse_name_cloud
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:cream }
+        localization_key = racehorse_name_cream
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:crimson }
+        localization_key = racehorse_name_crimson
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dapple }
+        localization_key = racehorse_name_dapple
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dawn }
+        localization_key = racehorse_name_dawn
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dun }
+        localization_key = racehorse_name_dun
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dusk }
+        localization_key = racehorse_name_dusk
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:flaxen }
+        localization_key = racehorse_name_flaxen
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:golden }
+        localization_key = racehorse_name_golden
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:gray }
+        localization_key = racehorse_name_gray
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:leopard }
+        localization_key = racehorse_name_leopard
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:milk }
+        localization_key = racehorse_name_milk
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:night }
+        localization_key = racehorse_name_night
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:pearl }
+        localization_key = racehorse_name_pearl
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:red }
+        localization_key = racehorse_name_red
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:roan }
+        localization_key = racehorse_name_roan
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:rose }
+        localization_key = racehorse_name_rose
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:ruby }
+        localization_key = racehorse_name_ruby
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:scarlet }
+        localization_key = racehorse_name_scarlet
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:shade }
+        localization_key = racehorse_name_shade
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:shadow }
+        localization_key = racehorse_name_shadow
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:silk }
+        localization_key = racehorse_name_silk
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:silver }
+        localization_key = racehorse_name_silver
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:smoke }
+        localization_key = racehorse_name_smoke
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:snow }
+        localization_key = racehorse_name_snow
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sorrel }
+        localization_key = racehorse_name_sorrel
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sun }
+        localization_key = racehorse_name_sun
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:tawny }
+        localization_key = racehorse_name_tawny
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:yellow }
+        localization_key = racehorse_name_yellow
+    }
+    ## ADJECTIVE
+    text = {
+        trigger = { var:contest_horse_race_name = flag:brave }
+        localization_key = racehorse_name_brave
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:brisk }
+        localization_key = racehorse_name_brisk
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:long }
+        localization_key = racehorse_name_long
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:speed }
+        localization_key = racehorse_name_speed
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:storm }
+        localization_key = racehorse_name_storm
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:swift }
+        localization_key = racehorse_name_swift
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:thunder }
+        localization_key = racehorse_name_thunder
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:wind }
+        localization_key = racehorse_name_wind
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:wave }
+        localization_key = racehorse_name_wave
+    }
+    ## GENERIC
+    text = {
+        trigger = { var:contest_horse_race_name = flag:abbess }
+        localization_key = racehorse_name_abbess
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:abbot }
+        localization_key = warhorse_name_abbot
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:adamant }
+        localization_key = racehorse_name_adamant
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:agile }
+        localization_key = racehorse_name_agile
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:charger }
+        localization_key = warhorse_name_charger
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:chaser }
+        localization_key = racehorse_name_chestnut
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:chieftain }
+        localization_key = racehorse_name_chieftain
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:chieftess }
+        localization_key = racehorse_name_chieftess
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:commander }
+        localization_key = racehorse_name_commander
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:cyclone }
+        localization_key = racehorse_name_cyclone
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:deluge }
+        localization_key = racehorse_name_deluge
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:downpour }
+        localization_key = racehorse_name_downpour
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:endurance }
+        localization_key = racehorse_name_endurance
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faithful }
+        localization_key = racehorse_name_faithful
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:flame }
+        localization_key = racehorse_name_flame
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:flash }
+        localization_key = racehorse_name_flash
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:fleet }
+        localization_key = racehorse_name_fleet
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:forthright }
+        localization_key = racehorse_name_forthright
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:frost }
+        localization_key = racehorse_name_frost
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:fury }
+        localization_key = racehorse_name_fury
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:gale }
+        localization_key = racehorse_name_gale
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hare }
+        localization_key = racehorse_name_haste
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:haste }
+        localization_key = racehorse_name_hare
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:intrepid }
+        localization_key = racehorse_name_intrepid
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:lady }
+        localization_key = racehorse_name_winner
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:leader }
+        localization_key = racehorse_name_leader
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:lightning }
+        localization_key = racehorse_name_lightning
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:lord }
+        localization_key = racehorse_name_winner
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:lucky }
+        localization_key = racehorse_name_lucky
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:majesty }
+        localization_key = racehorse_name_majesty
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:marshal }
+        localization_key = racehorse_name_marshal
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:mule }
+        localization_key = racehorse_name_mule
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:plucky }
+        localization_key = racehorse_name_plucky
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:prancer }
+        localization_key = warhorse_name_prancer
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:pride }
+        localization_key = racehorse_name_pride
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:prince }
+        localization_key = racehorse_name_prince
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:princess }
+        localization_key = racehorse_name_princess
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:rapid }
+        localization_key = racehorse_name_rapid
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:resolute }
+        localization_key = racehorse_name_resolute
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:seneschal }
+        localization_key = racehorse_name_seneschal
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:shining }
+        localization_key = racehorse_name_shining
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:snowflake }
+        localization_key = racehorse_name_snowflake
+    }
+    text = { # Spirit
+        trigger = { var:contest_horse_race_name = flag:spirit }
+        localization_key = racehorse_name_spirit
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:steadfast }
+        localization_key = racehorse_name_steadfast
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:strength }
+        localization_key = racehorse_name_strength
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sunlight }
+        localization_key = racehorse_name_sunlight
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:tenacity }
+        localization_key = racehorse_name_tenacity
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:tempest }
+        localization_key = racehorse_name_tempest
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:thunderclap }
+        localization_key = racehorse_name_thunderclap
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:tornado }
+        localization_key = racehorse_name_tornado
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:typhoon }
+        localization_key = racehorse_name_typhoon
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:unwavering }
+        localization_key = racehorse_name_unwavering
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:whirlwind }
+        localization_key = racehorse_name_whirlwind
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:winner }
+        localization_key = racehorse_name_winner
+    }
+    ## FETCH
+    text = {
+        trigger = { var:contest_horse_race_name = flag:capital_name }
+        localization_key = racehorse_name_capital_name
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:capital_empire }
+        localization_key = racehorse_name_capital_empire
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:capital_pride }
+        localization_key = racehorse_name_capital_pride
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:capital_county }
+        localization_key = racehorse_name_capital_county
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:culture_knight }
+        localization_key = racehorse_name_culture_knight
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:culture_lightning }
+        localization_key = racehorse_name_culture_lightning
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:culture_thunder }
+        localization_key = racehorse_name_culture_thunder
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_adherent }
+        localization_key = racehorse_name_faith_adherent
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_afterlife }
+        localization_key = racehorse_name_faith_afterlife
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_bishop_female }
+        localization_key = racehorse_name_faith_bishop_female
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_bishop_male }
+        localization_key = racehorse_name_faith_bishop_male
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_crusade }
+        localization_key = racehorse_name_faith_crusade
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_devotee_female }
+        localization_key = racehorse_name_faith_devotee_female
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_devotee_male }
+        localization_key = racehorse_name_faith_devotee_male
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_divine_realm }
+        localization_key = racehorse_name_faith_divine_realm
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_pope }
+        localization_key = racehorse_name_faith_pope
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_priest_female }
+        localization_key = racehorse_name_faith_priest_female
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_priest_male }
+        localization_key = racehorse_name_faith_priest_male
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:faith_symbol }
+        localization_key = racehorse_name_faith_symbol
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:liege_title }
+        localization_key = racehorse_name_liege_title
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:liege_title_name }
+        localization_key = racehorse_name_liege_title_name
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:owner_title }
+        localization_key = racehorse_name_owner_title
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:title_name }
+        localization_key = racehorse_name_title_name
+    }
+    ## TRAITS
+    text = {
+        trigger = { var:contest_horse_race_name = flag:berserker }
+        localization_key = racehorse_name_berserker
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:crusader }
+        localization_key = racehorse_name_crusader
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:pilgrim }
+        localization_key = racehorse_name_pilgrim
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:varangian }
+        localization_key = racehorse_name_varangian
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:highguardian }
+        localization_key = racehorse_name_highguardian
+    }
+    ## EASTER EGGS
+    text = {
+        trigger = { var:contest_horse_race_name = flag:arkle }
+        localization_key = racehorse_name_arkle
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:beaujacques }
+        localization_key = racehorse_name_beaujacques
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:big_dog }
+        localization_key = racehorse_name_big_dog
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:big_honse }
+        localization_key = racehorse_name_big_honse
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:binky }
+        localization_key = racehorse_name_binky
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:black_beauty }
+        localization_key = racehorse_name_black_beauty
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:boxer }
+        localization_key = racehorse_name_boxer
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:brego }
+        localization_key = racehorse_name_brego
+    }
+    text = { # Secretariat
+        trigger = { var:contest_horse_race_name = flag:chancery }
+        localization_key = racehorse_name_chancery
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:clip_clop }
+        localization_key = racehorse_name_clip_clop
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:cloppy }
+        localization_key = racehorse_name_cloppy
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:copenhagen }
+        localization_key = racehorse_name_copenhagen
+    }
+    text = { # Desert Orchid
+        trigger = { var:contest_horse_race_name = flag:desert_orchid }
+        localization_key = racehorse_name_desert_orchid
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:dustkicker }
+        localization_key = racehorse_name_dustkicker
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:donkey }
+        localization_key = racehorse_name_donkey
+    }
+    text = { # Enable
+        trigger = { var:contest_horse_race_name = flag:facilitate }
+        localization_key = racehorse_name_facilitate
+    }
+    text = { # Frankel
+        trigger = { var:contest_horse_race_name = flag:frenkel }
+        localization_key = racehorse_name_frenkel
+    }
+    text = { # Man o' War
+        trigger = { var:contest_horse_race_name = flag:galley }
+        localization_key = racehorse_name_galley
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:glitterhoof }
+        localization_key = warhorse_name_glitterhoof
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:gymer }
+        localization_key = racehorse_name_gymer
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:hoarse }
+        localization_key = racehorse_name_hoarse
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:honse }
+        localization_key = racehorse_name_honse
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:horsey }
+        localization_key = racehorse_name_horsey
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:khan }
+        localization_key = racehorse_name_khan
+    }
+    text = { # Napoleon's
+        trigger = { var:contest_horse_race_name = flag:kjekk }
+        localization_key = racehorse_name_kjekk
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:jerry }
+        localization_key = racehorse_name_jerry
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:joseph }
+        localization_key = racehorse_name_joseph
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:lord_pepper_iii }
+        localization_key = racehorse_name_lord_pepper_iii
+    }
+    text = { # Napoleon's
+        trigger = { var:contest_horse_race_name = flag:marengo }
+        localization_key = racehorse_name_marengo
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:marshal_neigh }
+        localization_key = racehorse_name_marshal_neigh
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:maximus }
+        localization_key = racehorse_name_maximus
+    }
+    text = { # Seabiscuit
+        trigger = { var:contest_horse_race_name = flag:oceancracker }
+        localization_key = racehorse_name_oceancracker
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:pebbles }
+        localization_key = racehorse_name_pebbles
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:pringle }
+        localization_key = racehorse_name_pringle
+    }
+    text = { # Galileo
+        trigger = { var:contest_horse_race_name = flag:ptolemy }
+        localization_key = racehorse_name_ptolemy
+    }
+    text = { # Red Rum
+        trigger = { var:contest_horse_race_name = flag:red_wine }
+        localization_key = racehorse_name_red_wine
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:roach }
+        localization_key = racehorse_name_roach
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sir_horsington }
+        localization_key = racehorse_name_sir_horsington
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:sir_whinny }
+        localization_key = racehorse_name_sir_whinny
+    }
+    text = {
+        trigger = { var:contest_horse_race_name = flag:torrent }
+        localization_key = racehorse_name_torrent
+    }
+}
+
+BattlePoIDescriptionLocMid = {
+    type = province
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            var:battle_poi_brave_knight = {
+                has_trait = berserker
+            }
+        }
+        localization_key = BattlePoiDescriptionLocBerserker
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            var:battle_poi_brave_knight = {
+                has_trait = varangian
+            }
+        }
+        localization_key = BattlePoiDescriptionLocVarangian
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            var:battle_poi_brave_knight = {
+                has_trait = highguardian
+            }
+        }
+        localization_key = BattlePoiDescriptionLocHighguardian
+    }
+
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            has_variable = battle_poi_archers
+            has_variable = battle_poi_brave_knight
+        }
+        localization_key = BattlePoiDescriptionLocArchersKnight
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            has_variable = battle_poi_heavy_infantry
+            has_variable = battle_poi_brave_knight
+        }
+        localization_key = BattlePoiDescriptionLocHeavyInfantryKnight
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            has_variable = battle_poi_light_cavalry
+            has_variable = battle_poi_brave_knight
+        }
+        localization_key = BattlePoiDescriptionLocLightCavalryKnight
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            has_variable = battle_poi_heavy_cavalry
+            has_variable = battle_poi_brave_knight
+        }
+        localization_key = BattlePoiDescriptionLocHeavyCavalryKnight
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            has_variable = battle_poi_pikemen
+            has_variable = battle_poi_brave_knight
+        }
+        localization_key = BattlePoiDescriptionLocPikemenKnight
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_archers
+        }
+        localization_key = BattlePoiDescriptionLocArchers
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_heavy_infantry
+        }
+        localization_key = BattlePoiDescriptionLocHeavyInfantry
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_light_cavalry
+        }
+        localization_key = BattlePoiDescriptionLocLightCavalry
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_heavy_cavalry
+        }
+        localization_key = BattlePoiDescriptionLocHeavyCavalry
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_pikemen
+        }
+        localization_key = BattlePoiDescriptionLocPikemen
+    }
+
+    text = {
+        fallback = yes
+        localization_key = BattlePoiDescriptionLocMidFallback
+    }
+}
+
+BattlePoIDescriptionLocOutcome = {
+    type = province
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            var:battle_poi_brave_knight = {
+                has_trait = berserker
+            }
+            OR = {
+                has_variable = battle_poi_enemy_commander_imprisoned
+                has_variable = battle_poi_enemy_commander_slain
+            }
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeBerserker
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            var:battle_poi_brave_knight = {
+                has_trait = varangian
+            }
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeBerserkerFled
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_brave_knight
+            var:battle_poi_brave_knight = {
+                has_trait = highguardian
+            }
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeBerserkerFled
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_slain
+            var:battle_poi_slain > 50
+            OR = {
+                has_variable = battle_poi_enemy_commander_imprisoned
+                has_variable = battle_poi_enemy_commander_slain
+            }
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeDevastation
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_slain
+            var:battle_poi_slain > 50
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeDevastationFled
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_slain
+            var:battle_poi_slain > 35
+            OR = {
+                has_variable = battle_poi_enemy_commander_imprisoned
+                has_variable = battle_poi_enemy_commander_slain
+            }
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeChaos
+    }
+
+    text = {
+        trigger = {
+            has_variable = battle_poi_slain
+            var:battle_poi_slain > 35
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeChaosFled
+    }
+
+    text = {
+        trigger = {
+            OR = {
+                has_variable = battle_poi_enemy_commander_imprisoned
+                has_variable = battle_poi_enemy_commander_slain
+            }
+        }
+        localization_key = BattlePoiDescriptionLocOutcomeLoss
+    }
+
+    text = {
+        fallback = yes
+        localization_key = BattlePoiDescriptionLocOutcomeLossFled
+    }
+}

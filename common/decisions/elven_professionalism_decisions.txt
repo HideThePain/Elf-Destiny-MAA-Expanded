@@ -155,3 +155,68 @@ revoke_elven_professionalism = { # reverse elven professionalism/legion for king
 		}
 }
 	
+found_highguard_of_valor_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_highguardian_guard.dds"
+	}
+	ai_check_interval = 60
+
+	sort_order = 100
+
+	desc = found_highguardian_guard_decision_desc
+	selection_tooltip = found_highguardian_guard_decision_tooltip
+	decision_group_type = roman
+
+	is_shown = {
+		has_ep3_dlc_trigger = yes
+		culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+		primary_title.tier >= tier_empire
+		NOT = {
+			# You have not already founded it for your current title
+			primary_title = { has_variable = founded_highguard_of_valor }
+		}
+	}
+	
+	is_valid = {
+		prestige_level >= 3
+		OR = {
+			any_realm_county = { culture = culture:norse }
+			any_courtier = {
+				count >= 5
+				culture = culture:norse
+			}
+			any_ally = { culture = culture:norse }
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_at_war = no
+		NOT = { exists = involved_activity }
+		is_imprisoned = no
+	}
+
+	cost = {
+		prestige = 1000
+	}
+
+	effect = {
+		primary_title = { set_variable = founded_highguard_of_valor }
+		send_interface_toast = {
+			title = unlocked_highguardian_guard_desc_tt
+			type = event_toast_effect_neutral
+			left_icon = root
+			custom_tooltip = unlocked_highguardian_guard_desc
+		}
+		create_character_memory = {
+			type = found_highguardian_memory
+		}
+	}
+
+	ai_potential = {
+		has_title = title:e_byzantium
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
