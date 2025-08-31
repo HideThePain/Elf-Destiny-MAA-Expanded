@@ -130,6 +130,16 @@ bowmen = {
 
     should_show_when_unavailable = {
         government_allows = subject_men_at_arms
+        NOT = {
+            OR = {
+                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
+                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
+                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
+                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
+                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
+                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
+            }
+        }
     }
 
     access_through_subject = {

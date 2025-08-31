@@ -23,6 +23,17 @@
 
     can_recruit = {
         has_trait = royal_elf_valerith
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_valerith
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_bowmen_recruitment_cost }
@@ -62,6 +73,17 @@ valerith_shining_priests = {
 
     can_recruit = {
         has_trait = royal_elf_valerith
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_valerith
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = spark_wielder_recruitment_cost }
@@ -97,6 +119,17 @@ valerith_gendarmes = {
 
     can_recruit = {
         has_trait = royal_elf_valerith
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_valerith
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_heavy_cavalry_recruitment_cost }

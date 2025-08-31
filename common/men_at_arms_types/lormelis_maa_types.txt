@@ -30,6 +30,17 @@
 
     can_recruit = {
         has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = spark_wielder_recruitment_cost }
@@ -46,9 +57,9 @@ lormelis_tideborn_raiders = {
     type = skirmishers
     stack = 50
 
-    damage = 70         
-    toughness = 60      
-    pursuit = 40        
+    damage = 70
+    toughness = 60
+    pursuit = 40
     screen = 20
 
     terrain_bonus = {
@@ -69,6 +80,17 @@ lormelis_tideborn_raiders = {
 
     can_recruit = {
         has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = warband_ravagers_recruitment_cost }
@@ -108,6 +130,17 @@ lormelis_atlantean_leviathans = {
 
     can_recruit = {
         has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = heavy_infantry_recruitment_cost }
@@ -150,6 +183,17 @@ lormelis_magic_knights = {
 
     can_recruit = {
         has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = heavy_infantry_recruitment_cost }
@@ -188,6 +232,17 @@ archers_of_the_lormelis = {
 
     can_recruit = {
         has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_lormelis
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_horse_archers_recruitment_cost }

@@ -76,12 +76,6 @@ elf_culture_serelion = {
 		tradition_romaviri_affluence
 		tradition_romaviri_bureaucracy
 	}
-
-	dlc_tradition = {
-		trait = tradition_ep3_roman_ceremonies
-		requires_dlc_flag = roads_to_power
-		fallback = tradition_byzantine_succession
-	}
 	
 	name_list = name_list_elf
 	

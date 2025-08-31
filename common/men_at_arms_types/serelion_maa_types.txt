@@ -28,6 +28,17 @@
 
     can_recruit = {
         has_trait = royal_elf_serelion
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_serelion
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_bowmen_recruitment_cost }
@@ -71,6 +82,17 @@ masters_of_the_serelion_sword = {
 
     can_recruit = {
         has_trait = royal_elf_serelion
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_serelion
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = heavy_infantry_recruitment_cost }
@@ -88,9 +110,9 @@ cavalrymen_of_the_serelions = {
     stack = 15
 
     damage = 755
-	toughness = 260
-	pursuit = 70
-	screen = 60
+    toughness = 260
+    pursuit = 70
+    screen = 60
 
     terrain_bonus = {
         forest = { damage = 160 toughness = 20 pursuit = 20 screen = 20 }
@@ -112,6 +134,17 @@ cavalrymen_of_the_serelions = {
 
     can_recruit = {
         has_trait = royal_elf_serelion
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_serelion
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_heavy_cavalry_recruitment_cost }

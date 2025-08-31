@@ -15,7 +15,7 @@
         forest = { toughness = 20 damage = 20 }
         taiga = { toughness = 20 damage = 20 }
         jungle = { toughness = 20 damage = 20 }
-        
+
     }
 
     winter_bonus = {
@@ -30,6 +30,17 @@
 
     can_recruit = {
         has_trait = royal_elf_daelurin
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_daelurin
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = heavy_infantry_recruitment_cost }
@@ -45,10 +56,10 @@ daelurin_wolf_riders = {
     type = light_cavalry
     stack = 25
 
-	damage = 150
-	toughness = 120
-	pursuit = 130
-	screen = 60
+    damage = 150
+    toughness = 120
+    pursuit = 130
+    screen = 60
 
     terrain_bonus = {
         forest = { damage = 40 pursuit = 40 screen = 40 }
@@ -73,6 +84,17 @@ daelurin_wolf_riders = {
 
     can_recruit = {
         has_trait = royal_elf_daelurin
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_daelurin
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_horse_archers_recruitment_cost }
@@ -88,10 +110,10 @@ daelurin_highlanders = {
     type = skirmishers
     stack = 50
 
-    damage = 80          
-    toughness = 50       
-    pursuit = 50         
-    screen = 20         
+    damage = 80
+    toughness = 50
+    pursuit = 50
+    screen = 20
     terrain_bonus = {
         forest = { damage = 20 toughness = 40 pursuit = 20 }
         taiga = { damage = 20 toughness = 40 pursuit = 20 }
@@ -116,6 +138,17 @@ daelurin_highlanders = {
 
     can_recruit = {
         has_trait = royal_elf_daelurin
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_trait = royal_elf_daelurin
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = warband_ravagers_recruitment_cost }

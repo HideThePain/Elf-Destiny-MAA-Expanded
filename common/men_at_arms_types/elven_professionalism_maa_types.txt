@@ -46,6 +46,17 @@ elven_shieldguard = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_elven_shieldguard }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_elven_shieldguard }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = pikemen_recruitment_cost }
@@ -81,6 +92,17 @@ elven_swordguard = { # elven greatswords? hell yeah
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_elven_swordguard }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_elven_swordguard }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = warband_ravagers_recruitment_cost }
@@ -118,6 +140,17 @@ highguard_of_valor = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = heavy_infantry_recruitment_cost }
@@ -133,10 +166,10 @@ exalted_bear_highriders = {
     type = elephant_cavalry
     stack = 10
 
-	damage = 700
-	toughness = 400
-	pursuit = 120
-	screen = 20
+    damage = 700
+    toughness = 400
+    pursuit = 120
+    screen = 20
 
     siege_value = 0.3
 
@@ -145,7 +178,7 @@ exalted_bear_highriders = {
         taiga = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
         jungle = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
     }
-   
+
     winter_bonus = {
         normal_winter = { toughness = 30 screen = 20 }
         harsh_winter = { toughness = 30 screen = 20 }
@@ -161,6 +194,17 @@ exalted_bear_highriders = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_exalted_bear_highriders }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_exalted_bear_highriders }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }
@@ -197,6 +241,17 @@ griffin_knights = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_griffin_knights }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_griffin_knights }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_heavy_cavalry_recruitment_cost }
@@ -233,6 +288,17 @@ honored_drake_lancers = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_honored_drake_lancers }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_honored_drake_lancers }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }

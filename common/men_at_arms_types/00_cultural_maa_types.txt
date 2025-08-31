@@ -88,20 +88,6 @@ landsknecht = {
         heavy_cavalry = 2
     }
 
-    can_recruit = {
-        culture ?= { has_innovation = innovation_zweihanders }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
-    }
-
     buy_cost = { gold = landsknecht_recruitment_cost }
     low_maintenance_cost = { gold = landsknecht_low_maint_cost }
     high_maintenance_cost = { gold = landsknecht_high_maint_cost }
@@ -169,20 +155,6 @@ goedendag = {
         heavy_cavalry = 1
     }
 
-    can_recruit = {
-        culture ?= { has_innovation = innovation_adaptive_militia }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
-    }
-
     buy_cost = { gold = goedendag_recruitment_cost }
     low_maintenance_cost = { gold = goedendag_low_maint_cost }
     high_maintenance_cost = { gold = goedendag_high_maint_cost }
@@ -218,21 +190,6 @@ gendarme = {
     winter_bonus = {
         normal_winter = { damage = -15 toughness = -5 }
         harsh_winter = { damage = -30 toughness = -10 }
-    }
-
-    can_recruit = {
-        culture ?= { has_innovation = innovation_valets }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = strength_in_numbers_heavy_maa_ban }
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
     }
 
     buy_cost = { gold = gendarme_recruitment_cost }
@@ -272,7 +229,7 @@ chasseur = {
     }
 
     can_recruit = {
-		valid_for_maa_trigger = { PARAMETER = unlock_maa_chasseur }
+        valid_for_maa_trigger = { PARAMETER = unlock_maa_chasseur }
         NOT = {
             OR = {
                 culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
@@ -316,20 +273,6 @@ picchieri = {
         elephant_cavalry = 1
     }
 
-    can_recruit = {
-		culture ?= { has_innovation = innovation_pike_columns }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
-    }
-
     buy_cost = { gold = picchieri_recruitment_cost }
     low_maintenance_cost = { gold = picchieri_low_maint_cost }
     high_maintenance_cost = { gold = picchieri_high_maint_cost }
@@ -350,20 +293,6 @@ praetorian = {
 
     counters = {
         pikemen = 1
-    }
-
-    can_recruit = {
-		culture ?= { has_innovation = innovation_legionnaires }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
     }
 
     buy_cost = { gold = praetorian_recruitment_cost }
@@ -399,20 +328,6 @@ caballero = {
 
     winter_bonus = {
         harsh_winter = { damage = -5 toughness = -2 }
-    }
-
-    can_recruit = {
-		culture ?= { has_innovation = innovation_caballeros }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
     }
 
     buy_cost = { gold = caballero_recruitment_cost }
@@ -548,21 +463,6 @@ hobelar = {
     winter_bonus = {
         harsh_winter = { damage = -5 }
     }
-
-    can_recruit = {
-        culture ?= { has_innovation = innovation_hobbies }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
-    }
-
     buy_cost = { gold = hobelar_recruitment_cost }
     low_maintenance_cost = { gold = hobelar_low_maint_cost }
     high_maintenance_cost = { gold = hobelar_high_maint_cost }
@@ -591,20 +491,6 @@ schiltron = {
     counters = {
         light_cavalry = 1
         heavy_cavalry = 1
-    }
-
-    can_recruit = {
-        culture ?= { has_innovation = innovation_rectilinear_schiltron }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
     }
 
     buy_cost = { gold = schiltron_recruitment_cost }
@@ -687,25 +573,23 @@ horse_archers = {
     }
 
     can_recruit = {
-        AND = {
-            OR = {
-                AND = {
-                    is_landless_adventurer = yes
-                    has_perk = planned_cultivation_perk
-                    location.county.culture ?= { culture_has_archer_cavalry_maa = yes }
-                }
-                culture = { has_cultural_parameter = unlock_maa_horse_archers }
-                mpo_can_recruit_nomad_maa_trigger = yes
+        OR = {
+            AND = {
+                is_landless_adventurer = yes
+                has_perk = planned_cultivation_perk
+                location.county.culture ?= { culture_has_archer_cavalry_maa = yes }
             }
-            NOT = {
-                OR = {
-                    culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                    culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                    culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                    culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                    culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                    culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-                }
+            culture = { has_cultural_parameter = unlock_maa_horse_archers }
+            mpo_can_recruit_nomad_maa_trigger = yes
+        }
+        NOT = {
+            OR = {
+                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
+                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
+                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
+                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
+                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
+                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
             }
         }
     }
@@ -910,18 +794,6 @@ paiks = { #Indian Footmen - carrying bows but also swords and spears.
 
     counters = {
         elephant_cavalry = 1
-    }
-
-    NOT = {
-       culture ?= { has_innovation = innovation_bamboo_bows }
-        OR = {
-            culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-            culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-            culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-            culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-            culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-            culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-        }
     }
 
     buy_cost = { gold = paiks_recruitment_cost }
@@ -1303,20 +1175,6 @@ sahel_horsemen = {
         harsh_winter = { damage = -5 toughness = -2 }
     }
 
-    can_recruit = {
-        culture ?= { has_innovation = innovation_sahel_horsemen }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
-    }
-
     buy_cost = { gold = sahel_rider_recruitment_cost }
     low_maintenance_cost = { gold = sahel_rider_low_maint_cost }
     high_maintenance_cost = { gold = sahel_rider_high_maint_cost }
@@ -1387,21 +1245,6 @@ sarawit = { #AKA Ethiopian mountaineer
 
     counters = {
         light_cavalry = 1
-    }
-
-    can_recruit = {
-        culture ?= { has_innovation = innovation_sarawit }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = strength_in_numbers_heavy_maa_ban }
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
     }
 
     buy_cost = { gold = sarawit_recruitment_cost }
@@ -1565,20 +1408,6 @@ chu_ko_nu = {
         archer_cavalry = 0.5
     }
 
-    can_recruit = {
-        culture ?= { has_innovation = innovation_repeating_crossbow }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
-    }
-
     buy_cost = { gold = chu_ko_nu_recruitment_cost }
     low_maintenance_cost = { gold = chu_ko_nu_low_maint_cost }
     high_maintenance_cost = { gold = chu_ko_nu_high_maint_cost }
@@ -1607,20 +1436,6 @@ guanch_vaulter = {
 
     counters = {
         heavy_infantry = 1
-    }
-
-    can_recruit = {
-        culture ?= { has_innovation = innovation_pole_vault }
-        NOT = {
-            OR = {
-                culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
-                culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
-                culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
-                culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
-                culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
-                culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
-            }
-        }
     }
 
     buy_cost = { gold = guanch_vaulter_recruitment_cost }

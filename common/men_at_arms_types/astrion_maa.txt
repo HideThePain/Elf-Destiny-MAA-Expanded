@@ -2,10 +2,10 @@ astrion_exalted_bear_highriders = {
     type = elephant_cavalry
     stack = 10
 
-	damage = 720
-	toughness = 410
-	pursuit = 140
-	screen = 30
+    damage = 720
+    toughness = 410
+    pursuit = 140
+    screen = 30
 
     siege_value = 0.4
 
@@ -26,6 +26,16 @@ astrion_exalted_bear_highriders = {
         skirmishers = 1
         pikemen = 0.5
         elephant_cavalry = 0.5
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }
@@ -64,6 +74,16 @@ astrion_enchanted_crossbowmen = {
         skirmishers = 1
     }
 
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
+        is_any_elf_type = yes
+    }
+
     buy_cost = { gold = elf_bowmen_recruitment_cost }
     low_maintenance_cost = { gold = elf_bowmen_low_maint_cost }
     high_maintenance_cost = { gold = elf_bowmen_high_maint_cost }
@@ -99,6 +119,16 @@ astrion_heavy_halberdiers = {
         archer_cavalry = 1
         elephant_cavalry = 1
         heavy_infantry = 0.5
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = warband_vanguard_recruitment_cost }

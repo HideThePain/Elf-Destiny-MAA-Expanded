@@ -38,9 +38,18 @@ fey_archers = {
     }
 
     can_recruit = {
-        culture = {
-            has_cultural_parameter = unlock_maa_fey_archers
-        }
+        culture = { has_cultural_parameter = unlock_maa_fey_archers }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_fey_archers }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_bowmen_recruitment_cost }
@@ -74,9 +83,18 @@ elite_bow_knights = {
     }
 
     can_recruit = {
-        culture = {
-            has_cultural_parameter = unlock_maa_elite_bow_knights
-        }
+        culture = { has_cultural_parameter = unlock_maa_elite_bow_knights }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_elite_bow_knights }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_bowmen_recruitment_cost }
@@ -111,6 +129,17 @@ wolf_riders = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_wolf_riders }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_wolf_riders }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_horse_archers_recruitment_cost }
@@ -149,6 +178,20 @@ direwolf_riders = {
         dynasty = {
             has_dynasty_modifier = wolf_lords_dynasty_modifier
         }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        exists = dynasty
+        dynasty = {
+            has_dynasty_modifier = wolf_lords_dynasty_modifier
+        }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }
@@ -184,6 +227,17 @@ elk_archers = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_elk_archers }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_elk_archers }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = elf_horse_archers_recruitment_cost }
@@ -216,6 +270,17 @@ warband_ravagers = {
 
     can_recruit = {
         has_government = advanced_tribal_government
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_government = advanced_tribal_government
+        is_any_elf_type = yes
     }
 
     buy_cost = { prestige = warband_ravagers_recruitment_cost }
@@ -251,6 +316,17 @@ warband_vanguard = {
 
     can_recruit = {
         has_government = advanced_tribal_government
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        has_government = advanced_tribal_government
+        is_any_elf_type = yes
     }
 
     buy_cost = { prestige = warband_vanguard_recruitment_cost }
@@ -292,6 +368,17 @@ abyssal_guardians = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_abyssal_guardians }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_abyssal_guardians }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = schiltron_recruitment_cost }

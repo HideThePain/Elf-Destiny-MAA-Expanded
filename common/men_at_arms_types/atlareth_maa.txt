@@ -21,7 +21,17 @@
         pikemen = 1
         heavy_infantry = 1
     }
-    
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
+        is_any_elf_type = yes
+    }
+
     buy_cost = { gold = heavy_infantry_recruitment_cost }
     low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
     high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
@@ -58,6 +68,16 @@ atlareth_atlantic_heavy_crossbowmen = {
         elephant_cavalry = 1
     }
 
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
+        is_any_elf_type = yes
+    }
+
     buy_cost = { gold = elf_horse_archers_recruitment_cost }
     low_maintenance_cost = { gold = elf_horse_archers_low_maint_cost }
     high_maintenance_cost = { gold = elf_horse_archers_high_maint_cost }
@@ -89,6 +109,16 @@ atlareth_azure_serpent_guard = {
         light_cavalry = 2
         heavy_cavalry = 2
         skirmishers = 1
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_atlareth_innovation }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = warband_vanguard_recruitment_cost }

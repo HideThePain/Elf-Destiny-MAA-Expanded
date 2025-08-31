@@ -29,6 +29,16 @@
         light_cavalry = 1
     }
 
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
+        is_any_elf_type = yes
+    }
+
     buy_cost = { gold = heavy_infantry_recruitment_cost }
     low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
     high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
@@ -42,10 +52,10 @@ alfar_tribal_climbers = {
     type = light_cavalry
     stack = 25
 
-	damage = 180
-	toughness = 110
-	pursuit = 100
-	screen = 40
+    damage = 180
+    toughness = 110
+    pursuit = 100
+    screen = 40
 
 
     terrain_bonus = {
@@ -67,6 +77,16 @@ alfar_tribal_climbers = {
         archers = 1
         archer_cavalry = 2
         skirmishers = 1
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
+        is_any_elf_type = yes
     }
 
     buy_cost = { gold = light_cavalry_recruitment_cost }
@@ -100,6 +120,16 @@ alfar_mountain_archers = {
     winter_bonus = {
         normal_winter = { damage = 30 screen = 30 }
         harsh_winter = { damage = 30 screen = 30 }
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {  
+        culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
+        is_any_elf_type = yes
     }
 
     counters = {
