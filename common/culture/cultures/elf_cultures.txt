@@ -7,6 +7,10 @@
 	martial_custom = martial_custom_male_only
 	traditions = {
 		tradition_the_old_ways
+		tradition_sacred_hunts
+		tradition_mystical_ancestors
+		tradition_sacred_groves
+		tradition_talent_acquisition
 	}
 	
 	name_list = name_list_elf
