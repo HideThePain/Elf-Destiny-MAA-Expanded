@@ -1,5 +1,5 @@
 tradition_astrion_elemental_mastery = {
-    category = elven
+    category = regional
 
     layers = {
         0 = blessing_bottom_layer.dds
@@ -8,12 +8,15 @@ tradition_astrion_elemental_mastery = {
     }
 
     is_shown = {
-        has_mpo_dlc_trigger = yes
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
@@ -36,14 +39,14 @@ tradition_astrion_elemental_mastery = {
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -52,20 +55,24 @@ tradition_astrion_elemental_mastery = {
 }
 
 tradition_astrion_magic_engineering = {
-    category = elven
+    category = regional
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
         4 = tradition_astrion_magic_engineering_item.dds
     }
 
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
@@ -108,14 +115,14 @@ tradition_astrion_magic_engineering = {
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -124,48 +131,52 @@ tradition_astrion_magic_engineering = {
 }
 
 tradition_astrion_alchemical_aptitude = {
-    category = elven
+    category = regional
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
         4 = tradition_astrion_alchemical_aptitude_item.dds
     }
 
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
-		pensive_trait_more_common = yes
-		rowdy_trait_less_common = yes
-		innovation_from_learning_traits = yes
-		can_appoint_court_scholar = yes
-		guardian_education_better_outcomes = yes
+        pensive_trait_more_common = yes
+        rowdy_trait_less_common = yes
+        innovation_from_learning_traits = yes
+        can_appoint_court_scholar = yes
+        guardian_education_better_outcomes = yes
         more_expensive_weapon_inspiration = yes
-		improved_weapon_inspiration = yes
-		building_barracks_piety_bonuses = yes
-	}
+        improved_weapon_inspiration = yes
+        building_barracks_piety_bonuses = yes
+    }
 
-	character_modifier = {
-		monthly_learning_lifestyle_xp_gain_mult = 0.2
-		learning_per_piety_level = 1
+    character_modifier = {
+        monthly_learning_lifestyle_xp_gain_mult = 0.2
+        learning_per_piety_level = 1
         prowess_per_piety_level = 2
-	}
+    }
 
     cost = {
         prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -175,21 +186,24 @@ tradition_astrion_alchemical_aptitude = {
 
 
 tradition_alfar_homeland_defense = {
-    category = elven
+    category = regional
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
         4 = tradition_alfar_homeland_defense_item.dds
     }
 
     is_shown = {
-        has_mpo_dlc_trigger = yes
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
@@ -216,14 +230,14 @@ tradition_alfar_homeland_defense = {
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -232,20 +246,24 @@ tradition_alfar_homeland_defense = {
 }
 
 tradition_alfar_union_of_elves = {
-    category = elven
+    category = regional
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
         4 = tradition_alfar_union_of_elves_item.dds
     }
 
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
@@ -268,7 +286,7 @@ tradition_alfar_union_of_elves = {
 
         hills_travel_danger = hills_medium_danger_reduction
         mountains_travel_danger = mountains_medium_danger_reduction
-        
+
         levy_size = -0.5
         levy_reinforcement_rate = -0.5
 
@@ -286,14 +304,14 @@ tradition_alfar_union_of_elves = {
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -302,51 +320,55 @@ tradition_alfar_union_of_elves = {
 }
 
 tradition_alfar_battlefiends = {
-    category = elven
+    category = regional
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
         4 = tradition_alfar_battlefiends_item.dds
     }
 
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
-		weak_traits_looked_down_upon = yes
-		rowdy_trait_more_common = yes
-		pensive_trait_less_common = yes
+        weak_traits_looked_down_upon = yes
+        rowdy_trait_more_common = yes
+        pensive_trait_less_common = yes
         strong_traits_more_valued = yes
         strong_traits_more_common = yes
         high_prowess_ignores_knight_restrictions = yes
-		blademaster_traits_more_common = yes
+        blademaster_traits_more_common = yes
     }
 
     character_modifier = {
-		cultural_head_fascination_mult = -0.25
-		ai_boldness = 25
-		accolade_glory_gain_mult = 0.1
-		monthly_martial_lifestyle_xp_gain_mult = 0.15
-		men_at_arms_limit = 1
+        cultural_head_fascination_mult = -0.25
+        ai_boldness = 25
+        accolade_glory_gain_mult = 0.1
+        monthly_martial_lifestyle_xp_gain_mult = 0.15
+        men_at_arms_limit = 1
         prowess_per_prestige_level = 2
-		accolade_glory_gain_mult = 0.1
+        accolade_glory_gain_mult = 0.1
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -355,20 +377,24 @@ tradition_alfar_battlefiends = {
 }
 
 tradition_deepwood_foresters = {
-    category = elven
+    category = regional
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
         4 = tradition_deepwood_foresters_item.dds
     }
 
     #Replaces Forest Folk
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
@@ -383,9 +409,9 @@ tradition_deepwood_foresters = {
         forest_travel_danger = forest_high_danger_reduction
         taiga_travel_danger = taiga_high_danger_reduction
         taiga_provisions_use_mult = -0.2
-		forest_provisions_use_mult = -0.2
+        forest_provisions_use_mult = -0.2
         forest_fertility_growth_mult = medium_culture_county_fertility_value_mult
-		taiga_fertility_growth_mult = medium_culture_county_fertility_value_mult
+        taiga_fertility_growth_mult = medium_culture_county_fertility_value_mult
     }
     province_modifier = {
         forest_construction_gold_cost = -0.3
@@ -395,14 +421,14 @@ tradition_deepwood_foresters = {
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -411,20 +437,24 @@ tradition_deepwood_foresters = {
 }
 
 tradition_deepwood_terraforming = {
-    category = elven
+    category = regional
 
     layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
         4 = tradition_deepwood_terraforming_item.dds
     }
 
     #Replaces Forest Folk
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
@@ -461,20 +491,20 @@ tradition_deepwood_terraforming = {
 
     province_modifier = {
         forest_supply_limit_mult = 0.25
-		taiga_supply_limit_mult = 0.25
+        taiga_supply_limit_mult = 0.25
         forest_tax_mult = 0.05
         taiga_tax_mult = 0.05
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -483,7 +513,7 @@ tradition_deepwood_terraforming = {
 }
 
 tradition_deepwood_guest_rites = {
-    category = elven
+    category = regional
 
     layers = {
         0 = blessing_bottom_layer.dds
@@ -493,44 +523,48 @@ tradition_deepwood_guest_rites = {
 
     #Replaces Forest Folk
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
     can_pick = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
     }
 
     parameters = {
-		diplomacy_education_better_outcomes = yes
-		charming_trait_more_common = yes
+        diplomacy_education_better_outcomes = yes
+        charming_trait_more_common = yes
         poet_trait_gives_bonuses = yes
-		poet_trait_more_common = yes
-		characters_are_better_court_poets = yes
-		better_court_poets = yes
+        poet_trait_more_common = yes
+        characters_are_better_court_poets = yes
+        better_court_poets = yes
         better_spouses = yes
-		marriage_acceptance_bonus = yes
+        marriage_acceptance_bonus = yes
         peasant_and_populist_factions_less_common = yes
     }
 
     character_modifier = {
-		monthly_court_grandeur_change_mult = 0.15
-		owned_personal_scheme_success_chance_add = 10
-		enemy_hostile_scheme_success_chance_add = 10
-		character_travel_safety_mult = 0.1
+        monthly_court_grandeur_change_mult = 0.15
+        owned_personal_scheme_success_chance_add = 10
+        enemy_hostile_scheme_success_chance_add = 10
+        character_travel_safety_mult = 0.1
         owned_legend_spread_mult = 0.05
         dread_per_tyranny_add = 0.3
-		dread_decay_mult = -0.3
-		revolting_siege_morale_loss_mult = 0.25
+        dread_decay_mult = -0.3
+        revolting_siege_morale_loss_mult = 0.25
     }
 
     cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
     }
 
     ai_will_do = {
@@ -538,89 +572,97 @@ tradition_deepwood_guest_rites = {
     }
 }
 
-tradition_atlareth_coastal_mastery = { 
-	category = elven
+tradition_atlareth_coastal_mastery = {
+    category = regional
 
-	layers = {
+    layers = {
         0 = blessing_bottom_layer.dds
         1 = pattern_blessing_1.dds
-		4 = tradition_atlareth_coastal_mastery_item.dds
-	}
+        4 = tradition_atlareth_coastal_mastery_item.dds
+    }
 
-	is_shown = {
-        is_any_elf_type = yes
-	}
+    is_shown = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
 
-	can_pick = {
-		is_any_elf_type = yes
-	}
-	
-	parameters = {
-		coastal_agriculture_building_bonuses = yes
-		coastal_holding_bonuses = yes
+    can_pick = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    parameters = {
+        coastal_agriculture_building_bonuses = yes
+        coastal_holding_bonuses = yes
         maritime_mercantilism_coastal_holdings = yes
-		maritime_mercantilism_avaricious_bonus = yes
+        maritime_mercantilism_avaricious_bonus = yes
         next_level_trade_ports = yes
-	}
+    }
 
-	character_modifier = {
-		supply_capacity_mult = 0.5
+    character_modifier = {
+        supply_capacity_mult = 0.5
         no_disembark_penalty = yes
         no_water_crossing_penalty = yes
         taiga_provisions_use_mult = -0.1
-		forest_provisions_use_mult = -0.1
-	}
+        forest_provisions_use_mult = -0.1
+    }
 
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_atlareth_raiding_expertise = {
 
-	layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
-		4 = tradition_atlareth_raiding_expertise_item.dds
-	}
+    layers = {
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
+        4 = tradition_atlareth_raiding_expertise_item.dds
+    }
 
-	is_shown = {
-        is_any_elf_type = yes
-	}
+    is_shown = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
 
-	can_pick = {
-		is_any_elf_type = yes
-	}
-	
-	parameters = {
+    can_pick = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    parameters = {
         trade_ports_stationed_maa_bonus = yes
-		trade_ports_enabled_for_tribals = yes
+        trade_ports_enabled_for_tribals = yes
         coastal_holdings_give_defensive_bonus = yes
         unlock_maa_atlareth_innovation = yes
         no_limit_to_kingdom_level_holy_wars = yes
-		cb_lower_piety_level_requirement = yes
+        cb_lower_piety_level_requirement = yes
         martial_education_more_valued = yes
-		prowess_traits_more_valued = yes
-		blademaster_trait_bonuses = yes
-	}
+        prowess_traits_more_valued = yes
+        blademaster_trait_bonuses = yes
+    }
 
-	character_modifier = {
+    character_modifier = {
         levy_size = -0.5
         levy_reinforcement_rate = -0.5
         coastal_advantage = 10
         sea_travel_danger = medium_sea_danger_reduction
-		coastal_sea_travel_danger = medium_sea_danger_reduction
+        coastal_sea_travel_danger = medium_sea_danger_reduction
         embarkation_cost_mult = -0.85
         raid_speed = 0.5
 
@@ -635,128 +677,136 @@ tradition_atlareth_raiding_expertise = {
         pikemen_max_size_add = 2
         pikemen_toughness_mult = 0.2
         pikemen_damage_mult = 0.2
-	}
+    }
 
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_atlareth_glory_seeking = {
-	category = elven
+    category = regional
 
-	layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
-		4 = tradition_atlareth_glory_seeking_item.dds
-	}
+    layers = {
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
+        4 = tradition_atlareth_glory_seeking_item.dds
+    }
 
-	is_shown = {
-        is_any_elf_type = yes
-	}
+    is_shown = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
 
-	can_pick = {
-		is_any_elf_type = yes
-	}
-	
-	parameters = {
-		can_use_sparring_duel = yes
-		romance_scheme_bonuses = yes
-		romance_scheme_penalty = yes
-		ai_romance_scheme_increase = yes
-		poet_trait_romance_bonuses = yes
-		knight_errant_trait_bonuses = yes
+    can_pick = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    parameters = {
+        can_use_sparring_duel = yes
+        romance_scheme_bonuses = yes
+        romance_scheme_penalty = yes
+        ai_romance_scheme_increase = yes
+        poet_trait_romance_bonuses = yes
+        knight_errant_trait_bonuses = yes
         poet_trait_gives_bonuses = yes
-		poet_trait_more_common = yes
-		craven_and_content_traits_looked_down_upon = yes
-		knights_slightly_more_prone_to_injury = yes
-		can_duel_rivals = yes
-		can_host_joust_contests = yes
-	}
+        poet_trait_more_common = yes
+        craven_and_content_traits_looked_down_upon = yes
+        knights_slightly_more_prone_to_injury = yes
+        can_duel_rivals = yes
+        can_host_joust_contests = yes
+    }
 
-	character_modifier = {
-		diplomacy_per_piety_level = -1
-		martial_per_piety_level = 1
-		different_faith_opinion = -15
-		monthly_piety_gain_mult = -0.2
+    character_modifier = {
+        diplomacy_per_piety_level = -1
+        martial_per_piety_level = 1
+        different_faith_opinion = -15
+        monthly_piety_gain_mult = -0.2
         tyranny_gain_mult = 0.5
-		accolade_glory_gain_mult = 0.1
-		ai_zeal = 25
+        accolade_glory_gain_mult = 0.1
+        ai_zeal = 25
         knight_limit = 2
-		negate_prowess_penalty_add = 5
-		accolade_glory_gain_mult = 0.2
-		owned_legend_spread_mult = 0.05
-	}
+        negate_prowess_penalty_add = 5
+        accolade_glory_gain_mult = 0.2
+        owned_legend_spread_mult = 0.05
+    }
 
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_romaviri_strategy = {
-	category = elven
+    category = regional
 
-	layers = {
+    layers = {
         0 = blessing_bottom_layer.dds
         1 = pattern_blessing_1.dds
-		4 = tradition_romaviri_strategy_item.dds
-	}
+        4 = tradition_romaviri_strategy_item.dds
+    }
 
     is_shown = {
-        is_any_elf_type = yes
+        any_player = {
+            is_any_elf_type = yes
+        }
         has_ep3_dlc_trigger = yes
-	}
-    
-	can_pick = {
-		is_any_elf_type = yes
-	}
+    }
 
-	parameters = {
-		next_level_barracks = yes
-		formation_fighting_strategist = yes
+    can_pick = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    parameters = {
+        next_level_barracks = yes
+        formation_fighting_strategist = yes
         estate_building_upgrade_development_gain = yes
         unlock_maa_romaviri_innovation = yes
         unlock_junior_emperors = yes
         children_can_be_born_in_the_purple = yes
         hosts_chariot_races = yes
         holds_triumphs = yes
-	}
+    }
 
-	character_modifier = {
+    character_modifier = {
         counter_efficiency = 0.15
-		pursue_efficiency = -0.15
+        pursue_efficiency = -0.15
         levy_size = -0.7
-		men_at_arms_recruitment_cost = -0.25
-		men_at_arms_maintenance = -0.25
-		levy_reinforcement_rate = -0.7
+        men_at_arms_recruitment_cost = -0.25
+        men_at_arms_maintenance = -0.25
+        levy_reinforcement_rate = -0.7
 
-		heavy_infantry_max_size_add = 2
+        heavy_infantry_max_size_add = 2
         heavy_infantry_damage_mult = 0.2
         heavy_infantry_toughness_mult = 0.2
 
-		heavy_cavalry_max_size_add = 2
+        heavy_cavalry_max_size_add = 2
         heavy_cavalry_damage_mult = 0.2
         heavy_cavalry_toughness_mult = 0.2
 
@@ -766,170 +816,183 @@ tradition_romaviri_strategy = {
 
         men_at_arms_title_limit = 1
         knight_effectiveness_mult = -0.25
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_romaviri_affluence = {
-	category = elven
+    category = regional
 
-	layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
-		4 = tradition_romaviri_affluence_item.dds
-	}
+    layers = {
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
+        4 = tradition_romaviri_affluence_item.dds
+    }
 
     is_shown = {
-        is_any_elf_type = yes
-        has_ep3_dlc_trigger = yes
-	}
-    
-	can_pick = {
-		is_any_elf_type = yes
-	}
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
 
-	parameters = {
-		can_make_republican_vassals = yes
-		city_buildings_more_powerful = yes
-		city_buildings_less_control = yes
-		republican_vassals_pay_more = yes
-		more_parochial_vassals = yes
-		next_level_cities = yes
+    can_pick = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    parameters = {
+        can_make_republican_vassals = yes
+        city_buildings_more_powerful = yes
+        city_buildings_less_control = yes
+        republican_vassals_pay_more = yes
+        more_parochial_vassals = yes
+        next_level_cities = yes
         enable_garden_duchy_building = yes
-		can_appoint_court_gardener = yes
-		can_recruit_gardeners = yes
+        can_appoint_court_gardener = yes
+        can_recruit_gardeners = yes
         less_likely_to_culture_convert = yes
-		other_cultures_more_likely_to_hybridize = yes
-		estate_building_upgrade_development_gain = yes
-	}
+        other_cultures_more_likely_to_hybridize = yes
+        estate_building_upgrade_development_gain = yes
+    }
 
-	character_modifier = {
+    character_modifier = {
         monthly_influence_mult = 0.1
-		diplomatic_range_mult = 0.2
-		cultural_head_fascination_mult = -0.10
+        diplomatic_range_mult = 0.2
+        cultural_head_fascination_mult = -0.10
         city_holding_build_gold_cost = -0.05
-		city_holding_holding_build_gold_cost = -0.05
-		barons_and_minor_landholders_opinion = -20
-		parochial_opinion = -20
-		parochial_tax_contribution_mult = 0.1
-		parochial_levy_contribution_mult = 0.1
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+        city_holding_holding_build_gold_cost = -0.05
+        barons_and_minor_landholders_opinion = -20
+        parochial_opinion = -20
+        parochial_tax_contribution_mult = 0.1
+        parochial_levy_contribution_mult = 0.1
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_romaviri_bureaucracy = {
-	category = elven
+    category = regional
 
-	layers = {
+    layers = {
         0 = blessing_bottom_layer.dds
         1 = pattern_blessing_1.dds
-		4 = tradition_romaviri_bureaucracy_item.dds
-	}
+        4 = tradition_romaviri_bureaucracy_item.dds
+    }
 
     is_shown = {
-        is_any_elf_type = yes
-        has_ep3_dlc_trigger = yes
-	}
-    
-	can_pick = {
-		is_any_elf_type = yes
-	}
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
 
-	parameters = {
+    can_pick = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    parameters = {
         frontier_themes_borrow_neighbor_troops = yes
-		reduced_bodyguard_aptitude = yes
-		can_blind_prisoners = yes
-		can_castrate_prisoners = yes
-		eunuch_trait_bonuses = yes
-		can_appoint_chief_eunuch = yes
-		family_castration = yes
-		ambitious_trait_more_common = yes
-		physical_disfigurement_blocks_inheritance = yes
-		cultrad_unlocks_t2_countermeasures = yes
-		palace_politics_trait_bonuses = yes
-		palace_politics_trait_maluses = yes
-	}
-	character_modifier = {
-		monthly_influence_mult = 0.1
-		diplomatic_range_mult = 0.2
-		cultural_head_fascination_mult = -0.10
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+        reduced_bodyguard_aptitude = yes
+        can_blind_prisoners = yes
+        can_castrate_prisoners = yes
+        eunuch_trait_bonuses = yes
+        can_appoint_chief_eunuch = yes
+        family_castration = yes
+        ambitious_trait_more_common = yes
+        physical_disfigurement_blocks_inheritance = yes
+        cultrad_unlocks_t2_countermeasures = yes
+        palace_politics_trait_bonuses = yes
+        palace_politics_trait_maluses = yes
+    }
+    character_modifier = {
+        monthly_influence_mult = 0.1
+        diplomatic_range_mult = 0.2
+        cultural_head_fascination_mult = -0.10
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_tuathan_resilience = {
-	category = elven
+    category = regional
 
-	layers = {
+    layers = {
         0 = blessing_bottom_layer.dds
         1 = pattern_blessing_1.dds
-		4 = tradition_tuathan_resilience_item.dds
-	}
-	
-	is_shown = {
-		has_fp3_dlc_trigger = yes
-		is_any_elf_type = yes
-	}
+        4 = tradition_tuathan_resilience_item.dds
+    }
 
-	can_pick = {
-        is_any_elf_type = yes
-	}
-	
-	parameters = {
+    is_shown = {
+        any_player = {
+            any_player = {
+                is_any_elf_type = yes
+            }
+        }
+    }
+
+    can_pick = {
+        any_player = {
+            any_player = {
+                is_any_elf_type = yes
+            }
+        }
+    }
+
+    parameters = {
         can_recruit_open_specialist = yes
-		unlock_horse_pastures_building = yes
+        unlock_horse_pastures_building = yes
         rough_terrain_expert_trait_more_common = yes
-		hill_trait_bonuses = yes
-		can_recruit_hill_specialist = yes
+        hill_trait_bonuses = yes
+        can_recruit_hill_specialist = yes
         negate_health_penalty_add = 0.15
-		tribal_holding_stationed_bonus = yes
+        tribal_holding_stationed_bonus = yes
         has_access_to_runestones = yes
         unlock_maa_tuathan_innovation = yes
-	}
+    }
 
-	character_modifier = {
+    character_modifier = {
         archer_cavalry_max_size_add = 2
         archer_cavalry_toughness_mult = 0.2
         archer_cavalry_damage_mult = 0.2
@@ -946,131 +1009,141 @@ tradition_tuathan_resilience = {
         levy_reinforcement_rate = -0.5
         coastal_advantage = 5
         coastal_sea_travel_danger = low_sea_danger_reduction
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_tuathan_prosperity = {
-	category = elven
+    category = regional
 
-	layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
-		4 = tradition_tuathan_prosperity_item.dds
-	}
-	
-	is_shown = {
-		has_fp3_dlc_trigger = yes
-		is_any_elf_type = yes
-	}
+    layers = {
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
+        4 = tradition_tuathan_prosperity_item.dds
+    }
 
-	can_pick = {
-        is_any_elf_type = yes
-	}
-	
-	parameters = {
+    is_shown = {
+        any_player = {
+            any_player = {
+                is_any_elf_type = yes
+            }
+        }
+    }
+
+    can_pick = {
+        any_player = {
+            any_player = {
+                is_any_elf_type = yes
+            }
+        }
+    }
+
+    parameters = {
         pastures_building_bonuses = yes
-		farm_estates_pastures_unlock = yes
+        farm_estates_pastures_unlock = yes
         ancient_miners_quarries_building_bonuses = yes
-		can_build_quarries_everywhere = yes
+        can_build_quarries_everywhere = yes
         bonuses_from_patriarch_matriarch_trait = yes
-		cultural_house_personal_scheme_success_chance = yes
-		landing_house_members_give_prestige = yes
-		penalty_for_revoking_titles_from_house_members = yes
-		loyal_trait_more_valued = yes
+        cultural_house_personal_scheme_success_chance = yes
+        landing_house_members_give_prestige = yes
+        penalty_for_revoking_titles_from_house_members = yes
+        loyal_trait_more_valued = yes
         loyal_trait_more_common = yes
         has_access_to_runestones = yes
-	}
+    }
 
-	character_modifier = {
-		controlled_province_advantage = 10
-		same_culture_opinion = 10
-		opinion_of_liege = -10
+    character_modifier = {
+        controlled_province_advantage = 10
+        same_culture_opinion = 10
+        opinion_of_liege = -10
         supply_capacity_mult = 0.5
         character_travel_speed_mult = 0.1
         ai_boldness = 25
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
 
 tradition_tuathan_brain_and_brawn = {
-	category = elven
+    category = regional
 
-	layers = {
-		0 = forest_bottom_layer.dds
-		1 = pattern_elf_1.dds
-		4 = tradition_tuathan_brain_and_brawn_item.dds
-	}
-	
-	is_shown = {
-		has_fp3_dlc_trigger = yes
-		is_any_elf_type = yes
-	}
+    layers = {
+        0 = forest_bottom_layer.dds
+        1 = pattern_elf_1.dds
+        4 = tradition_tuathan_brain_and_brawn_item.dds
+    }
 
-	can_pick = {
-        is_any_elf_type = yes
-	}
-	
-	parameters = {
-		development_gain_on_building_complete = yes
-		next_level_w_mills = yes
+    is_shown = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    can_pick = {
+        any_player = {
+            is_any_elf_type = yes
+        }
+    }
+
+    parameters = {
+        development_gain_on_building_complete = yes
+        next_level_w_mills = yes
         martial_education_more_valued = yes
-		prowess_traits_more_valued = yes
-		blademaster_trait_bonuses = yes
-		craven_and_content_traits_looked_down_upon = yes
-		knights_slightly_more_prone_to_injury = yes
-		can_duel_rivals = yes
-	}
+        prowess_traits_more_valued = yes
+        blademaster_trait_bonuses = yes
+        craven_and_content_traits_looked_down_upon = yes
+        knights_slightly_more_prone_to_injury = yes
+        can_duel_rivals = yes
+    }
 
-	character_modifier = {
-		build_speed = -0.15
-		stress_gain_mult = 0.15
-		build_gold_cost = 0.15
+    character_modifier = {
+        build_speed = -0.15
+        stress_gain_mult = 0.15
+        build_gold_cost = 0.15
         knight_limit = 2
-		negate_prowess_penalty_add = 5
+        negate_prowess_penalty_add = 5
         accolade_glory_gain_mult = 0.2
-	}
-	
-	cost = {
-		prestige = {
-			add = {
-				value = tradition_base_cost
-				desc = BASE
-				format = "BASE_VALUE_FORMAT"
-			}
-			multiply = tradition_replacement_cost_if_relevant
-		}
-	}
-	
-	ai_will_do = {
+    }
+
+    cost = {
+        prestige = {
+            add = {
+                value = tradition_base_cost
+                desc = BASE
+                format = "BASE_VALUE_FORMAT"
+            }
+            multiply = tradition_replacement_cost_if_relevant
+        }
+    }
+
+    ai_will_do = {
         value = 0 #ai either has it on game start or should not pursue it
     }
 }
