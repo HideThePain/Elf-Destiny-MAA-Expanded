@@ -3,7 +3,7 @@
  tradition_elven_professionalism_desc:0 "This culture has adopted standardized equipment and training to field armies of professional soldiers, but refuses to raise levies."
 
  tradition_knights_of_the_sky_name:0 "Knights of the Sky"
- tradition_elven_professionalism_desc:0 "Dominating the skies, this culture has mastered the art of taming and riding legendary creatures of old."
+ tradition_knights_of_the_sky_desc:0 "Dominating the skies, this culture has mastered the art of taming and riding legendary creatures of old."
  
  culture_parameter_unlock_maa_elven_shieldguard:0 "[GetMaA('elven_shieldguard').GetName] as [men_at_arms|E]"
  elven_shieldguard:1 "Elven Shieldguard"

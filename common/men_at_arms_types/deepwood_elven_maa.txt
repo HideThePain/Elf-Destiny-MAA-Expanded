@@ -46,8 +46,8 @@ deepwood_elven_solar_dancers = {
 
     damage = 40
     toughness = 40
-    pursuit = 0
-    screen = 60
+    pursuit = 100
+    screen = 40
 
     terrain_bonus = {
         forest = { damage = 60 toughness = 40 pursuit = 50 screen = 20 }

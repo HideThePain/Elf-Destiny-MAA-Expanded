@@ -48,10 +48,10 @@ tuathan_seelie_archons = {
     type = spark_wielders
     stack = 50
 
-    damage = 30
+    damage = 50
     toughness = 20
     pursuit = 30
-    screen = 60
+    screen = 100
 
     terrain_bonus = {
         forest = { damage = 40 toughness = 20 screen = 20 }

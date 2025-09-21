@@ -626,6 +626,7 @@ tradition_atlareth_coastal_mastery = {
 }
 
 tradition_atlareth_raiding_expertise = {
+    category = regional
 
     layers = {
         0 = forest_bottom_layer.dds
@@ -986,7 +987,6 @@ tradition_tuathan_resilience = {
         rough_terrain_expert_trait_more_common = yes
         hill_trait_bonuses = yes
         can_recruit_hill_specialist = yes
-        negate_health_penalty_add = 0.15
         tribal_holding_stationed_bonus = yes
         has_access_to_runestones = yes
         unlock_maa_tuathan_innovation = yes
@@ -1009,6 +1009,7 @@ tradition_tuathan_resilience = {
         levy_reinforcement_rate = -0.5
         coastal_advantage = 5
         coastal_sea_travel_danger = low_sea_danger_reduction
+        negate_health_penalty_add = 0.15
     }
 
     cost = {
@@ -1063,7 +1064,6 @@ tradition_tuathan_prosperity = {
         penalty_for_revoking_titles_from_house_members = yes
         loyal_trait_more_valued = yes
         loyal_trait_more_common = yes
-        has_access_to_runestones = yes
     }
 
     character_modifier = {

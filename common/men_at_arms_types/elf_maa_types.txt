@@ -339,53 +339,53 @@ warband_vanguard = {
     icon = warband_vanguard
 }
 
-abyssal_guardians = {
-    type = pikemen
-    stack = 50
+# abyssal_guardians = {
+#     type = pikemen
+#     stack = 50
 
-    damage = 140
-    toughness = 150
-    pursuit = 0
-    screen = 60
+#     damage = 140
+#     toughness = 150
+#     pursuit = 0
+#     screen = 60
 
-    terrain_bonus = {
-        forest = { damage = 10 toughness = 20 screen = 20 }
-        forest = { damage = 10 toughness = 20 screen = 20 }
-        forest = { damage = 10 toughness = 20 screen = 20 }
+#     terrain_bonus = {
+#         forest = { damage = 10 toughness = 20 screen = 20 }
+#         forest = { damage = 10 toughness = 20 screen = 20 }
+#         forest = { damage = 10 toughness = 20 screen = 20 }
 
-        wetlands = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
-        floodplains = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
-        oasis = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
-    }
+#         wetlands = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
+#         floodplains = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
+#         oasis = { damage = 50 toughness = 50 pursuit = 20 screen = 30 }
+#     }
 
-    counters = {
-        light_cavalry = 2
-        heavy_cavalry = 1.5
-        archer_cavalry = 1.5
-        camel_cavalry = 1.5
-        elephant_cavalry = 1
-    }
+#     counters = {
+#         light_cavalry = 2
+#         heavy_cavalry = 1.5
+#         archer_cavalry = 1.5
+#         camel_cavalry = 1.5
+#         elephant_cavalry = 1
+#     }
 
-    can_recruit = {
-        culture = { has_cultural_parameter = unlock_maa_abyssal_guardians }
-        is_any_elf_type = yes
-    }
+#     can_recruit = {
+#         culture = { has_cultural_parameter = unlock_maa_abyssal_guardians }
+#         is_any_elf_type = yes
+#     }
 
-    should_show_when_unavailable = {
-        government_allows = subject_men_at_arms
-        is_any_elf_type = yes
-    }
+#     should_show_when_unavailable = {
+#         government_allows = subject_men_at_arms
+#         is_any_elf_type = yes
+#     }
 
-    access_through_subject = {
-        culture = { has_cultural_parameter = unlock_maa_abyssal_guardians }
-        is_any_elf_type = yes
-    }
+#     access_through_subject = {
+#         culture = { has_cultural_parameter = unlock_maa_abyssal_guardians }
+#         is_any_elf_type = yes
+#     }
 
-    buy_cost = { gold = schiltron_recruitment_cost }
-    low_maintenance_cost = { gold = schiltron_low_maint_cost }
-    high_maintenance_cost = { gold = schiltron_high_maint_cost }
-    provision_cost = @provisions_cost_infantry_cheap
+#     buy_cost = { gold = schiltron_recruitment_cost }
+#     low_maintenance_cost = { gold = schiltron_low_maint_cost }
+#     high_maintenance_cost = { gold = schiltron_high_maint_cost }
+#     provision_cost = @provisions_cost_infantry_cheap
 
-    ai_quality = { value = culture_ai_weight_pikemen }
-    icon = abyssal_guardians
-}
+#     ai_quality = { value = culture_ai_weight_pikemen }
+#     icon = abyssal_guardians
+# }
