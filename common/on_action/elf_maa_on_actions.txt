@@ -1,9 +1,9 @@
-ep3_akolouthos_on_action = {
+ep3_eryndar_on_action = {
     trigger = {
         has_ep3_dlc_trigger = yes
-        employs_court_position = akolouthos_court_position
+        employs_court_position = eryndar_court_position
         any_court_position_holder = {
-            type = akolouthos_court_position
+            type = eryndar_court_position
             is_physically_able_ai_adult = yes
         }
         is_landed = yes
@@ -11,8 +11,8 @@ ep3_akolouthos_on_action = {
 
     random_events = {
         chance_to_happen = 33
-        100 = ep3_akolouthos_events.1010 # Akolouthos enforces oaths
-        100 = ep3_akolouthos_events.1011 # Akolouthos recruits Highguardians
+        100 = ep3_eryndar_events.1010 # eryndar enforces oaths
+        100 = ep3_eryndar_events.1011 # eryndar recruits Highguardians
     }
 }
 

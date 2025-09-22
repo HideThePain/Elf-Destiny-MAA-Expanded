@@ -1,4 +1,4 @@
-akolouthos_court_position = { # EP1 & EP3
+eryndar_court_position = { # EP1 & EP3
 	sort_order = 282
 	max_available_positions = 1
 
@@ -203,7 +203,7 @@ akolouthos_court_position = { # EP1 & EP3
 		add = court_position_aptitude_high_penalty_value
 		# Bonus from court.8311
 		if = {
-			limit = { var:bonus_aptitude_role ?= flag:akolouthos }
+			limit = { var:bonus_aptitude_role ?= flag:eryndar }
 			add = {
 				value = cp_bonus_aptitude_value
 				desc = cp_bonus_aptitude
@@ -251,7 +251,7 @@ akolouthos_court_position = { # EP1 & EP3
 
 	is_shown_character = {
 		scope:employee = {
-			akolouthos_validity_trigger = { EMPLOYER = scope:liege }
+			eryndar_validity_trigger = { EMPLOYER = scope:liege }
 		}
 	}
 
@@ -260,14 +260,14 @@ akolouthos_court_position = { # EP1 & EP3
 		highest_held_title_tier >= tier_empire
 		save_temporary_scope_as = root_scope
 		custom_tooltip = {
-			text = akolouthos_founded_highguardians_trigger_tt
+			text = eryndar_founded_highguardians_trigger_tt
 			primary_title = { has_variable = founded_highguard_of_valor }
 		}
 	}
 
 	valid_character = {
 		scope:employee = {
-			akolouthos_validity_trigger = { EMPLOYER = scope:liege }
+			eryndar_validity_trigger = { EMPLOYER = scope:liege }
 		}
 	}
 
@@ -278,7 +278,7 @@ akolouthos_court_position = { # EP1 & EP3
 			if = {
 				limit = {
 					court_position_obligation_hook_salary_trigger = {
-						POS = akolouthos
+						POS = eryndar
 						LIEGE = root
 					}
 				}
@@ -317,7 +317,7 @@ akolouthos_court_position = { # EP1 & EP3
 			value = medium_court_position_salary # Update X_salary_tooltip if script_value is changed
 			# Set to 0 with Dynasty Perk Inner Circle
 			if = {
-				limit = { court_position_inner_circle_salary_trigger = { POS = akolouthos } }
+				limit = { court_position_inner_circle_salary_trigger = { POS = eryndar } }
 				multiply = {
 					value = 0
 					desc = inner_circle_salary_mod
@@ -328,7 +328,7 @@ akolouthos_court_position = { # EP1 & EP3
 			else_if = {
 				limit = {
 					court_position_obligation_hook_salary_trigger = {
-						POS = akolouthos
+						POS = eryndar
 						LIEGE = scope:liege
 					}
 				}
@@ -341,7 +341,7 @@ akolouthos_court_position = { # EP1 & EP3
 			# Halved salary
 			if = {
 				limit = {
-					court_position_halved_salary_trigger = { POS = akolouthos }
+					court_position_halved_salary_trigger = { POS = eryndar }
 				}
 				multiply = {
 					value = 0.5
@@ -352,7 +352,7 @@ akolouthos_court_position = { # EP1 & EP3
 			# Increased salary
 			if = {
 				limit = {
-					court_position_increased_salary_trigger = { POS = akolouthos }
+					court_position_increased_salary_trigger = { POS = eryndar }
 				}
 				multiply = {
 					value = 1.5
@@ -394,7 +394,7 @@ akolouthos_court_position = { # EP1 & EP3
 		}
 	}
 
-	custom_employer_modifier_description = akolouthos_employer_custom_effect_description
+	custom_employer_modifier_description = eryndar_employer_custom_effect_description
 
 	modifier = {
 		prowess = 1
@@ -403,17 +403,17 @@ akolouthos_court_position = { # EP1 & EP3
 	}
 
 	on_court_position_received = {
-		akolouthos_title_accepted_effect = yes
+		eryndar_title_accepted_effect = yes
 	}
 	on_court_position_revoked = {
-		akolouthos_title_revoked_effect = yes
+		eryndar_title_revoked_effect = yes
 	}
 	on_court_position_invalidated = {
-		akolouthos_title_invalidated_effect = yes
+		eryndar_title_invalidated_effect = yes
 	}
 	on_court_position_vacated = {
 		court_position_vacated_event_effect = {
-			COURT_POSITION_TYPE = akolouthos_court_position
+			COURT_POSITION_TYPE = eryndar_court_position
 		}
 	}
 
@@ -446,7 +446,7 @@ akolouthos_court_position = { # EP1 & EP3
 		}
 		if = { # To stop petitioned positions immediately being fired by the AI
 			limit = {
-				court_position_petition_ai_weight_trigger = { ROLE = akolouthos }
+				court_position_petition_ai_weight_trigger = { ROLE = eryndar }
 			}
 			add = 1000
 		}
