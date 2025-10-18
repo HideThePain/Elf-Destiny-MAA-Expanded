@@ -175,12 +175,6 @@ expedition_unique_encounters.001 = {
 					}
 					triggered_desc = {
 						trigger = {
-							scope:tradition_one = culture_tradition:tradition_guardians_of_the_abyss
-						}
-						desc = expedition_unique_encounters.001.guardians_of_the_abyss
-					}
-					triggered_desc = {
-						trigger = {
 							scope:tradition_one = culture_tradition:tradition_elven_professionalism
 						}
 						desc = expedition_unique_encounters.001.elven_professionalism
@@ -256,12 +250,6 @@ expedition_unique_encounters.001 = {
 							scope:tradition_two = culture_tradition:tradition_people_of_the_bow
 						}
 						desc = expedition_unique_encounters.001.people_of_the_bow
-					}
-					triggered_desc = {
-						trigger = {
-							scope:tradition_two = culture_tradition:tradition_guardians_of_the_abyss
-						}
-						desc = expedition_unique_encounters.001.guardians_of_the_abyss
 					}
 					triggered_desc = {
 						trigger = {
@@ -343,12 +331,6 @@ expedition_unique_encounters.001 = {
 					}
 					triggered_desc = {
 						trigger = {
-							scope:tradition_three = culture_tradition:tradition_guardians_of_the_abyss
-						}
-						desc = expedition_unique_encounters.001.guardians_of_the_abyss
-					}
-					triggered_desc = {
-						trigger = {
 							scope:tradition_three = culture_tradition:tradition_elven_professionalism
 						}
 						desc = expedition_unique_encounters.001.elven_professionalism
@@ -424,12 +406,6 @@ expedition_unique_encounters.001 = {
 							scope:tradition_four = culture_tradition:tradition_people_of_the_bow
 						}
 						desc = expedition_unique_encounters.001.people_of_the_bow
-					}
-					triggered_desc = {
-						trigger = {
-							scope:tradition_four = culture_tradition:tradition_guardians_of_the_abyss
-						}
-						desc = expedition_unique_encounters.001.guardians_of_the_abyss
 					}
 					triggered_desc = {
 						trigger = {
