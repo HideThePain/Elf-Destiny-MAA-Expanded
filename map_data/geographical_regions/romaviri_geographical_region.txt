@@ -1,0 +1,168 @@
+﻿custom_romaviri_empire = { #Only the provinces needed to restore the Empire, not the full borders.
+	duchies = {
+		d_latium d_corsica d_venice d_romagna d_sicily d_genoa d_capua d_apulia d_thrace d_strymon d_antioch d_palestine d_alexandria d_athens d_tunis d_croatia d_thessalonika d_thessaly
+	}
+}
+custom_romaviri_syria_palestina = {
+	duchies = {
+		#Syria
+		d_aleppo
+		d_antioch
+		d_homs
+		d_damascus
+		d_lebanon
+		#Jerusalem
+		d_oultrejourdain
+		d_palestine
+		d_urdunn
+	}
+}
+custom_romaviri_aegyptus = {
+	duchies = {
+		d_alexandria
+		d_delta
+		d_cairo
+		d_al-said
+		d_sinai
+	}
+}
+custom_romaviri_cyrenaica = {
+	duchies = {
+		d_cyrenaica
+		d_syrte
+	}
+}
+custom_romaviri_africa = {
+	duchies = {
+		d_tunis
+		d_kairouan
+		d_kroumerie
+		d_jerid
+		d_tripolitania
+	}
+}
+custom_romaviri_illyricum = {
+	duchies = {
+		d_carinthia
+		d_rashka
+		d_macva
+		d_duklja
+		d_ragusa
+		d_bosna
+		d_usora
+		d_istria
+		d_krain
+		d_slavonia
+		d_croatia
+		d_dalmatia
+		d_friuli
+		d_tyrol
+		d_lower_bosna
+	}
+}
+custom_romaviri_hispania = {
+	duchies = {
+		d_castilla
+		d_cantabria
+		d_aragon
+		d_barcelona
+		d_valencia
+		d_mallorca
+		d_navarra
+		d_viscaya
+		d_leon
+		d_asturias
+		d_galicia
+		d_porto
+		d_coimbra
+		d_beja
+		d_algarve
+		d_cordoba
+		d_murcia
+		d_granada
+		d_sevilla
+		d_badajoz
+		d_toledo
+	}
+}
+custom_romaviri_mauretania = {
+	duchies = {
+		d_tlemcen
+		d_tahert
+		d_alger
+		d_bejaia
+		d_zab
+		d_mzab
+		d_marrakesh
+		d_sous
+		d_tafilalt
+		d_fes
+		d_rif
+	}
+}
+custom_romaviri_mesopotamia = {
+	duchies = {
+		#d_armenia
+		d_mesopotamia
+		d_edessa
+		#d_coloneia
+		d_kermanshah
+		d_basra
+		d_baghdad
+	}
+}
+custom_romaviri_caledonia = {
+	duchies = {
+		d_the_isles
+		d_galloway
+		d_western_isles
+		d_lothian
+		d_albany
+		d_moray
+	}
+}
+custom_romaviri_hibernia = {
+	duchies = {
+		d_ulster
+		d_connacht
+		d_meath
+		d_leinster
+		d_munster
+	}
+}
+custom_romaviri_full_borders = {
+	regions = { #Hispania #Francia #England #Wales #North-Africa #Jerusalem #Europe South (Italy+ERE) #Asia Minor
+		world_europe_west_iberia world_europe_west_francia custom_england custom_wales world_africa_north world_middle_east_jerusalem world_europe_south world_asia_minor
+	}
+}
+custom_eastern_romaviri_empire = {
+	regions = {
+		world_middle_east_jerusalem world_europe_south world_asia_minor
+	}
+}
+custom_theodosian_ere = {
+	regions = {
+		custom_romaviri_syria_palestina
+		custom_romaviri_aegyptus
+		custom_romaviri_cyrenaica
+		ghw_region_greece
+		ghw_region_thessalonika
+		ghw_region_anatolia
+	}
+	duchies = {
+		# Bulgaria
+		d_vidin d_turnovo d_dobrudja d_bulgaria d_philippopolis
+		# Crete
+		d_krete
+		# Cyprus
+		d_cyprus
+		# Edessa
+		d_edessa d_diyarmudar d_palmyra
+		# Jerusalem
+		d_amman
+		# Arabia
+		d_shammar
+		# Egypt
+		d_al-wahat d_eastern_desert
+	}
+}
