@@ -189,6 +189,7 @@ ballistrai = {
 
     counters = {
         pikemen = 0.5
+        peasant_militia = 1
         heavy_infantry = 0.5
     }
 
@@ -299,6 +300,7 @@ varangian_guards = {
 
     counters = {
         pikemen = 1
+        peasant_militia = 2
         heavy_cavalry = 1
     }
 
@@ -332,6 +334,7 @@ handpicked_faithful = {
         domicile ?= { has_domicile_parameter = camp_unlocks_handpicked_faithful_maa_type }
         NOT = {
             OR = {
+                culture = { has_cultural_parameter = strength_in_numbers_heavy_maa_ban }
                 culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
                 culture = { has_cultural_parameter = unlock_maa_astrion_innovation }
                 culture = { has_cultural_parameter = unlock_maa_deepwood_elven_innovation }
@@ -350,6 +353,7 @@ handpicked_faithful = {
 
     counters = {
         pikemen = 1
+        peasant_militia = 2
         heavy_cavalry = 1
     }
 
@@ -369,7 +373,7 @@ handpicked_faithful = {
 maa_bandits = {
     type = skirmishers
 
-    can_recruit = { always = no }
+    special_recruit_only = yes
 
     damage = 15
     toughness = 20
@@ -400,7 +404,7 @@ maa_bandits = {
 maa_poachers = {
     type = archers
 
-    can_recruit = { always = no }
+    special_recruit_only = yes
 
     damage = 30
     toughness = 15
@@ -430,7 +434,7 @@ maa_poachers = {
 maa_marauders = {
     type = light_cavalry
 
-    can_recruit = { always = no }
+    special_recruit_only = yes
 
     damage = 30
     toughness = 15
@@ -460,7 +464,7 @@ maa_marauders = {
 maa_thieves = {
     type = pikemen
 
-    can_recruit = { always = no }
+    special_recruit_only = yes
 
     damage = 30
     toughness = 20

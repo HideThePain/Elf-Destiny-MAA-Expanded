@@ -40,12 +40,12 @@ nomadic_riders = {
     can_recruit = {
         # Prevents this MaA type from being shown in the interface
         # Nomadic Riders are always created and raised from code
-        always = no
-    }
+        special_recruit_only = yes
 
-    stack = 100
-    # No AI for the same reason as above
-    icon = nomadic_riders
+        stack = 100
+        # No AI for the same reason as above
+        icon = nomadic_riders
+    }
 }
 
 torch_bearers = {
@@ -110,7 +110,7 @@ kheshig = {
     }
 
     can_recruit = {
-        dynasty ?= { has_dynasty_perk = mpo_nomad_legacy_3 }
+        dynasty ?= { has_dynasty_perk = mpo_nomad_legacy_4 }
         NOT = {
             OR = {
                 culture = { has_cultural_parameter = unlock_maa_alfar_innovation }
@@ -335,6 +335,7 @@ mangudai = {
 
     counters = {
         pikemen = 0.5
+        peasant_militia = 2
         heavy_infantry = 1
     }
 
@@ -385,12 +386,6 @@ cataphract_archers = {
     can_recruit = {
         valid_for_maa_trigger = { PARAMETER = unlock_maa_cataphract_archers }
         #Either non-nomadic or has some dominance
-        OR = {
-            NOT = {
-                government_has_flag = government_is_nomadic
-            }
-            has_realm_law_flag = unlock_maa_nomad_lancers
-        }
         NOT = {
             OR = {
                 culture = { has_cultural_parameter = strength_in_numbers_heavy_maa_ban }
@@ -401,6 +396,12 @@ cataphract_archers = {
                 culture = { has_cultural_parameter = unlock_maa_tuathan_innovation }
                 culture = { has_cultural_parameter = unlock_maa_romaviri_innovation }
             }
+        }
+        OR = {
+            NOT = {
+                government_has_flag = government_is_nomadic
+            }
+            has_realm_law_flag = unlock_maa_nomad_lancers
         }
     }
 
