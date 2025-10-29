@@ -1,0 +1,5 @@
+send_to_highguard_of_valor_interaction_effect = {
+	global = send_to_highguard_of_valor_interaction_effect_desc
+	first = send_to_highguard_of_valor_interaction_effect_desc
+	third = send_to_highguard_of_valor_interaction_effect_desc
+}

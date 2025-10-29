@@ -920,7 +920,8 @@ tradition_romaviri_bureaucracy = {
         }
     }
 
-    parameters = {
+	parameters = {
+        unlock_maa_highguard_of_valor = yes
         frontier_themes_borrow_neighbor_troops = yes
         reduced_bodyguard_aptitude = yes
         can_blind_prisoners = yes

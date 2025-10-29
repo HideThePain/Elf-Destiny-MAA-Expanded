@@ -140,6 +140,10 @@ highguard_of_valor = {
 
     can_recruit = {
         culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        exists = scope:title
+        scope:title = {
+            has_variable = founded_highguardian_guard
+        }
         is_any_elf_type = yes
     }
 

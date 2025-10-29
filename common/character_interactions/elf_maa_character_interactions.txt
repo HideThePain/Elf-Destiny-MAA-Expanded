@@ -1,0 +1,184 @@
+send_to_highguard_of_valor_interaction = {
+	category = interaction_category_friendly
+	interface_priority = 60
+	icon = send_to_highguard_of_valor_interaction
+
+	desc = send_to_highguard_of_valor_interaction_desc
+	use_diplomatic_range = no
+	common_interaction = yes
+	
+	is_shown = {
+		NOT = { scope:recipient = scope:actor }
+
+		scope:actor = {
+			is_dynast = yes
+			dynasty = scope:recipient.dynasty
+			
+			dynasty = {
+				has_dynasty_perk = fp1_adventure_legacy_1
+			}
+			
+			exists = title:e_byzantium.holder
+			NOR = {
+				faith = {
+					has_doctrine_parameter = pacifist_opinion_active
+				}
+				this = title:e_byzantium.holder
+				has_truce = title:e_byzantium.holder
+				is_at_war_with = title:e_byzantium.holder
+			}
+		}
+	}
+	
+	cooldown = { years = 2 }
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_at_war = no
+			NOT = {
+				has_relation_rival = title:e_byzantium.holder
+			}
+		}
+		scope:recipient = {
+			is_busy_in_events_localised = yes
+			is_ruler = no
+			is_adult = yes
+			is_married = no
+			NOT = {
+				has_trait = highguardian
+			}
+		}
+		trigger_if = {
+			limit = {
+				scope:recipient = {
+					is_adult = yes
+					NOT = {
+						can_be_knight_trigger = {
+							ARMY_OWNER = title:e_byzantium.holder
+						}
+					}
+				}
+			}
+			custom_description = {
+				scope:recipient = {
+					can_be_knight_trigger = {
+						ARMY_OWNER = title:e_byzantium.holder
+					}
+				}
+				text = "not_allowed_in_highguard_of_valor"
+			}
+		}
+		trigger_if = {
+			limit = {
+				scope:recipient = {
+					NOR = {
+						is_child_of = scope:actor
+						is_grandchild_of = scope:actor
+						is_great_grandchild_of = scope:actor
+					}
+				}
+			}
+			custom_description = {
+				scope:recipient.top_liege = scope:actor.top_liege
+				text = "same_realm_as"
+			}
+		}
+	}
+	
+	on_accept = {
+		title:e_byzantium.holder = {
+			save_scope_as = emperor
+			if = {
+				limit = { capital_county = title:c_byzantion }
+				set_local_variable = {
+					name = to_miklagard
+					value = yes
+				}
+			}
+		}
+		
+		scope:actor = {
+			stress_impact = {
+				paranoid = minor_stress_impact_gain
+			}
+			hidden_effect = {
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = send_to_highguard_of_valor_interaction_toast
+
+					left_icon = scope:recipient					
+					right_icon = scope:emperor
+					
+					custom_tooltip = send_to_highguard_of_valor_interaction_toast_desc
+				}
+			}
+		}
+
+		scope:recipient = {
+			save_scope_as = highguardian_candidate
+			
+		}
+		
+		show_as_tooltip = {
+			scope:highguardian_candidate = {
+				visit_court_of = scope:emperor
+				add_trait = highguardian
+				custom_description_no_bullet = {
+					text = send_to_highguard_of_valor_interaction_effect
+				}
+			}
+		}
+		hidden_effect = {
+			scope:emperor = {
+				trigger_event = highguardian.0003
+			}
+		}
+		
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = miniscule_unity_loss
+			DESC = clan_unity_vaering.desc
+			REVERSE_NON_HOUSE_TARGET = no
+		}		
+	}
+	
+	cost = {
+		prestige = {
+			value = 350
+		}
+	}
+	
+	auto_accept = yes
+
+	ai_potential = {
+		is_at_war = no
+		is_dynast = yes
+		
+		dynasty = {
+			has_dynasty_perk = fp1_adventure_legacy_1
+		}
+		
+		exists = title:e_byzantium.holder
+		NOR = {
+			faith = {
+				has_doctrine_parameter = pacifist_opinion_active
+			}
+			this = title:e_byzantium.holder
+			has_truce = title:e_byzantium.holder
+			is_at_war_with = title:e_byzantium.holder
+		}
+	}
+	
+	ai_targets = {
+		ai_recipients = children
+		max = 10
+	}
+	
+	ai_frequency = 120
+	
+	ai_will_do = {
+		base = 100
+	}
+}

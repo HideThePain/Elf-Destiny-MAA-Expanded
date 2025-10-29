@@ -1,0 +1,187 @@
+﻿# character just about to die in root scope
+# if a killer is known, it's set as scope:killer
+#Triggered by code
+
+on_death = {
+    on_actions = {
+        elf_highguard_pillage
+    }
+}
+
+elf_highguard_pillage = {
+    # EP3 - Highguard of Valor Palace Pillaging
+    effect = {
+        # EP3 - Highguard of Valor Palace Pillaging
+        if = {
+            limit = {
+                OR = {
+                    number_maa_regiments_of_type = {
+                        type = highguard_of_valor
+                        value >= 1
+                    }
+                    number_title_maa_regiments_of_type = {
+                        type = highguard_of_valor
+                        value >= 1
+                    }
+                    AND = {
+                        any_court_position_holder = {
+                            type = eryndar_court_position
+                            ep3_highguardian_trigger = yes
+                        }
+                    }
+                }
+                primary_title = title:e_byzantium
+            }
+            save_scope_as = dead_emperor
+            if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 0
+                        value <= 100
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 1
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 100
+                        value <= 200
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 2
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 200
+                        value <= 300
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 3
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 300
+                        value <= 400
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 4
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 400
+                        value <= 500
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 5
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 500
+                        value <= 600
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 6
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 600
+                        value <= 700
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 7
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 700
+                        value <= 800
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 8
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    number_maa_soldiers_of_type = {
+                        type = highguard_of_valor
+                        value > 800
+                        value <= 900
+                    }
+                }
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 9
+                    }
+                }
+            }
+            else = {
+                primary_heir = {
+                    set_variable = {
+                        name = highguard_of_valor_regiments
+                        value = 10
+                    }
+                }
+            }
+            primary_heir = {
+                trigger_event = {
+                    id = ep3_emperor_yearly.3000
+                    days = { 10 20 }
+                }
+            }
+        }
+    }
+}
