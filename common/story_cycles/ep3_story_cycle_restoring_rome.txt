@@ -1,0 +1,45 @@
+﻿
+### Byzantine-focused Restore Rome Story Cycle
+### by Chad Uhl
+
+ep3_story_cycle_restoring_romaviri = {
+
+    on_setup = {
+        story_owner = {
+            trigger_event = {
+                id = romaviri_restoration.0001
+                days = 2
+            }
+        }
+    }
+
+    # We only pass on the story if the title heir is the Player
+    on_owner_death = {
+        if = {
+            limit = {
+                story_owner = { has_title = title:h_romaviri_empire }
+                title:h_romaviri_empire.current_heir = { is_ai = no }
+            }
+            make_story_owner = title:h_romaviri_empire.current_heir
+        }
+    }
+
+
+    #Maintenance group
+    effect_group = {
+        days = 1
+        trigger = {
+            story_owner = { is_landed = no }
+        }
+        triggered_effect = {
+            trigger = { always = yes }
+            effect = {
+                #You became a landless adventurer with different lifestyles! Ending story prematurely.
+                story_owner = { save_scope_as = story_owner }
+                debug_log = "Romaviri Restoration invalidated"
+                debug_log_scopes = yes
+                end_story = yes
+            }
+        }
+    }
+}

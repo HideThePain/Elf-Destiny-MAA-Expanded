@@ -300,7 +300,7 @@ romaviri_restoration.0005 = {
 			triggered_desc = {
 				trigger = {
 					NOT = {
-						exists = title:e_romaviri_empire.var:variable_restored_hre
+						exists = title:h_romaviri_empire.var:variable_restored_hre
 					}
 				}
 				desc = romaviri_restoration.0005.desc.regular
@@ -308,7 +308,7 @@ romaviri_restoration.0005 = {
 			# Holy Romaviri Empire
 			triggered_desc = {
 				trigger = {
-					exists = title:e_romaviri_empire.var:variable_restored_hre
+					exists = title:h_romaviri_empire.var:variable_restored_hre
 				}
 				desc = romaviri_restoration.0005.desc.holy
 			}
@@ -321,7 +321,7 @@ romaviri_restoration.0005 = {
 	}
 
 	trigger = {
-		scope:title = title:e_romaviri_empire
+		scope:title = title:h_romaviri_empire
 		NOT = { has_trait = augustus }
 	}
 
@@ -401,7 +401,7 @@ scripted_trigger romaviri_restoration_0010_is_valid_romaviri_empire_trigger = {
 	is_ai = no
 	OR = {
 		has_title = title:e_byzantium
-		has_title = title:e_romaviri_empire
+		has_title = title:h_romaviri_empire
 	}
 	OR = {
 		faith.religion = faith:catholic.religion # Either Christian
@@ -650,7 +650,7 @@ romaviri_restoration.0015 = {
 				target = flag:flag_re_restored_italia
 			}
 		}
-		NOT = { exists = title:e_romaviri_empire.var:variable_restored_italy }
+		NOT = { exists = title:h_romaviri_empire.var:variable_restored_italy }
 		NOT = { has_character_flag = flag_romaviri_province_cooldown }
 		completely_controls_region = world_europe_south_italy
 	}
@@ -733,7 +733,7 @@ romaviri_restoration.0017 = {
 				target = flag:flag_re_restored_germania
 			}
 		}
-		NOT = { exists = title:e_romaviri_empire.var:variable_restored_hre }
+		NOT = { exists = title:h_romaviri_empire.var:variable_restored_hre }
 		NOT = { has_character_flag = flag_romaviri_province_cooldown }
 		completely_controls_region = world_europe_west_germania
 	}
@@ -1045,7 +1045,7 @@ romaviri_restoration.0024 = {
 
 	trigger = {
 		romaviri_restoration_0010_is_valid_romaviri_empire_trigger = yes
-		has_title = title:e_romaviri_empire
+		has_title = title:h_romaviri_empire
 		NOT = { # Only happens once.
 			is_target_in_global_variable_list = {
 				name = restored_romaviri_provinces_variable_list
@@ -1370,7 +1370,7 @@ romaviri_restoration.0103 = {
 scripted_trigger romaviri_restoration_0104_is_valid_romaviri_empire_trigger = {
 	OR = {
 		has_title = title:e_byzantium
-		has_title = title:e_romaviri_empire
+		has_title = title:h_romaviri_empire
 	}
 	faith = faith:orthodox
 	faith = { has_doctrine = special_doctrine_ecumenical_christian }
@@ -2484,7 +2484,7 @@ romaviri_restoration.0141 = {
 			OR = {
 				has_title = title:e_hre
 				has_title = title:e_byzantium
-				has_title = title:e_romaviri_empire
+				has_title = title:h_romaviri_empire
 			}
 		}
 	}
@@ -2495,7 +2495,7 @@ romaviri_restoration.0141 = {
 			NOR = {
 				has_title = title:e_hre
 				has_title = title:e_byzantium
-				has_title = title:e_romaviri_empire
+				has_title = title:h_romaviri_empire
 			}
 		}
 	}
@@ -3005,7 +3005,7 @@ romaviri_restoration.1200 = {
 		# Ensure you are l'empereur
 		OR = {
 			has_title = title:e_byzantium
-			has_title = title:e_romaviri_empire
+			has_title = title:h_romaviri_empire
 		}
 		scope:county = {
 			# Constantinople only
@@ -3058,12 +3058,12 @@ romaviri_restoration.1200 = {
 	option = {
 		name = {
 			text = romaviri_restoration.1200.b.rome
-			trigger = { has_title = title:e_romaviri_empire }
+			trigger = { has_title = title:h_romaviri_empire }
 		}
 		name = {
 			text = romaviri_restoration.1200.b
 			trigger = {
-				NOT = { has_title = title:e_romaviri_empire }
+				NOT = { has_title = title:h_romaviri_empire }
 			}
 		}
 	}

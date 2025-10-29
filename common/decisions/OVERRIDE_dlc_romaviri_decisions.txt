@@ -1,0 +1,1104 @@
+﻿hold_triumph_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_decision_hold_triumph.dds"
+    }
+
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 60
+        hegemony = 60
+    }
+
+    sort_order = 110
+
+    desc = hold_triumph_decision_desc
+    selection_tooltip = hold_triumph_decision_tooltip
+    decision_group_type = elf
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        is_romaviri_emperor_trigger = yes
+        culture = { has_cultural_parameter = holds_triumphs }
+    }
+
+    is_valid = {
+        is_at_war = no
+        is_romaviri_emperor_trigger = yes
+        culture = { has_cultural_parameter = holds_triumphs }
+    }
+
+    is_valid_showing_failures_only = {
+        is_alive = yes
+        is_available_healthy_adult = yes
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+    }
+
+    cost = {
+        gold = {
+            value = 0
+            if = {
+                limit = {
+                    NOR = {
+                        has_treasury = yes
+                        has_character_flag = free_triumph_flag
+                    }
+                }
+                add = ep3_triumph_gold_cost
+            }
+        }
+        treasury = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = yes
+                    NOT = { has_character_flag = free_triumph_flag }
+                }
+                add = ep3_triumph_gold_cost
+            }
+        }
+        influence = {
+            value = 0
+            if = {
+                limit = {
+                    NOT = { has_character_flag = free_triumph_flag }
+                }
+                add = ep3_triumph_influence_cost
+            }
+        }
+    }
+
+    cooldown = { years = 10 }
+
+    effect = {
+        custom_tooltip = hold_triumph_decision_effects
+        trigger_event = {
+            id = ep3_decisions_event.0001
+            days = 1
+        }
+        if = {
+            limit = { has_character_flag = free_triumph_flag }
+            remove_character_flag = free_triumph_flag
+        }
+    }
+
+    ai_potential = {
+        NOT = { has_trait = humble }
+        has_variable = ep3_valid_triumph_victory
+    }
+
+    ai_will_do = {
+        base = 30
+        modifier = {
+            has_trait = arrogant
+            add = 30
+        }
+        modifier = {
+            has_trait = ambitious
+            add = 20
+        }
+    }
+}
+
+restore_backwater_counties_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_decision_estate.dds"
+    }
+    decision_group_type = major
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 120
+        kingdom = 120
+        empire = 0
+        hegemony = 0
+    }
+
+    sort_order = 70
+
+    desc = restore_backwater_counties_decision_desc
+    selection_tooltip = restore_backwater_counties_decision_tooltip
+    decision_group_type = elf
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        primary_title ?= {
+            OR = {
+                tier = tier_duchy
+                tier = tier_kingdom
+            }
+        }
+        any_sub_realm_county = {
+            has_county_modifier = backwater_county_modifier
+        }
+    }
+
+    is_valid = {
+        is_at_war = no
+        custom_tooltip = {
+            text = backwater_county_eligible_modifier_removal_tt
+            any_sub_realm_county = {
+                count >= 1
+                has_county_modifier = backwater_county_modifier
+                development_level >= 50
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        is_alive = yes
+        is_available = yes
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+    }
+
+    cost = {
+        gold = {
+            value = medium_gold_value
+            multiply = {
+                value = 1
+                every_sub_realm_county = {
+                    limit = {
+                        title_province = {
+                            geographical_region = greek_backwater_modifier_region
+                        }
+                        has_county_modifier = backwater_county_modifier
+                        development_level >= 50
+                    }
+                    add = 1
+                }
+            }
+        }
+        gold = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = no
+                }
+                add = medium_gold_value
+                multiply = {
+                    value = 1
+                    every_sub_realm_county = {
+                        limit = {
+                            title_province = {
+                                geographical_region = greek_backwater_modifier_region
+                            }
+                            has_county_modifier = backwater_county_modifier
+                            development_level >= 50
+                        }
+                        add = 1
+                    }
+                }
+            }
+        }
+        treasury = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = yes
+                }
+                add = medium_gold_value
+                multiply = {
+                    value = 1
+                    every_sub_realm_county = {
+                        limit = {
+                            title_province = {
+                                geographical_region = greek_backwater_modifier_region
+                            }
+                            has_county_modifier = backwater_county_modifier
+                            development_level >= 50
+                        }
+                        add = 1
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        custom_tooltip = greek_backwater_modifier_removal_tt
+        if = {
+            limit = {
+                NOT = {
+                    any_sub_realm_county = {
+                        title_province = {
+                            geographical_region = greek_backwater_modifier_region
+                        }
+                        has_county_modifier = backwater_county_modifier
+                        development_level >= 50
+                    }
+                }
+            }
+            custom_tooltip = no_backwater_counties_meet_criteria_tt
+        }
+        else = {
+            every_sub_realm_county = {
+                limit = {
+                    title_province = {
+                        geographical_region = greek_backwater_modifier_region
+                    }
+                    has_county_modifier = backwater_county_modifier
+                    development_level >= 50
+                }
+                add_to_list = frontwater_counties
+            }
+        }
+        primary_title = { save_scope_as = target_theme }
+        # Toast for the Governor confirming which counties got the modifier removed
+        send_interface_message = {
+            type = event_generic_good
+            title = ep3_theme_not_backwater.t
+            left_icon = root
+            right_icon = root.primary_title
+            every_in_list = {
+                list = frontwater_counties
+                remove_county_modifier = backwater_county_modifier
+            }
+        }
+
+        if = { # If we remove the modifier from the last county belonging to this governor, we fire a celebration event for some narrative flavor
+            limit = {
+                any_sub_realm_county = {
+                    count = 0
+                    title_province = {
+                        geographical_region = greek_backwater_modifier_region
+                    }
+                    has_county_modifier = backwater_county_modifier
+                }
+            }
+            # Event for the Governor if all counties are restored
+            trigger_event = {
+                id = ep3_decisions_event.3000
+                days = 1
+            }
+
+            # Once all the counties have been brought up to speed, we notify the emperor
+            liege = {
+                send_interface_message = {
+                    type = event_generic_good_text
+                    title = ep3_theme_not_backwater.t
+                    desc = ep3_theme_not_backwater.desc
+                    left_icon = root
+                }
+                # Trigger the event for the emperor to see if all the counties have been cleared
+                trigger_event = ep3_decisions_event.3001
+            }
+        }
+    }
+}
+
+prepare_greek_fire_dromons_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_smith.dds"
+    }
+
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 120
+        kingdom = 120
+        empire = 120
+        hegemony = 120
+    }
+
+    sort_order = 110
+
+    desc = prepare_greek_fire_dromons_decision_desc
+    selection_tooltip = prepare_greek_fire_dromons_decision_tooltip
+    decision_group_type = elf
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        has_multiple_players = no
+        title:c_byzantion = {
+            holder = root
+        }
+        culture = {
+            OR = {
+                this = culture:greek
+                any_parent_culture_or_above = { this = culture:greek }
+
+                this = culture:culture_elf
+                this = culture:elf_culture_serelion
+                this = culture:elf_culture_gwynthorn
+                this = culture:elf_culture_daelurin
+                this = culture:elf_culture_thundarael
+                this = culture:elf_culture_valerith
+                this = culture:elf_culture_lormelis
+                any_parent_culture_or_above = { this = culture:culture_elf }
+                any_parent_culture_or_above = { this = culture:elf_culture_serelion }
+                any_parent_culture_or_above = { this = culture:elf_culture_gwynthorn }
+                any_parent_culture_or_above = { this = culture:elf_culture_daelurin }
+                any_parent_culture_or_above = { this = culture:elf_culture_thundarael }
+                any_parent_culture_or_above = { this = culture:elf_culture_valerith }
+                any_parent_culture_or_above = { this = culture:elf_culture_lormelis }
+            }
+        }
+    }
+
+    is_valid = {
+        custom_tooltip = {
+            text = prepare_greek_fire_dromons_constantinople_tt
+            capital_county = title:c_byzantion
+        }
+        custom_tooltip = {
+            text = prepare_greek_fire_dromons_capital_unoccupied_tt
+            capital_province = {
+                is_occupied = no
+            }
+        }
+        custom_tooltip = {
+            text = prepare_greek_fire_dromons_no_modifier_tt
+            capital_county = {
+                NOT = { has_county_modifier = defensive_fire_dromons_modifier }
+            }
+        }
+
+        OR = {
+            influence >= major_influence_value
+            gold >= major_gold_value_static_max
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        is_available = yes
+        NOT = { exists = involved_activity }
+    }
+
+    cooldown = { years = 5 }
+
+    effect = {
+        custom_tooltip = defensive_fire_dromons_3_years_tooltip
+        custom_tooltip = defensive_fire_dromons_custom_desc
+        custom_tooltip = defensive_fire_dromons_buildings_desc
+        trigger_event = ep3_decisions_event.3100
+    }
+
+    ai_potential = {
+        NOT = { has_trait = compassionate }
+        OR = {
+            gold >= massive_gold_value
+            influence >= massive_influence_value
+        }
+    }
+
+    ai_will_do = {
+        base = 20
+        ai_value_modifier = {
+            ai_compassion = -1
+        }
+        modifier = {
+            OR = {
+                has_trait = paranoid
+                has_trait = craven
+            }
+            add = 30
+        }
+        modifier = {
+            OR = {
+                martial > high_skill_rating
+                learning > high_skill_rating
+            }
+            add = 20
+        }
+        modifier = {
+            OR = {
+                has_trait = calm
+                has_trait = content
+            }
+            add = -20
+        }
+    }
+}
+
+recreate_byzantine_empire_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_cerimonial_decision.dds"
+    }
+    decision_group_type = major
+
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 6
+        empire = 6
+        hegemony = 0
+    }
+
+    desc = recreate_byzantine_empire_decision_desc
+    selection_tooltip = recreate_byzantine_empire_decision_tooltip
+    decision_group_type = elf
+
+    is_shown = {
+        has_dlc_feature = roads_to_power
+        NOR = {
+            exists = title:e_byzantium.holder
+            exists = title:h_roman_empire.holder
+            exists = title:h_eastern_roman_empire.holder
+            exists = title:h_romaviri_empire.holder
+        }
+        title:e_byzantium = { is_titular = no }
+        OR = {
+            culture = {
+                OR = {
+                    this = culture:greek
+                    any_parent_culture_or_above = { this = culture:greek }
+                    this = culture:culture_elf
+                    this = culture:elf_culture_serelion
+                    this = culture:elf_culture_gwynthorn
+                    this = culture:elf_culture_daelurin
+                    this = culture:elf_culture_thundarael
+                    this = culture:elf_culture_valerith
+                    this = culture:elf_culture_lormelis
+                    any_parent_culture_or_above = { this = culture:culture_elf }
+                    any_parent_culture_or_above = { this = culture:elf_culture_serelion }
+                    any_parent_culture_or_above = { this = culture:elf_culture_gwynthorn }
+                    any_parent_culture_or_above = { this = culture:elf_culture_daelurin }
+                    any_parent_culture_or_above = { this = culture:elf_culture_thundarael }
+                    any_parent_culture_or_above = { this = culture:elf_culture_valerith }
+                    any_parent_culture_or_above = { this = culture:elf_culture_lormelis }
+                }
+            }
+            AND = {
+                OR = {
+                    ep3_orthodox_faith_trigger = yes
+                    faith = faith:hellenic_pagan
+                    religion = {is_in_family = rf_spark}
+                }
+                primary_title = {
+                    tier <= tier_empire
+                    empire = title:e_latin_empire
+                }
+            }
+            AND = {
+                OR = {
+                    ep3_orthodox_faith_trigger = yes
+                    faith = faith:hellenic_pagan
+                    religion = {is_in_family = rf_spark}
+                }
+                primary_title = {
+                    tier <= tier_empire
+                    empire = title:e_byzantium
+                }
+            }
+        }
+    }
+
+    is_valid = {
+        custom_tooltip = {
+            NOT = {
+                exists = title:e_byzantium.holder
+            }
+            text = no_byz_emp_exists_tt
+        }
+        top_liege = this
+        OR = {
+            custom_tooltip = {
+                culture = {
+                    this = culture:greek
+                }
+                text = is_greek_tt
+            }
+            custom_tooltip = {
+                culture = {
+                    any_parent_culture_or_above = { this = culture:greek }
+                }
+                text = is_greek_descendent_tt
+            }
+            this = culture:culture_elf
+            this = culture:elf_culture_serelion
+            this = culture:elf_culture_gwynthorn
+            this = culture:elf_culture_daelurin
+            this = culture:elf_culture_thundarael
+            this = culture:elf_culture_valerith
+            this = culture:elf_culture_lormelis
+            any_parent_culture_or_above = { this = culture:culture_elf }
+            any_parent_culture_or_above = { this = culture:elf_culture_serelion }
+            any_parent_culture_or_above = { this = culture:elf_culture_gwynthorn }
+            any_parent_culture_or_above = { this = culture:elf_culture_daelurin }
+            any_parent_culture_or_above = { this = culture:elf_culture_thundarael }
+            any_parent_culture_or_above = { this = culture:elf_culture_valerith }
+            any_parent_culture_or_above = { this = culture:elf_culture_lormelis }
+            ep3_orthodox_faith_trigger = yes
+            faith = faith:hellenic_pagan
+            religion = {is_in_family = rf_spark}
+        }
+        highest_held_title_tier >= tier_kingdom
+
+        realm_size >= 12
+        custom_tooltip = {
+            title:c_byzantion.holder = {
+                exists = this
+                OR = {
+                    this = root
+                    AND = {
+                        is_ai = yes
+                        top_liege = root
+                    }
+                }
+            }
+            text = pandidakterion_tt
+        }
+        primary_title = {
+            tier <= tier_empire
+            OR = {
+                empire = title:e_latin_empire
+                empire = title:e_byzantium
+            }
+        }
+        trigger_if = {
+            limit = {
+                is_ai = no
+                has_legitimacy = yes
+            }
+            legitimacy_level >= 3
+        }
+        #A liiiiiittle easier for AI
+        trigger_if = {
+            limit = {
+                is_ai = yes
+                has_legitimacy = yes
+            }
+            legitimacy_level >= 1
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        trigger_if = {
+            limit = {
+                is_ai = no
+            }
+            NOT = { exists = involved_activity }
+            is_available = yes
+        }
+        trigger_else = {
+            is_alive = yes
+            is_imprisoned = no
+            is_incapable = no
+        }
+    }
+
+    cost = {
+        prestige = {
+            value = {
+                add = 1000
+                if = {
+                    limit = {
+                        any_held_title = {
+                            this = title:e_latin_empire
+                        }
+                    }
+                    add = 1000
+                }
+                if = {
+                    limit = {
+                        culture = {
+                            NOR = {
+                                this = culture:greek
+                                any_parent_culture_or_above = { this = culture:greek }
+                            }
+                        }
+                    }
+                    add = 500
+                }
+                #AI need to take this decision and aren't good at saving up for it
+                if = {
+                    limit = {
+                        is_ai = yes
+                    }
+                    multiply = 0.5
+                }
+            }
+        }
+        piety = {
+            value = {
+                add = massive_piety_value
+                if = {
+                    limit = {
+                        any_held_title = {
+                            this = title:e_latin_empire
+                        }
+                    }
+                    add = 500
+                }
+                if = {
+                    limit = {
+                        ep3_orthodox_faith_trigger = no
+                    }
+                    add = 500
+                }
+                if = {
+                    limit = {
+                        faith = faith:catholic
+                    }
+                    add = 500
+                }
+                #AI need to take this decision and aren't good at saving up for it
+                if = {
+                    limit = {
+                        is_ai = yes
+                    }
+                    multiply = 0.5
+                }
+            }
+        }
+    }
+
+    effect = {
+        show_as_tooltip = {
+            recreate_ere_decision_effect = yes
+        }
+        trigger_event = ep3_decisions_event.4030
+    }
+
+    ai_potential = {
+        NOT = { exists = title:e_byzantium.holder }
+        any_held_title = {
+            title_tier = kingdom
+            OR = {
+                empire = title:e_latin_empire
+                empire = title:e_byzantium
+            }
+        }
+        OR = {
+            culture = {
+                OR = {
+                    this = culture:greek
+                    any_parent_culture_or_above = { this = culture:greek }
+                }
+            }
+            ep3_orthodox_faith_trigger = yes
+            primary_title = {
+                tier <= tier_empire
+                empire = title:e_latin_empire
+            }
+        }
+    }
+
+    ai_will_do = {
+        base = 100
+        modifier = {
+            primary_title = {
+                tier <= tier_empire
+                empire = title:e_latin_empire
+            }
+            add = -60
+        }
+        modifier = {
+            NAND = {
+                culture = {
+                    OR = {
+                        this = culture:greek
+                        any_parent_culture_or_above = { this = culture:greek }
+                    }
+                }
+                OR = {
+                    ep3_orthodox_faith_trigger = yes
+                    faith = faith:hellenic_pagan
+                }
+            }
+            add = -30
+        }
+    }
+}
+
+reinstitute_grain_dole_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_decision_hold_triumph.dds"
+    }
+
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 60
+        empire = 60
+        hegemony = 0
+    }
+    sort_order = 40
+
+    desc = reinstitute_grain_dole_decision_desc
+    selection_tooltip = reinstitute_grain_dole_decision_tooltip
+    decision_group_type = elf
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        is_romaviri_emperor_trigger = yes
+        NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:reinstitute_grain_dole_decision
+            }
+        }
+    }
+
+    is_valid = {
+        government_has_flag = government_is_administrative
+        OR = {
+            capital_county = title:c_byzantion
+            capital_county = title:c_roma
+        }
+        completely_controls_region = custom_roman_aegyptus
+        custom_tooltip = {
+            text = enough_granaries_in_egypt
+            any_county_in_region = {
+                region = custom_roman_aegyptus
+                count >= 3
+                any_county_province = {
+                    has_building_or_higher = cereal_fields_05
+                }
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        is_at_war = no
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+        custom_tooltip = {
+            NOT = {
+                title:c_byzantion = { has_county_modifier = panem_et_circenses_county_modifier }
+            }
+            text = grain_dole_already_active
+        }
+    }
+
+    cost = {
+        gold = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = no
+                }
+                add = grain_dole_cost
+            }
+        }
+        treasury = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = yes
+                }
+                add = grain_dole_cost
+            }
+        }
+    }
+
+    effect = {
+        add_to_global_variable_list = {
+            name = unavailable_unique_decisions
+            target = flag:reinstitute_grain_dole_decision
+        }
+        trigger_event = ep3_decisions_event.4040
+        reinstitute_grain_dole_decision_effect = yes
+    }
+
+    ai_potential = {
+        is_romaviri_emperor_trigger = yes
+    }
+
+    ai_will_do = {
+        base = 100
+    }
+}
+
+reconfirm_grain_dole_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_spend_money.dds"
+    }
+
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 60
+        empire = 60
+        hegemony = 0
+    }
+    sort_order = 90
+
+    desc = reconfirm_grain_dole_decision_desc
+    selection_tooltip = reconfirm_grain_dole_decision_tooltip
+    decision_group_type = roman
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        is_romaviri_emperor_trigger = yes
+        is_target_in_global_variable_list = {
+            name = unavailable_unique_decisions
+            target = flag:reinstitute_grain_dole_decision
+        }
+    }
+
+    is_valid = {
+        government_has_flag = government_is_administrative
+        OR = {
+            capital_county = title:c_byzantion
+            capital_county = title:c_roma
+        }
+        completely_controls_region = custom_roman_aegyptus
+        custom_tooltip = {
+            text = enough_granaries_in_egypt
+            any_county_in_region = {
+                region = custom_roman_aegyptus
+                count >= 3
+                any_county_province = {
+                    has_building_or_higher = cereal_fields_05
+                }
+            }
+        }
+    }
+
+    is_valid_showing_failures_only = {
+        is_at_war = no
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+        custom_tooltip = {
+            NOT = {
+                capital_county = { has_county_modifier = panem_et_circenses_county_modifier }
+            }
+            text = grain_dole_already_active
+        }
+    }
+
+    cost = {
+        gold = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = no
+                }
+                add = grain_dole_cost
+                multiply = {
+                    value = 0.5
+                    desc = unlocked_grain_dole
+                }
+            }
+        }
+        treasury = {
+            value = 0
+            if = {
+                limit = {
+                    has_treasury = yes
+                }
+                add = grain_dole_cost
+                multiply = {
+                    value = 0.5
+                    desc = unlocked_grain_dole
+                }
+            }
+        }
+    }
+
+    effect = {
+        send_interface_message = {
+            type = event_title_good
+            title = reconfirm_grain_dole_decision_tt
+            right_icon = root
+            reinstitute_grain_dole_decision_effect = yes
+        }
+    }
+
+    ai_potential = {
+        is_romaviri_emperor_trigger = yes
+        capital_county = { has_variable = unlocked_grain_dole }
+    }
+
+    ai_will_do = {
+        base = 100
+    }
+}
+
+#mass_arrests_decision = {
+#	picture = {
+#		reference = "gfx/interface/illustrations/decisions/decision_prison.dds"
+#	}
+#	sort_order = 115
+#
+#	desc = mass_arrests_decision_desc
+#	selection_tooltip = mass_arrests_decision_tooltip
+#	decision_group_type = admin
+#
+#	is_shown = {
+#		has_ep3_dlc_trigger = yes
+#		government_allows = administrative
+#		primary_title.tier ?= tier_empire
+#		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_5 }
+#	}
+#
+#	is_valid = {
+#		government_has_flag = government_is_administrative
+#		primary_title.tier ?= tier_empire
+#		dynasty ?= { has_dynasty_perk = ep3_administrative_legacy_5 }
+#	}
+#
+#	is_valid_showing_failures_only = {
+#		NOT = { exists = involved_activity }
+#		is_imprisoned = no
+#		any_powerful_family = { }
+#	}
+#
+#	cost = {
+#		influence = monumental_influence_value
+#	}
+#
+#	cooldown = { years = 20 }
+#
+#	effect = {
+#		show_as_tooltip = {
+#			add_tyranny = massive_tyranny_gain
+#			add_legitimacy = medium_legitimacy_loss
+#
+#			custom_tooltip = house_loses_power_rating
+#			random_powerful_family = {
+#				every_house_member = {
+#					custom = choose_a_powerful_family
+#					change_influence = major_influence_loss
+#					custom_tooltip = imprisoned_by_you
+#					add_opinion = {
+#						modifier = imprisoned_me
+#						years = 10
+#						target = root
+#					}
+#				}
+#			}
+#		}
+#
+#		trigger_event = ep3_decisions_event.3200
+#	}
+#
+#	ai_potential = {
+#		always = no
+#	}
+#
+#	ai_check_interval = 0
+#
+#	ai_will_do = {
+#		base = 0
+#	}
+#}
+
+establish_silk_production_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_decision_estate.dds"
+    }
+    sort_order = 120
+
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { top_liege = this }
+                desc = establish_silk_production_decision_desc.emperor
+            }
+            desc = establish_silk_production_decision_desc
+        }
+    }
+    selection_tooltip = establish_silk_production_decision_tooltip
+    decision_group_type = admin
+
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        government_allows = administrative
+        OR = {
+            this = house.house_head
+            AND = {
+                is_ai = no
+                house.house_head = top_liege
+            }
+        }
+        domicile ?= {
+            is_domicile_type = estate
+        }
+        top_liege ?= {
+            is_romaviri_emperor_primary_title_trigger = yes
+        }
+        NOT = {
+            house = {
+                has_house_modifier = ep3_unlocked_silk
+            }
+        }
+    }
+
+    is_valid = {
+        trigger_if = {
+            limit = { top_liege = this }
+            is_romaviri_emperor_trigger = yes
+            OR = {
+                has_realm_law = imperial_bureaucracy_2
+                has_realm_law = imperial_bureaucracy_3
+            }
+        }
+        trigger_else = {
+            influence_level >= 3
+            OR = {
+                has_weak_hook = top_liege
+                has_strong_usable_hook = top_liege
+                AND = {
+                    exists = house
+                    top_liege.house ?= house
+                }
+            }
+        }
+    }
+
+    cost = {
+        gold = {
+            value = {
+                value = massive_gold_value
+                multiply = 2
+            }
+        }
+    }
+
+    effect = {
+        custom_tooltip = {
+            text = unlocked_estate_silk_buildings
+            house = { add_house_modifier = ep3_unlocked_silk }
+        }
+        send_interface_toast = {
+            type = msg_domicile_building_unlocked
+            title = unlocked_estate_silk_buildings_t
+        }
+        if = {
+            limit = {
+                top_liege != this
+                NOT = {
+                    exists = house
+                    top_liege.house ?= house
+                }
+            }
+            use_hook = top_liege
+        }
+    }
+
+    ai_potential = {
+        domicile ?= {
+            is_domicile_type = estate
+        }
+    }
+
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 120
+        kingdom = 120
+        empire = 120
+        hegemony = 120
+    }
+
+    ai_will_do = {
+        base = 50
+        modifier = {
+            has_trait = arrogant
+            add = 15
+        }
+        modifier = {
+            has_trait = ambitious
+            add = 25
+        }
+    }
+}

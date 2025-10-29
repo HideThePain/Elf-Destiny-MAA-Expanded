@@ -7,7 +7,7 @@
 			quality = illustrious
 			chronicle = new_title
 			properties = {
-				title = title:e_romaviri_empire
+				title = title:h_romaviri_empire
 				founder = root
 			}
 		}
@@ -16,7 +16,7 @@
 
 	if = {
 		limit = { capital_county = { this = title:c_byzantion } }
-		title:e_romaviri_empire = { 
+		title:h_romaviri_empire = { 
 			set_capital_county = title:c_byzantion
 		}
 	}
@@ -30,7 +30,7 @@
 				limit = {
 					tier = tier_kingdom
 				}
-				set_de_jure_liege_title = title:e_romaviri_empire
+				set_de_jure_liege_title = title:h_romaviri_empire
 				
 			}
 		}
@@ -39,7 +39,7 @@
 				tier = tier_kingdom
 				root = { completely_controls = prev }
 			}
-			set_de_jure_liege_title = title:e_romaviri_empire
+			set_de_jure_liege_title = title:h_romaviri_empire
 		}
 	}
 	
@@ -48,7 +48,7 @@
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	# title:e_romaviri_empire = {
+	# title:h_romaviri_empire = {
 	# 	change_title_holder = {
 	# 		holder = root
 	# 		change = scope:change
@@ -64,7 +64,7 @@
 			}
 		}
 		hidden_effect = {
-			primary_title = { transfer_title_maa_ownership = title:e_romaviri_empire }
+			primary_title = { transfer_title_maa_ownership = title:h_romaviri_empire }
 		}
 	}
 	if = { # If you have founded the Varangian Guard, you get to keep the benefits
@@ -72,14 +72,14 @@
 			primary_title = { has_variable = founded_varangian_guard }
 		}
 		hidden_effect = {
-			title:e_romaviri_empire = { set_variable = founded_varangian_guard }
+			title:h_romaviri_empire = { set_variable = founded_varangian_guard }
 		}
 	}
-	hidden_effect = { set_primary_title_to = title:e_romaviri_empire }
+	hidden_effect = { set_primary_title_to = title:h_romaviri_empire }
 	every_held_title = { #Should destroy all other Empires owned at the time.
 		limit = {
 				tier = tier_empire
-			NOT = { this = title:e_romaviri_empire }
+			NOT = { this = title:h_romaviri_empire }
 		}
 		root = { destroy_title = prev }
 	}
@@ -115,7 +115,7 @@
 			NOT = { capital_county = { this = title:c_roma } }
 			NOT = { capital_county = { this = title:c_byzantion } }
 			NOT = { culture = { has_cultural_pillar = heritage_elf } }
-			exists = title:e_romaviri_empire.holder
+			exists = title:h_romaviri_empire.holder
 		}
 		hidden_effect = {
 			if = { #Usurp if not held personally.
@@ -140,7 +140,7 @@
 	}
 	hidden_effect = {
 		add_character_flag = flag_restorer_of_romaviri #used for Eulogy.
-		title:e_romaviri_empire = {
+		title:h_romaviri_empire = {
 			set_variable = romaviri_was_restored_by_byzantium
 		}
 	}
@@ -158,7 +158,7 @@
 # 				limit = {
 # 					tier = tier_kingdom
 # 				}
-# 				set_de_jure_liege_title = title:e_romaviri_empire
+# 				set_de_jure_liege_title = title:h_romaviri_empire
 				
 # 			}
 # 		}
@@ -168,7 +168,7 @@
 # 		save_scope_as = change
 # 		add_claim_on_loss = no
 # 	}
-# 	title:e_romaviri_empire = {
+# 	title:h_romaviri_empire = {
 # 		change_title_holder = {
 # 			holder = root
 # 			change = scope:change
@@ -188,7 +188,7 @@
 # 			}
 # 		}
 # 		hidden_effect = {
-# 			primary_title = { transfer_title_maa_ownership = title:e_romaviri_empire }
+# 			primary_title = { transfer_title_maa_ownership = title:h_romaviri_empire }
 # 		}
 # 	}
 # 	if = { # If you have founded the Varangian Guard, you get to keep the benefits (you are not likely to have done it here, but better safe than sorry)
@@ -196,19 +196,19 @@
 # 			primary_title = { has_variable = founded_varangian_guard }
 # 		}
 # 		hidden_effect = {
-# 			title:e_romaviri_empire = { set_variable = founded_varangian_guard }
+# 			title:h_romaviri_empire = { set_variable = founded_varangian_guard }
 # 		}
 # 	}
-# 	hidden_effect = { set_primary_title_to = title:e_romaviri_empire }
+# 	hidden_effect = { set_primary_title_to = title:h_romaviri_empire }
 # 	every_held_title = { #Should destroy all other Empires owned at the time.
 # 		limit = {
 # 			tier = tier_empire
-# 			NOT = { this = title:e_romaviri_empire }
+# 			NOT = { this = title:h_romaviri_empire }
 # 		}
 # 		root = { destroy_title = prev }
 # 	}
 # 	hidden_effect = {
-# 		title:e_romaviri_empire = {
+# 		title:h_romaviri_empire = {
 # 			set_coa = e_hre_romaviri
 # 			set_color_from_title = title:e_hre
 # 		}
@@ -217,7 +217,7 @@
 # 	if = { #Automatically move capital to Rome.
 # 		limit = {
 # 			NOT = { capital_county = { this = title:c_roma } }
-# 			exists = title:e_romaviri_empire.holder
+# 			exists = title:h_romaviri_empire.holder
 # 		}
 # 		hidden_effect = {
 # 			if = { #Usurp if not held personally.
@@ -238,7 +238,7 @@
 # 				resolve_title_and_vassal_change = scope:change
 # 			}
 # 		}
-# 		title:e_romaviri_empire.holder = { set_realm_capital = title:c_roma }
+# 		title:h_romaviri_empire.holder = { set_realm_capital = title:c_roma }
 # 	}
 # 	hidden_effect = {
 # 		create_story = restoring_romaviri_provinces_story
@@ -257,7 +257,7 @@
 # 				limit = {
 # 					tier = tier_kingdom
 # 				}
-# 				set_de_jure_liege_title = title:e_romaviri_empire
+# 				set_de_jure_liege_title = title:h_romaviri_empire
 				
 # 			}
 # 		}
@@ -267,7 +267,7 @@
 # 		save_scope_as = change
 # 		add_claim_on_loss = no
 # 	}
-# 	title:e_romaviri_empire = {
+# 	title:h_romaviri_empire = {
 # 		change_title_holder = {
 # 			holder = root
 # 			change = scope:change
@@ -287,7 +287,7 @@
 # 			}
 # 		}
 # 		hidden_effect = {
-# 			primary_title = { transfer_title_maa_ownership = title:e_romaviri_empire }
+# 			primary_title = { transfer_title_maa_ownership = title:h_romaviri_empire }
 # 		}
 # 	}
 # 	if = { # If you have founded the Varangian Guard, you get to keep the benefits (you are not likely to have done it here, but better safe than sorry)
@@ -295,21 +295,21 @@
 # 			primary_title = { has_variable = founded_varangian_guard }
 # 		}
 # 		hidden_effect = {
-# 			title:e_romaviri_empire = { set_variable = founded_varangian_guard }
+# 			title:h_romaviri_empire = { set_variable = founded_varangian_guard }
 # 		}
 # 	}
-# 	hidden_effect = { set_primary_title_to = title:e_romaviri_empire }
+# 	hidden_effect = { set_primary_title_to = title:h_romaviri_empire }
 # 	every_held_title = { #Should destroy all other Empires owned at the time.
 # 		limit = {
 # 			tier = tier_empire
-# 			NOT = { this = title:e_romaviri_empire }
+# 			NOT = { this = title:h_romaviri_empire }
 # 		}
 # 		root = { destroy_title = prev }
 # 	}
 # 	if = { #Automatically move capital to Rome.
 # 		limit = {
 # 			NOT = { capital_county = { this = title:c_roma } }
-# 			exists = title:e_romaviri_empire.holder
+# 			exists = title:h_romaviri_empire.holder
 # 		}
 # 		hidden_effect = {
 # 			if = { #Usurp if not held personally.
@@ -330,7 +330,7 @@
 # 				resolve_title_and_vassal_change = scope:change
 # 			}
 # 		}
-# 		title:e_romaviri_empire.holder = { set_realm_capital = title:c_roma }
+# 		title:h_romaviri_empire.holder = { set_realm_capital = title:c_roma }
 # 	}
 # 	hidden_effect = {
 # 		create_story = restoring_romaviri_provinces_story

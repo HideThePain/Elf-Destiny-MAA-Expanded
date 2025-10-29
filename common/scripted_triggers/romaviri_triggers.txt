@@ -1,0 +1,125 @@
+﻿ep3_should_use_byzantine_graphics_trigger = {
+    culture = { has_building_gfx = byzantine_building_gfx }
+}
+
+is_romaviri_emperor_trigger = {
+    has_title = title:h_romaviri_empire
+    has_title = title:h_eastern_romaviri_empire
+}
+
+is_romaviri_emperor_primary_title_trigger = {
+    OR = {
+        has_title = title:h_romaviri_empire
+        has_title = title:h_eastern_romaviri_empire
+    }
+}
+
+valid_for_romaviri_emperor_content_trigger = {
+    has_ep3_dlc_trigger = yes
+    culture = {
+        has_cultural_pillar = heritage_elf
+    }
+    OR = {
+        is_romaviri_emperor_primary_title_trigger = yes
+        AND = {
+            culture = {
+                OR = {
+                    this = culture:culture_elf
+                    this = culture:elf_culture_serelion
+                    this = culture:elf_culture_gwynthorn
+                    this = culture:elf_culture_daelurin
+                    this = culture:elf_culture_thundarael
+                    this = culture:elf_culture_valerith
+                    this = culture:elf_culture_lormelis
+                    any_parent_culture_or_above = { this = culture:culture_elf }
+                    any_parent_culture_or_above = { this = culture:elf_culture_serelion }
+                    any_parent_culture_or_above = { this = culture:elf_culture_gwynthorn }
+                    any_parent_culture_or_above = { this = culture:elf_culture_daelurin }
+                    any_parent_culture_or_above = { this = culture:elf_culture_thundarael }
+                    any_parent_culture_or_above = { this = culture:elf_culture_valerith }
+                    any_parent_culture_or_above = { this = culture:elf_culture_lormelis }
+                }
+            }
+            highest_held_title_tier >= tier_empire
+        }
+    }
+}
+
+valid_for_romaviri_governor_content_trigger = {
+    has_ep3_dlc_trigger = yes
+    is_governor = yes
+    top_liege.culture = {
+        has_cultural_pillar = heritage_elf
+    }
+    top_liege = {
+        OR = {
+            is_romaviri_emperor_primary_title_trigger = yes
+            AND = {
+                OR = {
+                    this = culture:culture_elf
+                    this = culture:elf_culture_serelion
+                    this = culture:elf_culture_gwynthorn
+                    this = culture:elf_culture_daelurin
+                    this = culture:elf_culture_thundarael
+                    this = culture:elf_culture_valerith
+                    this = culture:elf_culture_lormelis
+                    any_parent_culture_or_above = { this = culture:culture_elf }
+                    any_parent_culture_or_above = { this = culture:elf_culture_serelion }
+                    any_parent_culture_or_above = { this = culture:elf_culture_gwynthorn }
+                    any_parent_culture_or_above = { this = culture:elf_culture_daelurin }
+                    any_parent_culture_or_above = { this = culture:elf_culture_thundarael }
+                    any_parent_culture_or_above = { this = culture:elf_culture_valerith }
+                    any_parent_culture_or_above = { this = culture:elf_culture_lormelis }
+                }
+                highest_held_title_tier >= tier_empire
+            }
+        }
+    }
+}
+
+has_any_charioteer_trait = {
+    OR = {
+        has_trait = charioteer_blue
+        has_trait = charioteer_green
+        has_trait = charioteer_white
+        has_trait = charioteer_red
+    }
+}
+
+available_charioteers_spots_trigger = {
+    scope:activity = {
+        any_guest_subset = {
+            name = charioteers
+            has_trait = charioteer_$TEAM$
+            count < scope:activity.var:num_$TEAM$s
+        }
+    }
+}
+
+# ep3_varangian_trigger = {
+#     OR = {
+#         culture = {
+#             OR = {
+#                 has_cultural_tradition = tradition_fp1_coastal_warriors
+#                 has_cultural_tradition = tradition_hird
+#                 has_cultural_tradition = tradition_fp1_performative_honour
+#                 has_cultural_pillar = heritage_north_germanic
+#                 has_cultural_pillar = heritage_west_germanic
+#             }
+#         }
+#         has_trait = varangian
+#     }
+#     can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+#     is_physically_able_adult = yes
+# }
+
+# ep3_restored_rome_hard_mode_trigger = {
+#     OR = {
+#         this = title:h_roman_empire.holder
+#         this = title:h_eastern_roman_empire.holder
+#     }
+#     any_owned_story = {
+#         type = ep3_story_cycle_restoring_rome
+#         has_variable = roman_empire_hard_mode
+#     }
+# }
