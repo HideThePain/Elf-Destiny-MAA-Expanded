@@ -1469,3 +1469,435 @@ rebuke_romaviri_revanchism_sicily = {
 	# We always want them to do this if they can.
 	ai_will_do = { base = 1000 }
 }
+
+introduce_a_new_fashion_at_court_decision_romaviri = {
+	picture = {
+		trigger = {
+			NOR = {
+				government_has_flag = government_is_tribal
+				government_has_flag = government_is_theocracy
+				government_has_flag = government_is_nomadic
+				top_liege ?= { government_has_flag = government_is_tribal }
+				top_liege ?= { government_has_flag = government_is_theocracy }
+			}
+			OR = {
+				culture = { has_cultural_pillar = heritage_elf }
+				top_liege ?= {
+					OR = {
+						culture = { has_cultural_pillar = heritage_elf }
+						capital_barony ?= title:b_constantinople
+						primary_title ?= title:h_romaviri_empire
+						primary_title ?= title:h_eastern_romaviri_empire
+					}
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/decisions/ep3_cerimonial_decision.dds"
+	}
+	picture = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+		}
+		reference = "gfx/interface/illustrations/event_scenes/mpo_tent_interior_mongol.dds"
+	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
+	}
+	desc = introduce_a_new_fashion_at_court_decision_desc
+	selection_tooltip = introduce_a_new_fashion_at_court_decision_tooltip
+	cooldown = { years = 5 }
+	sort_order = 80
+
+	is_shown = {
+		NOT = { has_title = title:k_fashion } # Kingdom of Fashion is very much the end-game of this interaction
+		NOT = { faith = { has_doctrine_parameter = naked_adherents_active } } # Must wear clothes
+		NOT = { culture = { has_cultural_parameter = naked_culture_active } } # Must wear clothes
+		is_available_at_peace_adult = yes
+		is_landed = yes
+		# Either has a royal court with high fashion or is part of a royal court with high fashion
+		OR = {
+			AND = {
+				has_royal_court = yes
+				has_dlc_feature = royal_court
+				OR = {
+					amenity_level = {
+						target = court_fashion
+						value >= 4
+					}
+					has_nickname = nick_prince_of_fashion
+				}
+			}
+			AND = {
+				liege = { has_royal_court = yes }
+				has_royal_court = no # Narrative flow of the event is a bit weird if it's unclear which royal court it's taking place in
+				OR = {
+					liege = {
+						amenity_level = {
+							target = court_fashion
+							value >= 4
+						}
+					}
+					has_nickname = nick_prince_of_fashion
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				OR = {
+					government_has_flag = government_is_celestial
+					government_has_flag = government_is_meritocratic
+				}
+			}
+			this = top_liege
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		# Standard checks
+		is_available_at_peace_adult = yes
+		# Court does not currently have a fashion trend
+		trigger_if = {
+			limit = {
+				OR = {
+					AND = {
+						root = { has_royal_court = yes }
+						root = { has_character_flag = fashion_trend_flag }
+					}
+					AND = {
+						exists = root.liege
+						liege != root
+						root.liege = { has_royal_court = yes }
+						root = { has_royal_court = no }
+						root.liege = { has_character_flag = fashion_trend_flag }
+					}
+				}
+			}
+			custom_description = {
+				text = court_already_has_a_fashion_tend_tt
+				always = no
+			}
+		}
+		any_courtier_or_guest = {
+			NOT = { faith = { has_doctrine_parameter = naked_adherents_active } }
+			is_available_at_peace_adult = yes
+		}
+	}
+
+	effect = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_royal_court = yes
+				}
+				add_character_flag = {
+					flag = fashion_trend_flag
+					years = 3
+				}
+			}
+			else = {
+				liege = {
+					add_character_flag = {
+						flag = fashion_trend_flag
+						years = 3
+					}
+				}
+			}
+			random_list = {
+				# Determine what the strange fashion choice is
+				10 = {
+					add_character_flag = { flag = flag_big_collar years = 1 }
+				}
+				10 = {
+					add_character_flag = { flag = flag_head_dress years = 1 }
+				}
+				10 = {
+					add_character_flag = { flag = flag_gold_boots years = 1 }
+				}
+				10 = {
+					add_character_flag = { flag = flag_sleeveless years = 1 }
+				}
+				10 = {
+					add_character_flag = { flag = flag_commoner_clothes years = 1 }
+				}
+			}
+			save_scope_as = actor
+			# Get someone to potentially oppose the fashion choice
+			random_courtier_or_guest = {
+				limit = {
+					NOT = { faith = { has_doctrine_parameter = naked_adherents_active } }
+					is_available_at_peace_adult = yes
+				}
+				weight = {
+					base = 1
+					compare_modifier = { # Diplo duel should look for high diplo characters
+						value = diplomacy
+						multiplier = 0.25
+					}
+					modifier = { # Rivals should want to insult their rival
+						has_relation_rival = root
+						add = 10
+					}
+					modifier = { # Increase visibility for other players
+						is_ai = no
+						factor = 2
+					}
+				}
+				save_scope_as = recipient
+				trigger_event = court_amenities_interactions.0010
+			}
+		}
+		custom_tooltip = {
+			text = introduce_new_fashion_duel_tooltip
+		}
+	}
+
+	cost = {
+		gold = minor_gold_value
+		prestige = medium_prestige_value
+	}
+
+	# Fashion trends last for five years
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 60
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
+
+	ai_potential = {
+		# Has enough gold.
+		short_term_gold >= minor_gold_value
+		liege = { # Shouldn't snipe the opportunity away from the player
+			is_ai = yes
+		}
+	}
+
+	ai_will_do = {
+		base = 25
+		# You're a fashionista
+		modifier = {
+			add = 50
+			has_trait = seducer
+		}
+		modifier = {
+			add = 50
+			has_trait = avaricious
+		}
+	}
+}
+
+split_romaviri_empire_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_hold_triumph.dds"
+	}
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 0
+		empire = 0
+		hegemony = 360
+	}
+	sort_order = 110
+
+	desc = split_romaviri_empire_decision_desc
+	selection_tooltip = split_romaviri_empire_decision_selection_tooltip
+	decision_group_type = romaviri
+
+	is_shown = {
+		has_ep3_dlc_trigger = yes
+		primary_title = title:h_romaviri_empire
+		NOT = { exists = title:h_eastern_romaviri_empire.holder }
+	}
+
+	is_valid = {
+		realm_size >= 150
+		capital_county = title:c_roma
+		has_title = title:c_byzantion
+	}
+
+	is_valid_showing_failures_only = {
+		NOT = { exists = involved_activity }
+		is_imprisoned = no
+	}
+
+	cost = {}
+
+	effect = {
+		if = {
+			limit = {
+				has_active_diarchy = yes
+				has_diarchy_type = co_emperorship
+			}
+			diarch = { save_scope_as = new_holder }
+		}
+		if = {
+			limit = {
+				any_powerful_family = {
+					this != root.house
+					count >= 1
+					exists = house_head
+				}
+			}
+			ordered_powerful_family = {
+				limit = { this != root.house }
+				order_by = house_power_score
+				house_head = { save_scope_as = new_holder }
+			}
+		}
+		else = {
+			ordered_powerful_vassal = {
+				order_by = max_military_strength
+				save_scope_as = new_holder
+			}
+		}
+		custom_tooltip = {
+			text = form_eastern_romaviri_empire_tt
+			create_eastern_romaviri_empire_scripted_effect = yes
+		}
+		title:h_romaviri_empire = {
+			set_title_name = h_romaviri_empire_western
+		}
+
+		# Add truce with new Byzantine Emperor
+		add_truce_both_ways = {
+			character = scope:new_holder
+			years = 10
+			name = TRUCE_COLLABORATION
+		}
+
+		# Some additional bonuses
+		change_influence = {
+			value = monumental_influence_gain
+			multiply = 2
+		}
+
+		if = {
+			limit = {
+				any_owned_story = { 
+					type = ep3_story_cycle_restoring_rome 
+					has_variable = romaviri_empire_hard_mode
+				}
+			}
+			custom_tooltip = {
+				text = ending_of_restore_rome_trials_tt
+				random_owned_story = {
+					limit = { story_type = ep3_story_cycle_restoring_rome }
+					remove_variable = romaviri_empire_hard_mode
+				}
+			}
+		}
+	}
+
+	ai_potential = {
+		primary_title = title:h_romaviri_empire
+	}
+
+	ai_will_do = {
+		base = 50
+	}
+}
+
+middle_east_decisions.0014 = {
+	type = character_event
+	title = middle_east_decisions.0014.t
+	desc = middle_east_decisions.0014.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	right_portrait = {
+		character = scope:roman_emperor
+		animation = disbelief
+	}
+	lower_left_portrait = scope:former_liege
+
+	immediate = {
+		play_music_cue = "mx_cue_positive_effect"
+		save_scope_as = scoped_ruler
+		if = {
+			limit = { top_liege != this }
+			liege = { save_scope_as = former_liege }
+		}
+		if = {
+			limit = { exists = title:e_byzantium.holder }
+			title:e_byzantium.holder = { save_scope_as = roman_emperor }
+		}
+		else_if = {
+			limit = { exists = title:h_roman_empire.holder }
+			title:h_roman_empire.holder = { save_scope_as = roman_emperor }
+		}
+		else_if = {
+			limit = { exists = title:h_eastern_roman_empire.holder }
+			title:h_eastern_roman_empire.holder = { save_scope_as = roman_emperor }
+		}
+		else_if = {
+			limit = { exists = title:h_romaviri_empire.holder }
+			title:h_romaviri_empire.holder = { save_scope_as = roman_emperor }
+		}
+		else_if = {
+			limit = { exists = title:h_eastern_romaviri_empire.holder }
+			title:h_eastern_romaviri_empire.holder = { save_scope_as = roman_emperor }
+		}
+
+		legend_seed_new_title_effect = yes
+		# De jure shifts.
+
+		# k_anatolia: d_cilicia d_cibyrrhaeot d_anatolia d_cappadocia
+		# k_pontus: d_paphlagonia d_armeniac d_sebasteia d_charsianon d_chaldia
+		# k_armenia: d_greater_armenia d_vaspurakan d_mesopotamia d_edessa
+		hidden_effect = {
+			title:d_cilicia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_cibyrrhaeot = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_anatolia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_cappadocia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_paphlagonia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_armeniac = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_sebasteia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_charsianon = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			title:d_chaldia = {
+				set_de_jure_liege_title = title:k_rum
+			}
+			every_held_title = { # Should shift all dejure of all Duchies owned at the time.
+				title_tier = duchy
+				set_de_jure_liege_title = title:k_rum
+			}
+		}
+	}
+
+	option = {
+		name = middle_east_decisions.0014.a
+		create_rum_scripted_effect = yes
+		# Send narrative fluff to other players (if any).
+		every_player = {
+			limit = {
+				this != root
+				OR = {
+					top_liege = scope:former_liege
+					is_roman_emperor_trigger = yes
+				}
+			}
+			trigger_event = middle_east_decisions.0015
+		}
+	}
+}

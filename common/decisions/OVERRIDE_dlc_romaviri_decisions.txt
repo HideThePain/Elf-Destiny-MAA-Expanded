@@ -440,6 +440,7 @@ recreate_byzantine_empire_decision = {
             exists = title:h_roman_empire.holder
             exists = title:h_eastern_roman_empire.holder
             exists = title:h_romaviri_empire.holder
+			exists = title:h_eastern_romaviri_empire.holder
         }
         title:e_byzantium = { is_titular = no }
         OR = {

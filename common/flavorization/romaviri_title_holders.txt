@@ -1,0 +1,354 @@
+### Roman ###
+# Feudal
+baron_feudal_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 7
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+baron_feudal_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 7
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+barony_feudal_romaviri = {
+	type = title
+	tier = barony
+	priority = 7
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+count_feudal_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+count_feudal_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+duke_feudal_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 27
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+duke_feudal_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 27
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+king_feudal_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+king_feudal_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+kingdom_feudal_romaviri = {
+	type = title
+	tier = kingdom
+	priority = 47
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+emperor_feudal_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+emperor_feudal_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	governments = { feudal_government administrative_government }
+	name_lists = { name_list_romaviri }
+}
+
+# Republic
+baron_republic_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = barony
+	priority = 7
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+baron_republic_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = barony
+	priority = 7
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+count_republic_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = county
+	priority = 18
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+count_republic_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = county
+	priority = 18
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+duke_republic_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = duchy
+	priority = 27
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+duke_republic_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = duchy
+	priority = 27
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+duchy_republic_romaviri = {
+	type = title
+	tier = duchy
+	flavourization_rules = { 
+		top_liege = no
+	}
+	priority = 27
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+king_republic_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 47
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+king_republic_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 47
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+kingdom_republic_romaviri = {
+	type = title
+	tier = kingdom
+	flavourization_rules = { 
+		top_liege = no
+	}
+	priority = 47
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+emperor_republic_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 102
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+emperor_republic_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 102
+	flavourization_rules = { 
+		top_liege = no
+	}
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+empire_republic_romaviri = {
+	type = title
+	tier = empire
+	flavourization_rules = { 
+		top_liege = no
+	}
+	priority = 102
+	governments = { republic_government }
+	name_lists = { name_list_romaviri }
+}
+
+king_administrative_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 76
+	governments = { administrative_government }
+	name_lists = { name_list_romaviri }
+
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		spouse_takes_title = no
+	}
+}
+king_administrative_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 76
+	governments = { administrative_government }
+	name_lists = { name_list_romaviri }
+
+	flavourization_rules = {
+		top_liege = yes
+		ignore_top_liege_government = yes #In an administrative realm all governors vassals will use the titles of the top liege - this ensures it is only the governors that do, and not also feudal vassals, republican vassals, etc. 
+		spouse_takes_title = no
+	}
+}
+king_administrative_independent_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = kingdom
+	priority = 108
+	governments = { administrative_government }
+	name_lists = { name_list_romaviri }
+
+	flavourization_rules = {
+		only_independent = yes
+	}
+}
+king_administrative_independent_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 108
+	governments = { administrative_government }
+	name_lists = { name_list_romaviri }
+	
+	flavourization_rules = {
+		only_independent = yes
+	}
+}
+
+emperor_administrative_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = empire
+	priority = 108
+	governments = { administrative_government }
+	name_lists = { name_list_romaviri }
+}
+emperor_administrative_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = empire
+	priority = 108
+	governments = { administrative_government }
+	name_lists = { name_list_romaviri }
+}
+hegemon_administrative_male_romaviri = {
+	type = character
+	gender = male
+	special = holder
+	tier = hegemony
+	priority = 282
+	governments = { administrative_government }
+	#name_lists = { name_list_romaviri }
+	titles = { h_romaviri_empire h_eastern_romaviri_empire }
+}
+hegemon_administrative_female_romaviri = {
+	type = character
+	gender = female
+	special = holder
+	tier = hegemony
+	priority = 282
+	governments = { administrative_government }
+	#name_lists = { name_list_romaviri }
+	titles = { h_romaviri_empire h_eastern_romaviri_empire }
+}

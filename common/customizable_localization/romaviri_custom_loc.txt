@@ -91,6 +91,7 @@
 					this = title:e_byzantium
 					this = title:h_eastern_roman_empire
                     this = title:h_romaviri_empire
+                    this = title:h_eastern_romaviri_empire
 					this = title:k_armenian_principality
 					this = title:d_northern_isles
 					this = title:e_wendish_empire

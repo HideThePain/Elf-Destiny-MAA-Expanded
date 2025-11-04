@@ -321,7 +321,10 @@ romaviri_restoration.0005 = {
 	}
 
 	trigger = {
-		scope:title = title:h_romaviri_empire
+		OR = {
+			scope:title = title:h_romaviri_empire
+			scope:title = title:h_eastern_romaviri_empire
+		}
 		NOT = { has_trait = augustus }
 	}
 

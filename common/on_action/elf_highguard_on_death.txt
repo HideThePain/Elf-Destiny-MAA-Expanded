@@ -178,7 +178,7 @@ elf_highguard_pillage = {
             }
             primary_heir = {
                 trigger_event = {
-                    id = ep3_emperor_yearly.3000
+                    id = romaviri_empire_emperor_yearly.3000
                     days = { 10 20 }
                 }
             }

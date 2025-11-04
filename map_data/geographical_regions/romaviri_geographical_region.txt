@@ -140,7 +140,7 @@ custom_eastern_romaviri_empire = {
 		world_middle_east_jerusalem world_europe_south world_asia_minor
 	}
 }
-custom_theodosian_ere = {
+custom_theodosian_romaviri = {
 	regions = {
 		custom_romaviri_syria_palestina
 		custom_romaviri_aegyptus
@@ -164,5 +164,16 @@ custom_theodosian_ere = {
 		d_shammar
 		# Egypt
 		d_al-wahat d_eastern_desert
+	}
+}
+
+custom_restore_romaviri_eastern_empire = {
+	regions = {
+		world_asia_minor world_middle_east world_africa_east world_india world_steppe world_tibet world_burma world_europe_south_east world_europe_east world_asia world_siberia
+	}
+
+	duchies = {
+		#Egypt
+		d_cyrenaica d_alexandria d_delta d_cairo d_al-wahat d_al-said d_eastern_desert
 	}
 }

@@ -1,0 +1,151 @@
+﻿new_title = {
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_roman_empire
+				}
+				desc = legend_of_rome_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_romaviri_empire
+				}
+				desc = legend_of_romaviri_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_eastern_roman_empire
+				}
+				desc = legend_of_rome_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_eastern_romaviri_empire
+				}
+				desc = legend_of_romaviri_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:k_israel
+				}
+				desc = legend_of_israel_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:e_slavia
+				}
+				desc = legend_of_slavia_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:e_north_sea
+				}
+				desc = legend_of_n_sea_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:k_mann_the_isles
+				}
+				desc = legend_of_mann_name
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = {
+						OR = {
+							this = title:e_mongol_empire
+							AND = {
+								exists = global_var:greatest_of_khans_title
+								this = global_var:greatest_of_khans_title
+							}
+						}
+					}
+				}
+				desc = legend_of_genghis_name
+			}
+			desc = new_title_name
+		}
+	}
+	description = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_roman_empire
+				}
+				desc = legend_of_rome_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_romaviri_empire
+				}
+				desc = legend_of_romaviri_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_eastern_roman_empire
+				}
+				desc = legend_of_rome_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:h_eastern_romaviri_empire
+				}
+				desc = legend_of_romaviri_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:k_israel
+				}
+				desc = legend_of_israel_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:e_slavia
+				}
+				desc = legend_of_slavia_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:e_north_sea
+				}
+				desc = legend_of_n_sea_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = title:k_mann_the_isles
+				}
+				desc = legend_of_mann_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:title = {
+						OR = {
+							this = title:e_mongol_empire
+							AND = {
+								exists = global_var:greatest_of_khans_title
+								this = global_var:greatest_of_khans_title
+							}
+						}
+					}
+				}
+				desc = legend_of_genghis_desc
+			}
+			desc = new_title_desc
+		}
+	}
+
+	portrait_animation = throne_room_writer
+
+	properties = {
+		title = landed_title
+		founder = character
+	}
+
+	chapters = {
+		opening = legend_chapter_opening_great_deed
+		motivation = legend_chapter_motivation_new_title
+		famous_deed = legend_chapter_famous_deed_new_title
+		extra_deed = legend_chapter_extra_deed_generic
+		conclusion = legend_chapter_conclusion_new_title
+	}
+}

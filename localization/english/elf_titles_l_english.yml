@@ -1,0 +1,18 @@
+﻿l_english: 
+ TITLE_NAME:1 "$NAME|U$"
+ TITLE_TIERED_NAME:0 "$TIER|U$ of $NAME$"
+ TITLE_DEFINITIVE_NAME:0 "the $TIER|U$ of $NAME$"
+ TITLE_CLAN_TIERED_NAME:0 "the $NAME$ $TIER|U$"
+ TITLE_CLAN_TIERED_WITH_UNDERLYING_NAME:0 "the $NAME$ $TIER|U$ #F ($TIER|U$ of $BASE_NAME$) #!"
+ TITLE_CLAN_TIERED_WITH_UNDERLYING_NAME_DEFINITE_FORM:0 "the $NAME$ $TIER|U$ #F ($BASE_NAME$) #!"
+ TITLE_TIER_AS_NAME:0 "$TIER|U$"
+ # Custom (changed from default) title names:
+ h_romaviri_empire_article:0 "the "
+ h_romaviri_empire:0 "Romaviri Empire"
+ h_romaviri_empire_adj:0 "Romaviri"
+ h_romaviri_empire_pre:0 "Romavir"
+ h_romaviri_empire_western: "Western Romaviri Empire"
+ h_eastern_romaviri_empire_article: "the "
+ h_eastern_romaviri_empire: "Eastern Romaviri Empire"
+ h_eastern_romaviri_empire_adj: "Romaviri"
+ h_eastern_romaviri_empire_pre: "Romavir"

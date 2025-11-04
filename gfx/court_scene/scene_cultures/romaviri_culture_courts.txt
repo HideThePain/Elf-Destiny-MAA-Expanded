@@ -1,0 +1,29 @@
+﻿romaviri = {
+	trigger = {
+		NOT = {
+			government_has_flag = government_is_nomadic
+		}
+		has_ep3_dlc_trigger = yes
+		OR = {
+			capital_county ?= title:c_byzantion
+			primary_title ?= title:e_byzantium
+			primary_title ?= title:h_eastern_romaviri_empire
+			AND = {
+				primary_title ?= title:h_romaviri_empire
+				title:h_romaviri_empire = {
+					has_variable = rome_was_restored_by_byzantium
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+				NOT = {
+					government_has_flag = government_is_nomadic
+				}
+				tgp_is_ceremonial_regent_trigger = no
+			}
+			NOT = { primary_title ?= title:h_china }
+		}
+	}
+}

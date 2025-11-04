@@ -1,8 +1,4 @@
-﻿ep3_should_use_byzantine_graphics_trigger = {
-    culture = { has_building_gfx = byzantine_building_gfx }
-}
-
-is_romaviri_emperor_trigger = {
+﻿is_romaviri_emperor_trigger = {
     has_title = title:h_romaviri_empire
     has_title = title:h_eastern_romaviri_empire
 }
@@ -77,23 +73,11 @@ valid_for_romaviri_governor_content_trigger = {
     }
 }
 
-has_any_charioteer_trait = {
-    OR = {
-        has_trait = charioteer_blue
-        has_trait = charioteer_green
-        has_trait = charioteer_white
-        has_trait = charioteer_red
-    }
-}
-
-available_charioteers_spots_trigger = {
-    scope:activity = {
-        any_guest_subset = {
-            name = charioteers
-            has_trait = charioteer_$TEAM$
-            count < scope:activity.var:num_$TEAM$s
-        }
-    }
+romaviri_restoration_is_valid_romaviri_empire_trigger = {
+	is_ai = no
+	is_romaviri_emperor_trigger = yes
+	religion = {is_in_family = rf_spark}
+	NOT = { has_ep3_dlc_trigger = yes }
 }
 
 # ep3_varangian_trigger = {
@@ -123,3 +107,99 @@ available_charioteers_spots_trigger = {
 #         has_variable = roman_empire_hard_mode
 #     }
 # }
+
+has_mythical_founder_trigger = {
+	OR = {
+		AND = { # Charles Martell (?)
+			OR = {
+				this = title:k_france
+				this = title:e_france
+			}
+			current_date > 1000.1.1
+		}
+		OR = { # Alexander		
+			this = title:k_thessalonika
+			this = title:k_hellas
+			this = title:k_egypt
+			AND = {
+				OR = {
+					this = title:k_persia
+					this = title:e_persia
+				}
+				NOR = {
+					root.faith.religion = religion:islam_religion
+					root.faith.religion = religion:zoroastrianism_religion
+				}
+			}
+			this = title:k_anatolia
+		}
+		this = title:k_poland # Lech
+		this = title:k_bohemia # Czech
+		OR = { # Rus
+			this = title:k_white_rus
+			this = title:k_ruthenia
+			this = title:e_russia
+		}
+		OR = { # Arthur
+			this = title:k_england
+			this = title:e_britannia
+		}
+		AND = {
+			OR = { # Belisarius
+				this = title:k_italy
+				this = title:k_romagna
+				this = title:k_sardinia
+				this = title:k_naples
+				this = title:e_italy
+			}
+			root.faith = faith:orthodox
+		}
+		OR = { # Romulus
+			this = title:k_italy
+			this = title:k_romagna
+			this = title:k_sardinia
+			this = title:e_italy
+			this = title:h_roman_empire
+			this = title:h_eastern_roman_empire
+            this = title:h_romaviri_empire
+			this = title:h_eastern_romaviri_empire
+		}
+		OR = { # Ardashir
+			this = title:k_persia
+			this = title:e_persia
+		}
+		AND = { # Pharaohs
+			this = title:k_egypt
+			NOT = { root.faith.religion = religion:islam_religion }
+		}
+		AND = { # Visigothic Kings
+			OR = {
+				this = title:k_castille
+				this = title:k_aragon
+				this = title:k_navarra
+				this = title:k_andalusia
+				this = title:k_portugal
+				this = title:e_spain
+			}
+			NOT = { root.faith.religion = religion:islam_religion }
+		}
+		AND = { # Abd al-Rahman
+			OR = {
+				this = title:k_castille
+				this = title:k_aragon
+				this = title:k_navarra
+				this = title:k_andalusia
+				this = title:k_portugal
+				this = title:e_spain
+			}
+			root.faith.religion = religion:islam_religion
+		}
+		AND = { # Zenobia
+			OR = {
+				this = title:k_syria
+				this = title:k_mesopotamia
+			}
+			NOT = { root.faith.religion = religion:islam_religion }
+		}
+	}
+}

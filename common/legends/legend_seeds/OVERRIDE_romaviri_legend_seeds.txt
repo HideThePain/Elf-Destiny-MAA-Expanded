@@ -1,0 +1,27 @@
+﻿romaviri_heritage = { 
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = {
+			has_global_variable = romaviri_heritage_legend
+		}
+		OR = {
+			has_title = title:e_hre
+			is_romaviri_emperor_trigger = yes
+			has_title = title:k_rum
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		highest_held_title_tier >= tier_kingdom
+		prestige_level >= high_prestige_level
+	}
+
+	chronicle = ancient_people
+	chronicle_properties = {
+		culture = culture:romaviri
+		title = title:h_romaviri_empire
+		original_region = geographical_region:custom_romaviri_full_borders
+	}
+}
