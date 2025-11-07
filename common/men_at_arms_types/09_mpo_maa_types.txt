@@ -37,15 +37,13 @@ nomadic_riders = {
     # No cost as this is the basic type of MAA given by converting your Herd
     provision_cost = @provisions_cost_cavalry_cheap
 
-    can_recruit = {
-        # Prevents this MaA type from being shown in the interface
-        # Nomadic Riders are always created and raised from code
-        special_recruit_only = yes
+    # Prevents this MaA type from being shown in the interface
+    # Nomadic Riders are always created and raised from code
+    special_recruit_only = yes
 
-        stack = 100
-        # No AI for the same reason as above
-        icon = nomadic_riders
-    }
+    stack = 100
+    # No AI for the same reason as above
+    icon = nomadic_riders
 }
 
 torch_bearers = {
