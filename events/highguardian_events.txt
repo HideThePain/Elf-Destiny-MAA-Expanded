@@ -1,0 +1,1507 @@
+namespace = highguardian
+
+# Events about the Highguardian Guard
+	# highguardian.0001 - Find a potential Highguardian and fire chain, by Petter Vilberg
+	# highguardian.0002 - Event for the liege of the Highguardian candidate, by Petter Vilberg
+	# highguardian.0003 - Emperor gets a new highguardian, by Petter Vilberg
+	# highguardian.1001 - Highguardian decides to return, by Petter Vilberg
+	# highguardian.1002 - Highguardian comes home to liege, by Petter Vilberg
+
+	# Ongoing Highguardian events
+	# highguardian.2001 - Become Best Friends with another Highguardian, by Petter Vilberg
+	# highguardian.2002 - Become Lover with a fellow Highguardian, by Petter Vilberg
+	# highguardian.2003 - Become Friends with a local ruler, by Petter Vilberg
+	# highguardian.2004 - Become Rivals with a local ruler, by Petter Vilberg
+	# highguardian.2005 - Marry your lover, by Petter Vilberg
+	# highguardian.2008 - Get wounded, by Petter Vilberg
+	# highguardian.2011 - Become lover with a local, by Petter Vilberg
+	# highguardian.2012 - Increase Prowess, by Petter Vilberg
+	# highguardian.2013 - Increase Martial, by Petter Vilberg
+	# highguardian.2014 - Increase Learning, by Petter Vilberg
+	# highguardian.2015 - Increase Diplomacy, by Petter Vilberg
+	# highguardian.2016 - Become Brave, by Petter Vilberg
+	# highguardian.2017 - Become Ambitious, by Petter Vilberg
+	# highguardian.2018 - Become Diligent, by Petter Vilberg
+
+# Evaluate whether the target is valid for highguardians
+scripted_trigger highguardian_0001_available_highguardian_trigger = {
+	can_be_knight_trigger = {
+		ARMY_OWNER = title:e_byzantium.holder
+	}
+	age < 40
+	is_married = no
+	NOR = {
+		has_character_flag = has_asked_to_be_highguardian
+		has_trait = highguardian
+	}
+	religion = religion:germanic_religion
+	NOR = {
+		faith = {
+			has_doctrine_parameter = pacifist_opinion_active
+		}
+		has_trait = craven
+		has_truce = title:e_byzantium.holder
+		is_at_war_with = title:e_byzantium.holder
+		has_relation_rival = title:e_byzantium.holder
+	}
+}
+
+highguardian.0001 = {
+	hidden = yes
+
+	trigger = {
+		religion = religion:germanic_religion
+		NOR = {
+			faith = {
+				has_doctrine_parameter = pacifist_opinion_active
+			}
+			has_character_flag = had_recent_highguardian_sendoff
+		}
+		is_at_war = no
+		age >= 6
+		exists = title:e_byzantium.holder
+		NOR = {
+			this = title:e_byzantium.holder
+			has_truce = title:e_byzantium.holder
+			is_at_war_with = title:e_byzantium.holder
+			any_sub_realm_county = {
+				this = title:c_byzantion
+			}
+			has_relation_rival = title:e_byzantium.holder
+		}
+		any_courtier = {
+			highguardian_0001_available_highguardian_trigger = yes
+		}
+	}
+
+	immediate = {
+		# Find a suitable courtier
+		random_courtier = {
+			limit = {
+				highguardian_0001_available_highguardian_trigger = yes
+			}
+			weight = {
+				base = 1
+				compare_modifier = {
+					value = martial
+					multiplier = 0.25
+				}
+				compare_modifier = {
+					value = prowess
+					multiplier = 0.5
+				}
+				modifier = {
+					add = 5
+					OR = {
+						has_trait = brave
+						has_trait = arrogant
+					}
+				}
+				modifier = {
+					add = -1
+					has_trait = content
+				}
+				modifier = {
+					add = -1
+					has_trait = lazy
+				}
+				modifier = {
+					add = -1
+					has_trait = craven
+				}
+				modifier = {
+					add = 3
+					is_of_major_interest_to_root_trigger = yes
+				}
+				modifier = {
+					add = 2
+					is_of_minor_interest_to_root_trigger = yes
+				}
+				modifier = {
+					add = 1
+					exists = dynasty
+				}
+				# Reduce chances if they seem likely to inherit stuff soon
+				modifier = {
+					factor = 0.2
+					any_heir_title = {
+						holder ?= {
+							this = root
+							OR = {
+								age >= 60
+								health <= poor_health
+							}
+						}
+					}
+				}
+			}
+			add_character_flag = has_asked_to_be_highguardian
+			save_scope_as = highguardian_candidate
+		}
+
+		title:e_byzantium.holder = {
+			save_scope_as = emperor
+			if = {
+				limit = { capital_county = title:c_byzantion }
+				set_local_variable = {
+					name = to_miklagard
+					value = yes
+				}
+			}
+		}
+
+		# Send event to court owner
+		trigger_event = highguardian.0002
+	}
+}
+
+
+# Highguardian requests permission to leave
+highguardian.0002 = {
+	type = character_event
+	title = highguardian.0002.t
+	desc = {
+		desc = highguardian.0002.opening
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = local_var:to_miklagard }
+				desc = highguardian.0002.miklagard
+			}
+			desc = highguardian.0002.elsewhere
+		}
+		desc = highguardian.0002.end
+	}
+	theme = martial
+	left_portrait = {
+		character = root
+		animation = war_over_tie
+	}
+	right_portrait = {
+		character  = scope:highguardian_candidate
+		animation = personality_bold
+	}
+	lower_right_portrait = scope:emperor
+
+	immediate = {
+		add_character_flag = {
+			flag = had_recent_highguardian_sendoff
+			years = 5
+		}
+	}
+
+	option = { # Approve
+		name = highguardian.0002.a
+		show_as_tooltip = {
+			scope:highguardian_candidate = {
+				visit_court_of = scope:emperor
+				add_trait = highguardian
+			}
+		}
+		every_scheme = {
+			limit = {
+				any_scheme_agent_character = { this = scope:highguardian_candidate }
+			}
+			save_scope_as = scheme
+			scope:highguardian_candidate = { forbid_from_scheme = scope:scheme }
+		}
+		hidden_effect = {
+			scope:emperor = {
+				trigger_event = highguardian.0003
+			}
+		}
+		debug_log = "Someone got sent as a Highguardian"
+		debug_log_scopes = yes
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { # Keep them
+		name = highguardian.0002.b
+		scope:highguardian_candidate = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -20
+			}
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Emperor gets a new highguardian
+highguardian.0003 = {
+	hidden = yes
+
+	immediate = {
+		send_interface_message = {
+			type = event_martial_text_good
+			left_icon = scope:highguardian_candidate
+			title = highguardian_arrived.title
+			desc = highguardian_arrived.desc
+			if = {
+				limit = {
+					exists = scope:highguardian_candidate.liege
+					scope:highguardian_candidate.liege = {
+						is_ai = yes
+					}
+				}
+				scope:highguardian_candidate = { move_to_pool_at = root.capital_province }
+			}
+			add_visiting_courtier = scope:highguardian_candidate
+			scope:highguardian_candidate = {
+				add_trait = highguardian
+				add_character_flag = is_currently_highguardian
+				set_variable = {
+					name = years_as_highguardian
+					value = 1 # Set to one year ahead of time for the sake of event evaluation
+				}
+				trigger_event = {
+					on_action = highguardian_ongoing
+					days = { 340 380 }
+				}
+			}
+		}
+	}
+}
+
+
+# Return home eventually
+scripted_trigger highguardian_1001_partner_can_be_brought_home_trigger = {
+	is_alive = yes
+	is_landed = no
+	any_heir_title = {
+		always = no
+	}
+}
+
+highguardian.1001 = {
+	hidden = yes
+
+	trigger = {
+		liege ?= { 
+			OR = {
+				culture = { has_cultural_pillar = heritage_north_germanic } 
+				dynasty = { has_dynasty_perk = fp1_adventure_legacy_1 }
+			}
+		}
+		var:years_as_highguardian > 5
+		is_available_ai_adult = yes
+		has_character_flag = is_currently_highguardian
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			add = {
+				value = var:years_as_highguardian
+				subtract = 5
+				multiply = 0.25
+			}
+			always = yes
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				exists = var:spouse_from_highguard
+				var:spouse_from_highguard = {
+					highguardian_1001_partner_can_be_brought_home_trigger = yes
+					is_consort_of = root
+				}
+			}
+			var:spouse_from_highguard = {
+				save_scope_as = new_partner
+			}
+		}
+		else_if = {
+			limit = {
+				exists = var:lover_from_highguard
+				var:lover_from_highguard = {
+					highguardian_1001_partner_can_be_brought_home_trigger = yes
+					has_relation_lover = root
+				}
+			}
+			var:lover_from_highguard = {
+				save_scope_as = new_partner
+			}
+		}
+		remove_character_flag = is_currently_highguardian
+		save_scope_as = returning_highguardian
+		if = {
+			limit = { exists = title:e_byzantium.holder }
+			title:e_byzantium.holder = {
+				save_scope_as = emperor
+			}
+		}
+		liege = {
+			trigger_event = highguardian.1002
+		}
+	}
+}
+
+# Liege - Highguardian returns home
+highguardian.1002 = {
+	type = character_event
+	title = highguardian.1002.t
+	desc = {
+		desc = highguardian.1002.opening
+		triggered_desc = {
+			trigger = {
+				exists = scope:new_partner
+			}
+			desc = highguardian.1002.new_partner
+		}
+		desc = highguardian.1002.ending
+	}
+	theme = martial
+	left_portrait = {
+		character = root
+		animation = war_over_tie
+	}
+	right_portrait = {
+		character = scope:returning_highguardian
+		animation = personality_bold
+	}
+	lower_left_portrait = scope:new_partner
+	lower_right_portrait = scope:emperor
+
+	immediate = {
+		scope:returning_highguardian = {
+			scope:emperor.culture = { save_scope_as = advanced_culture }
+			hidden_effect = { adopt_cultural_fashion_effect = yes }
+			if = {
+				limit = {
+					is_foreign_court_guest = yes
+				}
+				return_to_court = yes
+			}
+			else_if = {
+				limit = {
+					exists = dynasty.dynast.primary_title
+				}
+				dynasty.dynast = {
+					if = {
+						limit = {
+							scope:returning_highguardian = {
+								NOT = {
+									is_courtier_of = prev
+								}
+							}
+						}
+						add_courtier = scope:returning_highguardian
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					exists = dynasty
+					any_close_family_member = {
+						is_ai = no
+					}
+				}
+				random_close_family_member = {
+					limit = {
+						is_ai = no
+					}
+					add_courtier = scope:returning_highguardian
+				}
+			}
+			else_if = {
+				limit = {
+					any_close_family_member = {
+						is_ruler = yes
+					}
+				}
+				random_close_family_member = {
+					limit = {
+						is_ruler = yes
+					}
+					add_courtier = scope:returning_highguardian
+				}
+			}
+			else = {
+				move_to_pool = yes
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					exists = scope:new_partner
+					NOT = { scope:new_partner = { is_courtier_of = root } }
+				}
+				scope:returning_highguardian.court_owner = {
+					add_courtier = scope:new_partner
+				}
+			}
+		}
+		debug_log = "Someone got home from the Highguardian Guard"
+		debug_log_scopes = yes
+	}
+
+	option = { # Wow
+		name = highguardian.1002.a
+		scope:returning_highguardian = {
+			add_prestige = medium_prestige_gain
+			add_gold = medium_gold_value
+		}
+	}
+}
+
+
+# Return home because of inheritance
+# highguardian.1003
+
+# Liege - Highguardian has returned home to be vassal
+# highguardian.1004
+
+
+# Become friends with local Highguardian
+scripted_trigger highguardian_2001_highguardian_friend_trigger = {
+	has_character_flag = is_currently_highguardian
+	is_ai = yes
+	NOR = {
+		this = root
+		has_relation_rival = root
+		has_relation_lover = root
+	}
+}
+
+highguardian.2001 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		# Only if you don't have any friends
+		any_relation = {
+			type = best_friend
+			always = no
+		}
+		host ?= {
+			any_courtier_or_guest = {
+				highguardian_2001_highguardian_friend_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		host = {
+			random_courtier_or_guest = {
+				limit = {
+					highguardian_2001_highguardian_friend_trigger = yes
+				}
+				weight = {
+					base = 1
+					opinion_modifier = {
+						opinion_target = root
+						multiplier = 0.1 # +10 at 100
+					}
+					modifier = {
+						add = 10
+						OR = {
+							has_relation_potential_friend = root
+							has_relation_friend = root
+						}
+					}
+				}
+				save_scope_as = highguardian_friend
+			}
+		}
+		set_relation_best_friend = { reason = best_friend_highguardian copy_reason = friend target = scope:highguardian_friend }
+	}
+}
+
+# Become lover with a fellow Highguardian
+scripted_trigger highguardian_2002_highguardian_lover_trigger = {
+	has_character_flag = is_currently_highguardian
+	is_ai = yes
+	is_adult = yes
+	save_temporary_scope_as = potential_cheater
+	OR = {
+		is_married = no
+		any_spouse = {
+			count = all
+			save_temporary_scope_as = partner
+			scope:potential_cheater = { might_cheat_on_partner_trigger = { PARTNER = scope:partner } }
+		}
+	}
+	is_attracted_to_gender_of = root
+	root = {
+		is_attracted_to_gender_of = prev
+	}
+	NOR = {
+		this = root
+		has_relation_rival = root
+		has_relation_lover = root
+	}
+	opinion = {
+		target = root
+		value > 10
+	}
+	reverse_opinion = {
+		target = root
+		value > 0
+	}
+}
+
+highguardian.2002 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		# Only if you don't have any lovers
+		any_relation = {
+			type = lover
+			always = no
+		}
+		host ?= {
+			any_courtier_or_guest = {
+				highguardian_2002_highguardian_lover_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		host = {
+			random_courtier_or_guest = {
+				limit = {
+					highguardian_2002_highguardian_lover_trigger = yes
+				}
+				weight = {
+					base = 1
+					opinion_modifier = {
+						opinion_target = root
+						multiplier = 0.1 # +10 at 100
+					}
+					modifier = {
+						add = 10
+						has_relation_potential_lover = root
+					}
+				}
+				save_scope_as = highguardian_lover
+			}
+		}
+		set_relation_lover = { reason = lover_highguardian_lover target = scope:highguardian_lover }
+		set_variable = {
+			name = lover_from_highguard
+			value = scope:highguardian_lover
+		}
+	}
+}
+
+# Become friends with local ruler
+scripted_trigger highguardian_2003_local_ruler_friend_trigger = {
+	is_ai = yes
+	opinion = {
+		target = root
+		value > 0
+	}
+	reverse_opinion = {
+		target = root
+		value > 0
+	}
+	NOR = {
+		this = root
+		has_relation_rival = root
+		has_relation_lover = root
+	}
+}
+
+highguardian.2003 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		# Only if you don't have any friends
+		any_relation = {
+			type = friend
+			always = no
+		}
+		host ?= {
+			any_vassal = {
+				highguardian_2003_local_ruler_friend_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		host = {
+			random_vassal = {
+				limit = {
+					highguardian_2003_local_ruler_friend_trigger = yes
+				}
+				weight = {
+					base = 1
+					opinion_modifier = {
+						opinion_target = root
+						multiplier = 0.1 # +10 at 100
+					}
+					modifier = {
+						add = 10
+						has_relation_potential_friend = root
+					}
+				}
+				save_scope_as = highguardian_friend
+			}
+		}
+		set_relation_friend = { reason = friend_highguardian target = scope:highguardian_friend }
+	}
+}
+
+# Become rivals with local ruler
+scripted_trigger highguardian_2004_local_ruler_rival_trigger = {
+	is_ai = yes
+	opinion = {
+		target = root
+		value < 0
+	}
+	reverse_opinion = {
+		target = root
+		value < 0
+	}
+	NOR = {
+		this = root
+		has_relation_friend = root
+		has_relation_lover = root
+	}
+}
+
+highguardian.2004 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		# Only if you don't have any rival
+		any_relation = {
+			type = rival
+			always = no
+		}
+		host ?= {
+			any_vassal = {
+				highguardian_2004_local_ruler_rival_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		host = {
+			random_vassal = {
+				limit = {
+					highguardian_2004_local_ruler_rival_trigger = yes
+				}
+				weight = {
+					base = 1
+					opinion_modifier = {
+						opinion_target = root
+						multiplier = 0.1 # +10 at 100
+					}
+					modifier = {
+						add = 10
+						has_relation_potential_friend = root
+					}
+				}
+				save_scope_as = highguardian_friend
+			}
+		}
+		set_relation_rival = { reason = rival_highguardian target = scope:highguardian_friend }
+	}
+}
+
+# Marry Lover
+scripted_trigger highguardian_2005_lover_to_marry = {
+	is_ai = yes
+	is_married = no
+	can_marry_character_trigger = {
+		CHARACTER = root
+	}
+	OR = {
+		is_in_the_same_court_as_or_guest = root
+		top_liege = root.host
+		AND = {
+			exists = host
+			host.top_liege = root.host
+		}
+	}
+}
+
+scripted_trigger highguardian_2005_should_marry_this_character_matrilineally = {
+	is_female = yes
+	OR = {
+		AND = {
+			is_landed = yes
+			$OTHER_CHARACTER$ = { # Not if they are heir to anything
+				any_heir_title = {
+					always = no
+				}
+			}
+		}
+		AND = {
+			faith = {
+				has_doctrine = doctrine_gender_female_dominated
+			}
+			$OTHER_CHARACTER$ = {
+				faith = {
+					OR = {
+						has_doctrine = doctrine_gender_female_dominated
+						has_doctrine = doctrine_gender_equal
+					}
+				}
+			}
+		}
+	}
+}
+
+highguardian.2005 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		is_married = no
+		any_relation = {
+			type = lover
+			highguardian_2005_lover_to_marry = yes
+			NOT = { has_been_promised_grand_wedding = yes }
+		}
+		NOT = { has_been_promised_grand_wedding = yes }
+	}
+
+	immediate = {
+		random_relation = {
+			type = lover
+			limit = {
+				highguardian_2005_lover_to_marry = yes
+				NOT = { has_been_promised_grand_wedding = yes }
+			}
+			save_scope_as = lover_to_marry
+		}
+		if = {
+			limit = {
+				OR = {
+					highguardian_2005_should_marry_this_character_matrilineally = { OTHER_CHARACTER = scope:lover_to_marry }
+					scope:lover_to_marry = {
+						highguardian_2005_should_marry_this_character_matrilineally = { OTHER_CHARACTER = root }
+					}
+				}
+			}
+			marry_matrilineal = scope:lover_to_marry
+		}
+		else = {
+			marry = scope:lover_to_marry
+		}
+		set_variable = {
+			name = spouse_from_highguard
+			value = scope:lover_to_marry
+		}
+	}
+}
+
+# Get Murdered
+# highguardian.2006
+
+# Liege - notification they were murdered
+
+# Get Wounded
+highguardian.2008 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		NOR = {
+			has_trait = wounded
+			has_character_flag = had_severe_injury_in_highguard
+		}
+	}
+
+	immediate = {
+		add_character_flag = had_severe_injury_in_highguard
+		random_list = {
+			10 = {
+				increase_wounds_effect = { REASON = fight }
+				increase_wounds_effect = { REASON = fight }
+			}
+			5 = {
+				increase_wounds_effect = { REASON = fight }
+				increase_wounds_effect = { REASON = fight }
+				increase_wounds_effect = { REASON = fight }
+			}
+			5 = {
+				trigger = {
+					NOT = { has_trait = one_eyed }
+				}
+				add_trait = one_eyed
+			}
+			5 = {
+				trigger = {
+					NOT = { has_trait = one_legged }
+				}
+				add_trait = one_legged
+			}
+			2 = {
+				trigger = {
+					is_eunuch_trigger = no
+					NOR = {
+						is_female = yes
+						age < 12
+					}
+				}
+				add_trait = eunuch_1
+			}
+			2 = {
+				trigger = {
+					NOR = {
+						has_trait = blind
+						is_male = yes
+					}
+				}
+				add_trait = blind
+			}
+		}
+	}
+}
+
+# Get Killed in battle
+# highguardian.2009
+
+# Liege - notification they were killed
+# highguardian.2010
+
+# Become lover with a local
+scripted_trigger highguardian_2011_local_lover_trigger = {
+	is_ai = yes
+	is_adult = yes
+	is_attracted_to_gender_of = root
+	root = {
+		is_attracted_to_gender_of = prev
+	}
+	save_temporary_scope_as = potential_cheater
+	OR = {
+		is_married = no
+		any_spouse = {
+			count = all
+			save_temporary_scope_as = partner
+			scope:potential_cheater = { might_cheat_on_partner_trigger = { PARTNER = scope:partner } }
+		}
+	}
+	NOR = {
+		this = root
+		has_relation_rival = root
+		has_relation_lover = root
+	}
+	opinion = {
+		target = root
+		value > 10
+	}
+	reverse_opinion = {
+		target = root
+		value > 0
+	}
+}
+
+highguardian.2011 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		exists = host
+	}
+
+	immediate = {
+		random_list = {
+			10 = { # Find someone suitable
+				trigger = {
+					host = {
+						OR = {
+							highguardian_2011_local_lover_trigger = yes
+							any_courtier = {
+								highguardian_2011_local_lover_trigger = yes
+							}
+							any_vassal = {
+								highguardian_2011_local_lover_trigger = yes
+								any_courtier = {
+									highguardian_2011_local_lover_trigger = yes
+								}
+							}
+						}
+					}
+				}
+				host = {
+					if = {
+						limit = { highguardian_2011_local_lover_trigger = yes }
+						add_to_list = potential_lover
+					}
+					every_courtier = {
+						limit = { highguardian_2011_local_lover_trigger = yes }
+						add_to_list = potential_lover
+					}
+					every_vassal = {
+						if = {
+							limit = { highguardian_2011_local_lover_trigger = yes }
+							add_to_list = potential_lover
+						}
+						every_courtier = {
+							limit = { highguardian_2011_local_lover_trigger = yes }
+							add_to_list = potential_lover
+						}
+					}
+				}
+				random_in_list = {
+					list = potential_lover
+					weight = {
+						base = 1
+						modifier = {
+							add = 5
+							is_landed = no
+						}
+					}
+					save_scope_as = lover
+				}
+			}
+			10 = { # Create a beautiful peasant
+				create_character = {
+					template = beautiful_peasant_character
+					age = { age_compared_to_root_minus_ten_always_adult age_compared_to_root_plus_ten_always_adult }
+					gender_female_chance = root_attraction_based_female_chance
+					employer = root.host
+					faith = root.host.faith
+					culture = root.host.culture
+
+					after_creation = {
+						#Sometimes adjust sexuality to create compatibility with root
+						if = {
+							limit = {
+								root = { is_attracted_to_gender_of = prev }
+								NOT = { is_attracted_to_gender_of = root }
+							}
+							set_sexuality = bisexual
+						}
+					}
+
+					save_scope_as = lover
+				}
+			}
+			10 = { # Create a noble
+				create_character = {
+					template = pool_repopulate_spouse
+					age = { age_compared_to_root_minus_ten_always_adult age_compared_to_root_plus_ten_always_adult }
+					gender_female_chance = root_attraction_based_female_chance
+					employer = root.host
+					faith = root.host.faith
+					culture = root.host.culture
+					dynasty = generate
+
+					after_creation = {
+						#Sometimes adjust sexuality to create compatibility with root
+						if = {
+							limit = {
+								root = { is_attracted_to_gender_of = prev }
+								NOT = { is_attracted_to_gender_of = root }
+							}
+							set_sexuality = bisexual
+						}
+					}
+
+					save_scope_as = lover
+				}
+			}
+			5 = { # Create a witch
+				create_character = {
+					template = witchy_template
+					age = { age_compared_to_root_minus_ten_always_adult age_compared_to_root_plus_ten_always_adult }
+					gender_female_chance = root_attraction_based_female_chance
+					employer = root.host
+					faith = root.host.faith
+					culture = root.host.culture
+
+					after_creation = {
+						#Sometimes adjust sexuality to create compatibility with root
+						if = {
+							limit = {
+								root = { is_attracted_to_gender_of = prev }
+								NOT = { is_attracted_to_gender_of = root }
+							}
+							set_sexuality = bisexual
+						}
+					}
+
+					save_scope_as = lover
+				}
+			}
+			5 = { # Create a witch with a Dynasty
+				create_character = {
+					template = witchy_template
+					age = { age_compared_to_root_minus_ten_always_adult age_compared_to_root_plus_ten_always_adult }
+					gender_female_chance = root_attraction_based_female_chance
+					employer = root.host
+					faith = root.host.faith
+					culture = root.host.culture
+					dynasty = generate
+
+					after_creation = {
+						#Sometimes adjust sexuality to create compatibility with root
+						if = {
+							limit = {
+								root = { is_attracted_to_gender_of = prev }
+								NOT = { is_attracted_to_gender_of = root }
+							}
+							set_sexuality = bisexual
+						}
+					}
+
+					save_scope_as = lover
+				}
+			}
+		}
+		set_relation_lover = { reason = lover_highguardian_local target = scope:lover }
+	}
+}
+
+# Increase Prowess
+highguardian.2012 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		NOT = { has_character_flag = highguardian_recently_increased_prowess }
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = { # Reduce chance for each current Prowess over 15
+			value = prowess
+			multiplier = -0.1
+			offset = -15
+			trigger = {
+				prowess > 15
+			}
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = highguardian_recently_increased_prowess
+			years = 2
+		}
+		add_prowess_skill = 1
+	}
+}
+
+# Increase Martial
+highguardian.2013 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		NOT = { has_character_flag = highguardian_recently_increased_martial }
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = { # Reduce chance for each current martial over 15
+			value = martial
+			multiplier = -0.1
+			offset = -15
+			trigger = {
+				martial > 15
+			}
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = highguardian_recently_increased_martial
+			years = 2
+		}
+		add_martial_skill = 1
+	}
+}
+
+# Increase Learning
+highguardian.2014 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		NOT = { has_character_flag = highguardian_recently_increased_learning }
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = { # Reduce chance for each current learning over 15
+			value = learning
+			multiplier = -0.1
+			offset = -15
+			trigger = {
+				learning > 15
+			}
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = highguardian_recently_increased_learning
+			years = 2
+		}
+		add_learning_skill = 1
+	}
+}
+
+# Increase Diplomacy
+highguardian.2015 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		NOT = { has_character_flag = highguardian_recently_increased_diplomacy }
+	}
+
+	weight_multiplier = {
+		base = 1
+		compare_modifier = { # Reduce chance for each current diplomacy over 15
+			value = diplomacy
+			multiplier = -0.1
+			offset = -15
+			trigger = {
+				diplomacy > 15
+			}
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = highguardian_recently_increased_diplomacy
+			years = 2
+		}
+		add_diplomacy_skill = 1
+	}
+}
+
+# Become Brave
+highguardian.2016 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		OR = {
+			has_trait = craven
+			has_trait = lazy
+			has_trait = content
+		}
+		NOT = { has_trait = brave }
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	immediate = {
+		if = {
+			limit = { has_trait = craven }
+			remove_trait = craven
+		}
+		else_if = {
+			limit = { has_trait = lazy }
+			remove_trait = lazy
+		}
+		else_if = {
+			limit = { has_trait = content }
+			remove_trait = content
+		}
+		add_trait = brave
+	}
+}
+
+# Become Ambitious
+highguardian.2017 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		OR = {
+			has_trait = craven
+			has_trait = lazy
+			has_trait = content
+		}
+		NOT = { has_trait = ambitious }
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	immediate = {
+		if = {
+			limit = { has_trait = content }
+			remove_trait = content
+		}
+		else_if = {
+			limit = { has_trait = lazy }
+			remove_trait = lazy
+		}
+		else_if = {
+			limit = { has_trait = craven }
+			remove_trait = craven
+		}
+		add_trait = ambitious
+	}
+}
+
+# Become Diligent
+highguardian.2018 = {
+	hidden = yes
+
+	trigger = {
+		has_character_flag = is_currently_highguardian
+		OR = {
+			has_trait = craven
+			has_trait = lazy
+			has_trait = content
+		}
+		NOT = { has_trait = diligent }
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	immediate = {
+		if = {
+			limit = { has_trait = lazy }
+			remove_trait = lazy
+		}
+		else_if = {
+			limit = { has_trait = content }
+			remove_trait = content
+		}
+		else_if = {
+			limit = { has_trait = craven }
+			remove_trait = craven
+		}
+		add_trait = diligent
+	}
+}
+
+# Liege: Highguardian has died saving the Emeperor's life
+	# by Petter Vilberg
+highguardian.3001 = {
+	type = character_event
+	title = highguardian.3001.t
+	desc = highguardian.3001.desc
+	theme = murder_scheme
+	left_portrait = scope:highguardian
+	right_portrait = {
+		character = scope:emperor
+		animation = sadness
+	}
+
+	option = {
+		name = highguardian.3001.a
+		add_gold = major_gold_value
+	}
+}
+# Emperor: Highguardians are great fighters
+
+
+# #	Results: Warrior.
+# fp1_yearly.1014 = {
+# 	type = character_event
+# 	title = fp1_yearly.1014.t
+# 	desc = {
+# 		first_valid = {
+# 			triggered_desc = {
+# 				trigger = { scope:ms_effect = flag:critical }
+# 				desc = fp1_yearly.1014.desc.critical
+# 			}
+# 			desc = fp1_yearly.1014.desc.standard
+# 		}
+# 		desc = fp1_yearly.1014.desc.outro
+# 	}
+# 	theme = intrigue
+# 	left_portrait = {
+# 		character = scope:stranger
+# 		animation = personality_bold
+# 	}
+# 	override_background = { reference = corridor_night }
+
+# 	immediate = {
+# 		#If they were endorsed, the warrior gets better stats than they would otherwise.
+# 		if = {
+# 			limit = { scope:ms_effect = flag:critical }
+# 			scope:stranger = {
+# 				#Boost education by two steps.
+# 				if = {
+# 					limit = { has_trait = education_martial_1 }
+# 					hidden_effect = { remove_trait = education_martial_1 }
+# 					add_trait = education_martial_3
+# 				}
+# 				if = {
+# 					limit = { has_trait = education_intrigue_1 }
+# 					hidden_effect = { remove_trait = education_intrigue_1 }
+# 					add_trait = education_intrigue_3
+# 				}
+# 				#Boost stats.
+# 				add_diplomacy_skill = { 3 5 }
+# 				add_martial_skill = { 10 12 }
+# 				add_stewardship_skill = { 3 5 }
+# 				add_intrigue_skill = { 3 5 }
+# 				add_learning_skill = { 3 5 }
+# 				add_prowess_skill = { 14 18 }
+# 				#Give him a reputation.
+# 				add_prestige_level = 2
+# 				#Slight chance to add an additional trait or two.
+# 				random_list = {
+# 					25 = {
+# 						trigger = { exists = title:e_byzantium.holder }
+# 						add_trait = varangian
+# 					}
+# 					25 = { add_trait = berserker }
+# 					25 = { add_trait = physique_good_2 }
+# 					25 = {
+# 						add_trait = lifestyle_blademaster
+# 						add_trait_xp = {
+# 			                trait = lifestyle_blademaster
+# 			                value = {
+# 			                    integer_range = {
+# 			                        min = medium_lifestyle_random_xp_low
+# 			                        max = medium_lifestyle_random_xp_high
+# 								}
+# 			                }
+# 			            }
+# 			        }
+# 				}
+# 				#Reveal the warrior's true stats.
+# 				hidden_effect = { force_character_skill_recalculation = yes }
+# 			}
+# 		}
+# 		else = {
+# 			scope:stranger = {
+# 				#Boost education by one step.
+# 				if = {
+# 					limit = { has_trait = education_martial_1 }
+# 					hidden_effect = { remove_trait = education_martial_1 }
+# 					add_trait = education_martial_2
+# 				}
+# 				if = {
+# 					limit = { has_trait = education_intrigue_1 }
+# 					hidden_effect = { remove_trait = education_intrigue_1 }
+# 					add_trait = education_intrigue_2
+# 				}
+# 				#Boost stats.
+# 				add_diplomacy_skill = { 3 5 }
+# 				add_martial_skill = { 5 10 }
+# 				add_stewardship_skill = { 3 5 }
+# 				add_intrigue_skill = { 3 5 }
+# 				add_learning_skill = { 3 5 }
+# 				add_prowess_skill = { 8 12 }
+# 				#Slight chance to add an additional trait or two.
+# 				random_list = {
+# 					50 = {}
+# 					12 = {
+# 						trigger = { exists = title:e_byzantium.holder }
+# 						add_trait = varangian
+# 					}
+# 					12 = { add_trait = berserker }
+# 					12 = { add_trait = physique_good_1 }
+# 					14 = {
+# 						add_trait = lifestyle_blademaster
+# 						add_trait_xp = {
+# 			                trait = lifestyle_blademaster
+# 			                value = {
+# 			                    integer_range = {
+# 			                        min = small_lifestyle_random_xp_low
+# 			                        max = small_lifestyle_random_xp_high
+# 								}
+# 			                }
+# 			            }
+# 					}
+# 				}
+# 				#Reveal the warrior's true stats.
+# 				hidden_effect = { force_character_skill_recalculation = yes }
+# 			}
+# 		}
+# 	}
+
+# 	#I'll certainly hire you!
+# 	option = {
+# 		name = fp1_yearly.1014.a
+
+# 		#Gain the warrior, who is also pretty happy to be here.
+# 		add_courtier = scope:stranger
+# 		reverse_add_opinion = {
+# 			target = scope:stranger
+# 			modifier = loyal_servant
+# 		}
+
+# 		#And pay the price.
+# 		if = {
+# 			limit = { scope:ms_effect = flag:critical }
+# 			remove_short_term_gold = medium_gold_value
+# 		}
+# 		else = { remove_short_term_gold = minor_gold_value }
+
+# 		stress_impact = {
+# 			gregarious = minor_stress_impact_loss
+# 			greedy = medium_stress_impact_gain
+# 		}
+# 		ai_chance = {
+# 			#Always a no if the AI can't afford the warrior.
+# 			base = -1000
+# 			ai_value_modifier = {
+# 				ai_sociability = 0.5
+# 				ai_greed = -0.5
+# 			}
+# 			#Enable option for the AI if they've the gold to spare.
+# 			modifier = {
+# 				add = 1000
+# 				scope:ms_effect = flag:critical
+# 				short_term_gold >= medium_gold_value
+# 			}
+# 			modifier = {
+# 				add = 1000
+# 				scope:ms_effect = flag:standard
+# 				short_term_gold >= minor_gold_value
+# 			}
+# 			modifier = {	#Weight up for stress.
+# 				add = 10
+# 				has_trait = gregarious
+# 			}
+# 			modifier = {	#Weight down for stress.
+# 				add = -20
+# 				has_trait = greedy
+# 			}
+# 		}
+# 	}
+
+# 	#Pass. Move along, Conan.
+# 	option = {
+# 		name = fp1_yearly.1014.b
+
+# 		#The warrior vanishes.
+# 		mysterious_stranger_disappears_effect = yes
+
+# 		#Have some mild consolation prestige
+# 		add_prestige = minor_prestige_gain
+
+# 		stress_impact = {
+# 			greedy = minor_stress_impact_loss
+# 			gregarious = minor_stress_impact_gain
+# 		}
+# 		ai_chance = {
+# 			base = 100
+# 			ai_value_modifier = {
+# 				ai_greed = 0.5
+# 				ai_sociability = -0.5
+# 			}
+# 			modifier = {	#Weight up for stress.
+# 				add = 10
+# 				has_trait = greedy
+# 			}
+# 			modifier = {	#Weight down for stress.
+# 				add = -10
+# 				has_trait = gregarious
+# 			}
+# 		}
+# 	}
+# }

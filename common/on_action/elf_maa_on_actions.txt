@@ -74,8 +74,8 @@ elf_maa_yearly_events = {
 
 on_yearly_elf_events = {
     random_events = {
-        # Varangian Guard
-        400 = varangian.0001 # A Courtier wants to join the Varangian Guard
+        # Highguard
+        400 = highguardian.0001 # A Courtier wants to join the Highguard
     }
 }
 

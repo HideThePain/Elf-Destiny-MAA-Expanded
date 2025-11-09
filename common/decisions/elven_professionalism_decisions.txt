@@ -157,14 +157,14 @@ revoke_elven_professionalism = { # reverse elven professionalism/legion for king
 	
 found_highguard_decision = {
 	picture = {
-		reference = "gfx/interface/illustrations/decisions/ep3_decision_highguardian_guard.dds"
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_highguard.dds"
 	}
 	ai_check_interval = 60
 
 	sort_order = 100
 
-	desc = found_highguardian_guard_decision_desc
-	selection_tooltip = found_highguardian_guard_decision_tooltip
+	desc = found_highguard_decision_desc
+	selection_tooltip = found_highguard_decision_tooltip
 	decision_group_type = roman
 
 	is_shown = {
@@ -202,10 +202,10 @@ found_highguard_decision = {
 	effect = {
 		primary_title = { set_variable = founded_highguard }
 		send_interface_toast = {
-			title = unlocked_highguardian_guard_desc_tt
+			title = unlocked_highguard_desc_tt
 			type = event_toast_effect_neutral
 			left_icon = root
-			custom_tooltip = unlocked_highguardian_guard_desc
+			custom_tooltip = unlocked_highguard_desc
 		}
 		create_character_memory = {
 			type = found_highguardian_memory

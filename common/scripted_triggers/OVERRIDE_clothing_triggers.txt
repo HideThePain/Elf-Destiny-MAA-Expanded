@@ -107,6 +107,8 @@
 		has_character_flag = wear_armor
 		# Serving Varangian
 		has_character_flag = is_currently_varangian
+		# Serving Highguardian
+		has_character_flag = is_currently_highguardian
 		# In a Duel
 		has_character_flag = single_combat_duel_armor
 		has_character_flag = forced_knight_armor
@@ -121,5 +123,163 @@
 			limit = { is_alive = no }
 			death_reason = death_battle
 		}
+	}
+}
+
+portrait_wear_helmet_trigger = { # Different from Armor, as (crowned) Kings and Emperors should show their crowns!
+	exists = this
+	trigger_if = {
+		limit = { exists = involved_activity }
+		involved_activity = {
+			NOR = {
+				has_activity_type = activity_hunt
+				has_activity_type = activity_pilgrimage
+				has_activity_type = activity_roaming
+			}
+		}
+	}
+	is_incapable = no
+	is_imprisoned = no
+	NOT = { has_court_position = court_astrologer_court_position }
+	trigger_if = {
+		limit = { portrait_sickness_trigger = yes }
+		is_in_army = yes
+	}
+	OR = {
+		# Adventurers
+		AND = {
+			is_ruler = yes
+			government_has_flag = government_is_landless_adventurer
+			has_realm_law = camp_purpose_mercenaries
+		}
+		# Holy Orders
+		AND = {
+			is_ruler = yes
+			government_has_flag = government_is_holy_order
+		}
+		has_trait = order_member
+		# Commanding and lower than a King or uncrowned
+		AND = {
+			is_commanding_army = yes
+			OR = {
+				is_landed_or_landless_administrative = no
+				AND = {
+					exists = primary_title
+					OR = {
+						primary_title.tier < tier_kingdom
+						portrait_wear_no_crown_trigger = yes
+					}
+				}
+			}
+		}
+		# Knight in an army
+		exists = knight_army
+		# Non-Council Knight lower than King and liege is at war
+		AND = {
+			is_knight = yes
+			is_councillor = no
+			OR = {
+				is_landed_or_landless_administrative = no
+				AND = {
+					exists = primary_title
+					primary_title.tier < tier_kingdom
+					liege = { is_at_war = yes }
+				}
+			}
+			NAND = {
+				is_ruler = no
+				government_has_flag = government_is_landless_adventurer
+				liege ?= {
+					is_at_war = no
+					NOT = { has_realm_law = camp_purpose_mercenaries }
+				}
+			}
+		}
+		# Marshal lower than Duke
+		AND = {
+			has_council_position = councillor_marshal
+			OR = {
+				is_landed_or_landless_administrative = no
+				primary_title.tier < tier_duchy
+			}
+		}
+		has_character_flag = wear_armor
+		# Serving Varangian
+		has_character_flag = is_currently_varangian
+		# Serving Highguardian
+		has_character_flag = is_currently_highguardian
+		# In a Duel
+		has_character_flag = single_combat_duel_armor
+		# In a Tournament
+		activity_tournament_armor_trigger = yes
+		AND = { # In case these characters become landed they should stop wearing armor
+			has_character_flag = military_outfit
+			is_ruler = no
+		}
+		# Military style governor
+		AND = {
+			is_independent_ruler = no
+			OR = {
+				has_government = celestial_government
+				has_government = meritocratic_government
+				has_government = steppe_admin_government
+			}
+			OR = {
+				vassal_contract_has_flag = celestial_province_protectorate
+				vassal_contract_has_flag = celestial_province_military
+				vassal_contract_has_flag = meritocratic_province_protectorate
+				vassal_contract_has_flag = meritocratic_province_military
+				has_title = title:e_minister_grand_marshal
+			}
+			is_adult = yes
+			trigger_if = {
+				limit = { has_trait = devoted }
+				faith = { has_doctrine_parameter = clergy_can_fight }
+			}
+			save_temporary_scope_as = fighter_temp
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:fighter_temp }
+		}
+	}
+	NOR = {
+		activity_tournament_shirtless_trigger = yes
+		has_character_flag = no_hat
+	}
+	# Not peasants leading revolts
+	NAND = {
+		has_trait = peasant_leader
+		OR = {
+			is_ruler = no
+			is_leading_faction_type = peasant_faction
+			AND = {
+				is_ruler = yes
+				is_landed_or_landless_administrative = no
+				OR = {
+					government_has_flag = government_is_feudal
+					government_has_flag = government_is_clan
+				}
+			}
+		}
+	}
+}
+
+portrait_shared_clothing_contents_trigger = {
+	trigger_if = {
+		limit = { exists = top_liege.var:adopted_cultural_style }
+		top_liege.var:adopted_cultural_style = flag:$CULTURE_FLAG$
+	}
+	trigger_else_if = {
+		limit = { exists = this.var:adopted_cultural_style }
+		var:adopted_cultural_style = flag:$CULTURE_FLAG$
+		has_variable = years_as_varangian
+		is_landed = no
+	}
+	trigger_else_if = {
+		limit = { exists = this.var:adopted_cultural_style }
+		var:adopted_cultural_style = flag:$CULTURE_FLAG$
+		has_variable = years_as_highguardian
+		is_landed = no
+	}
+	trigger_else = {
+		$CULTURE_SCOPE$ ?= { has_clothing_gfx = $CULTURE_FLAG$_clothing_gfx }
 	}
 }

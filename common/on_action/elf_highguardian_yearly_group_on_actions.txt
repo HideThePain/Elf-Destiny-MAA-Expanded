@@ -12,6 +12,6 @@ highguardian_filler = {
         100 = highguardian.0001
 
         # highguardian Guard
- ##       400 = highguardian.0001 # A Courtier wants to join the Varangian Guard
+        400 = highguardian.0001 # A Courtier wants to join the Highguard
     }
 }

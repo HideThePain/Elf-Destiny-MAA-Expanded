@@ -9,9 +9,8 @@ on_death = {
 }
 
 elf_highguard_pillage = {
-    # EP3 - Highguard of Valor Palace Pillaging
+    # EP3 - Highguard Palace Pillaging
     effect = {
-        # EP3 - Highguard of Valor Palace Pillaging
         if = {
             limit = {
                 primary_title = title:e_byzantium

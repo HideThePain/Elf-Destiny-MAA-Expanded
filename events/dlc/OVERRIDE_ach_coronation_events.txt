@@ -1,0 +1,1449 @@
+ach_coronation.0015 = {
+	type = activity_event
+	title = ach_coronation.0015.t
+	desc = ach_coronation.0015.desc
+
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+
+	center_portrait = {
+		character = scope:peasant
+		animation = rage
+		camera = camera_event_crowd
+		hide_info = yes
+	}
+
+	right_portrait = {
+		character = scope:filthy_peasant
+		animation = beg
+		camera = camera_event_ground
+		hide_info = yes
+	}
+
+	cooldown = { years = 10 }
+
+	theme = coronation_activity
+
+	override_background = {
+		trigger = {
+			location.county.holder = {
+				government_has_flag = government_is_tribal
+			}
+		}
+		reference = market_tribal
+	}
+	override_background = { reference = alley_day }
+
+	override_effect_2d = {
+		trigger = { exists = scope:rain_day }
+		reference = rain	
+	}
+
+	trigger = {
+		involved_activity = {
+			# Once per activity
+			NOT = { has_variable = crowd_crush_happened }
+		}
+	}
+
+	immediate = {
+		create_character = {
+			location = root.location
+			template = diseased_peasant_character
+			culture = root.location.county.culture
+			faith = root.location.county.faith
+			save_scope_as = filthy_peasant
+		}
+		create_character = {
+			location = root.location
+			template = servant_character
+			culture = root.location.county.culture
+			faith = root.location.county.faith
+			save_scope_as = peasant
+		}
+		
+		ach_coronation_0015_minor_crush_effect = yes
+
+		custom_tooltip = ach_coronation.0015.has_happened
+	}
+
+	option = { # Diplomacy Challenge - Talk them down
+		name = {
+			trigger = { has_trait = august }
+			text = ach_coronation.0015.a.august
+		}
+		name = ach_coronation.0015.a
+		trigger = { diplomacy >= low_skill_rating }
+		show_as_unavailable = { always = yes }
+		skill = diplomacy
+		trait = august
+
+		duel = {
+			skill = diplomacy
+			value = medium_skill_rating
+			# Your speech stuns the crowd to awed silence
+			10 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2
+					min = -49
+				}
+				modifier = {
+					diplomacy >= high_skill_rating
+					add = 10
+				}
+				modifier = {
+					has_trait = diplomat
+					add = 20
+				}
+
+				desc = ach_coronation.0015.a.tt.critical_success
+
+				custom_tooltip = coronation_tt_positive_major
+				scope:activity = { activity_special_type_progression_major = yes }
+				coronation_add_magnificence_log_effect = {
+					VALUE = flag:positive_major
+					CHAR = root
+				}
+
+				# The commoners will remember this
+				add_character_modifier = { modifier = ach_awed_peasantry_modifier years = 10 }
+
+				# You'll also remember this
+				create_character_memory = { type = calmed_the_crowd_memory }
+
+				show_as_tooltip = {
+					add_diplomacy_lifestyle_perk_points = 1
+				}
+
+				hidden_effect = {
+					send_interface_toast = {
+						title = ach_coronation.0015.a.tt.critical_success
+						custom_tooltip = ach_coronation.0015.a.tt.critical_success.desc
+						left_icon = root
+						type = event_toast_effect_good
+
+						# Everyone is very impressed
+						add_diplomacy_lifestyle_perk_points = 1
+						custom_tooltip = {
+							text = coronation_tt_positive_major
+							scope:activity = { activity_special_type_progression_major = yes }
+						}
+						scope:activity = {
+							every_attending_character = {
+								limit = {
+									this != root
+									this != scope:crush_initiator
+								}
+								add_opinion = {
+									target = root
+									modifier = impressed_opinion
+									opinion = 10
+								}
+								custom = custom.every_activity_guest
+							}
+						}
+					}
+
+					# Remove the stampede modifier early
+					root.location.county = {
+						remove_county_modifier = ach_coronation_stampede_modifier
+					}
+					# Inform the initiator they failed in a critical persuasian
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.critical_failure
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.critical_failure.desc
+							left_icon = root
+							right_icon = scope:host
+
+							stress_impact = {
+								base = medium_stress_impact_gain
+								irritable = medium_stress_impact_gain
+							}
+
+							show_as_tooltip = {
+								scope:host = {
+									custom_tooltip = {
+										text = coronation_tt_positive_major
+										scope:activity = { activity_special_type_progression_major = yes }
+									}
+									add_diplomacy_lifestyle_perk_points = 1
+								}
+								scope:activity = {
+									every_attending_character = {
+										limit = {
+											this != scope:host
+											this != scope:crush_initiator
+										}
+										add_opinion = {
+											target = scope:host
+											modifier = impressed_opinion
+											opinion = 10
+										}
+										custom = custom.every_activity_guest
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			# Your speech calms the people
+			40 = {
+				# If you have the August trait (and higher than low_skill_rating), critical success is free
+				trigger = { NOT = { has_trait = august } }
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				modifier = {
+					has_trait = diplomat
+					add = 30
+				}
+
+				desc = ach_coronation.0015.a.tt.success
+
+				ach_coronation_0015_minor_crush_effect = yes
+
+				# You'll remember this
+				create_character_memory = { type = calmed_the_crowd_memory }
+
+				custom_tooltip = coronation_tt_positive_medium
+				scope:activity = { activity_special_type_progression_medium = yes }
+				coronation_add_magnificence_log_effect = {
+					VALUE = flag:positive_medium
+					CHAR = root
+				}
+
+				hidden_effect = {
+					send_interface_toast = {
+						title = ach_coronation.0015.a.tt.success
+						custom_tooltip = ach_coronation.0015.a.tt.success.desc
+						left_icon = root
+						type = event_toast_effect_good
+
+						# Everyone is impressed
+						custom_tooltip = coronation_tt_positive_medium
+						scope:activity = {
+							activity_special_type_progression_medium = yes
+						}
+					}
+
+					# Inform the initiator they failed
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.failure
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.failure.desc
+							left_icon = root
+							right_icon = scope:host
+
+							scope:host = {
+								custom_tooltip = coronation_tt_positive_medium
+							}
+						}
+					}
+				}
+			}
+			# The fools do not listen
+			40 = {
+				# If you have the August trait (and higher than low_skill_rating), critical success is free
+				trigger = { NOT = { has_trait = august } }
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -4
+					min = -49
+				}
+				modifier = { # Hard to ignore
+					has_trait = august
+					add = -20
+				}
+				modifier = { # Hard to get people to listen
+					OR = {
+						has_trait = stuttering
+						has_trait = lisping
+					}
+					add = 10
+				}
+
+				desc = ach_coronation.0015.a.tt.failure
+
+				ach_coronation_0015_medium_crush_effect = yes
+
+				custom_tooltip = coronation_tt_negative
+				scope:activity = { activity_special_type_progression_negative = yes }
+				coronation_add_magnificence_log_effect = {
+					VALUE = flag:negative
+					CHAR = root
+				}
+
+				hidden_effect = {
+					send_interface_toast = {
+						title = ach_coronation.0015.a.tt.failure.title
+						desc = ach_coronation.0015.a.tt.failure
+						left_icon = root
+						type = event_toast_effect_bad
+
+						stress_impact = {
+							base = medium_stress_impact_gain
+							irritable = medium_stress_impact_gain
+						}
+
+						custom_tooltip = coronation_tt_negative
+					}
+
+					# Inform the initiator they succeeded
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.success
+							desc = ach_coronation.0015.a.tt.initiator.success.desc
+							left_icon = root
+							right_icon = scope:host
+
+							show_as_tooltip = {
+								scope:host = {
+									stress_impact = {
+										base = medium_stress_impact_gain
+										irritable = medium_stress_impact_gain
+									}
+
+									custom_tooltip = coronation_tt_negative
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:new_memory }
+			scope:new_memory = {
+				set_variable = {
+					name = memory_location
+					value = root.location
+				}
+			}
+		}
+
+		stress_impact = {
+			callous = minor_stress_impact_gain # Doesn't care
+			shy = minor_stress_impact_gain # Talk to people!?
+		}
+
+		ai_chance = {
+			base = 200
+			modifier = {
+				add = -25
+				has_trait = callous
+			}
+			modifier = {
+				add = -25
+				has_trait = shy
+			}
+			modifier = {
+				add = -50
+				has_trait = sadistic
+			}
+			modifier = {
+				add = 25
+				has_trait = calm
+			}
+			modifier = {
+				add = 50
+				has_trait = compassionate
+			}
+			modifier = {
+				add = 50
+				has_trait = gregarious
+			}
+		}
+	}
+
+	option = { # Physician / Learning - Tend to the wounded
+		name = ach_coronation.0015.b
+		flavor = ach_coronation.0015.b.flavor
+		trigger = {
+			OR = {
+				learning >= high_skill_rating
+				has_trait = lifestyle_physician
+			}
+		}
+		skill = learning
+		trait = lifestyle_physician
+
+		random = {
+			chance = 25
+			custom_tooltip = coronation_tt_negative
+			scope:activity = { activity_special_type_progression_negative = yes }
+			coronation_add_magnificence_log_effect = {
+				VALUE = flag:negative
+				CHAR = root
+			}
+		}
+
+		add_piety = major_piety_gain
+		add_learning_lifestyle_xp = medium_lifestyle_experience
+
+		show_as_tooltip = {
+			scope:activity = {
+				every_attending_character = {
+					limit =  { is_ai = yes }
+					custom = every_wounded_guest_in_crowd_scope_tt
+					show_as_tooltip = {
+						add_character_modifier = {
+							modifier = ach_coronation_treated_wound_modifier
+							years = 5
+						}
+						add_opinion = {
+							target = root
+							modifier = thankful_opinion
+							opinion = 20
+						}
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			every_in_list = {
+				list = in_crowd_crush
+				add_opinion = {
+					target = root
+					modifier = thankful_opinion
+					opinion = 20
+				}
+				add_character_modifier = {
+					modifier = ach_coronation_treated_wound_modifier
+					years = 5
+				}
+			}
+			# Inform the initiator they failed
+			scope:crush_initiator = {
+				send_interface_toast = {
+					title = ach_coronation.0015.a.tt.initiator.failure
+					custom_tooltip = ach_coronation.0015.a.tt.initiator.failure.physician.desc
+					left_icon = root
+					right_icon = scope:host
+
+					show_as_tooltip = {
+						scope:host = {
+							custom_tooltip = coronation_tt_positive_medium
+
+							add_piety = major_piety_gain
+						}
+					}
+				}
+			}
+		}
+
+		stress_impact = {
+			arrogant = medium_stress_impact_gain # "Peasant blood? On *my* hands?"
+			sadistic = medium_stress_impact_gain # "No wait this is great let's just watch"
+			compassionate = major_stress_impact_loss # "Mass casualty events are bad :(((" ~ local buzzkill
+		}
+
+		ai_chance = {
+			base = 300
+			modifier = {
+				add = 100
+				has_trait = compassionate
+			}
+			modifier = {
+				add = -100
+				has_trait = sadistic
+			}
+			modifier = {
+				add = -100
+				has_trait = arrogant
+			}
+		}
+	}
+
+	option = { # Set the guards on them!
+		name = {
+			trigger = { primary_title = { has_variable = founded_varangian_guard } }
+			text = ach_coronation.0015.d.byzantines
+		}
+		name = ach_coronation.0015.d
+		trait = overseer
+		add_internal_flag = dangerous
+
+		add_dread = miniscule_dread_gain
+
+		random_list = {
+			1 = { # The soldiers go too far
+				ach_coronation_0015_major_crush_effect = yes
+				add_tyranny = medium_tyranny_gain
+
+				hidden_effect = {
+					# Inform the initiator they succeeded
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.critical_success
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.critical_success.desc
+							left_icon = root
+							right_icon = scope:host
+
+							show_as_tooltip = {
+								scope:host = {
+									ach_coronation_0015_major_crush_effect = yes
+									add_tyranny = medium_tyranny_gain
+									add_dread = miniscule_dread_gain
+								}
+							}
+						}
+					}
+				}
+			}
+			2 = { # The soldiers kill a bunch of people but restore order
+				ach_coronation_0015_medium_crush_effect = yes
+				add_tyranny = minor_tyranny_gain
+
+				hidden_effect = {
+					# Inform the initiator they failed
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.failure
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.failure.crackdown.desc
+							left_icon = root
+							right_icon = scope:host
+
+							show_as_tooltip = {
+								scope:host = {
+									ach_coronation_0015_medium_crush_effect = yes
+									add_dread = miniscule_dread_gain
+									add_character_modifier = {
+										modifier = ach_coronation_crackdown_character_modifier
+										years = 5
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			3 = { # The crowds disperse before many are killed
+				ach_coronation_0015_minor_crush_effect = yes
+
+				hidden_effect = {
+					# Inform the initiator they failed
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.failure
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.failure.crackdown.desc
+							left_icon = root
+							right_icon = scope:host
+
+							show_as_tooltip = {
+								scope:host = {
+									ach_coronation_0015_minor_crush_effect = yes
+									add_character_modifier = {
+										modifier = ach_coronation_crackdown_character_modifier
+										years = 5
+									}
+									add_dread = miniscule_dread_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = overseer }
+			}
+			custom_tooltip = coronation_tt_negative
+			scope:activity = { activity_special_type_progression_negative = yes }
+			coronation_add_magnificence_log_effect = {
+				VALUE = flag:negative
+				CHAR = root
+			}
+		}
+		else = {
+			custom_tooltip = because_you_have_overseer_tt
+		}
+
+		add_character_modifier = {
+			modifier = ach_coronation_crackdown_character_modifier
+			years = 5
+		}
+		root.location = {
+			add_province_modifier = {
+				modifier = ach_coronation_crackdown_modifier
+				years = 5
+			}
+			county = {
+				change_development_progress = medium_development_progress_loss
+			}
+		}
+
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			arrogant = minor_stress_impact_loss # Loves calling guards on the commons
+			# Loves seeing guards beat people
+			callous = medium_stress_impact_loss
+			sadistic = medium_stress_impact_loss
+			overseer = minor_stress_impact_loss
+		}
+		
+		ai_chance = {
+			base = 100
+			modifier = {
+				add = -50
+				has_trait = compassionate
+			}
+			modifier = {
+				add = 25
+				has_trait = arbitrary
+			}
+			modifier = {
+				add = 25
+				has_trait = arrogant
+			}
+			modifier = {
+				add = 50
+				has_trait = sadistic
+			}
+			modifier = {
+				add = 50
+				has_trait = callous
+			}
+			modifier = {
+				add = 50
+				has_trait = overseer
+			}
+		}
+	}
+
+    	option = { # Set the guards on them!
+		name = {
+			trigger = { primary_title = { has_variable = founded_highguard } }
+			text = ach_coronation.0015.d.highguard
+		}
+		name = ach_coronation.0015.d
+		trait = overseer
+		add_internal_flag = dangerous
+
+		add_dread = miniscule_dread_gain
+
+		random_list = {
+			1 = { # The soldiers go too far
+				ach_coronation_0015_major_crush_effect = yes
+				add_tyranny = medium_tyranny_gain
+
+				hidden_effect = {
+					# Inform the initiator they succeeded
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.critical_success
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.critical_success.desc
+							left_icon = root
+							right_icon = scope:host
+
+							show_as_tooltip = {
+								scope:host = {
+									ach_coronation_0015_major_crush_effect = yes
+									add_tyranny = medium_tyranny_gain
+									add_dread = miniscule_dread_gain
+								}
+							}
+						}
+					}
+				}
+			}
+			2 = { # The soldiers kill a bunch of people but restore order
+				ach_coronation_0015_medium_crush_effect = yes
+				add_tyranny = minor_tyranny_gain
+
+				hidden_effect = {
+					# Inform the initiator they failed
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.failure
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.failure.crackdown.desc
+							left_icon = root
+							right_icon = scope:host
+
+							show_as_tooltip = {
+								scope:host = {
+									ach_coronation_0015_medium_crush_effect = yes
+									add_dread = miniscule_dread_gain
+									add_character_modifier = {
+										modifier = ach_coronation_crackdown_character_modifier
+										years = 5
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			3 = { # The crowds disperse before many are killed
+				ach_coronation_0015_minor_crush_effect = yes
+
+				hidden_effect = {
+					# Inform the initiator they failed
+					scope:crush_initiator = {
+						send_interface_toast = {
+							title = ach_coronation.0015.a.tt.initiator.failure
+							custom_tooltip = ach_coronation.0015.a.tt.initiator.failure.crackdown.desc
+							left_icon = root
+							right_icon = scope:host
+
+							show_as_tooltip = {
+								scope:host = {
+									ach_coronation_0015_minor_crush_effect = yes
+									add_character_modifier = {
+										modifier = ach_coronation_crackdown_character_modifier
+										years = 5
+									}
+									add_dread = miniscule_dread_gain
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_trait = overseer }
+			}
+			custom_tooltip = coronation_tt_negative
+			scope:activity = { activity_special_type_progression_negative = yes }
+			coronation_add_magnificence_log_effect = {
+				VALUE = flag:negative
+				CHAR = root
+			}
+		}
+		else = {
+			custom_tooltip = because_you_have_overseer_tt
+		}
+
+		add_character_modifier = {
+			modifier = ach_coronation_crackdown_character_modifier
+			years = 5
+		}
+		root.location = {
+			add_province_modifier = {
+				modifier = ach_coronation_crackdown_modifier
+				years = 5
+			}
+			county = {
+				change_development_progress = medium_development_progress_loss
+			}
+		}
+
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			arrogant = minor_stress_impact_loss # Loves calling guards on the commons
+			# Loves seeing guards beat people
+			callous = medium_stress_impact_loss
+			sadistic = medium_stress_impact_loss
+			overseer = minor_stress_impact_loss
+		}
+		
+		ai_chance = {
+			base = 100
+			modifier = {
+				add = -50
+				has_trait = compassionate
+			}
+			modifier = {
+				add = 25
+				has_trait = arbitrary
+			}
+			modifier = {
+				add = 25
+				has_trait = arrogant
+			}
+			modifier = {
+				add = 50
+				has_trait = sadistic
+			}
+			modifier = {
+				add = 50
+				has_trait = callous
+			}
+			modifier = {
+				add = 50
+				has_trait = overseer
+			}
+		}
+	}
+
+	option = { # Getting coronated - Who cares
+		name = ach_coronation.0015.e
+
+		random = {
+			chance = 50
+			custom_tooltip = coronation_tt_negative
+			scope:activity = { activity_special_type_progression_negative = yes }
+			coronation_add_magnificence_log_effect = {
+				VALUE = flag:negative
+				CHAR = root
+			}
+		}
+
+		ach_coronation_0015_medium_crush_effect = yes
+		add_prestige = minor_prestige_loss
+
+		hidden_effect = {
+			# Inform the initiator they succeeded
+			scope:crush_initiator = {
+				send_interface_toast = {
+					title = ach_coronation.0015.a.tt.initiator.success
+					custom_tooltip = ach_coronation.0015.a.tt.initiator.success.desc
+					left_icon = root
+					right_icon = scope:host
+
+					show_as_tooltip = {
+						scope:host = {
+							stress_impact = {
+								base = medium_stress_impact_gain
+								irritable = medium_stress_impact_gain
+							}
+
+							add_prestige = minor_prestige_loss
+							add_piety = minor_piety_loss
+
+							custom_tooltip = coronation_tt_negative
+						}
+					}
+				}
+			}
+		}
+
+		stress_impact = {
+			arrogant = minor_stress_impact_loss
+			callous = minor_stress_impact_loss
+			sadistic = medium_stress_impact_loss
+			craven = medium_stress_impact_loss
+			brave = medium_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				add = -50
+				has_trait = compassionate
+			}
+			modifier = {
+				add = -50
+				has_trait = brave
+			}
+			modifier = {
+				add = 25
+				has_trait = craven
+			}
+			modifier = {
+				add = 25
+				has_trait = sadistic
+			}
+			modifier = {
+				add = 25
+				has_trait = callous
+			}
+			modifier = {
+				add = 25
+				has_trait = arrogant
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			scope:peasant = { silent_disappearance_effect = yes }
+			scope:filthy_peasant = { silent_disappearance_effect = yes }
+		}
+	}
+}
+
+ach_coronation.0027 = {
+	type = activity_event
+	title = ach_coronation.0027.t
+	desc = {
+		desc = ach_coronation.0027.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:stoner = {
+						OR = {
+							has_trait = faith_warrior
+							has_trait = crusader_king
+						}
+					}
+				}
+				desc = ach_coronation.0027.desc.char.crusader
+			}
+            triggered_desc = {
+				trigger = {
+					scope:stoner = {
+						has_trait = highguardian
+						exists = title:e_byzantium.holder
+					}
+				}
+				desc = ach_coronation.0027.desc.char.highguardian
+			}
+			triggered_desc = {
+				trigger = {
+					scope:stoner = {
+						has_trait = varangian
+						exists = title:e_byzantium.holder
+					}
+				}
+				desc = ach_coronation.0027.desc.char.varangian
+			}
+			desc = ach_coronation.0027.desc.char.other
+		}
+	}
+
+	left_portrait = { 
+		character = root
+		animation = interested
+	}
+
+	center_portrait = { 
+		character = scope:partaker
+		animation = interested_left
+	}
+
+	right_portrait = { 
+		character = scope:stoner
+		animation = wedding_drunk
+	}
+
+	cooldown = { years = 1 }
+	
+	theme = feast_activity
+
+	trigger = {
+		OR = { # If you can't normally be a Hashishiyah, look for some exceptions
+			can_be_hashishiyah = yes
+			AND = { # If a European Christian, the crusades are going on
+				location = { geographical_region = world_europe }
+				religion = {
+					this = religion:christianity_religion
+					exists = var:variable_ghw_unlocked
+				}
+			}
+			AND = { # If in Scandinavia, you have access to Varangians and they still exist
+				location = { geographical_region = world_europe_north }
+				title:e_byzantium ?= { has_variable = founded_varangian_guard }
+				OR = {
+					culture = { has_cultural_pillar = heritage_north_germanic }
+					dynasty = { has_dynasty_perk = fp1_adventure_legacy_1 }
+				}
+			}
+            AND = { # If in Byzantium, you have access to Highguardians and they still exist
+				location = { geographical_region = world_europe_east }
+				title:e_byzantium ?= { has_variable = founded_highguard }
+				OR = {
+					culture = { has_cultural_pillar = heritage_elf }
+				}
+			}
+		}
+		involved_activity = {
+			any_attending_character = {
+				eligible_to_join_stoner_trigger = yes
+				this != root
+				count > 1 # In case the Stoner also meets the trigger
+			}
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			factor = 2
+			OR = {
+				can_be_hashishiyah_ignoring_region_trigger = yes
+				has_trait = hashishiyah
+			}
+		}
+		modifier = {
+			factor = 2
+			involved_activity = {
+				any_attending_character = {
+					has_trait = hashishiyah
+				}
+			}
+		}
+		modifier = {
+			factor = 3
+			faith = {
+				has_variable = variable_ghw_cooldown # There was a recent crusade
+				religion = { this = religion:christianity_religion }
+			}
+		}
+	}
+
+	immediate = {
+		play_music_cue = "middleeasterncourt_cue"
+		involved_activity = {
+			random_attending_character = {
+				limit = {
+					this != root
+					this != prev.activity_host
+					is_ai = yes
+					is_available_in_activity_trigger = yes
+					has_trait = hashishiyah
+				}
+				alternative_limit = {
+					this != root
+					this != prev.activity_host
+					is_ai = yes
+					is_available_in_activity_trigger = yes
+					can_be_hashishiyah_ignoring_region_trigger = yes
+					OR = {
+						can_be_hashishiyah = yes
+						can_be_hashishiyah_ignoring_region_trigger = yes
+					}
+					OR = {
+						has_trait = faith_warrior
+						has_trait = crusader_king
+						has_trait = varangian
+                        has_trait = highguardian
+					}
+				}
+				save_scope_as = stoner
+			}
+
+			root = {
+				if = { # If the stoner does not exist, generate a...
+					limit = { NOT = { exists = scope:stoner } }
+					if = { # Varangian (if you're Scandinavian)
+						limit = {
+							location = { geographical_region = world_europe_north }
+							title:e_byzantium ?= { has_variable = founded_varangian_guard }
+							OR = {
+								culture = { has_cultural_pillar = heritage_north_germanic } 
+								dynasty = { has_dynasty_perk = fp1_adventure_legacy_1 }
+							}
+						}
+						create_character = {
+							save_scope_as = stoner
+							culture = root.culture
+							faith = root.faith
+							location = root.location
+							template = varangian_template
+							trait = hashishiyah
+						}
+						title:e_byzantium.holder.culture = { save_scope_as = emperor_culture }
+					}
+                    else_if = { # Highguardian (if you're Elven/Byzantine)
+                        limit = {
+                            location = { geographical_region = world_europe_east }
+                            title:e_byzantium ?= { has_variable = founded_highguard }
+                            culture = { has_cultural_pillar = heritage_elf } 
+                        }
+                        create_character = {
+                            save_scope_as = stoner
+                            culture = root.culture
+                            faith = root.faith
+                            location = root.location
+                            template = highguardian_template
+                            trait = hashishiyah
+                        }
+                        title:e_byzantium.holder.culture = { save_scope_as = emperor_culture }
+                    }
+					else_if = { # Crusader (if you're Christian)
+						limit = {
+							location = { geographical_region = world_europe }
+							faith = { has_variable = variable_ghw_cooldown }
+							religion = religion:christianity_religion
+						}
+						create_character = {
+							save_scope_as = stoner
+							culture = root.culture
+							faith = root.faith
+							location = root.location
+							template = knight
+							trait = hashishiyah
+							trait = faith_warrior
+						}
+					}
+					else = { # Some Reveler type of person
+						create_character = {
+							save_scope_as = stoner
+							culture = root.culture
+							faith = root.faith
+							location = root.location
+							template = diplomacy_court_position_holder_template
+							trait = hashishiyah
+							trait = lifestyle_traveler
+						}
+					}
+					scope:stoner = {
+						add_to_activity = root.involved_activity
+					}
+					add_character_flag = created_character_ach_coronation_0027
+				}
+			}
+
+			random_attending_character = {
+				limit = {
+					eligible_to_join_stoner_trigger = yes
+					has_trait = hashishiyah
+					this != scope:stoner
+					this != root
+				}
+				alternative_limit = {
+					eligible_to_join_stoner_trigger = yes
+					this != scope:stoner
+					this != root
+				}
+				save_scope_as = partaker
+			}
+		}
+	}
+
+	option = { # If Hashish is not available, purchase a supply
+		name = ach_coronation.0027.a
+		trigger = {
+			NOT = { has_trait = hashishiyah } # You aren't already a Hashishiyah
+			can_be_hashishiyah = no # You can't be a Hashishiyah
+			can_be_hashishiyah_ignoring_region_trigger = yes # But only because of your region
+		}
+
+		reverse_add_opinion = {
+			target = scope:stoner
+			modifier = purchased_hashish_opinion
+			opinion = 20
+		}
+
+		pay_short_term_gold = {
+			target = scope:stoner
+			gold = medium_gold_value
+		}
+
+		add_character_modifier = {
+			modifier = ach_secret_stash_modifier
+			years = 4
+		}
+
+		random = {
+			chance = 20
+			add_trait = hashishiyah
+		}
+
+		if = {
+			limit = {
+				faith = { trait_is_sin = hashishiyah }
+			}
+			add_piety = major_piety_loss
+			stress_impact = {
+				zealous = major_stress_impact_gain
+				cynical = minor_stress_impact_loss
+			}
+		}
+		else_if = {
+			limit = {
+				faith = { trait_is_virtue = hashishiyah }
+			}
+			add_piety = minor_piety_gain
+			stress_impact = {
+				cynical = medium_stress_impact_gain
+				zealous = minor_stress_impact_loss
+			}
+		}
+
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+			avaricious = minor_stress_impact_gain
+			temperate = medium_stress_impact_gain
+		}
+		
+		ai_chance = {
+			modifier = {
+				OR = {
+					has_trait = lifestyle_reveler
+					has_trait = gluttonous
+					has_trait = gregarious
+				}
+				factor = 2
+			}
+			base = 100
+			modifier = {
+				OR = {
+					has_trait = greedy
+					has_trait = avaricious
+				}
+				factor = 0.5
+			}
+			modifier = {
+				has_trait = temperate
+				factor = 0
+			}
+		}
+	}
+
+	option = { # Join in
+		name = ach_coronation.0027.b
+		name = {
+			trigger = { has_trait = hashishiyah }
+			text = ach_coronation.0027.b.hashishiyah
+		}
+		trait = hashishiyah
+
+		reverse_add_opinion = {
+			target = scope:stoner
+			modifier = camp_party_reveled_opinion
+			opinion = 10
+		}
+		reverse_add_opinion = {
+			target = scope:partaker
+			modifier = camp_party_reveled_opinion
+			opinion = 10
+		}
+
+		if = {
+			limit = {
+				has_trait = lifestyle_reveler
+			}
+			add_trait_xp = {
+				trait = lifestyle_reveler
+				value = 5
+			}
+		}
+
+		if = { # You already love hashish - let's be smoke buddies!
+			limit = { has_trait = hashishiyah }
+			if = {
+				limit = {
+					reverse_opinion = {
+						target = scope:stoner
+						value > 0
+					}
+					OR = {
+						scope:stoner = { is_ai = yes }
+						AND = {
+							scope:stoner = { is_ai = no }
+							is_ai = no
+						}
+					}
+				}
+				set_relation_friend = {
+					target = scope:stoner
+					reason = friend_got_high_together
+				}
+			}
+			else = {
+				reverse_add_opinion = {
+					target = scope:stoner
+					modifier = pleased_opinion
+					opinion = 30
+				}
+			}
+		}
+		else_if = { # Else, if Hashish is available, chance to become a Hashiyah
+			limit = {
+				can_be_hashishiyah = yes # You can be a Hahishiyah
+			}
+			random = {
+				chance = 20
+				add_trait = hashishiyah
+			}
+		}
+
+		add_character_modifier = {
+			modifier = stress_hashish_stupor
+			years = 1
+		}
+
+		if = {
+			limit = {
+				faith = { trait_is_sin = hashishiyah }
+			}
+			add_piety = minor_piety_loss
+			stress_impact = {
+				zealous = medium_stress_impact_gain
+				cynical = minor_stress_impact_loss
+			}
+		}
+		else_if = {
+			limit = {
+				faith = { trait_is_virtue = hashishiyah }
+			}
+			add_piety = minor_piety_gain
+			stress_impact = {
+				cynical = medium_stress_impact_gain
+				zealous = minor_stress_impact_loss
+			}
+		}
+
+		stress_impact = {
+			base = medium_stress_impact_loss
+			temperate = medium_stress_impact_gain
+			shy = minor_stress_impact_gain
+			hashishiyah = minor_stress_impact_loss # Bonus stress loss if you're already a fan
+		}
+		
+		ai_chance = {
+			base = 100
+			modifier = {
+				NOT = { has_trait = cynical }
+				faith = { trait_is_virtue = hashishiyah }
+				factor = 2
+			}
+			modifier = {
+				OR = {
+					has_trait = lifestyle_reveler
+					has_trait = gluttonous
+					has_trait = gregarious
+				}
+				factor = 2
+			}
+			modifier = {
+				has_trait = shy
+				factor = 0.5
+			}
+		}
+	}
+
+	option = { # Host: Get this person out of here - drugs are bad!!!
+		name = ach_coronation.0027.c
+
+		trigger = {
+			this = involved_activity.activity_host
+		}
+
+		add_prestige = medium_prestige_gain
+
+		reverse_add_opinion = {
+			target = scope:stoner
+			modifier = angry_opinion
+			opinion = -25
+		}
+		reverse_add_opinion = {
+			target = scope:partaker
+			modifier = disappointed_opinion
+			opinion = -10
+		}
+
+		scope:stoner = { remove_from_activity = involved_activity }
+
+		if = {
+			limit = {
+				faith = { trait_is_sin = hashishiyah }
+			}
+			add_piety = medium_piety_gain
+			stress_impact = {
+				cynical = minor_stress_impact_gain
+				zealous = medium_stress_impact_loss
+			}
+		}
+		else_if = {
+			limit = {
+				faith = { trait_is_virtue = hashishiyah }
+			}
+			add_piety = medium_piety_loss
+			stress_impact = {
+				zealous = minor_stress_impact_gain
+				cynical = medium_stress_impact_loss
+			}
+		}
+
+		stress_impact = {
+			gregarious = minor_stress_impact_gain
+			lifestyle_reveler = minor_stress_impact_gain
+			hashishiyah = major_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = 50
+			modifier = {
+				has_trait = zealous
+				faith = { trait_is_sin = hashishiyah }
+				factor = 4
+			}
+			modifier = {
+				has_trait = cynical
+				faith = { trait_is_virtue = hashishiyah }
+				factor = 4
+			}
+		}
+	}
+
+	option = { # I'm good
+		name = ach_coronation.0027.d
+		flavor = {
+			triggered_desc = {
+				trigger = { this = involved_activity.activity_host }
+				desc = ach_coronation.0027.d.host
+			}
+		}
+
+		if = {
+			limit = { this = involved_activity.activity_host }
+			custom_tooltip = coronation_tt_positive_tiny
+			involved_activity = { activity_special_type_progression_miniscule = yes }
+			coronation_add_magnificence_log_effect = {
+        	    VALUE = flag:positive_miniscule
+        	    CHAR = root
+        	}
+		}
+		else = {
+			add_prestige = minor_prestige_gain
+		}
+
+		if = {
+			limit = {
+				faith = { trait_is_sin = hashishiyah }
+			}
+			add_piety = minor_piety_gain
+		}
+		else_if = {
+			limit = {
+				faith = { trait_is_virtue = hashishiyah }
+			}
+			add_piety = minor_piety_loss
+		}
+
+		stress_impact = {
+			lifestyle_reveler = minor_stress_impact_gain
+			gregarious = minor_stress_impact_gain
+			temperate = minor_stress_impact_loss
+			hashishiyah = medium_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = 100
+			modifier = {
+				has_trait = temperate
+				NOT = { has_trait = hashishiyah }
+				factor = 2
+			}
+			modifier = {
+				OR = {
+					has_trait = lifestyle_reveler
+					has_trait = gluttonous
+				}
+				factor = 0.5
+			}
+			modifier = {
+				has_trait = hashishiyah
+				factor = 0.25
+			}
+		}
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_character_flag = created_character_ach_coronation_0027
+				scope:stoner = { NOT = { has_relation_friend = root } }
+			}
+			hidden_effect = {
+				scope:stoner = { silent_disappearance_effect = yes }
+			}
+		}
+	}
+}

@@ -67,12 +67,12 @@
             primary_title = { transfer_title_maa_ownership = title:h_romaviri_empire }
         }
     }
-    if = { # If you have founded the Varangian Guard, you get to keep the benefits
+    if = { # If you have founded the Highguard, you get to keep the benefits
         limit = {
-            primary_title = { has_variable = founded_varangian_guard }
+            primary_title = { has_variable = founded_highguard }
         }
         hidden_effect = {
-            title:h_romaviri_empire = { set_variable = founded_varangian_guard }
+            title:h_romaviri_empire = { set_variable = founded_highguard }
         }
     }
     hidden_effect = { set_primary_title_to = title:h_romaviri_empire }
@@ -191,12 +191,12 @@
 # 			primary_title = { transfer_title_maa_ownership = title:h_romaviri_empire }
 # 		}
 # 	}
-# 	if = { # If you have founded the Varangian Guard, you get to keep the benefits (you are not likely to have done it here, but better safe than sorry)
+# 	if = { # If you have founded the Highguard, you get to keep the benefits (you are not likely to have done it here, but better safe than sorry)
 # 		limit = {
-# 			primary_title = { has_variable = founded_varangian_guard }
+# 			primary_title = { has_variable = founded_highguard }
 # 		}
 # 		hidden_effect = {
-# 			title:h_romaviri_empire = { set_variable = founded_varangian_guard }
+# 			title:h_romaviri_empire = { set_variable = founded_highguard }
 # 		}
 # 	}
 # 	hidden_effect = { set_primary_title_to = title:h_romaviri_empire }
@@ -290,12 +290,12 @@
 # 			primary_title = { transfer_title_maa_ownership = title:h_romaviri_empire }
 # 		}
 # 	}
-# 	if = { # If you have founded the Varangian Guard, you get to keep the benefits (you are not likely to have done it here, but better safe than sorry)
+# 	if = { # If you have founded the Highguard, you get to keep the benefits (you are not likely to have done it here, but better safe than sorry)
 # 		limit = {
-# 			primary_title = { has_variable = founded_varangian_guard }
+# 			primary_title = { has_variable = founded_highguard }
 # 		}
 # 		hidden_effect = {
-# 			title:h_romaviri_empire = { set_variable = founded_varangian_guard }
+# 			title:h_romaviri_empire = { set_variable = founded_highguard }
 # 		}
 # 	}
 # 	hidden_effect = { set_primary_title_to = title:h_romaviri_empire }

@@ -86,12 +86,18 @@ accolade_marauder_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         # Cultural Traditions
         if = {
@@ -560,12 +566,18 @@ accolade_thug_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         #berserker
         if = {
@@ -736,12 +748,18 @@ accolade_disciplinarian_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         # Cultural Traditions
         if = {
@@ -1054,12 +1072,18 @@ accolade_valiant_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         random = {
             chance = 1
@@ -1244,12 +1268,18 @@ accolade_stalwart_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         # Cultural Traditions
         if = {
@@ -1415,12 +1445,18 @@ accolade_scoundrel_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         random = {
             chance = 1
@@ -1762,12 +1798,18 @@ accolade_tactician_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         if = {
             limit = {
@@ -2078,12 +2120,18 @@ accolade_manipulator_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         if = {
             limit = {
@@ -2374,12 +2422,18 @@ accolade_contender_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         if = {
             limit = {
@@ -2865,12 +2919,18 @@ accolade_pike_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         if = {
             limit = {
@@ -3205,12 +3265,18 @@ accolade_vanguard_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         if = {
             limit = {
@@ -3389,12 +3455,18 @@ accolade_lancer_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         if = {
             limit = {
@@ -3701,12 +3773,18 @@ accolade_besieger_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
         if = {
             limit = {
@@ -4503,12 +4581,19 @@ accolade_blademaster_character = {
             limit = {
                 root = {
                     has_title = title:e_byzantium
+                    is_any_elf_type = yes
                 }
                 culture = {
                     has_cultural_pillar = heritage_elf
                 }
             }
             add_trait = highguardian
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
+
         }
         if = {
             limit = {

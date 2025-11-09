@@ -1,0 +1,19 @@
+﻿scripted_trigger artifact_4040_relevant_courtier_trigger = {
+	OR = {
+		prowess >= 20
+		has_trait = education_martial_3
+		has_trait = education_martial_4
+		has_trait = education_martial_5
+		has_trait = lifestyle_blademaster
+		has_trait = berserker
+		has_trait = varangian
+        has_trait = highguardian
+		has_trait = desert_warrior
+		has_trait = winter_soldier
+		has_trait = jungle_stalker
+		has_trait = rough_terrain_expert
+		has_trait = forest_fighter
+		has_trait = open_terrain_expert
+		has_trait = reaver
+	}
+}

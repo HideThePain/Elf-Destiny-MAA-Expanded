@@ -63,10 +63,8 @@ restore_romaviri_empire_decision = {
 		top_liege = this
 
 		OR = {
-			religion = { is_in_family = rf_abrahamic }
-			religion = religion:hellenism_religion
-			culture = { has_cultural_pillar = heritage_latin }
-			culture = { has_cultural_pillar = heritage_byzantine }
+			religion = { is_in_family = rf_spark }
+			culture = { has_cultural_pillar = heritage_elf }
 		}
 	}
 

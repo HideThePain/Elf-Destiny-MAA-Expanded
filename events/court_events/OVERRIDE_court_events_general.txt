@@ -1141,3 +1141,497 @@ court.8162 = {
         }
     }
 }
+
+court.8040 = {
+    type = court_event
+    title = court.8040.t
+    desc = {
+    	desc = court.8040.desc.intro
+	    triggered_desc = {
+	        trigger = { exists = scope:position_holder }
+	        desc = court.8040.desc.position_holder
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:knight }
+	        desc = court.8040.desc.knight
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:relative }
+	        desc = court.8040.desc.relative
+	    }
+    	triggered_desc = {
+	        trigger = { exists = scope:ambitious }
+	        desc = court.8040.desc.ambitious
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:arrogant }
+	        desc = court.8040.desc.arrogant
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:lowborn }
+	        desc = court.8040.desc.lowborn
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:gentry }
+	        desc = court.8040.desc.gentry
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:generic_1 }
+	        desc = court.8040.desc.generic_1
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:generic_2 }
+	        desc = court.8040.desc.generic_2
+	    }
+	    triggered_desc = {
+	        trigger = { exists = scope:generic_3 }
+	        desc = court.8040.desc.generic_3
+	    }
+	    desc = court.8040.desc.body
+    }
+    theme = court
+    override_background = { reference = throne_room }
+    cooldown = { years = 10 }
+    court_scene = {
+        button_position_character = scope:courtier_3
+        roles = {
+            scope:courtier_1 = {
+                group = event_group
+                animation = personality_irrational
+            }
+            scope:courtier_2 = {
+                group = event_group
+                animation = personality_coward
+            }
+            scope:courtier_3 = {
+                group = event_group
+                animation = personality_dishonorable
+            }
+        }
+    }
+
+    trigger = {
+    	has_royal_court = yes
+        any_courtier = {
+        	count >= 3
+        	court_8040_courtier_trigger = yes
+        	has_court_event_flag = no
+        }
+        OR = {
+        	any_held_title = {
+	        	title_tier = barony
+	        	is_capital_barony = no
+	        	is_leased_out = no
+	        	this != root.capital_barony
+	        }
+	        any_held_title = {
+	        	count >= 4
+	        	title_tier = county
+				is_landless_type_title = no
+	        }
+	    }
+	    domain_limit_available < 0
+    }
+
+    weight_multiplier = {
+        base = 1
+        modifier = {
+        	is_ai = yes
+        	factor = 0.5
+        }
+        ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_warlike }
+        ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_diplomatic }
+    }
+
+    immediate = {
+        ordered_courtier = { # Find 3 courtiers and determine their flaws
+         	limit = { court_8040_courtier_trigger = yes }
+         	max = 3
+         	check_range_bounds = no
+         	order_by = prestige
+         	if = {
+         		limit = { NOT = { exists = scope:courtier_1 } }
+         		save_scope_as = courtier_1
+         		court_event_character_flag_effect = yes
+         		court_8040_desc_effect = yes
+         	}
+         	else_if = {
+         		limit = { NOT = { exists = scope:courtier_2 } }
+         		save_scope_as = courtier_2
+         		court_event_character_flag_effect = yes
+         		court_8040_desc_effect = yes
+         	}
+         	else = {
+         		save_scope_as = courtier_3
+         		court_event_character_flag_effect = yes
+         		court_8040_desc_effect = yes
+         	}
+         	add_to_list = court_8040_list
+         	if = {
+         		limit = { NOT = { exists = scope:button } }
+         		save_scope_as = button # For button character
+         	}
+        }
+        if = { # Find a valid barony to give away
+        	limit = {
+        		any_held_title = {
+        			title_tier = barony
+        			is_capital_barony = no
+        			is_leased_out = no
+        			this != root.capital_barony
+        		}
+        	}
+        	ordered_held_title = {
+				title_tier = barony
+	        	limit = {
+	        		is_capital_barony = no
+        			is_leased_out = no
+        			this != root.capital_barony
+	        	}
+	        	order_by = {
+	        		value = 0
+	        		subtract = title_province.combined_building_level
+	        	}
+	        	save_scope_as = worst_title
+	        }
+        }
+        else = { # Find a valid county to give away
+	        ordered_held_title = {
+				title_tier = county
+	        	limit = {
+	        		this != root.capital_county
+					is_landless_type_title = no
+	        	}
+	        	order_by = {
+	        		value = 0
+	        		subtract = development_level
+	        	}
+	        	save_scope_as = worst_title
+	        }
+	    }
+    }
+
+    option = { # Best courtier wins - fight
+        name = court.8040.d
+        flavor = court.8040.d.flavor_tt
+        random_list = {
+        	2 = {
+        		desc = court.8040.d.courtier_1_tt
+        		modifier = {
+        			add = scope:courtier_1.prowess
+        		}
+        		scope:courtier_1 = { save_scope_as = new_noble }
+        		show_as_tooltip = {
+			        create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					scope:worst_title = {
+						change_title_holder = {
+							holder = scope:new_noble
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+		        }
+        	}
+        	2 = {
+        		desc = court.8040.d.courtier_2_tt
+        		modifier = {
+        			add = scope:courtier_2.prowess
+        		}
+        		scope:courtier_2 = { save_scope_as = new_noble }
+        		show_as_tooltip = {
+			        create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					scope:worst_title = {
+						change_title_holder = {
+							holder = scope:new_noble
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+		        }
+        	}
+        	2 = {
+        		desc = court.8040.d.courtier_3_tt
+        		modifier = {
+        			add = scope:courtier_3.prowess
+        		}
+        		scope:courtier_3 = { save_scope_as = new_noble }
+        		show_as_tooltip = {
+			        create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					scope:worst_title = {
+						change_title_holder = {
+							holder = scope:new_noble
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+		        }
+        	}
+        }
+        every_in_list = {
+        	list = court_8040_list
+			increase_wounds_no_death_effect = { REASON = duel }
+		}
+		hidden_effect = { court_8040_grant_effect = yes }
+		stress_impact = {
+			lifestyle_blademaster = medium_stress_impact_loss # Yay fighty slash
+			viking = medium_stress_impact_loss # Yay fighty slash
+			varangian = medium_stress_impact_loss # Yay fighty slash
+            highguardian = medium_stress_impact_loss # Yay fighty slash
+			berserker = medium_stress_impact_loss # Yay fighty slash
+			brave = medium_stress_impact_loss # Yay fighty slash
+			greedy = medium_stress_impact_gain # But, titles
+			diligent = medium_stress_impact_gain # But, I like managing stuff
+			arrogant = medium_stress_impact_gain # But, my titles
+		}
+		ai_chance = {
+            base = 100
+            ai_value_modifier = {
+   				ai_energy = 2
+   				ai_greed = -0.5
+   			}
+            modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = lifestyle_blademaster
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = viking
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = varangian
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = highguardian
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = berserker
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = berserker
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = brave
+			}
+            modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = greedy
+			}
+			modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = diligent
+			}
+			modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = arrogant
+			}
+        }
+    }
+
+    option = { # Best courtier wins - persuasion
+        name = court.8040.e
+        change_current_court_grandeur = medium_court_grandeur_gain
+        random_list = {
+        	2 = {
+        		desc = court.8040.e.courtier_1_tt
+        		modifier = {
+        			add = scope:courtier_1.diplomacy
+        		}
+        		scope:courtier_1 = { save_scope_as = new_noble }
+        		show_as_tooltip = {
+			        create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					scope:worst_title = {
+						change_title_holder = {
+							holder = scope:new_noble
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+		        }
+        	}
+        	2 = {
+        		desc = court.8040.e.courtier_2_tt
+        		modifier = {
+        			add = scope:courtier_2.diplomacy
+        		}
+        		scope:courtier_2 = { save_scope_as = new_noble }
+        		show_as_tooltip = {
+			        create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					scope:worst_title = {
+						change_title_holder = {
+							holder = scope:new_noble
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+		        }
+        	}
+        	2 = {
+        		desc = court.8040.e.courtier_3_tt
+        		modifier = {
+        			add = scope:courtier_3.diplomacy
+        		}
+        		scope:courtier_3 = { save_scope_as = new_noble }
+        		show_as_tooltip = {
+			        create_title_and_vassal_change = {
+						type = granted
+						save_scope_as = change
+						add_claim_on_loss = no
+					}
+					scope:worst_title = {
+						change_title_holder = {
+							holder = scope:new_noble
+							change = scope:change
+						}
+					}
+					resolve_title_and_vassal_change = scope:change
+		        }
+        	}
+        }
+        stress_impact = {
+			lifestyle_poet = medium_stress_impact_loss # Poetry duels are my jam
+			gregarious = medium_stress_impact_loss # Having fun with friends was the real reward
+			diplomat = medium_stress_impact_loss # Solving problems with words is the coolest
+			greedy = medium_stress_impact_gain # But, titles
+			diligent = medium_stress_impact_gain # But, I like managing stuff
+			arrogant = medium_stress_impact_gain # But, my titles
+		}
+		hidden_effect = { court_8040_grant_effect = yes }
+		ai_chance = {
+            base = 100
+            ai_value_modifier = {
+   				ai_rationality = 1
+   				ai_greed = -0.5
+   			}
+            modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = lifestyle_poet
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = gregarious
+			}
+			modifier = {	#Weight up for stress.
+				add = 15
+				has_trait = diplomat
+			}
+            modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = greedy
+			}
+			modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = diligent
+			}
+			modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = arrogant
+			}
+        }
+    }
+
+    option = { # You get nothing!
+        name = court.8040.f
+        add_prestige = minor_prestige_gain
+        every_in_list = {
+        	list = court_8040_list
+        	add_opinion = {
+        		target = root
+        		modifier = annoyed_opinion
+        		opinion = -10
+        	}
+        }
+        stress_impact = {
+        	generous = medium_stress_impact_gain # But I have so much to give
+        	lazy = medium_stress_impact_gain # I would rather have someone else do it
+        	humble = medium_stress_impact_gain # Who am I to deny them?
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+   				ai_boldness = 1
+   				ai_greed = 1
+   			}
+            modifier = { # Weight up for NO family members.
+            	factor = 2
+            	NOR = {
+            		scope:courtier_1 = { is_close_or_extended_family_of = root }
+            		scope:courtier_2 = { is_close_or_extended_family_of = root }
+            		scope:courtier_3 = { is_close_or_extended_family_of = root }
+            	}
+            }
+            modifier = { # Weight up for NO dynasty members.
+            	factor = 2
+            	NOR = {
+            		scope:courtier_1.dynasty = root.dynasty
+            		scope:courtier_2.dynasty = root.dynasty
+            		scope:courtier_3.dynasty = root.dynasty
+            	}
+            }
+            modifier = { # Weight up for NO opinion.
+            	factor = 2
+            	NOR = {
+	            	opinion = {
+	            		target = scope:courtier_1
+	            		value >= 50
+	            	}
+	            	opinion = {
+	            		target = scope:courtier_2
+	            		value >= 50
+	            	}
+	            	opinion = {
+	            		target = scope:courtier_3
+	            		value >= 50
+	            	}
+	            }
+            }
+            modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = generous
+			}
+			modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = lazy
+			}
+			modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = humble
+			}
+        }
+    }
+    after = {
+    	scope:courtier_1 = {
+    		clear_court_event_participation = yes
+    	}
+    	scope:courtier_2 = {
+    		clear_court_event_participation = yes
+    	}
+    	scope:courtier_3 = {
+    		clear_court_event_participation = yes
+    	}
+    }
+}

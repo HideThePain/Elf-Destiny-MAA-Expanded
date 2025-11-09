@@ -388,3 +388,19 @@ can_be_employed_as_any_court_position_trigger = {
 		can_be_employed_as = keeper_of_the_horses_court_position
 	}
 }
+
+court_position_martial_trigger = {
+	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = $EMPLOYER$ }
+	OR = {
+		number_of_commander_traits > 0
+		has_trait = brave
+		prowess >= mediocre_skill_rating
+		has_trait = viking
+		has_trait = varangian
+		has_trait = highguardian
+		has_trait = berserker
+		has_trait = shieldmaiden
+		has_trait = lifestyle_blademaster
+		has_trait = education_martial_prowess
+	}
+}

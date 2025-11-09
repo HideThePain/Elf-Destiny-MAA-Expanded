@@ -185,6 +185,16 @@ eryndar_court_position = { # EP1 & EP3
 
 		if = {
 			limit = {
+				has_trait = highguardian
+			}
+			add = {
+				value = 10
+				desc = court_position_highguardian_trait
+			}
+		}
+
+		if = {
+			limit = {
 				has_trait = craven
 			}
 			add = {
@@ -299,8 +309,8 @@ eryndar_court_position = { # EP1 & EP3
 		highest_held_title_tier >= tier_empire
 		save_temporary_scope_as = root_scope
 		custom_tooltip = {
-			text = eryndar_founded_varangians_trigger_tt
-			primary_title = { has_variable = founded_varangian_guard }
+			text = eryndar_founded_highguardians_trigger_tt
+			primary_title = { has_variable = founded_highguard }
 		}
 	}
 
@@ -1638,7 +1648,7 @@ bodyguard_court_position = { # EP1
 		add = court_position_aptitude_traveling_friends_value
 		if = {
 			limit = {
-				has_trait = varangian
+				has_trait = highguardian
 				employer ?= {
 					has_title = title:e_byzantium
 					employs_court_position = akolouthos_court_position

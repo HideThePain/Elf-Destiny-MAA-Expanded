@@ -142,7 +142,7 @@ highguard = {
         culture = { has_cultural_parameter = unlock_maa_highguard }
         exists = scope:title
         scope:title = {
-            has_variable = founded_highguardian_guard
+            has_variable = founded_highguard
         }
         is_any_elf_type = yes
     }

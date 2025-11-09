@@ -1,146 +1,205 @@
 highguardian_template = {
-	age = { 16 45 }
-	random_traits = yes
+    age = { 16 45 }
+    random_traits = yes
 
-	random_traits_list = {
-		education_martial_1 = { weight = { base = 35 } }
-		education_martial_2 = { weight = { base = 35 } }
-		education_martial_3 = { weight = { base = 20 } }
-		education_martial_4 = { weight = { base = 10 } }
-	}
-	random_traits_list = {
-		count = { 0 1 }
-		lifestyle_blademaster = {}
-		lifestyle_hunter = {}
-		lifestyle_traveler = {}
-		strong = {}
-		athletic = {}
-		gallant = {}
-		poet = {}
-		greedy = {}
-		ambitious = {}
-		brave = {}
-		diligent = {}
-		wrathful = {}
-		vengeful = {}
-		loyal = {}
-	}
-	prowess = {
-		min_template_average_skill
-		max_template_decent_skill
-	}
-	gender_female_chance = root_soldier_female_chance
-	after_creation = {
-		add_trait = highguardian
-		add_trait = tourney_participant
-		add_trait_xp = {
-			trait = tourney_participant
-			track = foot
-			value = 25
-		}
-		random = {
-			chance = 25
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 25
-			}
-		}
-		random = {
-			chance = 5
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = 30
-			}
-		}
+    random_traits_list = {
+        education_martial_1 = { weight = { base = 35 } }
+        education_martial_2 = { weight = { base = 35 } }
+        education_martial_3 = { weight = { base = 20 } }
+        education_martial_4 = { weight = { base = 10 } }
+    }
+    random_traits_list = {
+        count = { 0 1 }
+        lifestyle_blademaster = {}
+        lifestyle_hunter = {}
+        lifestyle_traveler = {}
+        strong = {}
+        athletic = {}
+        gallant = {}
+        poet = {}
+        greedy = {}
+        ambitious = {}
+        brave = {}
+        diligent = {}
+        wrathful = {}
+        vengeful = {}
+        loyal = {}
+    }
+    prowess = {
+        min_template_average_skill
+        max_template_decent_skill
+    }
+    gender_female_chance = root_soldier_female_chance
+    after_creation = {
+        add_trait = highguardian
+        add_trait = tourney_participant
+        add_trait_xp = {
+            trait = tourney_participant
+            track = foot
+            value = 25
+        }
+        random = {
+            chance = 25
+            add_trait_xp = {
+                trait = tourney_participant
+                track = foot
+                value = 25
+            }
+        }
+        random = {
+            chance = 5
+            add_trait_xp = {
+                trait = tourney_participant
+                track = foot
+                value = 30
+            }
+        }
 
-		# Cultural Traditions
-		#berserker
-		if = {
-			limit = {
-				faith.religion = faith:norse_pagan.religion
-			}
-			random = {
-				chance = 33
-				add_trait = berserker
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = winter_soldier_trait_more_common
-				}
-				NOT = {
-					has_trait = winter_soldier
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = winter_soldier
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = forest_fighter_trait_more_common
-				}
-				NOT = {
-					has_trait = forest_fighter
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = forest_fighter
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = rough_terrain_expert_trait_more_common
-				}
-				NOT = {
-					has_trait = rough_terrain_expert
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = rough_terrain_expert
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = desert_warrior_trait_more_common
-				}
-				NOT = {
-					has_trait = desert_warrior
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = desert_warrior
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					has_cultural_parameter = jungle_stalker_trait_more_common
-				}
-				NOT = {
-					has_trait = jungle_stalker
-				}
-			}
-			random = {
-				chance = 10
-				add_trait = jungle_stalker
-			}
-		}
-		add_random_tiered_trait_xp_effect = {
-			TRAIT = lifestyle_blademaster
-			LEVEL_1 = yes
-			LEVEL_3 = yes
-		}
-		set_interesting_traits_and_modifiers_effect = yes
-	}
+        # Cultural Traditions
+        #berserker
+        if = {
+            limit = {
+                faith.religion = faith:norse_pagan.religion
+            }
+            random = {
+                chance = 33
+                add_trait = berserker
+            }
+        }
+        if = {
+            limit = {
+                culture = {
+                    has_cultural_parameter = winter_soldier_trait_more_common
+                }
+                NOT = {
+                    has_trait = winter_soldier
+                }
+            }
+            random = {
+                chance = 10
+                add_trait = winter_soldier
+            }
+        }
+        if = {
+            limit = {
+                culture = {
+                    has_cultural_parameter = forest_fighter_trait_more_common
+                }
+                NOT = {
+                    has_trait = forest_fighter
+                }
+            }
+            random = {
+                chance = 10
+                add_trait = forest_fighter
+            }
+        }
+        if = {
+            limit = {
+                culture = {
+                    has_cultural_parameter = rough_terrain_expert_trait_more_common
+                }
+                NOT = {
+                    has_trait = rough_terrain_expert
+                }
+            }
+            random = {
+                chance = 10
+                add_trait = rough_terrain_expert
+            }
+        }
+        if = {
+            limit = {
+                culture = {
+                    has_cultural_parameter = desert_warrior_trait_more_common
+                }
+                NOT = {
+                    has_trait = desert_warrior
+                }
+            }
+            random = {
+                chance = 10
+                add_trait = desert_warrior
+            }
+        }
+        if = {
+            limit = {
+                culture = {
+                    has_cultural_parameter = jungle_stalker_trait_more_common
+                }
+                NOT = {
+                    has_trait = jungle_stalker
+                }
+            }
+            random = {
+                chance = 10
+                add_trait = jungle_stalker
+            }
+        }
+        add_random_tiered_trait_xp_effect = {
+            TRAIT = lifestyle_blademaster
+            LEVEL_1 = yes
+            LEVEL_3 = yes
+        }
+        random_list = {
+            80 = { add_character_flag = race_elf }
+            20 = { add_character_flag = race_high_elf }
+        }
+        random_list = {
+            3 = { trigger = { NOT = { has_trait = beauty_good_2 } } add_trait = beauty_good_2 }
+            3 = { trigger = { NOT = { has_trait = intellect_good_2 } } add_trait = intellect_good_2 }
+            3 = { trigger = { NOT = { has_trait = giant } } add_trait = giant }
+            3 = { trigger = { NOT = { has_trait = albino } } add_trait = albino }
+            3 = { trigger = { NOT = { has_trait = physique_good_2 } } add_trait = physique_good_2 }
+            3 = { trigger = { NOT = { has_trait = strong } } add_trait = strong }
+            3 = {
+                trigger = {
+                    NOR = {
+                        has_trait = shrewd
+                        AND = {
+                            learning >= 15
+                            culture = { has_cultural_parameter = advanced_shrewd }
+                        }
+                    }
+                }
+                add_trait = shrewd
+            }
+            3 = { trigger = { NOT = { has_trait = athletic } } add_trait = athletic }
+            3 = { trigger = { NOT = { has_trait = pure_blooded } } add_trait = pure_blooded }
+            3 = { trigger = { NOT = { has_trait = fecund } } add_trait = fecund }
+            3 = { trigger = { NOT = { has_trait = royal_elf_valerith } } add_trait = royal_elf_valerith }
+            3 = { trigger = { NOT = { has_trait = royal_elf_serelion } } add_trait = royal_elf_serelion }
+            3 = { trigger = { NOT = { has_trait = royal_elf_gwynthorn } } add_trait = royal_elf_gwynthorn }
+            3 = { trigger = { NOT = { has_trait = royal_elf_thundarael } } add_trait = royal_elf_thundarael }
+            3 = { trigger = { NOT = { has_trait = royal_elf_daelurin } } add_trait = royal_elf_daelurin }
+            3 = { trigger = { NOT = { has_trait = royal_elf_lormelis } } add_trait = royal_elf_lormelis }
+        }
+        remove_trait = scaly
+        remove_trait = clubfooted
+        remove_trait = dwarf
+        remove_trait = hunchbacked
+        remove_trait = spindly
+        remove_trait = infertile
+        remove_trait = wheezing
+        remove_trait = bleeder
+        remove_trait = depressed_genetic
+        remove_trait = depressed_1
+        remove_trait = lunatic_genetic
+        remove_trait = lunatic_1
+        remove_trait = possessed_genetic
+        remove_trait = possessed_1
+        remove_trait = lisping
+        remove_trait = stuttering
+        remove_trait = beauty_bad_1
+        remove_trait = beauty_bad_2
+        remove_trait = beauty_bad_3
+        remove_trait = intellect_bad_1
+        remove_trait = intellect_bad_2
+        remove_trait = intellect_bad_3
+        remove_trait = physique_bad_1
+        remove_trait = physique_bad_2
+        remove_trait = physique_bad_3
+        urf_template_base_race_init = yes
+        set_interesting_traits_and_modifiers_effect = yes
+    }
 }

@@ -7,7 +7,6 @@
 ############################
 
 # Byzantine-only: your Highguardians loot the palace after succession
-
 romaviri_emperor_yearly.3000 = {
 	type = character_event
 	title = romaviri_emperor_yearly.3000.t
@@ -48,7 +47,7 @@ romaviri_emperor_yearly.3000 = {
 
 	trigger = {
 		has_ep3_dlc_trigger = yes
-		primary_title = { has_variable = founded_highguardian_guard }
+		primary_title = { has_variable = founded_highguard }
 	}
 
 	immediate = {
@@ -180,21 +179,8 @@ romaviri_emperor_yearly.3000 = {
 		if = {
 			limit = {
 				any_court_position_holder = {
-					type = eparch_court_position
-					highguardian_trigger = yes
-					is_available = yes
-				}
-			}
-			random_court_position_holder = {
-				type = eparch_court_position
-				save_scope_as = highguardian_leader
-			}
-		}
-		else_if = {
-			limit = {
-				any_court_position_holder = {
 					type = thalanir_court_position
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available = yes
 				}
 			}
@@ -207,14 +193,14 @@ romaviri_emperor_yearly.3000 = {
 			limit = {
 				any_court_position_holder = {
 					type = bodyguard_court_position
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available = yes
 				}
 			}
 			random_court_position_holder = {
 				type = bodyguard_court_position
 				limit = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available = yes
 				}
 				save_scope_as = highguardian_leader
@@ -223,13 +209,13 @@ romaviri_emperor_yearly.3000 = {
 		else_if = {
 			limit = {
 				any_courtier = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available_adult = yes
 				}
 			}
 			random_courtier = {
 				limit = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available_adult = yes
 				}
 				save_scope_as = highguardian_leader
@@ -274,7 +260,7 @@ romaviri_emperor_yearly.3000 = {
 				exists = scope:highguardian_leader
 				any_court_position_holder = {
 					type = bodyguard_court_position
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available = yes
 					this != scope:highguardian_leader
 				}
@@ -282,7 +268,7 @@ romaviri_emperor_yearly.3000 = {
 			random_court_position_holder = {
 				type = bodyguard_court_position
 				limit = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available = yes
 					this != scope:highguardian_leader
 				}
@@ -293,14 +279,14 @@ romaviri_emperor_yearly.3000 = {
 			limit = {
 				exists = scope:highguardian_leader
 				any_courtier = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available_adult = yes
 					this != scope:highguardian_leader
 				}
 			}
 			random_courtier = {
 				limit = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available_adult = yes
 					this != scope:highguardian_leader
 				}
@@ -314,7 +300,7 @@ romaviri_emperor_yearly.3000 = {
 				exists = scope:highguardian_2
 				any_court_position_holder = {
 					type = bodyguard_court_position
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available = yes
 					NOR = {
 						this = scope:highguardian_leader
@@ -325,7 +311,7 @@ romaviri_emperor_yearly.3000 = {
 			random_court_position_holder = {
 				type = bodyguard_court_position
 				limit = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available = yes
 					NOR = {
 						this = scope:highguardian_leader
@@ -340,7 +326,7 @@ romaviri_emperor_yearly.3000 = {
 				exists = scope:highguardian_leader
 				exists = scope:highguardian_2
 				any_courtier = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available_adult = yes
 					NOR = {
 						this = scope:highguardian_leader
@@ -350,7 +336,7 @@ romaviri_emperor_yearly.3000 = {
 			}
 			random_courtier = {
 				limit = {
-					highguardian_trigger = yes
+					ep3_highguardian_trigger = yes
 					is_available_adult = yes
 					NOR = {
 						this = scope:highguardian_leader
@@ -362,267 +348,10 @@ romaviri_emperor_yearly.3000 = {
 		}
 	}
 
-	#Have the eparch/thalanir seize some of the spoils
+	#Have the thalanir seize some of the spoils
 	option = {
 		name = romaviri_emperor_yearly.3000.a
 		flavor = romaviri_emperor_yearly.3000.a.flavor
-		trigger = {
-			employs_court_position = eparch_court_position
-			any_court_position_holder = {
-				type = eparch_court_position
-				aptitude = {
-					court_position = eparch_court_position
-					value >= 3
-				}
-			}
-		}
-		add_internal_flag = special
-		custom_tooltip = eparch_aptitude_option_unlock
-		
-		#Random refuse bonus effect
-		if = {
-			limit = {
-				has_character_flag = refuse_bonus_prestige
-			}
-			if = {
-				limit = {
-					var:highguardian_regiments >= 7
-				}
-				add_prestige = massive_prestige_gain
-			}
-			else_if = {
-				limit = {
-					var:highguardian_regiments >= 4
-				}
-				add_prestige = major_prestige_gain
-			}
-			else = {
-				add_prestige = medium_prestige_gain
-			}
-		}
-		if = {
-			limit = {
-				has_character_flag = refuse_bonus_dread
-			}
-			if = {
-				limit = {
-					var:highguardian_regiments >= 7
-				}
-				add_dread = major_dread_gain
-				add_prestige = major_prestige_gain
-			}
-			else_if = {
-				limit = {
-					var:highguardian_regiments >= 4
-				}
-				add_dread = medium_dread_gain
-				add_prestige = medium_prestige_gain
-			}
-			else = {
-				add_dread = minor_dread_gain
-				add_prestige = minor_prestige_gain
-			}
-		}
-		if = {
-			limit = {
-				has_character_flag = refuse_bonus_opinion
-			}
-			if = {
-				limit = {
-					var:highguardian_regiments >= 7
-				}
-				every_vassal = {
-					custom = every_parochial_vassal
-					add_opinion = {
-						modifier = respect_opinion
-						opinion = 30
-						target = root
-					}
-				}
-				add_prestige = major_prestige_gain
-			}
-			else_if = {
-				limit = {
-					var:highguardian_regiments >= 4
-				}
-				every_vassal = {
-					custom = every_parochial_vassal
-					add_opinion = {
-						modifier = respect_opinion
-						opinion = 20
-						target = root
-					}
-				}
-				add_prestige = medium_prestige_gain
-			}
-			else = {
-				every_vassal = {
-					custom = every_parochial_vassal
-					add_opinion = {
-						modifier = respect_opinion
-						opinion = 10
-						target = root
-					}
-				}
-				add_prestige = minor_prestige_gain
-			}
-		}
-		change_influence = medium_influence_gain
-			
-		remove_treasury_or_gold = {
-			value = {
-				value = 0
-				add = {
-					value = scope:highguardian_gold
-					multiply = 0.4
-				}
-			}
-		}
-		#Negative heavy inf and scheme resistance modifier
-		add_character_modifier = {
-			modifier = disrespected_highguardians_modifier
-			years = 10
-		}
-		if = {
-			limit = {
-				scope:highguardian_leader = {
-					is_courtier_of = root
-				}
-			}
-			if = {
-				limit = {
-					scope:highguardian_leader = { has_trait = loyal }
-				}
-				scope:highguardian_leader = { remove_trait = loyal }
-				reverse_add_opinion = {
-					target = scope:highguardian_leader
-					modifier = angry_opinion
-					opinion = -20
-				}
-			}
-			else = {
-				reverse_add_opinion = {
-					target = scope:highguardian_leader
-					modifier = hate_opinion
-					opinion = -40
-				}
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:highguardian_2
-			}
-			if = {
-				limit = {
-					scope:highguardian_2 = { has_trait = loyal }
-				}
-				scope:highguardian_2 = { remove_trait = loyal }
-				reverse_add_opinion = {
-					target = scope:highguardian_2
-					modifier = angry_opinion
-					opinion = -20
-				}
-			}
-			else = {
-				reverse_add_opinion = {
-					target = scope:highguardian_2
-					modifier = hate_opinion
-					opinion = -40
-				}
-			}
-		}
-		if = {
-			limit = {
-				exists = scope:highguardian_3
-			}
-			if = {
-				limit = {
-					scope:highguardian_3 = { has_trait = loyal }
-				}
-				scope:highguardian_3 = { remove_trait = loyal }
-				reverse_add_opinion = {
-					target = scope:highguardian_3
-					modifier = angry_opinion
-					opinion = -20
-				}
-			}
-			else = {
-				reverse_add_opinion = {
-					target = scope:highguardian_3
-					modifier = hate_opinion
-					opinion = -40
-				}
-			}
-		}
-		#Apply randomized_malus
-		if = {
-			limit = {
-				has_character_flag = malus_court_grandeur
-				var:highguardian_regiments >= 7
-			}
-			change_current_court_grandeur = minor_court_grandeur_loss
-		}
-		if = {
-			limit = {
-				has_character_flag = malus_broken_artifact
-				var:highguardian_regiments >= 7
-			}
-			scope:broken_artifact = {
-				add_durability = -20
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					scope:highguardian_leader = {
-						is_courtier_of = root
-					}
-				}
-			}
-			hidden_effect = {
-				scope:highguardian_leader = { move_to_pool = yes }
-			}
-		}
-		
-		stress_impact = {
-			craven = medium_stress_impact_gain
-			paranoid = medium_stress_impact_gain
-			generous = medium_stress_impact_gain
-			content = minor_stress_impact_gain
-			just = minor_stress_impact_gain
-		}
-		ai_chance = {
-			base = 50
-			ai_value_modifier = {
-				ai_greed = 1
-				ai_boldness = 1
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_trait = craven
-					has_trait = paranoid
-					has_trait = generous
-					has_trait = content
-					has_trait = just
-				}
-			}
-			modifier = {
-				factor = 3
-				short_term_gold <= 300
-			}
-			modifier = {
-				factor = 0.5
-				OR = {
-					has_trait = content
-					has_trait = just
-				}
-			}
-		}
-	}
-	option = {
-		name = romaviri_emperor_yearly.3000.d
-		flavor = romaviri_emperor_yearly.3000.d.flavor
 		trigger = {
 			employs_court_position = thalanir_court_position
 			any_court_position_holder = {
@@ -635,7 +364,7 @@ romaviri_emperor_yearly.3000 = {
 		}
 		add_internal_flag = special
 		custom_tooltip = thalanir_aptitude_option_unlock
-
+		
 		#Random refuse bonus effect
 		if = {
 			limit = {
@@ -1228,7 +957,7 @@ romaviri_emperor_yearly.3000 = {
 					name = eager_highguardian_army
 					levies = 600
 					men_at_arms = {
-						type = highguardian_guards
+						type = highguards
 						stacks = 4
 					}
 					location = root.capital_province
@@ -1244,7 +973,7 @@ romaviri_emperor_yearly.3000 = {
 					name = eager_highguardian_army
 					levies = 300
 					men_at_arms = {
-						type = highguardian_guards
+						type = highguards
 						stacks = 2
 					}
 					location = root.capital_province
@@ -1257,7 +986,7 @@ romaviri_emperor_yearly.3000 = {
 					name = eager_highguardian_army
 					levies = 100
 					men_at_arms = {
-						type = highguardian_guards
+						type = highguards
 						stacks = 1
 					}
 					location = root.capital_province

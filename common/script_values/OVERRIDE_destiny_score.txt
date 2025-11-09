@@ -1,0 +1,604 @@
+destiny_score_interesting_traits = {
+	# Traits
+	if = {
+		limit = {
+			num_virtuous_traits > 0
+		}
+		add = {
+			value = 10
+			multiply = num_virtuous_traits
+			desc = virtues_interesting_desc
+		}
+	}
+	## has levelled/lifestyle traits
+	if = {
+		limit = {
+			has_trait = tourney_participant
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = bow
+							value >= 30
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = foot
+							value >= 30
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = horse
+							value >= 30
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = wit
+							value >= 30
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = bow
+							value >= 65
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = foot
+							value >= 65
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = horse
+							value >= 65
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = tourney_participant
+							track = wit
+							value >= 65
+						}
+					}
+					add = 30
+				}
+			}
+			desc = tourney_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_reveler
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_reveler
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_reveler
+							value >= 100
+						}
+					}
+					add = 30
+				}
+			}
+			desc = reveler_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_mystic
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_mystic
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_mystic
+							value >= 100
+						}
+					}
+					add = 30
+				}
+			}
+			desc = mystic_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_hunter
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_hunter
+							track = hunter
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_hunter
+							track = hunter
+							value >= 100
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_hunter
+							track = falconer
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_hunter
+							track = falconer
+							value >= 100
+						}
+					}
+					add = 30
+				}
+			}
+			desc = hunter_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_blademaster
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_blademaster
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_blademaster
+							value >= 100
+						}
+					}
+					add = 30
+				}
+			}
+			desc = blademaster_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_traveler
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_traveler
+							track = travel
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_traveler
+							track = travel
+							value >= 100
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_traveler
+							track = danger
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_traveler
+							track = danger
+							value >= 100
+						}
+					}
+					add = 30
+				}
+			}
+			desc = traveler_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_physician
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_physician
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_physician
+							value >= 100
+						}
+					}
+					add = 30
+				}
+			}
+			desc = physician_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_herbalist
+		}
+		add = {
+			value = {
+				value = 20
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_herbalist
+							value >= 50
+						}
+					}
+					add = 30
+				}
+				if = {
+					limit = {
+						has_trait_xp = {
+							trait = lifestyle_herbalist
+							value >= 100
+						}
+					}
+					add = 30
+				}
+			}
+			desc = herbalist_xp_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = loyal
+		}
+		add = {
+			value = 20
+			desc = loyal_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = disloyal
+		}
+		add = {
+			value = 20
+			desc = disloyal_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = faith_warrior
+		}
+		add = {
+			value = 20
+			desc = faith_warrior_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = blood_of_prophet
+		}
+		add = {
+			value = 30
+			desc = blood_of_prophet_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = varangian
+		}
+		add = {
+			value = {
+				value = 50
+				if = {
+					limit = {
+						location = title:b_constantinople
+					}
+					add = 50
+				}
+			}
+			desc = varangian_interesting_desc
+		}
+	}
+    if = {
+		limit = {
+			has_trait = highguardian
+		}
+		add = {
+			value = {
+				value = 50
+				if = {
+					limit = {
+						location = title:b_constantinople
+					}
+					add = 50
+				}
+			}
+			desc = highguardian_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_poet
+		}
+		add = {
+			value = 25
+			desc = poet_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = peasant_leader
+		}
+		add = {
+			value = 50
+			desc = peasant_leader_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = populist_leader
+		}
+		add = {
+			value = 50
+			desc = populist_leader_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = berserker
+		}
+		add = {
+			value = 50
+			desc = berserker_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = born_in_the_purple
+		}
+		add = {
+			value = 25
+			desc = born_in_the_purple_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = scaly
+		}
+		add = {
+			value = 40
+			desc = scaly_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = albino
+		}
+		add = {
+			value = 60
+			desc = albino_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = dwarf
+		}
+		add = {
+			value = 40
+			desc = dwarf_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = giant
+		}
+		add = {
+			value = 40
+			desc = giant_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = devoted
+		}
+		add = {
+			value = 40
+			desc = devoted_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = blind
+		}
+		add = {
+			value = 40
+			desc = blind_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = pure_blooded
+		}
+		add = {
+			value = 20
+			desc = pure_blooded_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = crusader_king
+		}
+		add = {
+			value = 250
+			desc = crusader_king_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			has_trait = disinherited
+		}
+		add = {
+			value = 100
+			desc = disinherited_interesting_desc
+		}
+	}
+	if = {
+		limit = {
+			num_of_good_genetic_traits > 0
+			num_of_bad_genetic_traits > 0
+		}
+		add = {
+			value = 120
+			desc = has_both_good_and_bad_genetics_desc
+		}
+	}
+	if = {
+		limit = {
+			num_of_good_genetic_traits > 0
+		}
+		add = {
+			value = {
+				value = 15
+				multiply = num_of_good_genetic_traits
+			}
+			desc = good_genetics_desc
+		}
+	}
+	if = {
+		limit = {
+			num_of_bad_genetic_traits > 0
+		}
+		add = {
+			value = {
+				value = 10
+				multiply = num_of_bad_genetic_traits
+			}
+			desc = bad_genetics_desc
+		}
+	}
+	if = {
+		limit = {
+			num_virtuous_traits >= 3
+		}
+		add = {
+			value = {
+				value = 165
+			}
+			desc = three_virtues_desc
+		}
+	}
+	if = {
+		limit = {
+			num_sinful_traits >= 3
+		}
+		add = {
+			value = {
+				value = 165
+			}
+			desc = three_sins_desc
+		}
+	}
+}

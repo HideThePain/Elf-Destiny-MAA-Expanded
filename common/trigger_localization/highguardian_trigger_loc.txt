@@ -1,0 +1,3 @@
+﻿not_allowed_in_highguard = {
+	third_not = CHARACTER_INTERACTION_NOT_ALLOWED_IN_HIGHGUARD
+}

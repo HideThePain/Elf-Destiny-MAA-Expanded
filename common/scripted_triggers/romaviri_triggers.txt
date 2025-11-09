@@ -203,3 +203,34 @@ has_mythical_founder_trigger = {
 		}
 	}
 }
+
+highguardian_trigger = {
+	OR = {
+		culture = {
+			OR = {
+				has_cultural_tradition = tradition_astrion_alchemical_aptitude
+				has_cultural_tradition = tradition_astrion_elemental_mastery
+				has_cultural_tradition = tradition_astrion_magic_engineering
+				has_cultural_tradition = tradition_tuathan_brain_and_brawn
+				has_cultural_tradition = tradition_tuathan_resilience
+				has_cultural_tradition = tradition_tuathan_prosperity
+				has_cultural_tradition = tradition_deepwood_foresters
+				has_cultural_tradition = tradition_deepwood_guest_rites
+				has_cultural_tradition = tradition_deepwood_terraforming
+				has_cultural_tradition = tradition_atlareth_coastal_mastery
+				has_cultural_tradition = tradition_atlareth_glory_seeking
+				has_cultural_tradition = tradition_atlareth_raiding_expertise
+				has_cultural_tradition = tradition_alfar_battlefiends
+				has_cultural_tradition = tradition_alfar_homeland_defense
+				has_cultural_tradition = tradition_alfar_union_of_elves
+				has_cultural_tradition = tradition_romaviri_affluence
+				has_cultural_tradition = tradition_romaviri_strategy
+				has_cultural_tradition = tradition_romaviri_bureaucracy
+				has_cultural_pillar = heritage_elf
+			}
+		}
+		has_trait = highguardian
+	}
+	can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = root }
+	is_physically_able_adult = yes
+}

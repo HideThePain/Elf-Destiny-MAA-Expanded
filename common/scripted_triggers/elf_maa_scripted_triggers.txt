@@ -1,4 +1,4 @@
-ep3_highuardian_trigger = {
+highuardian_trigger = {
 	OR = {
 		culture = {
 			OR = {

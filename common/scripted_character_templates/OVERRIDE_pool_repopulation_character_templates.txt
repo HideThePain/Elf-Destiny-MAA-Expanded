@@ -368,7 +368,7 @@ pool_repopulate_martial = {
             limit = {
                 OR = {
                     culture = { has_cultural_pillar = heritage_elf }
-                    religion = religion:germanic_religion
+                    root = { is_any_elf_type = yes }
                 }
             }
             random_list = {
@@ -386,6 +386,11 @@ pool_repopulate_martial = {
                     add_trait = magic_talent_1
                 }
             }
+            random_list = {
+                80 = { add_character_flag = race_elf }
+                20 = { add_character_flag = race_high_elf }
+            }
+            urf_template_base_race_init = yes
         }
 
         # Cultural Traditions

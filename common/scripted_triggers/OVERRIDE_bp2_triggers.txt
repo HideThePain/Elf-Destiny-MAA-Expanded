@@ -1,0 +1,20 @@
+﻿style_changing_reformer_trigger = {
+    OR = {
+        AND = {
+            root.top_liege ?= { has_character_flag = $FLAG$ }
+            AND = {
+                has_variable = years_as_varangian
+                has_character_flag = $FLAG$
+                is_landed = no
+            }
+        }
+        AND = {
+            root.top_liege ?= { has_character_flag = $FLAG$ }
+            AND = {
+                has_variable = years_as_highguardian
+                has_character_flag = $FLAG$
+                is_landed = no
+            }
+        }
+    }
+}
