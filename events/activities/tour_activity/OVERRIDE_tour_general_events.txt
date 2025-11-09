@@ -1,0 +1,1038 @@
+﻿# Events for managing general event happenings; liege arriving at a stop, etc.
+
+namespace = tour_general
+
+############################
+## Tour Arriving at a Stop
+############################
+## Vassal Events
+## 0001-0499
+## by James Beaumont
+############################
+# tour_general.0001 - Vassal: Liege arrival event
+# 
+# 
+############################
+## Liege Events
+## 0500-0999
+## by James Beaumont
+############################
+# tour_general.0501 - Liege: Rejected at the gates
+# 
+# 
+# 
+
+############################
+## Tour Remaining at a Stop
+############################
+## Bilateral Vassal Events
+## 1000-1999
+## by Filippa Gannholm Kirsten
+############################
+# tour_general.1001 - Vassal: Liege requests or has tried to steal the courtier
+# tour_general.1002 - Vassal/Liege: "Share" the courtier - A Gruesomely Glorious Meal
+# 
+# 
+############################
+## Vassal Events
+## 2000-2999
+## by Filippa Gannholm Kirsten
+############################
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+############################
+## Bilateral Liege Events
+## 3000-3999
+## by Filippa Gannholm Kirsten
+############################
+# tour_general.3001 - Liege: You find a courtier you'd like to bring with you
+# tour_general.3002 - Liege: Vassal has either decided to give you the courtier, attached terms or declined
+# 
+# 
+# 
+# 
+# 
+############################
+## Liege Events
+## 4000-4999
+## by Filippa Gannholm Kirsten
+############################
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
+#Vassal: Liege requests or has tried to steal the courtier
+tour_general.1001 = {
+	type = activity_event
+	title = {
+		first_valid = {
+			#They tried to steal your courtier
+			triggered_desc = {
+				trigger = {
+					scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+				}
+				desc = tour_general.1001.title_theft
+			}
+			#They requested the courtier amicably
+			triggered_desc = {
+				desc = tour_general.1001.title
+			}
+		}
+	}
+	desc = {
+		desc = tour_general.1001.intro
+		first_valid = {
+			#Liege tried to steal the courtier
+			triggered_desc = {
+				trigger = {
+					scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+				}
+				desc = tour_general.1001.desc_theft_liege
+			}
+			#Liege requested the courtier
+			triggered_desc = {
+				desc = tour_general.1001.desc
+			}
+		}
+		first_valid = {
+			#Outro: Courtier is unusual, Liege tried to steal the courtier
+			triggered_desc = {
+				trigger = {
+					scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+					scope:tour_general_3001_target_courtier = { 
+						OR = { 
+							has_character_flag = tour_general_3001_is_delectable
+							has_character_flag = tour_general_3001_has_insanity_trait
+						} 
+					}
+				}
+				desc = tour_general.1001.outro_theft_liege_unusual_courtier
+			}
+			#Outro: Liege tried to steal the courtier
+			triggered_desc = {
+				trigger = {
+					scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+				}
+				desc = tour_general.1001.outro_theft_liege
+			}
+			#Outro: Host is unusual, Courtier is unusual
+			triggered_desc = {
+				trigger = {
+					scope:tour_general_3001_target_courtier = { 
+						OR = { 
+							has_character_flag = tour_general_3001_is_delectable
+							has_character_flag = tour_general_3001_has_insanity_trait
+						} 
+					}
+					tour_general_1001_host_has_unusual_trait = yes
+				}
+				desc = tour_general.1001.outro_unusual_host_unusual_courtier
+			}
+			#Outro: Courtier is unusual
+			triggered_desc = {
+				trigger = {
+					scope:tour_general_3001_target_courtier = { 
+						OR = { 
+							has_character_flag = tour_general_3001_is_delectable
+							has_character_flag = tour_general_3001_has_insanity_trait
+						} 
+					}
+				}
+				desc = tour_general.1001.outro_unusual_courtier
+			}
+			#Outro: Default
+			triggered_desc = {
+				desc = tour_general.1001.outro
+			}
+		}
+	}
+	theme = tour_stop
+	left_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = {
+				scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+			}
+			animation = rage
+		}
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:visiting_liege
+		animation = personality_content
+	}
+	lower_left_portrait = {
+		character = scope:tour_general_3001_target_courtier
+	}
+	lower_right_portrait = {
+		trigger = {
+			exists = scope:tour_general_1001_bodyguard
+			scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+			scope:stop_host_scope = {
+				OR = {
+					has_trait = lunatic
+					has_trait = possessed
+				}
+			}
+		}
+		character = scope:tour_general_1001_bodyguard
+	}
+	immediate = {
+		#Find a bodyguard, if possible
+		scope:visiting_liege = {
+			if = {
+				limit = {
+					any_court_position_holder = {
+						type = akolouthos_court_position
+						tour_general_1001_has_suitable_bodyguard = yes
+					}
+				}
+				random_court_position_holder = {
+					type = akolouthos_court_position
+					limit = { tour_general_1001_has_suitable_bodyguard = yes }
+					save_scope_as = tour_general_1001_bodyguard
+				}
+			}
+			else_if = {
+				limit = {
+					any_court_position_holder = {
+						type = eryndar_court_position
+						tour_general_1001_has_suitable_bodyguard = yes
+					}
+				}
+				random_court_position_holder = {
+					type = eryndar_court_position
+					limit = { tour_general_1001_has_suitable_bodyguard = yes }
+					save_scope_as = tour_general_1001_bodyguard
+				}
+			}
+			else_if = {
+				limit = {
+					any_court_position_holder = {
+						type = bodyguard_court_position
+						tour_general_1001_has_suitable_bodyguard = yes
+					}
+				}
+				random_court_position_holder = {
+					type = bodyguard_court_position
+					limit = { tour_general_1001_has_suitable_bodyguard = yes }
+					save_scope_as = tour_general_1001_bodyguard
+				}
+			}
+			
+		}
+	}
+	#A1: Alright, have the courtier
+	option = {
+		name = tour_general.1001.a
+		trigger = { 
+			NOT = {
+				scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+			}
+		}
+		custom_tooltip = tour_general.3001.b_liege_decides.tt
+		add_character_flag = {
+			flag = tour_general_1001_gave_away_courtier
+			days = 10
+		}
+		reverse_add_opinion = {
+			target = scope:visiting_liege
+			modifier = ep2_humored_liege_opinion
+		 	opinion = 25
+		}
+		tour_general_1001_stress_effect = yes
+		tour_general_1001_cannibal_stress_effect = yes
+		stress_impact = {
+			paranoid = major_stress_impact_loss #The less people the better, right?
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				OR = {
+					has_relation_best_friend = scope:visiting_liege
+					has_relation_friend = scope:visiting_liege
+					opinion = {
+						target = scope:visiting_liege
+						value >= medium_positive_opinion
+					}
+				}	
+				add = 50
+			}
+			ai_value_modifier = {
+				ai_honor = 1
+				ai_compassion = 1
+				ai_greed = -1	
+			}
+			modifier = {
+				ai_greed >= medium_positive_ai_value
+				add = -25
+			}
+		}
+	}
+	#A2: Post-theft - Begrudgingly have the courtier
+	option = {
+		name = tour_general.1001.a_theft_liege
+		trigger = { 
+			scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+		}
+		custom_tooltip = tour_general.3001.b_liege_decides.tt
+		add_character_flag = {
+			flag = tour_general_1001_gave_away_courtier
+			days = 10
+		}
+		reverse_add_opinion = {
+			target = scope:visiting_liege
+			modifier = ep2_humored_liege_opinion
+		 	opinion = 25
+		}
+		tour_general_1001_stress_effect = yes
+		tour_general_1001_cannibal_stress_effect = yes
+		stress_impact = {
+			paranoid = major_stress_impact_loss #The less people the better, right?
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				OR = {
+					has_relation_best_friend = scope:visiting_liege
+					has_relation_friend = scope:visiting_liege
+					opinion = {
+						target = scope:visiting_liege
+						value >= medium_positive_opinion
+					}
+				}	
+				add = 25
+			}
+			ai_value_modifier = {
+				ai_compassion = 1
+				ai_honor = 1
+				ai_greed = -1
+				ai_vengefulness = -1.5
+			}
+			modifier = {
+				ai_greed >= medium_positive_ai_value
+				add = -50
+			}
+		}
+	}
+	#I want a hook in return
+	option = {
+		name = tour_general.1001.b
+		trigger = {
+			can_add_hook = {
+				type = favor_hook
+				target = scope:visiting_liege
+			}
+		}
+		custom_tooltip = tour_general.1001.b.tt
+		custom_tooltip = tour_general.3001.b_liege_decides.tt
+		add_character_flag = {
+			flag = tour_general_1001_requested_hook
+			days = 10
+		}
+		tour_general_1001_cannibal_stress_effect = yes
+		stress_impact = {
+			honest = miniscule_stress_impact_gain
+		}
+		ai_chance = {
+			base = 0
+			ai_value_modifier = {
+				ai_rationality = 1.5
+				ai_vengefulness = 0.5
+				ai_boldness = 0.75
+				ai_compassion = -0.1
+				ai_honor = -0.1
+			}
+			modifier = {
+				ai_boldness >= medium_positive_ai_value
+				ai_energy >= low_positive_ai_value
+				add = 25
+			}
+		}
+	}
+	#I want gold in return
+	option = {
+		name = tour_general.1001.c
+		trigger = { 
+			has_trait = greedy
+			tour_general_1001_has_cannibalist_pandering = no
+		} 
+		custom_tooltip = tour_general.1001.c.tt
+		custom_tooltip = tour_general.3001.b_liege_decides.tt
+		add_character_flag = {
+			flag = tour_general_1001_requested_gold
+			days = 10
+		}
+		tour_general_1001_cannibal_stress_effect = yes
+		stress_impact = {
+			greedy = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 0
+			ai_value_modifier = {
+				ai_greed = 2
+				ai_boldness = 0.75
+				ai_vengefulness = 0.5
+				ai_compassion = -0.1
+				ai_zeal = -1
+			}
+			modifier = {
+				ai_boldness >= medium_positive_ai_value
+				ai_energy >= low_positive_ai_value
+				add = 25
+			}
+		}
+	}
+	#Cannibal option: Let's "share" the courtier
+	option = {
+		name = tour_general.1001.d
+		flavor = tour_general.1001.d.flavor
+		trigger = { tour_general_1001_has_cannibalist_pandering = yes }
+		custom_tooltip = tour_general.1001.d.tt
+		custom_tooltip = tour_general.1001.d.tt_extra
+		add_character_flag = {
+			flag = tour_general_1001_offered_a_meal
+			days = 10
+		}
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			generous = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+				OR = {
+					scope:visiting_liege = { has_trait = cannibal }
+					any_known_secret = {
+						secret_owner = scope:visiting_liege
+						secret_type = secret_cannibal
+						any_secret_knower = { this = root }
+					}
+				}
+				add = 100
+			}
+			modifier = {
+				OR = {
+					has_relation_best_friend = scope:visiting_liege
+					has_relation_friend = scope:visiting_liege
+					has_relation_lover = scope:visiting_liege
+				}	
+				add = 25
+			}
+			ai_value_modifier = {
+				ai_boldness = 1
+				ai_vengefulness = -1
+				ai_compassion = -1
+				ai_greed = -0.5
+				ai_zeal = -0.5
+			}
+			modifier = {
+				OR = {
+					ai_boldness >= high_positive_ai_value
+					ai_energy >= high_positive_ai_value
+				}
+				add = 25
+			}
+		}
+	}
+	#Insanity option: Liege must die
+	option = {
+		name = tour_general.1001.e
+		flavor = tour_general.1001.e.flavor
+		trigger = {
+			scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+			AND = { 
+				OR = {
+					has_trait = lunatic
+					has_trait = possessed
+				}
+				OR = {
+					has_trait = vengeful
+					has_trait = wrathful
+					has_trait = irritable
+				}
+			}
+		}
+		custom_tooltip = tour_general.1001.e.tt
+		if = {
+			limit = { exists = scope:tour_general_1001_bodyguard }
+			duel = {
+				skill = prowess
+				target = scope:tour_general_1001_bodyguard
+				#You successfully kill the liege
+				50 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 1
+						min = 5
+					}
+					desc = tour_general.1001.e.success
+					send_interface_toast = {
+						type = event_toast_text_and_effect_good
+						left_icon = scope:stop_host_scope
+						right_icon = scope:visiting_liege
+						title = tour_general.1001.e.success.tt
+						desc = tour_general.1001.e.success.desc
+
+						scope:visiting_liege = {
+							death = {
+								killer = scope:stop_host_scope
+								death_reason = death_fight
+							}
+						}
+					}
+				}
+				#Bodyguard steps in and kills you
+				50 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+						min = 5
+					}
+					desc = tour_general.1001.e.bodyguard
+					scope:visiting_liege = {
+						send_interface_toast = {
+							type = event_toast_text_and_effect_good
+							left_icon = scope:tour_general_1001_bodyguard
+							right_icon = scope:stop_host_scope
+							title = tour_general.1001.e.success.tt
+							desc = tour_general.1001.e.bodyguard.desc
+
+							scope:stop_host_scope = {
+								death = {
+									killer = scope:tour_general_1001_bodyguard
+									death_reason = death_fight
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else = {
+			duel = {
+				skill = prowess
+				target = scope:visiting_liege
+				#You successfully kill the liege
+				50 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 1
+						min = 5
+					}
+					desc = tour_general.1001.e.success
+					send_interface_toast = {
+						type = event_toast_text_and_effect_good
+						left_icon = scope:stop_host_scope
+						right_icon = scope:visiting_liege
+						title = tour_general.1001.e.success.tt
+						desc = tour_general.1001.e.success.desc
+
+						scope:visiting_liege = {
+							death = {
+								killer = scope:stop_host_scope
+								death_reason = death_fight
+							}
+						}
+					}
+				}
+				#You fail the attempt and die in the process
+				50 = {
+					compare_modifier = {
+						value = scope:duel_value
+						multiplier = 2
+						min = 5
+					}
+					desc = tour_general.1001.e.failure
+					scope:visiting_liege = {
+						send_interface_toast = {
+							type = event_toast_text_and_effect_good
+							left_icon = scope:visiting_liege
+							right_icon = scope:stop_host_scope
+							title = tour_general.1001.e.success.tt
+							desc = tour_general.1001.e.success.desc
+
+							scope:stop_host_scope = {
+								death = {
+									killer = scope:visiting_liege
+									death_reason = death_fight
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		tour_general_1001_cannibal_stress_effect = yes
+		if = {
+			limit = { is_alive = yes }
+			stress_impact = {
+				calm = major_stress_impact_gain
+				craven = major_stress_impact_gain
+				compassionate = major_stress_impact_gain
+				wrathful = major_stress_impact_loss
+				vengeful = major_stress_impact_loss
+				generous = minor_stress_impact_loss
+			}
+		}	
+		ai_chance = {
+			base = 0
+			modifier = {
+				OR = {
+					has_relation_nemesis = scope:visiting_liege
+					has_relation_rival = scope:visiting_liege
+					opinion = {
+						target = scope:visiting_liege
+						value >= high_negative_opinion
+					}
+				}	
+				add = 25
+			}
+			modifier = {
+				OR = {
+					has_relation_best_friend = scope:visiting_liege
+					has_relation_friend = scope:visiting_liege
+					opinion = {
+						target = scope:visiting_liege
+						value >= medium_positive_opinion
+					}
+				}	
+				add = -50
+			}
+			modifier = {
+				AND = {
+					NOT = { exists = scope:tour_general_1001_bodyguard }
+					prowess <= liege.prowess
+				}
+				add = -200
+			}
+			modifier = {
+				AND = {
+					exists = scope:tour_general_1001_bodyguard
+					prowess <= scope:tour_general_1001_bodyguard.prowess
+				}
+				add = -200
+			}
+			ai_value_modifier = {
+				ai_vengefulness = 1
+				ai_boldness = 1
+				ai_greed = -1
+				ai_compassion = -1
+				ai_rationality = -2
+			}
+			modifier = {
+				ai_boldness >= high_positive_ai_value
+				ai_energy >= high_positive_ai_value
+				ai_rationality >= high_negative_ai_value
+				add = 25
+			}
+		}
+	}
+	#Polite "no"
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = { 
+							scope:visiting_liege = { has_character_flag = tour_general_3001_failed_courtier_theft }
+						}
+						desc = tour_general.1001.f_theft_liege
+					}
+					#Default
+					triggered_desc = {
+						desc = tour_general.1001.f
+					}
+				}
+			}
+		}
+		custom_tooltip = tour_general.1001.f.tt
+		custom_tooltip = tour_general.3001.b_liege_decides.tt
+		add_character_flag = {
+			flag = tour_general_1001_declined
+			days = 5
+		}
+		tour_general_1001_cannibal_stress_effect = yes
+		if = {
+			limit = {
+				NOT = {
+					any_secret = { type = secret_cannibal }
+				}
+			}
+			stress_impact = {
+				generous = minor_stress_impact_loss
+			}
+		}
+		ai_chance = {
+			base = 10
+			ai_value_modifier = {
+				ai_vengefulness = 3
+				ai_rationality = 1
+				ai_honor = 1
+				ai_zeal = 1
+				ai_compassion = -1
+				ai_greed = -1
+			}
+			modifier = {
+				ai_greed >= medium_positive_ai_value
+				add = -25
+			}
+		}
+	}
+	after = {
+		scope:visiting_liege = { remove_character_flag = tour_general_3001_failed_courtier_theft }
+		if = {
+			limit = { 
+				OR = { 
+					has_character_flag = tour_general_1001_gave_away_courtier
+					has_character_flag = tour_general_1001_requested_hook
+					has_character_flag = tour_general_1001_requested_gold
+					has_character_flag = tour_general_1001_offered_a_meal
+					has_character_flag = tour_general_1001_declined
+				}
+			}
+			#Trigger liege-follow up
+			scope:visiting_liege = { 
+				trigger_event = { 
+					id = tour_general.3002
+					days = 1
+				}
+			}
+		}
+		scope:tour_general_3001_target_courtier = {
+			remove_character_flag = tour_general_3001_is_delectable
+			remove_character_flag = tour_general_3001_has_insanity_trait
+			remove_character_flag = tour_general_3001_has_beauty_trait
+			remove_character_flag = tour_general_3001_has_physique_trait
+			remove_character_flag = tour_general_3001_has_intellect_trait
+			remove_character_flag = tour_general_3001_has_good_martial
+			remove_character_flag = tour_general_3001_has_good_diplomacy
+			remove_character_flag = tour_general_3001_has_good_stewardship
+			remove_character_flag = tour_general_3001_has_good_intrigue
+			remove_character_flag = tour_general_3001_has_good_learning
+			remove_character_flag = tour_general_3001_has_good_prowess
+		}
+	}
+}
+
+tour_general.4000 = {
+    type = activity_event
+    title = tour_general.4000.t
+    desc = tour_general.4000.desc
+    theme = tour_stop
+    override_background = { reference = courtyard }
+    left_portrait = {
+        character = root
+        triggered_animation = {
+            trigger = {
+                tour_general_has_empathetic_personality = yes
+            }
+            animation = worry
+        }
+        animation = personality_callous
+    }
+    right_portrait = {
+        character = scope:parade_master
+        animation = marshal
+    }
+    cooldown = { years = 10 }
+    trigger = {
+        is_available_travelling_adult = yes
+        current_travel_plan = {
+            any_entourage_character = {
+                is_imprisoned_by = root
+                is_adult = yes
+                count >= 2
+            }
+            exists = travel_leader
+        }
+        #This might be a bit jarring for non-intimidation tours?
+        involved_activity = {
+            has_activity_option = {
+                category = special_type
+                option = tour_type_intimidation
+            }
+        }
+    }
+    #More likely for intimidation tour
+    weight_multiplier = {
+        base = 1
+        modifier = {
+            tour_general_has_vengeful_personality = yes
+            factor = 2
+        }
+        modifier = {
+            has_activity_intent = justice_intent
+            add = 100
+        }
+    }
+    immediate = {
+        #Grab someone martial to parade them
+        if = {
+            limit = {
+                exists = cp:councillor_marshal
+                current_travel_plan = {
+                    any_entourage_character = { has_council_position = councillor_marshal }
+                }
+            }
+            current_travel_plan = {
+                random_entourage_character = {
+                    limit = { has_council_position = councillor_marshal }
+                    save_scope_as = parade_master
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                current_travel_plan = {
+                    any_entourage_character = {
+                        OR = {
+                            has_court_position = bodyguard_court_position
+                            has_court_position = akolouthos_court_position
+                            is_knight_of = root
+                        }
+                    }
+                }
+            }
+            current_travel_plan = {
+                random_entourage_character = {
+                    limit = { has_court_position = bodyguard_court_position }
+                    alternative_limit = { has_court_position = akolouthos_court_position }
+                    alternative_limit = { is_knight_of = root }
+                    save_scope_as = parade_master
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                current_travel_plan = {
+                    any_entourage_character = {
+                        OR = {
+                            has_court_position = bodyguard_court_position
+                            has_court_position = eryndar_court_position
+                            is_knight_of = root
+                        }
+                    }
+                }
+            }
+            current_travel_plan = {
+                random_entourage_character = {
+                    limit = { has_court_position = bodyguard_court_position }
+                    alternative_limit = { has_court_position = eryndar_court_position }
+                    alternative_limit = { is_knight_of = root }
+                    save_scope_as = parade_master
+                }
+            }
+        }
+        else = {
+            current_travel_plan.travel_leader = { save_scope_as = parade_master }
+        }
+        add_character_flag = wear_armor
+        scope:parade_master = {
+            add_character_flag = wear_armor
+        }
+    }
+    #Parade them!
+    option = {
+        name = tour_general.4000.a
+        random_list = {
+            #Parade successful
+            75 = {
+                desc = tour_general.4000.a_parade.desc
+                send_interface_toast = {
+                    left_icon = root
+                    right_icon = location.county
+                    title = tour_general.4000.a_parade.t
+                    add_dread = medium_dread_gain
+                    add_character_modifier = {
+                        modifier = tour_paraded_prisoners_modifier
+                        years = 10
+                    }
+                }
+            }
+            #Someone throws a rotten egg at you
+            25 = {
+                modifier = {
+                    dread < 25
+                    add = 10
+                }
+                modifier = {
+                    scope:stop_host_scope.culture != root.culture
+                    add = 10
+                }
+                desc = tour_general.4000.a_egged.desc
+                send_interface_toast = {
+                    left_icon = root
+                    right_icon = location.county
+                    title = tour_general.4000.a_egged.t
+                    add_dread = minor_dread_loss
+                }
+
+            }
+        }
+        stress_impact = {
+            compassionate = medium_stress_impact_gain
+            humble = minor_stress_impact_gain
+            shy = medium_stress_impact_loss
+            forgiving = medium_stress_impact_gain
+        }
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = just
+                add = 50
+            }
+            modifier = {
+                has_trait = vengeful
+                add = 25
+            }
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_energy = 1
+                ai_rationality = 1
+                ai_compassion = -1
+            }
+        }
+    }
+    #_Drag_ them
+    option = {
+        name = tour_general.4000.b
+        flavor = tour_general.4000.b.flavor
+        trigger = {
+            tour_general_has_vengeful_personality = yes
+        }
+        current_travel_plan = {
+            every_entourage_character = {
+                limit = {
+                    is_imprisoned_by = root
+                    is_adult = yes
+                }
+                increase_wounds_effect = { REASON = dragged }
+            }
+        }
+        add_dread = massive_dread_gain
+        add_character_modifier = {
+            modifier = tour_dragged_prisoners_modifier
+            years = 10
+        }
+        #That's a bit excessive, liege?
+        location.county = {
+            add_county_modifier = {
+                modifier = tour_dragged_prisoners_through_holding_modifier
+                years = 10
+            }
+        }
+        stress_impact = {
+            compassionate = major_stress_impact_gain
+            humble = medium_stress_impact_gain
+            gregarious = minor_stress_impact_gain
+            shy = medium_stress_impact_gain
+            forgiving = major_stress_impact_gain
+            sadistic = medium_stress_impact_loss
+        }
+        ai_chance = {
+            base = 50
+            modifier = {
+                trigger_if = {
+                    limit = {
+                        has_relation_rival = scope:stop_host_scope
+                        scope:stop_host_scope = {
+                            OR = {
+                                has_trait = compassionate
+                                has_trait = forgiving
+                            }
+                        }
+                        NOR = {
+                            has_trait = compassionate
+                            has_trait = forgiving
+                        }
+                    }
+                }
+                trigger_else = {
+                    always = no
+                }
+                factor = 2
+            }
+            modifier = {
+                trigger_if = {
+                    limit = {
+                        has_relation_rival = scope:stop_host_scope
+                        scope:stop_host_scope = {
+                            NOR = {
+                                has_trait = compassionate
+                                has_trait = forgiving
+                            }
+                        }
+                    }
+                }
+                trigger_else = {
+                    always = no
+                }
+                factor = 1.5
+            }
+            modifier = {
+                has_trait = sadistic
+                add = 50
+            }
+            modifier = {
+                has_trait = callous
+                add = 25
+            }
+            ai_value_modifier = {
+                ai_boldness = 2
+                ai_vengefulness = 2
+                ai_energy = 1
+                ai_compassion = -2
+            }
+        }
+    }
+    #... no, let's not
+    option = {
+        name = tour_general.4000.c
+        stress_impact = {
+            arrogant = minor_stress_impact_gain
+            cynical = minor_stress_impact_gain
+            calm = minor_stress_impact_loss
+            vengeful = minor_stress_impact_gain
+            irritable = minor_stress_impact_gain
+            sadistic = minor_stress_impact_gain
+            callous = minor_stress_impact_gain
+            compassionate = medium_stress_impact_loss
+            forgiving = medium_stress_impact_loss
+        }
+        ai_chance = {
+            base = 50
+            modifier = {
+                dread > 75
+                factor = 2
+            }
+            modifier = {
+                has_trait = compassionate
+                add = 50
+            }
+            modifier = {
+                has_trait = forgiving
+                add = 25
+            }
+            ai_value_modifier = {
+                ai_compassion = 2
+                ai_sociability = 2
+            }
+        }
+    }
+    after = {
+        remove_character_flag = wear_armor
+        scope:parade_master = {
+            remove_character_flag = wear_armor
+        }
+    }
+}

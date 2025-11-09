@@ -1,0 +1,913 @@
+﻿namespace = hold_court
+
+# Differences in namespace range down to the ongoing CD civil war between whether a range starts at 0 or 1.
+## It starts at 001 and goes to 000, damn it, and anyone who says otherwise is a knave and a cur.
+
+##################################################
+# # RANGES
+# 0001 - 0100		Setup, Example, & Misc
+# 1001 - 2000		Shoes
+# 2001 - 2999		Ewan
+# 3000 - 4000		Bianca
+# 4001 - 5000		Isabella
+# 5001 - 5999		Linnea
+# 6000 - 6999		Claudia
+# 7000 - 8000		George
+# 8001 - 8999		Joe
+# 9000 - 9999		Oltner
+# 
+##################################################
+
+
+
+
+
+
+
+
+
+
+
+##################################################
+# Setup, Example, & Misc
+
+##################################################
+# 0001 - 0010	Example Event
+# 0011 - 0010	Activity Start
+# 0021 - 0020	Activity End
+##################################################
+
+##################################################
+# Example Event
+# by Ewan Cowhig Croft
+# 0001 - 0010
+##################################################
+
+# Vassal/courtier wants a Court Position
+hold_court.8090 = {
+	type = court_event
+	title = hold_court.8090.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:vassal_advocate }
+				}
+				desc = hold_court.8090.desc.intro
+			}
+			desc = hold_court.8090.desc.intro_advocate
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:old_holder
+					scope:vassal = { has_relation_rival = scope:old_holder }
+				}
+				desc = hold_court.8090.desc.rival # RIVAL HOLDS POS
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:old_holder
+					exists = scope:vassal_advocate
+				}
+				desc = hold_court.8090.desc.other_advocate
+			}
+			triggered_desc = {
+				trigger = { exists = scope:old_holder }
+				desc = hold_court.8090.desc.other
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:vassal_advocate }
+					scope:vassal = { has_trait = arrogant }
+				}
+				desc = hold_court.8090.desc.arrogant # FILLED BUT ARROGANT	
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:vassal_advocate }
+					scope:vassal = { has_trait = ambitious }
+				}
+				desc = hold_court.8090.desc.ambitious # FILLED BUT AMBITIOUS
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:old_holder
+					OR = {
+						AND = { # Stewardship roles
+							scope:vassal.var:target_court_position = flag:royal_architect
+							scope:vassal.var:target_court_position = flag:seneschal
+							scope:vassal.var:target_court_position = flag:court_gardener
+							scope:vassal.var:target_court_position = flag:keeper_of_swans
+							scope:vassal.stewardship > scope:old_holder.stewardship
+						}
+						AND = { # Learning roles
+							scope:vassal.var:target_court_position = flag:court_tutor
+							scope:vassal.var:target_court_position = flag:high_almoner
+							scope:vassal.var:target_court_position = flag:court_physician
+							scope:vassal.var:target_court_position = flag:antiquarian
+							scope:vassal.var:target_court_position = flag:court_artificer
+							scope:vassal.var:target_court_position = flag:chief_qadi
+							scope:vassal.var:target_court_position = flag:court_astrologer
+							scope:vassal.learning > scope:old_holder.learning
+						}
+						AND = { # Martial roles
+							scope:vassal.var:target_court_position = flag:master_of_horse
+							scope:vassal.var:target_court_position = flag:bodyguard
+							scope:vassal.var:target_court_position = flag:champion
+							scope:vassal.var:target_court_position = flag:master_of_hunt
+							scope:vassal.var:target_court_position = flag:garuda
+							scope:vassal.martial > scope:old_holder.martial
+							scope:vassal.var:target_court_position = flag:akolouthos
+							scope:vassal.var:target_court_position = flag:eryndar
+						}
+						AND = { # Diplomacy roles
+							scope:vassal.var:target_court_position = flag:court_poet
+							scope:vassal.var:target_court_position = flag:court_musician
+							scope:vassal.var:target_court_position = flag:cupbearer
+							scope:vassal.var:target_court_position = flag:lady_in_waiting
+							scope:vassal.var:target_court_position = flag:cultural_emissary
+							scope:vassal.diplomacy > scope:old_holder.diplomacy
+						}
+						AND = { # Intrigue roles
+							scope:vassal.var:target_court_position = flag:chief_eunuch
+							scope:vassal.intrigue > scope:old_holder.intrigue
+						}
+					}
+				}
+				desc = hold_court.8090.desc.superior # Position is occupied but by someone worse at it
+			}
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:vassal_advocate }
+				desc = hold_court.8090.desc.empty_advocate
+			}
+			desc = hold_court.8090.desc.empty
+		}
+		random_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:royal_architect
+					scope:vassal = { has_trait = architect }
+				}
+				desc = hold_court_8090_interest_architect
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:seneschal
+					scope:vassal = { has_trait = administrator }
+				}
+				desc = hold_court_8090_interest_seneschal_administrator
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:seneschal
+					scope:vassal = { is_eunuch_trigger = yes }
+				}
+				desc = hold_court_8090_interest_seneschal_eunuch
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:high_almoner
+					scope:vassal = { has_trait = improvident }
+				}
+				desc = hold_court_8090_interest_almoner
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_physician
+					scope:vassal = { has_trait = lifestyle_physician }
+				}
+				desc = hold_court_8090_interest_physician_experience
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_physician
+					scope:vassal = { has_trait = lifestyle_mystic }
+				}
+				desc = hold_court_8090_interest_physician_mystic
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_physician
+					scope:vassal = { has_trait = lifestyle_herbalist }
+				}
+				desc = hold_court_8090_interest_physician_herbalist
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:antiquarian
+					scope:vassal = { has_trait = scholar }
+				}
+				desc = hold_court_8090_interest_antiquarian
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:master_of_horse
+					scope:vassal = { has_trait = overseer }
+				}
+				desc = hold_court_8090_interest_horse
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						scope:vassal.var:target_court_position = flag:bodyguard
+						scope:vassal.var:target_court_position = flag:akolouthos
+						scope:vassal.var:target_court_position = flag:eryndar
+					}
+					has_relation_soulmate = scope:vassal
+				}
+				desc = hold_court_8090_interest_bodyguard_soulmate
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						scope:vassal.var:target_court_position = flag:bodyguard
+						scope:vassal.var:target_court_position = flag:akolouthos
+						scope:vassal.var:target_court_position = flag:eryndar
+					}
+					has_relation_lover = scope:vassal
+				}
+				desc = hold_court_8090_interest_bodyguard_lover
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						scope:vassal.var:target_court_position = flag:bodyguard
+						scope:vassal.var:target_court_position = flag:akolouthos
+						scope:vassal.var:target_court_position = flag:eryndar
+					}
+					has_relation_best_friend = scope:vassal
+				}
+				desc = hold_court_8090_interest_bodyguard_bestie
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						scope:vassal.var:target_court_position = flag:bodyguard
+						scope:vassal.var:target_court_position = flag:akolouthos
+						scope:vassal.var:target_court_position = flag:eryndar
+					}
+					has_relation_friend = scope:vassal
+				}
+				desc = hold_court_8090_interest_bodyguard_friend
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						scope:vassal.var:target_court_position = flag:champion
+						scope:vassal.var:target_court_position = flag:garuda
+					}
+					scope:vassal = { has_trait = lifestyle_blademaster }
+				}
+				desc = hold_court_8090_interest_champion
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:master_of_hunt
+					scope:vassal = { has_trait = lifestyle_hunter }
+				}
+				desc = hold_court_8090_interest_hunt
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_poet
+					scope:vassal = { has_trait = lifestyle_poet }
+				}
+				desc = hold_court_8090_interest_poet
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_musician
+					scope:vassal = { has_trait = gregarious }
+				}
+				desc = hold_court_8090_interest_musician_gregarious
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_musician
+					scope:vassal = {
+						culture = {
+							this != scope:second.culture
+							has_cultural_tradition = tradition_music_theory
+						}
+					}
+				}
+				desc = hold_court_8090_interest_musician_culture
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:cupbearer
+					scope:vassal = { has_trait = lifestyle_reveler }
+				}
+				desc = hold_court_8090_interest_cupbearer
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:lady_in_waiting
+					has_relation_soulmate = scope:vassal
+				}
+				desc = hold_court_8090_interest_lady_soulmate
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:lady_in_waiting
+					has_relation_lover = scope:vassal
+				}
+				desc = hold_court_8090_interest_lady_lover
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:lady_in_waiting
+					has_relation_best_friend = scope:vassal
+				}
+				desc = hold_court_8090_interest_lady_bestie
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:lady_in_waiting
+					has_relation_friend = scope:vassal
+				}
+				desc = hold_court_8090_interest_lady_friend
+			}
+			triggered_desc = {
+				trigger = { scope:vassal.var:target_court_position = flag:chief_eunuch }
+				desc = hold_court_8090_interest_eunuch
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_gardener
+					scope:vassal = {
+						OR = {
+							has_trait = lifestyle_gardener
+							has_trait = lifestyle_herbalist
+						}
+					}
+				}
+				desc = hold_court_8090_interest_gardener
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:court_artificer
+					scope:vassal = { has_completed_inspiration = yes }
+				}
+				desc = hold_court_8090_interest_artificer
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:cultural_emissary
+					scope:vassal = { has_trait = diplomat }
+				}
+				desc = hold_court_8090_interest_emissary
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:chief_qadi
+					scope:vassal = { has_trait = scholar }
+				}
+				desc = hold_court_8090_interest_qadi
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:garuda
+					scope:vassal = { has_trait = lifestyle_blademaster }
+				}
+				desc = hold_court_8090_interest_garuda
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vassal.var:target_court_position = flag:keeper_of_swans
+					scope:vassal = { has_trait = lifestyle_hunter }
+				}
+				desc = hold_court_8090_interest_keeper_of_swans
+			}
+			triggered_desc = {
+				trigger = { has_relation_soulmate = scope:vassal }
+				desc = hold_court_8090_interest_soulmate
+			}
+			triggered_desc = {
+				trigger = { has_relation_lover = scope:vassal }
+				desc = hold_court_8090_interest_lover
+			}
+			triggered_desc = {
+				trigger = { has_relation_best_friend = scope:vassal }
+				desc = hold_court_8090_interest_bestie
+			}
+			triggered_desc = {
+				trigger = { has_relation_friend = scope:vassal }
+				desc = hold_court_8090_interest_friend
+			}
+			triggered_desc = {
+				trigger = { exists = scope:old_holder }
+				desc = hold_court_8090_interest_other
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:old_holder }
+				}
+				desc = hold_court_8090_interest_fallback
+			}
+		}
+	}
+	theme = realm
+	lower_right_portrait = scope:old_holder
+	court_scene = {
+		button_position_character = scope:vassal
+		court_event_force_open = yes
+		show_timeout_info = no
+		should_pause_time = yes
+		roles = {
+			scope:vassal = {
+				group = petitioners_group
+				animation = admiration
+			}
+		}
+	}
+
+	widget = {
+		gui = "event_window_widget_event_chain_progress"
+		container = "custom_widgets_container"
+		controller = event_chain_progress
+	}
+
+	cooldown = { years = 10 }
+
+	trigger = {
+		OR = {
+			any_vassal = { hold_court_8090_candidate_trigger = yes }
+			any_courtier = { hold_court_8090_candidate_trigger = yes }
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			add = 2
+			has_employed_any_court_position = no
+		}
+
+		# Court weightings.
+		ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_diplomatic }
+	}
+
+	immediate = {
+		save_scope_as = liege
+		every_vassal = {
+			limit = { hold_court_8090_candidate_trigger = yes }
+			add_to_list = hold_court_8090_candidate_list
+		}
+		every_courtier = {
+			limit = { hold_court_8090_candidate_trigger = yes }
+			add_to_list = hold_court_8090_candidate_list
+		}
+		random_in_list = {
+			list = hold_court_8090_candidate_list
+			weight = {
+				base = 1
+				modifier = {
+					add = 2
+					is_landed_or_landless_administrative = yes
+				}
+				modifier = {
+					add = -1
+					highest_held_title_tier = tier_barony
+				}
+				modifier = {
+					add = 2
+					highest_held_title_tier = tier_duchy
+				}
+				modifier = {
+					add = 4
+					highest_held_title_tier = tier_kingdom
+				}
+				modifier = {
+					add = -20
+					is_councillor_of = root
+				}
+				modifier = {
+					add = 2
+					has_trait = arrogant
+				}
+				modifier = {
+					add = 2
+					has_trait = ambitious
+				}
+				modifier = {
+					add = 10
+					has_relation_friend = root
+				}
+				modifier = {
+					add = 20
+					has_relation_best_friend = root
+				}
+				modifier = {
+					add = 30
+					has_relation_lover = root
+				}
+				modifier = {
+					add = 40
+					has_relation_soulmate = root
+				}
+			}
+			hidden_effect = {
+				random_list = {
+					2 = {
+						trigger = { has_any_court_position = no }
+						save_scope_as = vassal
+						court_event_character_flag_effect = yes
+					}
+					2 = {
+						trigger = {
+							any_close_family_member = { hold_court_8090_can_move_trigger = yes }
+						}
+						save_scope_as = vassal_advocate
+						court_event_character_flag_effect = yes
+						ordered_close_family_member = {
+							limit = { hold_court_8090_can_move_trigger = yes }
+							save_scope_as = vassal
+							court_event_character_flag_effect = yes
+						}
+					}
+				}
+			}
+		}
+		scope:vassal = {
+			court_position_generator_effect = { VAR = target EMPLOYER = root }
+			court_position_generator_effect = { VAR = backup EMPLOYER = root }
+		}
+		# Trigger next event in chain.
+		hold_court_queue_next_event_effect = yes
+	}
+
+	option = { # Grant desired position
+		name = {
+			trigger = { exists = scope:old_holder } # Replace
+			text = hold_court.8090.b
+		}
+		name = { # Lady-in-Waiting Soulmate
+			trigger = {
+				scope:vassal.var:target_court_position = flag:lady_in_waiting
+				has_relation_soulmate = scope:vassal
+			}
+			text = hold_court.8090.a.lady_in_waiting_soulmate
+		}
+		name = { # Lady-in-Waiting Lover
+			trigger = {
+				scope:vassal.var:target_court_position = flag:lady_in_waiting
+				has_relation_lover = scope:vassal
+			}
+			text = hold_court.8090.a.lady_in_waiting_lover
+		}
+		name = { # Bodyguard Soulmate
+			trigger = {
+				OR = {
+					scope:vassal.var:target_court_position = flag:bodyguard
+					scope:vassal.var:target_court_position = flag:akolouthos
+					scope:vassal.var:target_court_position = flag:eryndar
+				}
+				has_relation_soulmate = scope:vassal
+			}
+			text = hold_court.8090.a.bodyguard_soulmate
+		}
+		name = { # Bodyguard Lover
+			trigger = {
+				OR = {
+					scope:vassal.var:target_court_position = flag:bodyguard
+					scope:vassal.var:target_court_position = flag:akolouthos
+					scope:vassal.var:target_court_position = flag:eryndar
+				}
+				has_relation_lover = scope:vassal
+			}
+			text = hold_court.8090.a.bodyguard_lover
+		}
+		name = { # Default
+			trigger = { always = yes }
+			text = hold_court.8090.a
+		}
+		trigger = { exists = scope:vassal.var:target_court_position }
+		court_position_generator_assignment_effect = { VAR = target CANDIDATE = scope:vassal  EMPLOYER = root }
+		if = {
+			limit = {
+				NOT = { exists = scope:vassal_advocate }
+			}
+			if = {
+				limit = { exists = scope:vassal_advocate }
+				hold_court_8090_hook_effect = { CHAR = scope:vassal_advocate }
+				scope:vassal_advocate = {
+					add_opinion = {
+						modifier = grateful_opinion
+						target = root
+						opinion = 15
+					}
+				}
+			}
+		}
+		else = {
+			hold_court_8090_hook_effect = { CHAR = scope:vassal }
+		}
+		scope:vassal = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				opinion = 10
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_relation_lover = scope:vassal
+					has_relation_soulmate = scope:vassal
+				}
+				OR = {
+					scope:vassal.var:target_court_position = flag:bodyguard
+					scope:vassal.var:target_court_position = flag:akolouthos
+					scope:vassal.var:target_court_position = flag:eryndar
+					scope:vassal.var:target_court_position = flag:lady_in_waiting
+				}
+			}
+			had_sex_with_effect = {
+	  			CHARACTER = scope:vassal
+	 			PREGNANCY_CHANCE = pregnancy_chance
+			}
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_compassion = 0.5
+			}
+			modifier = {	#Weight up.
+				add = 15
+				has_relation_friend = scope:vassal 
+			}
+			modifier = {	#Weight up.
+				add = 30
+				has_relation_best_friend = scope:vassal 
+			}
+			modifier = {	#Weight up.
+				add = 45
+				has_relation_lover = scope:vassal 
+			}
+			modifier = {	#Weight up.
+				add = 60
+				has_relation_soulmate = scope:vassal 
+			}
+		}
+	}
+
+	option = { # Grant some other unclaimed position
+		name = hold_court.8090.c
+		trigger = { exists = scope:vassal.var:backup_court_position }
+		show_unlock_reason = no
+		court_position_generator_assignment_effect = { VAR = backup CANDIDATE = scope:vassal EMPLOYER = root }
+		if = {
+			limit = { exists = scope:vassal_advocate }
+			scope:vassal_advocate = {
+				add_opinion = {
+					modifier = grateful_opinion
+					target = root
+					opinion = 5
+				}
+			}
+		}
+		scope:vassal = {
+			add_opinion = {
+				modifier = grateful_opinion
+				target = root
+				opinion = 10
+			}
+		}
+		stress_impact = {
+			lazy = medium_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_rationality = 2
+				ai_energy = 1
+				ai_compassion = 1
+			}
+			modifier = {	#Weight down for stress.
+				add = -15
+				has_trait = lazy
+			}
+		}
+	}
+
+	option = { # Offer bad role
+		name = {
+			text = hold_court.8090.d.advocate
+			trigger = { exists = scope:vassal_advocate }
+		}
+		name = {
+			text = hold_court.8090.d
+			trigger = {
+				NOT = { exists = scope:vassal_advocate }
+			}
+		}
+		trigger = {
+			OR = {
+				AND = {
+					has_imprisonment_reason = scope:vassal
+					can_appoint_char_to_court_position = {
+						CHAR = scope:vassal
+						COURT_POS = executioner_court_position
+					}
+					NOR = {
+						scope:vassal.var:target_court_position ?= flag:executioner
+						scope:vassal.var:backup_court_position ?= flag:executioner
+					}
+				}
+				AND = {
+					can_appoint_char_to_court_position = {
+						CHAR = scope:vassal
+						COURT_POS = court_jester_court_position
+					}
+					NOR = {
+						scope:vassal.var:target_court_position ?= flag:court_jester
+						scope:vassal.var:backup_court_position ?= flag:court_jester
+					}
+				}
+				AND = {
+					can_appoint_char_to_court_position = {
+						CHAR = scope:vassal
+						COURT_POS = food_taster_court_position
+					}
+					NOR = {
+						scope:vassal.var:target_court_position ?= flag:food_taster
+						scope:vassal.var:backup_court_position ?= flag:food_taster
+					}
+				}
+			}
+		}
+		scope:vassal = {
+			if = {
+				limit = {
+					NOR = { 
+						is_vassal_of = root
+						is_courtier_of = root
+						employer = root
+					}
+				}
+				hidden_effect = { set_employer = root }
+			}
+		}
+		if = {
+			limit = { # Executioner
+				can_appoint_char_to_court_position = {
+					CHAR = scope:vassal
+					COURT_POS = executioner_court_position
+				}
+				NOR = {
+					scope:vassal.var:target_court_position = flag:executioner
+					scope:vassal.var:backup_court_position = flag:executioner
+				}
+			}
+			court_position_grant_effect = {
+				EMPLOYER = root
+				POS = executioner
+				CANDIDATE = scope:vassal
+			}
+			if = {
+				limit = {
+					NOT = { has_imprisonment_reason = scope:vassal }
+				}
+				stress_impact = {
+					just = medium_stress_impact_gain
+				}
+			}
+		}
+		else_if = { # Jester
+			limit = {
+				can_appoint_char_to_court_position = {
+					CHAR = scope:vassal
+					COURT_POS = court_jester_court_position
+				}
+				NOR = {
+					scope:vassal.var:target_court_position = flag:court_jester
+					scope:vassal.var:backup_court_position = flag:court_jester
+				}
+			}
+			court_position_grant_effect = {
+				EMPLOYER = root
+				POS = court_jester
+				CANDIDATE = scope:vassal
+			}
+			stress_impact = {
+				just = minor_stress_impact_gain
+				compassionate = minor_stress_impact_gain
+			}
+		}
+		else_if = { # Taster
+			limit = {
+				can_appoint_char_to_court_position = {
+					CHAR = scope:vassal
+					COURT_POS = food_taster_court_position
+				}
+				NOR = {
+					scope:vassal.var:target_court_position = flag:food_taster
+					scope:vassal.var:backup_court_position = flag:food_taster
+				}
+			}
+			court_position_grant_effect = {
+				EMPLOYER = root
+				POS = food_taster
+				CANDIDATE = scope:vassal
+			}
+			stress_impact = {
+				just = minor_stress_impact_gain
+				compassionate = minor_stress_impact_gain
+			}
+		}
+		if = {
+			limit = { exists = scope:vassal_advocate }
+			scope:vassal_advocate = {
+				add_opinion = {
+					modifier = insulted_opinion
+					target = root
+					opinion = -10
+				}
+			}
+		}
+		scope:vassal = {
+			if = {
+				limit = { has_court_position = executioner_court_position }
+				root = { consume_imprisonment_reasons = scope:vassal }
+			}
+			if = {
+				limit = { has_relation_friend = root }
+				remove_relation_friend = root
+			}
+			add_opinion = {
+				modifier = insulted_opinion
+				target = root
+				opinion = -15
+			}
+		}
+		ai_chance = {
+			base = 100
+			modifier = {	#Weight up.
+				add = 15
+				has_imprisonment_reason = scope:vassal
+				has_trait = just
+			}
+			modifier = {	#Weight up.
+				add = 15
+				NOT = { has_imprisonment_reason = scope:vassal }
+				has_trait = arbitrary
+			}
+		}
+	}
+
+	option = { # Refuse
+		name = {
+			text = hold_court.8090.e.advocate
+			trigger = { exists = scope:vassal_advocate }
+		}
+		name = {
+			text = hold_court.8090.e
+			trigger = {
+				NOT = { exists = scope:vassal_advocate }
+			}
+		}
+		if = {
+			limit = { exists = scope:vassal_advocate }
+			scope:vassal_advocate = {
+				add_opinion = {
+					modifier = disappointed_opinion
+					target = root
+					opinion = -10
+				}
+			}
+		}
+		scope:vassal = {
+			add_opinion = {
+				modifier = disappointed_opinion
+				target = root
+				opinion = -10
+			}
+		}
+		ai_chance = {
+			base = 100
+			ai_value_modifier = {
+				ai_compassion = -0.5
+			}
+		}
+	}
+
+	after = {
+		scope:vassal = {
+			clear_court_event_participation = yes
+			remove_variable = target_court_position
+			remove_variable = backup_court_position
+		}
+		if = {
+			limit = { exists = scope:vassal_advocate }
+			scope:vassal_advocate = {
+				clear_court_event_participation = yes
+			}
+		}
+		# Finish up the chain if relevant.
+		hold_court_queue_post_event_effect = yes
+	}
+}

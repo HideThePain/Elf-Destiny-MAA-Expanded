@@ -1,0 +1,36 @@
+﻿# Grab martial character relevant to a given child
+grab_martial_char_relevant_to_child = {
+	generate_characters_relevant_to_child_list = { CHILD = $CHILD$ }
+	ordered_in_list = {
+		list = relevant_characters_to_child_list
+		order_by = {
+			value = 0
+			add = martial
+			if = {
+				limit = { is_knight = yes }
+				add = 25
+			}
+			if = {
+				limit = { has_court_position = bodyguard_court_position }
+				add = 20
+			}
+			if = {
+				limit = { has_court_position = akolouthos_court_position }
+				add = 20
+			}
+			if = {
+				limit = { has_court_position = master_of_hunt_court_position }
+				add = 10
+			}
+			if = {
+				limit = { this = $CHILD$.liege_or_court_owner.cp:councillor_marshal }
+				add = 30
+			}
+			if = {
+				limit = { is_close_or_extended_family_of = $CHILD$ }
+				add = 10
+			}
+		}
+		save_scope_as = $SCOPE_OUTPUT$
+	}
+}

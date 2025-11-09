@@ -1,0 +1,221 @@
+﻿send_eryndar_message_loyal = {
+	send_interface_message = {
+		type = msg_eryndar_steels_varangians
+		title = eryndar_events.1000
+		desc =  eryndar_events.1000_loyal_notification_tooltip
+
+		left_icon = scope:trait_getter
+		scope:trait_getter = {
+			add_trait = loyal
+			add_opinion = {
+				target = root
+				modifier = loyalty_opinion
+				opinion = 40
+			}
+		}
+		custom_tooltip = eryndar_effect_tooltip
+	}
+}
+
+send_eryndar_message_varangian = {
+	send_interface_message = {
+		type = msg_eryndar_steels_varangians
+		title = eryndar_events.1000
+		desc =  eryndar_events.1000_varangian_notification_tooltip
+
+		left_icon = scope:trait_getter
+		scope:trait_getter = {
+			add_trait = varangian
+			add_opinion = {
+				target = root
+				modifier = loyalty_opinion
+				opinion = 40
+			}
+		}
+		custom_tooltip = eryndar_effect_tooltip
+	}
+}
+
+remove_other_thalanir_modifiers_effect = {
+	hidden_effect = { # No need to show this
+		# Let's check for the county opinion modifier first
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_county_opinion_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_county_opinion_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_county_opinion_modifier
+						}
+						remove_province_modifier = thalanir_county_opinion_modifier
+					}
+				}
+			}
+		}
+		
+		# Next is the troop modifier
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_troops_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_troops_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_troops_modifier
+						}
+						remove_province_modifier = thalanir_troops_modifier
+					}
+				}
+			}
+		}
+		
+		# Next is the county control modifier
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_control_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_control_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_control_modifier
+						}
+						remove_province_modifier = thalanir_control_modifier
+					}
+				}
+			}
+		}
+		
+		# And finally, the development modifier
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_development_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_development_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_development_modifier
+						}
+						remove_province_modifier = thalanir_development_modifier
+					}
+				}
+			}
+		}
+	}
+}
+
+thalanir_neglecting_duty_effect = {
+	custom_tooltip = {
+		text = thalanir_neglecting_duty_warning_tt
+		
+		# We check if you have neglected duties in the past
+		if = {
+			limit = {
+				exists = var:thalanir_neglecting_duty
+			}
+			# If you have, let's first increase the variable
+			change_variable = { name = thalanir_neglecting_duty add = 5 }
+			
+			# Then check if the liege notices and decide to take action
+			random = {
+				chance = {
+					# Base value - Increases with each neglecting action
+					value = var:thalanir_neglecting_duty
+					
+					# Add the difference in intrigue skill
+					add = {
+						value = liege.intrigue
+						subtract = intrigue
+					}
+					
+					# Add the difference in influence level
+					add = {
+						value = liege.influence_level
+						subtract = influence_level
+						multiply = 5
+					}
+					
+					# Lower the chance if you belong to a powerful or dominant family
+					if = {
+						limit = {
+							house ?= { is_powerful_family = yes }
+						}
+						subtract = 10
+					}
+					if = {
+						limit = {
+							house ?= { is_dominant_family = yes }
+						}
+						subtract = 20
+					}
+					
+					min = 5
+					max = 90
+				}
+				
+				# The liege have noticed - We reduce the variable slightly as a result (but never below 0)
+				if = {
+					limit = {
+						exists = var:thalanir_neglecting_duty
+						var:thalanir_neglecting_duty >= 20
+					}
+					change_variable = { name = thalanir_neglecting_duty subtract = 20 }
+				}
+				else = {
+					set_variable = { name = thalanir_neglecting_duty value = 0 }
+				}
+				
+				liege = {
+					trigger_event = { id = thalanir_event.9000 days = { 10 90 } }
+				}
+			}
+		}
+		else = { # If you haven't, we'll set the variable and give you a free pass (you only get it for your very first time though)
+			set_variable = { name = thalanir_neglecting_duty value = 0 }
+		}
+	}
+}

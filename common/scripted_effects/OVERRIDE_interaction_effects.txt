@@ -1,0 +1,143 @@
+﻿education_flags_tooltips_effect = {
+	#Convert culture
+	if = {
+		limit = { always = scope:convert_culture }
+		scope:ward = {
+			add_character_flag = {
+				flag = convert_culture
+				years = 10
+			}
+		}
+		if = {
+			limit = { scope:ward.age < 11 }
+			custom_description = {
+				text = "educate_child_option_convert_culture_effect"
+				subject = scope:ward
+				object = scope:guardian.culture
+			}
+		}
+		else_if = {
+			limit = {
+				scope:ward.age >= 11
+				scope:ward.age < 14
+			}
+			custom_description = {
+				text = "educate_child_option_convert_culture_likely_effect"
+				subject = scope:ward
+				object = scope:guardian.culture
+			}
+		}
+		else_if = {
+			limit = { scope:ward.age >= 14 }
+			custom_description = {
+				text = "educate_child_option_convert_culture_unlikely_effect"
+				subject = scope:ward
+				object = scope:guardian.culture
+			}
+		}
+	}
+	#Convert faith
+	if = {
+		limit = { always = scope:convert_faith }
+		scope:ward = {
+			add_character_flag = {
+				flag = convert_faith
+				years = 10
+			}
+		}
+		if = {
+			limit = { scope:ward.age < 11 }
+			custom_description = {
+				text = "educate_child_option_convert_faith_effect"
+				subject = scope:ward
+				object = scope:guardian.faith
+			}
+		}
+		else_if = {
+			limit = {
+				scope:ward.age >= 11
+				scope:ward.age < 14
+			}
+			custom_description = {
+				text = "educate_child_option_convert_faith_likely_effect"
+				subject = scope:ward
+				object = scope:guardian.faith
+			}
+		}
+		else_if = {
+			limit = { scope:ward.age >= 14 }
+			custom_description = {
+				text = "educate_child_option_convert_faith_unlikely_effect"
+				subject = scope:ward
+				object = scope:guardian.faith
+			}
+		}
+	}
+
+	# Knowledge
+	if = {
+		limit = {
+			always = scope:send_to_university
+			OR = {
+				scope:recipient = {
+					OR = {
+						any_realm_province = {
+							is_higher_studies_location = yes
+							save_temporary_scope_as = university
+						}
+						any_realm_county = {
+							has_county_modifier = pandidakterion_university_modifier
+							save_temporary_scope_as = university
+						}
+					}
+				}
+				scope:actor = {
+					this = scope:secondary_actor
+					any_realm_province = {
+						is_higher_studies_location = yes
+						save_temporary_scope_as = university
+					}
+				}
+			}
+		}
+		scope:actor = {
+			remove_short_term_gold = {
+				value = monumental_gold_value
+				if = {
+					limit = { house = { has_house_modifier = thalanir_university_influence_modifier } }
+					multiply = {
+						value = 1
+						subtract = university_cost_reduction_value
+					}
+				}
+			}
+		}
+		custom_tooltip = is_sent_to_university
+		if = {
+			limit = {
+				scope:university ?= {
+					is_province_valid_confucian_education_trigger = yes
+				}
+			}
+			custom_tooltip = studying_confucian_education_trait
+		}
+		add_character_flag = {
+			flag = studying_at_university
+			years = 17
+		}
+	}
+	# Confucian Education trait
+	if = {
+		limit = {
+			scope:guardian = {
+				has_trait = confucian_education
+			}
+		}
+		custom_tooltip = studying_confucian_education_trait
+		custom_tooltip = studying_confucian_education_disciple
+		add_character_flag = {
+			flag = studying_confucian_education
+			years = 17
+		}
+	}
+}

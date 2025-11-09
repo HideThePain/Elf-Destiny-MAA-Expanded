@@ -14,36 +14,31 @@ elf_highguard_pillage = {
         # EP3 - Highguard of Valor Palace Pillaging
         if = {
             limit = {
+                primary_title = title:e_byzantium
                 OR = {
-                    number_maa_regiments_of_type = {
-                        type = highguard_of_valor
-                        value >= 1
-                    }
+                    "number_maa_regiments_of_type(highguard)" >= 1
                     number_title_maa_regiments_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value >= 1
                     }
-                    AND = {
-                        any_court_position_holder = {
-                            type = eryndar_court_position
-                            ep3_highguardian_trigger = yes
-                        }
+                    any_court_position_holder = {
+                        type = eryndar_court_position
+                        highguardian_trigger = yes
                     }
                 }
-                primary_title = title:e_byzantium
             }
             save_scope_as = dead_emperor
             if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 0
                         value <= 100
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 1
                     }
                 }
@@ -51,14 +46,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 100
                         value <= 200
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 2
                     }
                 }
@@ -66,14 +61,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 200
                         value <= 300
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 3
                     }
                 }
@@ -81,14 +76,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 300
                         value <= 400
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 4
                     }
                 }
@@ -96,14 +91,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 400
                         value <= 500
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 5
                     }
                 }
@@ -111,14 +106,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 500
                         value <= 600
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 6
                     }
                 }
@@ -126,14 +121,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 600
                         value <= 700
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 7
                     }
                 }
@@ -141,14 +136,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 700
                         value <= 800
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 8
                     }
                 }
@@ -156,14 +151,14 @@ elf_highguard_pillage = {
             else_if = {
                 limit = {
                     number_maa_soldiers_of_type = {
-                        type = highguard_of_valor
+                        target = highguard
                         value > 800
                         value <= 900
                     }
                 }
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 9
                     }
                 }
@@ -171,14 +166,14 @@ elf_highguard_pillage = {
             else = {
                 primary_heir = {
                     set_variable = {
-                        name = highguard_of_valor_regiments
+                        name = highguardian_regiments
                         value = 10
                     }
                 }
             }
             primary_heir = {
                 trigger_event = {
-                    id = romaviri_empire_emperor_yearly.3000
+                    id = romaviri_emperor_yearly.3000
                     days = { 10 20 }
                 }
             }

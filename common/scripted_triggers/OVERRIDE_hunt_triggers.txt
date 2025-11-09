@@ -1,0 +1,23 @@
+﻿hunt_murder_bodyguard_appears_trigger = {
+	OR = {
+		has_court_position = bodyguard_court_position
+		has_court_position = akolouthos_court_position
+		has_court_position = eryndar_court_position
+	}
+	is_participant_in_activity = scope:activity
+	NOR = {
+		this = scope:murderer
+		AND = {
+			exists = scope:accomplice
+			this = scope:accomplice
+		}
+		is_scheming_against = {
+			target = root
+			type = murder
+		}
+		AND = {
+			has_activity_intent = murder_attendee_intent
+			intent_target = root
+		}
+	}
+}

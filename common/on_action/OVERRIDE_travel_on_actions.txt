@@ -1,0 +1,307 @@
+﻿# Starting a travel plan (starting to travel to the first destination)
+on_travel_plan_start = {
+	trigger = {
+		OR = {
+			is_ruler = yes
+			AND = {
+				is_playable_character = no
+				involved_activity ?= { has_activity_type = activity_playdate }
+			}
+		}
+		NOT = { has_variable = recently_invalidated_hostage }
+	}
+	effect = {
+		if = {
+			limit = {
+				has_character_modifier = isolating_modifier
+			}
+			remove_character_modifier = isolating_modifier
+			if = {
+				limit = {
+					has_variable_list = isolating_relatives
+				}
+				every_in_list = {
+					variable = isolating_relatives
+					limit = { is_alive = yes }
+					remove_character_modifier = isolating_modifier
+					remove_character_flag = blocked_from_leaving
+				}
+				clear_variable_list = isolating_relatives
+			}
+		}
+		if = {
+			limit = { is_ruler = yes }
+			set_variable = {
+				name = travel_plan_start_date
+				value = current_date
+			}
+			current_travel_plan = {
+				set_variable = {
+					name = travel_plan_start_date
+					value = current_date
+				}
+				set_variable = {
+					name = travel_plan_provinces_traversed
+					value = 1
+				}
+			}
+			# Add Court Physician and Bodyguard if they aren't already in the entourage
+			if = {
+				limit = {
+					employs_court_position = court_physician_court_position
+					current_travel_plan = {
+						any_entourage_character = {
+							NOT = { has_court_position = court_physician_court_position }
+						}
+					}
+					any_court_position_holder = {
+						type = court_physician_court_position
+						is_available = yes
+						is_travel_entourage_character = no
+					}
+				}
+				random_court_position_holder = {
+					type = court_physician_court_position
+					limit = {
+						is_available = yes
+						is_travel_entourage_character = no
+					}
+					save_scope_as = court_phys
+				}
+				current_travel_plan = {
+					add_companion = scope:court_phys
+				}
+			}
+			if = {
+				limit = {
+					employs_court_position = bodyguard_court_position
+					current_travel_plan = {
+						any_entourage_character = {
+							NOT = { has_court_position = bodyguard_court_position }
+						}
+					}
+					any_court_position_holder = {
+						type = bodyguard_court_position
+						is_available = yes
+					}
+				}
+				random_court_position_holder = {
+					type = bodyguard_court_position
+					limit = {
+						is_available = yes
+						is_travel_entourage_character = no
+					}
+					save_scope_as = bodyguard
+				}
+				current_travel_plan = {
+					add_companion = scope:bodyguard
+				}
+			}
+			if = {
+				limit = {
+					employs_court_position = akolouthos_court_position
+					current_travel_plan = {
+						any_entourage_character = {
+							NOT = { has_court_position = akolouthos_court_position }
+						}
+					}
+					any_court_position_holder = {
+						type = akolouthos_court_position
+						is_available = yes
+						is_travel_entourage_character = no
+					}
+				}
+				random_court_position_holder = {
+					type = akolouthos_court_position
+					limit = {
+						is_available = yes
+						is_travel_entourage_character = no
+					}
+					save_scope_as = akolouthos
+				}
+				current_travel_plan = {
+					add_companion = scope:akolouthos
+				}
+			}
+						if = {
+				limit = {
+					employs_court_position = eryndar_court_position
+					current_travel_plan = {
+						any_entourage_character = {
+							NOT = { has_court_position = eryndar_court_position }
+						}
+					}
+					any_court_position_holder = {
+						type = eryndar_court_position
+						is_available = yes
+						is_travel_entourage_character = no
+					}
+				}
+				random_court_position_holder = {
+					type = eryndar_court_position
+					limit = {
+						is_available = yes
+						is_travel_entourage_character = no
+					}
+					save_scope_as = eryndar
+				}
+				current_travel_plan = {
+					add_companion = scope:eryndar
+				}
+			}
+			# Achievements.
+			## I'm in my Element(s)
+			if = {
+				limit = { is_ai = no }
+				# Reset our prior list.
+				clear_variable_list = ep2_im_in_my_elements_achievement_terrain_list
+				ep2_im_in_my_elements_terrain_grabber_effect = yes
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					any_parent = {
+						is_alive = yes
+						is_ai = no
+						location = root.location
+						this != root.involved_activity.activity_host
+					}
+				}
+				random_parent = {
+					limit = {
+						is_alive = yes
+						is_ai = no
+						location = root.location
+						this != root.involved_activity.activity_host
+					}
+					save_scope_as = carer
+				}
+			}
+			else_if = {
+				limit = {
+					any_relation = {
+						type = guardian
+						is_alive = yes
+						is_ai = no
+						location = root.location
+						this != root.involved_activity.activity_host
+					}
+				}
+				random_relation = {
+					type = guardian
+					limit = {
+						is_alive = yes
+						is_ai = no
+						location = root.location
+						this != root.involved_activity.activity_host
+					}
+					save_scope_as = carer
+				}
+			}
+			else_if = {
+				limit = {
+					liege ?= {
+						is_alive = yes
+						is_ai = no
+						is_close_family_of = root
+						location = root.location
+						this != root.involved_activity.activity_host
+					}
+				}
+				liege = { save_scope_as = carer }
+			}
+			if = {
+				limit = { exists = scope:carer }
+				scope:carer = {
+					add_to_variable_list = {
+						name = playdate_guests
+						target = root
+					}
+					# Fire event after a day, once lists are built
+					trigger_event = { id = travel_start_event.1051 days = 1 }
+				}
+			}
+		}
+		# fishery yurt modifier
+		if = {
+			limit = {
+				government_has_flag = government_is_nomadic
+				domicile ?= {
+					has_domicile_building_or_higher = fishing_yurt_01
+				}
+			}
+			domicile.domicile_location.county = {
+				switch = {
+					trigger = has_county_modifier
+					fishing_yurt_county_modifier_3 = { remove_county_modifier = fishing_yurt_county_modifier_3 }
+					fishing_yurt_county_modifier_2 = { remove_county_modifier = fishing_yurt_county_modifier_2 }
+					fishing_yurt_county_modifier_1 = { remove_county_modifier = fishing_yurt_county_modifier_1 }
+				}
+			}		
+		}
+		# Wayfarer Popularity
+		of_the_people_effect = yes
+		# Wayfarer Stress Loss
+		if = {
+			limit = {
+				has_perk = the_home_away_from_home_perk
+			}
+			add_character_modifier = the_home_away_from_home_modifier
+		}
+		reminiscing_event_effect = yes
+		#Surveyor MAA Mustering
+		surveyor_perk_mustering_effect = yes
+		#Tutor Child Travel Option
+		surveyor_tutor_child_effect = yes
+
+		if = {
+			limit = {
+				has_character_modifier = wanderer_restlessness_modifier
+			}
+			send_interface_message = {
+				title = wanderer_restlessness_removal_title
+				right_icon = root
+				add_wanderer_lifestyle_xp = 250
+				stress_impact = { base = -25 }
+				remove_character_modifier = wanderer_restlessness_modifier
+			}
+		}
+
+		# Caravan Master Task
+		if = {
+			limit = {
+				has_variable = prepare_travels_value
+				var:prepare_travels_value >= 1
+			}
+			current_travel_plan = {
+				set_variable = {
+					name = prepare_travels_modifier_value
+					value = root.var:prepare_travels_value
+				}
+				add_travel_plan_modifier = prepare_travels_modifier
+			}
+			remove_variable = prepare_travels_value
+		}
+	}
+	events = {
+		travel_start_event.1000 #Generic start (no activity)
+		travel_start_event.1010 #Travelling to a Tournament
+		travel_start_event.1020 #Setting off on a Tour
+		travel_start_event.1030 #Travelling to a Wedding
+		travel_start_event.1040 #Travelling to a Feast
+		travel_start_event.1050 #Travelling to a Playdate
+		travel_start_event.1060 #Going on a Pilgrimage
+		travel_start_event.1070 #Travelling to a Hunt
+		travel_start_event.1080 #Travelling to a Witch Ritual
+		travel_start_event.1090 #Travelling to a Travel Lifestyle Activity
+		travel_start_event.1100 #Travelling to an Examination
+		travel_start_event.1110 #Travelling to a Mandala Ritual
+		travel_start_event.1120 #Travelling to a Debate
+
+		ep3_contract_event.0002 #When doing a Contract as Landless Adventurer fill your entourage with relevant people
+		diarchy.0002 # Do we need to enter a regency or not?
+		ep3_laamp_flavour_ewan.1102 #Adventurer's child helps them pack
+		ep3_laamp_flavour_ewan.1103 #Follow-up events for adventurer's child helping with packing
+	}
+}

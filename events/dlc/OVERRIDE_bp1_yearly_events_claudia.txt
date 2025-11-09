@@ -1,0 +1,900 @@
+﻿namespace = bp1_yearly
+
+# bp1_yearly.1000 - Claudia Baldassi - A New Hobby
+# bp1_yearly.1010 - Claudia Baldassi - Holy Mediation
+# bp1_yearly.1020-1 - Claudia Baldassi - A Friend till the End
+# bp1_yearly.1030-1 - Claudia Baldassi - Till the Bitter End
+# bp1_yearly.1040 - Claudia Baldassi - Something in Common
+# bp1_yearly.1050 - Claudia Baldassi - Annoying Company
+
+# Best friend introduces you to a new hobby (could be anything, from stitching to becoming a cannibal)
+
+bp1_yearly.1030 = {
+    type = character_event
+    content_source = dlc_006
+    title = bp1_yearly.1030.t
+    desc = {
+        desc = bp1_yearly.1020.desc_intro
+        desc = bp1_yearly.1030.desc
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    exists = scope:nemesis
+                }
+                desc = bp1_yearly.1030.desc_nemesis
+            }
+            desc = bp1_yearly.1030.desc_rival
+        }
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    exists = scope:guard
+                }
+                desc = bp1_yearly.1030.desc_nemesis_guard
+            }
+            desc = bp1_yearly.1030.desc_nemesis_no_guard
+        }
+    }
+    theme = death
+    override_background  = { reference = bedchamber }
+    left_portrait = {
+        character = root
+        animation = sick
+    }
+    right_portrait = {
+        character = scope:rival
+        animation = schadenfreude
+    }
+    lower_left_portrait = scope:guard
+    cooldown = { years = 10 }
+
+    trigger = {
+        has_dlc_feature = friends_and_foes
+        any_relation = {
+            type = rival
+            bp1_1030_valid_rival_trigger = yes
+        }
+        OR = {
+            health <= death_chance_dying_health
+            has_trait = incapable
+            has_trait = infirm
+        }
+    }
+
+    immediate = {
+        if = {
+            limit = {
+                any_relation = {
+                    type = nemesis
+                    bp1_1030_valid_rival_trigger = yes
+                }
+            }
+            random_relation = {
+                type = nemesis
+                limit = { bp1_1030_valid_rival_trigger = yes }
+                save_scope_as = nemesis
+                save_scope_as = rival
+            }
+        }
+        else_if = {
+            limit = {
+                any_relation = {
+                    type = rival
+                    bp1_1030_valid_rival_trigger = yes
+                }
+            }
+            random_relation = {
+                type = rival
+                limit = { bp1_1030_valid_rival_trigger = yes }
+                save_scope_as = rival
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:nemesis
+                employs_court_position = bodyguard_court_position
+                any_court_position_holder = {
+                    type = bodyguard_court_position
+                    NOR = {
+                        this = scope:rival
+                        has_relation_rival = root
+                    }
+                    is_available_healthy_ai_adult = yes
+                }
+            }
+            random_court_position_holder = {
+                type = bodyguard_court_position
+                limit = {
+                    NOR = {
+                        this = scope:rival
+                        has_relation_rival = root
+                    }
+                    is_available_healthy_ai_adult = yes
+                }
+                save_scope_as = guard
+            }
+        }
+        else_if = {
+            limit = {
+                exists = scope:nemesis
+                employs_court_position = eryndar_court_position
+                any_court_position_holder = {
+                    type = eryndar_court_position
+                    NOR = {
+                        this = scope:rival
+                        has_relation_rival = root
+                    }
+                    is_available_healthy_ai_adult = yes
+                }
+            }
+            random_court_position_holder = {
+                type = eryndar_court_position
+                limit = {
+                    NOR = {
+                        this = scope:rival
+                        has_relation_rival = root
+                    }
+                    is_available_healthy_ai_adult = yes
+                }
+                save_scope_as = guard
+            }
+        }
+        else_if = {
+            limit = {
+                exists = scope:nemesis
+                employs_court_position = akolouthos_court_position
+                any_court_position_holder = {
+                    type = akolouthos_court_position
+                    NOR = {
+                        this = scope:rival
+                        has_relation_rival = root
+                    }
+                    is_available_healthy_ai_adult = yes
+                }
+            }
+            random_court_position_holder = {
+                type = akolouthos_court_position
+                limit = {
+                    NOR = {
+                        this = scope:rival
+                        has_relation_rival = root
+                    }
+                    is_available_healthy_ai_adult = yes
+                }
+                save_scope_as = guard
+            }
+        }
+        if = {
+            limit = {
+                NOT = { has_character_flag = use_sickness_clothes }
+            }
+            add_character_flag = use_sickness_clothes
+        }
+    }
+
+    #Option A: forgive and forget
+    option = {
+        name = bp1_yearly.1030.a
+        trigger = {
+            NOT = { has_relation_nemesis = scope:rival }
+        }
+        remove_relation_rival = scope:rival
+        create_character_memory = {
+            type = let_go_of_rivalry
+            participants = { rival = scope:rival }
+        }
+        add_prestige = minor_prestige_gain
+        stress_impact = {
+            stubborn = medium_stress_impact_gain
+            arrogant = medium_stress_impact_gain
+            vengeful = major_stress_impact_gain
+            callous = major_stress_impact_gain
+            forgiving = medium_stress_impact_loss
+            compassionate = medium_stress_impact_loss
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_vengefulness = -1
+            }
+        }
+    }
+
+    #Option B: NOT
+    option = {
+        name = bp1_yearly.1030.b
+        trigger = {
+            NOT = { has_relation_nemesis = scope:rival }
+        }
+        add_prestige = minor_prestige_gain
+        stress_impact = {
+            fickle = minor_stress_impact_gain
+            humble = medium_stress_impact_gain
+            forgiving = major_stress_impact_gain
+            compassionate = major_stress_impact_gain
+            vengeful = medium_stress_impact_loss
+            callous = medium_stress_impact_loss
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_vengefulness = 1
+            }
+        }
+    }
+
+    #Option C: nemesis special
+    option = {
+        name = bp1_yearly.1030.c
+        trigger = {
+            exists = scope:nemesis
+        }
+        add_internal_flag = dangerous
+        if = {
+            limit = {
+                exists = scope:guard
+            }
+            scope:guard = {
+                duel = {
+                    skill = prowess
+                    target = scope:nemesis
+                    30 = {
+                        desc = bp1_yearly.1030.c_saved_guard
+                        compare_modifier = {
+                            value = scope:duel_value
+                            multiplier = 5
+                        }
+                        root = {
+                            send_interface_toast = {
+                                type = event_toast_effect_neutral
+                                title = bp1_yearly.1030.c_saved_guard.tt
+                                hidden_effect = {
+                                    add_opinion = {
+                                        target = scope:nemesis
+                                        modifier = attempted_murder_opinion
+                                    }
+                                    scope:guard = { increase_wounds_no_death_effect = { REASON = fight } }
+                                }
+                                create_character_memory = {
+                                    type = nemesis_killed
+                                    participants = {
+                                        dead_relation = scope:nemesis
+                                        killer = scope:guard
+                                    }
+                                }
+                                create_character_memory = {
+                                    type = failed_assassination_by
+                                    participants = {
+                                        killer = scope:nemesis
+                                    }
+                                }
+                                scope:nemesis = {
+                                    death = {
+                                        death_reason = death_while_assassinating
+                                        killer = scope:guard
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    30 = {
+                        desc = bp1_yearly.1030.c_barely_saved_guard
+                        compare_modifier = {
+                            value = scope:duel_value
+                            multiplier = 2
+                        }
+                        root = {
+                            send_interface_toast = {
+                                type = event_toast_effect_neutral
+                                title = bp1_yearly.1030.c_barely_saved_guard.tt
+                                increase_wounds_no_death_effect = { REASON = fight }
+                                create_character_memory = {
+                                    type = failed_assassination_by
+                                    participants = {
+                                        killer = scope:nemesis
+                                    }
+                                }
+                                scope:nemesis = { increase_wounds_no_death_effect = { REASON = fight } }
+                                scope:guard = { increase_wounds_no_death_effect = { REASON = fight } }
+                                if = {
+                                    limit = {
+                                        is_ai = yes
+                                    }
+                                    add_opinion = {
+                                        target = scope:nemesis
+                                        modifier = attempted_murder_opinion
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    30 = {
+                        desc = bp1_yearly.1030.c_killed_guard
+                        compare_modifier = {
+                            value = scope:duel_value
+                            multiplier = -2
+                        }
+                        root = {
+                            send_interface_toast = {
+                                type = event_toast_effect_neutral
+                                title = bp1_yearly.1030.c_killed_guard.tt
+                                increase_wounds_no_death_effect = { REASON = fight }
+                                create_character_memory = {
+                                    type = failed_assassination_by
+                                    participants = {
+                                        killer = scope:nemesis
+                                    }
+                                }
+                                scope:nemesis = { increase_wounds_no_death_effect = { REASON = fight } }
+                                scope:guard = {
+                                    death = {
+                                        death_reason = death_murder_known
+                                        killer = scope:nemesis
+                                    }
+                                }
+                                if = {
+                                    limit = {
+                                        is_ai = yes
+                                    }
+                                    add_opinion = {
+                                        target = scope:nemesis
+                                        modifier = attempted_murder_opinion
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    10 = {
+                        desc = bp1_yearly.1030.c_killed_all
+                        compare_modifier = {
+                            value = scope:duel_value
+                            multiplier = -5
+                        }
+                        hidden_effect = {
+                            scope:nemesis = {
+                                add_secret = {
+                                    type = secret_murder
+                                    target = root
+                                }
+                                add_secret = {
+                                    type = secret_murder
+                                    target = scope:guard
+                                }
+                                create_character_memory = {
+                                    type = nemesis_killed_by_me
+                                    participants = { dead_relation = root }
+                                }
+                            }
+                        }
+                        root = {
+                            death = {
+                                death_reason = death_murder
+                                killer = scope:nemesis
+                            }
+                        }
+                        scope:guard = {
+                            death = {
+                                death_reason = death_murder
+                                killer = scope:nemesis
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            duel = {
+                skill = prowess
+                target = scope:nemesis
+                10 = {
+                    desc = bp1_yearly.1030.c_saved
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = 5
+                    }
+                    send_interface_toast = {
+                        type = event_toast_effect_good
+                        title = bp1_yearly.1030.c_saved.tt
+                        increase_wounds_no_death_effect = { REASON = fight }
+                        scope:nemesis = { increase_wounds_no_death_effect = { REASON = fight } }
+                        create_character_memory = {
+                            type = failed_assassination_by
+                            participants = {
+                                killer = scope:nemesis
+                            }
+                        }
+                        if = {
+                            limit = {
+                                is_ai = yes
+                            }
+                            add_opinion = {
+                                target = scope:nemesis
+                                modifier = attempted_murder_opinion
+                            }
+                        }
+                    }
+                }
+                90 = {
+                    desc = bp1_yearly.1030.c_killed
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = -5
+                    }
+                    hidden_effect = {
+                        scope:nemesis = {
+                            add_secret = {
+                                type = secret_murder
+                                target = root
+                            }
+                            create_character_memory = {
+                                type = nemesis_killed_by_me
+                                participants = { dead_relation = root }
+                            }
+                        }
+                    }
+                    death = {
+                        death_reason = death_murder
+                        killer = scope:nemesis
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 100
+        }
+    }
+
+    after = {
+        if = {
+            limit = {
+                has_character_flag = use_sickness_clothes
+            }
+            remove_character_flag = use_sickness_clothes
+        }
+    }
+}
+
+# You visit a rival on their dying bed
+
+bp1_yearly.1031 = {
+    type = character_event
+    content_source = dlc_006
+    title = bp1_yearly.1030.t
+    desc = {
+        desc = bp1_yearly.1031.desc
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    exists = scope:nemesis
+                }
+                desc = bp1_yearly.1031.desc_nemesis
+            }
+            desc = bp1_yearly.1031.desc_rival
+        }
+        triggered_desc = {
+            trigger = {
+                exists = scope:guard
+            }
+            desc = bp1_yearly.1031.desc_guard
+        }
+    }
+    theme = death
+    override_background  = { reference = bedchamber }
+    left_portrait = {
+        character = root
+        animation = schadenfreude
+    }
+    right_portrait = {
+        character = scope:rival
+        animation = sick
+    }
+    cooldown = { years = 10 }
+
+    trigger = {
+        has_dlc_feature = friends_and_foes
+        any_relation = {
+            type = rival
+            OR = {
+                health <= death_chance_dying_health
+                has_trait = incapable
+                has_trait = infirm
+            }
+        }
+        is_available_healthy_adult = yes
+    }
+
+    immediate = {
+        if = {
+            limit = {
+                any_relation = {
+                    type = nemesis
+                    OR = {
+                        health <= death_chance_dying_health
+                        has_trait = incapable
+                        has_trait = infirm
+                    }
+                }
+            }
+            random_relation = {
+                type = nemesis
+                limit = {
+                    OR = {
+                        health <= death_chance_dying_health
+                        has_trait = incapable
+                        has_trait = infirm
+                    }
+                }
+                save_scope_as = rival
+                save_scope_as = nemesis
+            }
+        }
+        else_if = {
+            limit = {
+                any_relation = {
+                    type = rival
+                    OR = {
+                        health <= death_chance_dying_health
+                        has_trait = incapable
+                        has_trait = infirm
+                    }
+                }
+            }
+            random_relation = {
+                type = rival
+                limit = {
+                    OR = {
+                        health <= death_chance_dying_health
+                        has_trait = incapable
+                        has_trait = infirm
+                    }
+                }
+                save_scope_as = rival
+            }
+        }
+        if = {
+            limit = {
+                exists = scope:nemesis
+                scope:nemesis = {
+                    employs_court_position = bodyguard_court_position
+                    any_court_position_holder = {
+                        type = bodyguard_court_position
+                        NOR = {
+                            this = root
+                            has_relation_rival = scope:nemesis
+                        }
+                        is_available_healthy_ai_adult = yes
+                    }
+                }
+            }
+            scope:nemesis = {
+                random_court_position_holder = {
+                    type = bodyguard_court_position
+                    limit = {
+                        NOR = {
+                            this = root
+                            has_relation_rival = scope:nemesis
+                        }
+                        is_available_healthy_ai_adult = yes
+                    }
+                    save_scope_as = guard
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                exists = scope:nemesis
+                scope:nemesis = {
+                    employs_court_position = akolouthos_court_position
+                    any_court_position_holder = {
+                        type = akolouthos_court_position
+                        NOR = {
+                            this = root
+                            has_relation_rival = scope:nemesis
+                        }
+                        is_available_healthy_ai_adult = yes
+                    }
+                }
+            }
+            scope:nemesis = {
+                random_court_position_holder = {
+                    type = akolouthos_court_position
+                    limit = {
+                        NOR = {
+                            this = root
+                            has_relation_rival = scope:nemesis
+                        }
+                        is_available_healthy_ai_adult = yes
+                    }
+                    save_scope_as = guard
+                }
+            }
+        }
+		else_if = {
+            limit = {
+                exists = scope:nemesis
+                scope:nemesis = {
+                    employs_court_position = eryndar_court_position
+                    any_court_position_holder = {
+                        type = eryndar_court_position
+                        NOR = {
+                            this = root
+                            has_relation_rival = scope:nemesis
+                        }
+                        is_available_healthy_ai_adult = yes
+                    }
+                }
+            }
+            scope:nemesis = {
+                random_court_position_holder = {
+                    type = eryndar_court_position
+                    limit = {
+                        NOR = {
+                            this = root
+                            has_relation_rival = scope:nemesis
+                        }
+                        is_available_healthy_ai_adult = yes
+                    }
+                    save_scope_as = guard
+                }
+            }
+        }
+        if = {
+            limit = {
+                scope:rival = { NOT = { has_character_flag = use_sickness_clothes } }
+            }
+            scope:rival = { add_character_flag = use_sickness_clothes }
+        }
+    }
+
+    #Option A: forget and forgive
+    option = {
+        name = bp1_yearly.1031.a
+        remove_relation_rival = scope:rival
+        create_character_memory = {
+            type = let_go_of_rivalry
+            participants = { rival = scope:rival }
+        }
+        stress_impact = {
+            stubborn = medium_stress_impact_gain
+            arrogant = medium_stress_impact_gain
+            vengeful = major_stress_impact_gain
+            callous = major_stress_impact_gain
+            forgiving = medium_stress_impact_loss
+            compassionate = medium_stress_impact_loss
+        }
+        add_prestige = minor_prestige_gain
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_vengefulness = -1
+            }
+        }
+
+    }
+
+    #Option B: NOT
+    option = {
+        name = bp1_yearly.1031.b
+        stress_impact = {
+            fickle = minor_stress_impact_gain
+            humble = medium_stress_impact_gain
+            forgiving = major_stress_impact_gain
+            compassionate = major_stress_impact_gain
+            vengeful = medium_stress_impact_loss
+            callous = medium_stress_impact_loss
+        }
+        add_prestige = minor_prestige_gain
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_vengefulness = 1
+            }
+        }
+    }
+
+    #Option C: special for nemesis
+    option = {
+        name = bp1_yearly.1031.c
+        trigger = {
+            exists = scope:nemesis
+        }
+        add_internal_flag = dangerous
+        if = {
+            limit = {
+                exists = scope:guard
+            }
+            custom_tooltip = bp1_yearly.1031.c.tt
+            duel = {
+                skill = prowess
+                target = scope:guard
+                20 = {
+                    desc = bp1_yearly.1031.c_killed_all
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = 5
+                    }
+                    send_interface_toast = {
+                        type = event_toast_effect_good
+                        title = bp1_yearly.1031.c_killed_all.tt
+                        add_secret = {
+                            type = secret_murder
+                            target = scope:nemesis
+                        }
+                        add_secret = {
+                            type = secret_murder
+                            target = scope:guard
+                        }
+                        create_character_memory = {
+                            type = nemesis_killed_by_me
+                            participants = { dead_relation = scope:nemesis }
+                        }
+                        stress_impact = {
+                            vengeful = medium_stress_impact_loss
+                            callous = medium_stress_impact_loss
+                            arrogant = minor_stress_impact_loss
+                            ambitious = minor_stress_impact_loss
+                        }
+                    }
+                    scope:nemesis = {
+                        death = {
+                            death_reason = death_murder
+                            killer = root
+                        }
+                    }
+                    scope:guard = {
+                        death = {
+                            death_reason = death_murder
+                            killer = root
+                        }
+                    }
+                }
+                20 = {
+                    desc = bp1_yearly.1031.c_killed_guard
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = 2
+                    }
+                    root = {
+                        send_interface_toast = {
+                            type = event_toast_effect_bad
+                            title = bp1_yearly.1031.c_failed.tt
+                            increase_wounds_no_death_effect = { REASON = fight }
+                            create_character_memory = {
+                                type = failed_assassination
+                                participants = { kill_target = scope:nemesis }
+                            }
+                            reverse_add_opinion = {
+                                target = scope:nemesis
+                                modifier = attempted_murder_opinion
+                            }
+                            scope:nemesis = { increase_wounds_no_death_effect = { REASON = fight } }
+                            scope:guard = {
+                                death = {
+                                    death_reason = death_murder_known
+                                    killer = root
+                                }
+                            }
+                        }
+                    }
+                }
+                30 = {
+                    desc = bp1_yearly.1031.c_barely_saved_guard
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = -2
+                    }
+                    send_interface_toast = {
+                        type = event_toast_effect_bad
+                        title = bp1_yearly.1031.c_failed.tt
+                        increase_wounds_no_death_effect = { REASON = fight }
+                        create_character_memory = {
+                            type = failed_assassination
+                            participants = { kill_target = scope:nemesis }
+                        }
+                        reverse_add_opinion = {
+                            target = scope:nemesis
+                            modifier = attempted_murder_opinion
+                        }
+                        scope:nemesis = { increase_wounds_no_death_effect = { REASON = fight } }
+                        scope:guard = { increase_wounds_no_death_effect = { REASON = fight } }
+                    }
+                }
+                30 = {
+                    desc = bp1_yearly.1031.c_saved_guard
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = -5
+                    }
+                    scope:guard = { increase_wounds_no_death_effect = { REASON = fight } }
+                    reverse_add_opinion = {
+                        target = scope:nemesis
+                        modifier = attempted_murder_opinion
+                    }
+                    scope:nemesis = {
+                        create_character_memory = {
+                            type = nemesis_killed
+                            participants = {
+                                dead_relation = root
+                                killer = scope:guard
+                            }
+                        }
+                    }
+                    death = {
+                        death_reason = death_while_assassinating
+                        killer = scope:guard
+                    }
+                }
+            }
+        }
+        else = {
+            duel = {
+                skill = prowess
+                target = scope:nemesis
+                90 = {
+                    desc = bp1_yearly.1031.c_killed
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = 5
+                    }
+                    send_interface_toast = {
+                        type = event_toast_effect_good
+                        title = bp1_yearly.1031.c_killed_all.tt
+                        add_secret = {
+                            type = secret_murder
+                            target = scope:nemesis
+                        }
+                        create_character_memory = {
+                            type = nemesis_killed_by_me
+                            participants = { dead_relation = scope:nemesis }
+                        }
+                        scope:nemesis = {
+                            death = {
+                                death_reason = death_murder
+                                killer = root
+                            }
+                        }
+                        stress_impact = {
+                            vengeful = medium_stress_impact_loss
+                            callous = medium_stress_impact_loss
+                            arrogant = minor_stress_impact_loss
+                            ambitious = minor_stress_impact_loss
+                        }
+                    }
+                }
+                10 = {
+                    desc = bp1_yearly.1031.c_saved
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = -5
+                    }
+                    send_interface_toast = {
+                        type = event_toast_effect_bad
+                        title = bp1_yearly.1031.c_failed.tt
+                        increase_wounds_no_death_effect = { REASON = fight }
+                        scope:nemesis = { increase_wounds_no_death_effect = { REASON = fight } }
+                        create_character_memory = {
+                            type = failed_assassination
+                            participants = { kill_target = scope:nemesis }
+                        }
+                        reverse_add_opinion = {
+                            target = scope:nemesis
+                            modifier = attempted_murder_opinion
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    after = {
+        scope:rival = {
+            if = {
+                limit = {
+                    is_alive = yes
+                    has_character_flag = use_sickness_clothes
+                }
+                remove_character_flag = use_sickness_clothes
+            }
+        }
+    }
+}

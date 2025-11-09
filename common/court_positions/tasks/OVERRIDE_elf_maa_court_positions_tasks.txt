@@ -1,0 +1,1047 @@
+﻿#############################
+# Thalanir Court Position Tasks
+#############################
+
+thalanir_appease_populace = {
+	court_position_types = { thalanir_court_position }
+	
+	# When task is made available
+	is_shown = {
+	}
+	
+	# Monthly cost for the task
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+
+	scaling_employer_modifiers = {
+	}
+	on_start = {
+		remove_other_thalanir_modifiers_effect = yes
+		scope:liege ?= {
+			capital_province = {
+				add_province_modifier = thalanir_county_opinion_modifier
+			}
+		}
+	}
+	on_end = {
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_county_opinion_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_county_opinion_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_county_opinion_modifier
+						}
+						remove_province_modifier = thalanir_county_opinion_modifier
+					}
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+		
+		if = {
+			limit = {
+				capital_county ?= { county_opinion < 0 }
+			}
+			# Personality
+			if = {
+				limit = { # Any social or domestically inclined rulers
+					OR = {
+						has_trait = just
+						has_trait = gregarious
+						has_trait = compassionate
+						has_trait = generous
+					}
+				}
+				add = 25
+			}
+			
+			# Other
+			if = {
+				limit = { # Diplomatic characters should want to be on the people's good side
+					has_trait = education_diplomacy
+				}
+				add = 25
+			}
+			
+			# Gold reasons
+			if = {
+				limit = {
+					has_treasury = no
+					monthly_character_income < monthly_court_position_task_cost_double
+				}
+				add = -1000
+			}
+			else_if = {
+				limit = {
+					has_treasury = yes
+					monthly_character_treasury_income < monthly_court_position_task_cost_double
+				}
+				add = -1000
+			}
+		}
+	}
+}
+
+thalanir_support_troops = {
+	court_position_types = { thalanir_court_position }
+	
+	# When task is made available
+	is_shown = {
+	}
+	
+	# Monthly cost for the task
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost_double
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost_double
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+
+	scaling_employer_modifiers = {
+	}
+	on_start = {
+		remove_other_thalanir_modifiers_effect = yes
+		scope:liege ?= {
+			capital_province = {
+				add_province_modifier = thalanir_troops_modifier
+			}
+		}
+	}
+	on_end = {
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_troops_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_troops_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_troops_modifier
+						}
+						remove_province_modifier = thalanir_troops_modifier
+					}
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+		
+		# Personality
+		if = {
+			limit = { # Any martially inclined rulers
+				OR = {
+					has_trait = zealous
+					has_trait = brave
+					has_trait = wrathful
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = { # Warlike AI should be more likely
+				OR = {
+					ai_has_warlike_personality = yes
+					has_variable = conqueror
+				}
+			}
+			add = 20
+		}
+		
+		# Other
+		if = {
+			limit = { # Rulers with a martial educatino favors better troops
+				has_trait = education_martial
+			}
+			add = 25
+		}
+		if = {
+			limit = { # Rulers at war should wants better troops
+				is_at_war = yes
+			}
+			add = 50
+		}
+		
+		# Gold reasons
+		if = {
+			limit = {
+				has_treasury = no
+				monthly_character_income < monthly_court_position_task_cost_double
+			}
+			add = -1000
+		}
+		else_if = {
+			limit = {
+				has_treasury = yes
+				monthly_character_treasury_income < monthly_court_position_task_cost_double
+			}
+			add = -1000
+		}
+	}
+}
+
+thalanir_enforce_public_order = {
+	court_position_types = { thalanir_court_position }
+	
+	# When task is made available
+	is_shown = {
+	}
+	
+	# Monthly cost for the task
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost_double
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost_double
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+
+	scaling_employer_modifiers = {
+	}
+	on_start = {
+		remove_other_thalanir_modifiers_effect = yes
+		scope:liege ?= {
+			capital_province = {
+				add_province_modifier = thalanir_control_modifier
+			}
+		}
+	}
+	on_end = {
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_control_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_control_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_control_modifier
+						}
+						remove_province_modifier = thalanir_control_modifier
+					}
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+		
+		if = {
+			limit = { # Don't bother unless we need to increase control
+				capital_county ?= { county_control < 90 }
+			}
+			# Personality
+			if = {
+				limit = { # Any martial or domestically inclined rulers
+					OR = {
+						has_trait = diligent
+						has_trait = ambitious
+						has_trait = just
+					}
+				}
+				add = 20
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = greedy
+						has_trait = impatient
+					}
+				}
+				add = 10
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = wrathful
+						has_trait = impatient
+					}
+				}
+				add = 10
+			}
+			
+			# Other
+			if = {
+				limit = { # Stewardship rulers want high control to get more taxes
+					has_trait = education_stewardship
+				}
+				add = 25
+			}
+			if = {
+				limit = {
+					OR = {
+						has_trait = overseer
+						has_trait = administrator
+					}
+				}
+				add = 10
+			}
+			
+			# Gold reasons
+			if = {
+				limit = {
+					has_treasury = no
+					monthly_character_income < monthly_court_position_task_cost_double
+				}
+				add = -1000
+			}
+			else_if = {
+				limit = {
+					has_treasury = yes
+					monthly_character_treasury_income < monthly_court_position_task_cost_double
+				}
+				add = -1000
+			}
+		}
+	}
+}
+
+thalanir_development = {
+	court_position_types = { thalanir_court_position }
+	
+	# When task is made available
+	is_shown = {
+	}
+	
+	# Monthly cost for the task
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 4 # Quadruple the base cost
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					multiply = 4 # Quadruple the base cost
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+
+	scaling_employer_modifiers = {
+	}
+	on_start = {
+		remove_other_thalanir_modifiers_effect = yes
+		scope:liege ?= {
+			capital_province = {
+				add_province_modifier = thalanir_development_modifier
+			}
+		}
+	}
+	on_end = {
+		scope:liege ?= {
+			# We check and scope to all counties to make sure we remove any stray modifiers in case the capital is moved, etc.
+			if = {
+				limit = {
+					any_realm_county = {
+						any_county_province = {
+							has_province_modifier = thalanir_development_modifier
+						}
+					}
+				}
+				every_realm_county = {
+					limit = {
+						any_county_province = {
+							has_province_modifier = thalanir_development_modifier
+						}
+					}
+					every_county_province = {
+						limit = {
+							has_province_modifier = thalanir_development_modifier
+						}
+						remove_province_modifier = thalanir_development_modifier
+					}
+				}
+			}
+		}
+	}
+	on_yearly = {
+	}
+
+	ai_will_do = {
+		value = 0
+		
+		# Personality
+		if = {
+			limit = { # Any domestically inclined rulers
+				OR = {
+					has_trait = just
+					has_trait = diligent
+					has_trait = ambitious
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = { # Builder AI should be more likely
+				ai_has_economical_boom_personality = yes
+			}
+			add = 20
+		}
+		
+		# Other
+		if = {
+			limit = { # Rulers with a stewardship education has an overall preference for development
+				has_trait = education_stewardship
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				has_trait = overseer
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				has_trait = administrator
+			}
+			add = 10
+		}
+		
+		# Gold reasons
+		if = {
+			limit = {
+				has_treasury = no
+				monthly_character_income < monthly_court_position_task_cost_double
+			}
+			add = -1000
+		}
+		else_if = {
+			limit = {
+				has_treasury = yes
+				monthly_character_treasury_income < monthly_court_position_task_cost_double
+			}
+			add = -1000
+		}
+	}
+}
+
+### Royal Architect Tasks ###
+
+executioner_terrify_court = {
+	court_position_types = { executioner_court_position bodyguard_court_position garuda_court_position akolouthos_court_position cherbi_court_position eryndar_court_position }
+
+	# Monthly cost for the task
+	cost = {
+		round = no
+		prestige = {
+			add = {
+				value = monthly_court_position_task_cost
+				desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+				format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+			}
+		}
+	}
+
+	is_shown = {
+		is_landed_or_landless_administrative = yes
+	}
+
+	scaling_employer_modifiers = {
+		terrible = {
+			courtier_and_guest_opinion = -1
+			dread_baseline_add = 1
+		}
+		poor = {
+			courtier_and_guest_opinion = -2
+			dread_baseline_add = 2
+		}
+		average = {
+			courtier_and_guest_opinion = -4
+			dread_baseline_add = 4
+		}
+		good = {
+			courtier_and_guest_opinion = -7
+			dread_baseline_add = 7
+		}
+		excellent = {
+			courtier_and_guest_opinion = -10
+			dread_baseline_add = 10
+		}
+	}
+
+	ai_will_do = {
+		value = {
+			add = ai_honor
+			multiply = -1
+			if = {
+				limit = {
+					government_has_flag = government_is_nomadic
+				}
+				add = 100
+			}
+		}
+	}
+}
+
+master_of_horse_mightiest_warhorse = {
+	court_position_types = { master_of_horse_court_position akolouthos_court_position keeper_of_the_horses_court_position eryndar_court_position }
+
+	# Monthly cost for the task
+	cost = {
+		round = no
+		gold = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = no
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					scope:liege = {
+						has_treasury = yes
+					}
+				}
+				add = {
+					value = monthly_court_position_task_cost
+					desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+					format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		#aptitude = {
+		#	court_position = master_of_horse_court_position
+		#	value >= 1
+		#}
+	}
+
+	scaling_employer_modifiers = {
+		terrible = {
+			
+		}
+		poor = {
+			led_by_owner_extra_advantage_add = 1
+		}
+		average = {
+			led_by_owner_extra_advantage_add = 2
+		}
+		good = {
+			led_by_owner_extra_advantage_add = 2
+		}
+		excellent = {
+			led_by_owner_extra_advantage_add = 3
+		}
+	}
+
+	ai_will_do = {
+		value = 0
+		if = {
+			limit = {
+				OR = {
+					has_lifestyle = martial_lifestyle
+					is_in_army = yes
+				}
+			}
+			add = 50
+			add = ai_boldness
+		}
+	}
+}
+
+court_tutor_improve_others = {
+	court_position_types = { court_tutor_court_position }
+
+	# Monthly cost for the task
+	cost = {
+		round = no
+		prestige = {
+			add = {
+				value = monthly_court_position_task_cost
+				desc = COURT_POSITION_TASK_COST_BREAKDOWN_BASE
+				format = "BASE_VALUE_FORMAT_DECIMALS_PLUS_NEGATIVE"
+			}
+		}
+	}
+
+	employee_modifier = {
+		general_opinion = 5
+	}
+
+	on_start = {
+		custom_tooltip = court_tutor_improve_others_fallback_tt
+	}
+
+	on_monthly = {
+		random = {
+			chance = {
+				value = 1
+				add = {
+					value = "aptitude(court_tutor_court_position)"
+					multiply = 4
+				}
+			}
+			# Find target
+			random_list = {
+				1 = {
+					liege_or_court_owner = { 
+						save_scope_as = target_character 
+						save_scope_as = liege_character
+					}
+				}
+				1 = {
+					liege_or_court_owner = {
+						random_court_position_holder = {
+							limit = {
+								NOT = { this = root }
+							}
+							save_scope_as = target_character
+						}
+					}
+				}
+				1 = {
+					liege_or_court_owner = {
+						random_heir = {
+							limit = { 
+								liege_or_court_owner = prev 
+								NOT = { this = root }
+							}
+							save_scope_as = target_character
+							save_scope_as = heir_character
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					exists = scope:target_character
+				}
+				random_list = {
+					3 = { # Martial
+						trigger = {
+							scope:target_character.martial < root.martial
+							scope:target_character = {
+								OR = {
+									scope:liege_character ?= scope:target_character
+									scope:heir_character ?= scope:target_character
+									has_court_position = eryndar_court_position
+									has_court_position = akolouthos_court_position
+									has_court_position = garuda_court_position
+									has_court_position = master_of_horse_court_position
+									has_court_position = boyan_court_position
+									has_court_position = siege_engineer_court_position
+									has_court_position = cherbi_court_position
+									has_court_position = keeper_of_the_horses_court_position
+								}
+							}
+						}
+						court_tutor_improve_others_skill_effect = { SKILL = martial }
+					}
+					3 = { # Diplomacy
+						trigger = {
+							scope:target_character.diplomacy < root.diplomacy
+							scope:target_character = {
+								OR = {
+									scope:liege_character ?= scope:target_character
+									scope:heir_character ?= scope:target_character
+									has_court_position = cultural_emissary_court_position
+									has_court_position = lady_in_waiting_court_position
+									has_court_position = cupbearer_court_position
+									has_court_position = chief_eunuch_court_position
+									has_court_position = court_jester_court_position
+									has_court_position = court_poet_court_position
+									has_court_position = court_musician_court_position
+									has_court_position = chronicler_court_position
+									has_court_position = grand_preceptor_court_position
+									has_court_position = grand_guardian_court_position
+									has_court_position = grand_mentor_court_position
+									has_court_position = fire_dragon_engineer_court_position
+									has_court_position = keeper_of_the_harem_court_position
+									has_court_position = yeke_jarquchi_court_position
+									has_court_position = foreign_emissary_court_position
+								}
+							}
+						}
+						court_tutor_improve_others_skill_effect = { SKILL = diplomacy }
+					}
+					3 = { # Stewardship
+						trigger = {
+							scope:target_character.stewardship < root.stewardship
+							scope:target_character = {
+								OR = {
+									scope:liege_character ?= scope:target_character
+									scope:heir_character ?= scope:target_character
+									has_court_position = bookmaker_court_position
+									has_court_position = keeper_of_swans_court_position
+									has_court_position = court_gardener_court_position
+									has_court_position = travel_leader_court_position
+									has_court_position = royal_architect_court_position
+									has_court_position = seneschal_court_position
+									has_court_position = yurtchi_court_position
+								}
+							}
+						}
+						court_tutor_improve_others_skill_effect = { SKILL = stewardship }
+					}
+					3 = { # Learning
+						trigger = {
+							scope:target_character.learning < root.learning
+							scope:target_character = {
+								OR = {
+									scope:liege_character ?= scope:target_character
+									scope:heir_character ?= scope:target_character
+									has_court_position = court_physician_court_position
+									has_court_position = chief_qadi_court_position
+									has_court_position = antiquarian_court_position
+									has_court_position = wet_nurse_court_position
+									has_court_position = high_almoner_court_position
+									has_court_position = court_artificer_court_position
+									has_court_position = cave_hermit_court_position
+									has_court_position = court_brewmaster_court_position
+									has_court_position = court_astrologer_court_position
+								}
+							}
+						}
+						court_tutor_improve_others_skill_effect = { SKILL = learning }
+					}
+					1 = { # Physician trait
+						trigger = {
+							OR = {
+								NOT = { exists = scope:liege_character }
+								NOT = { scope:liege_character = scope:target_character }
+							}
+							scope:target_character = {
+								OR = {
+									has_court_position = court_physician_court_position
+									has_court_position = travel_leader_court_position
+									has_court_position = court_scholar_court_position
+								}
+							}
+						}
+						if = {
+							limit = {
+								scope:target_character = { 
+									NOT = { has_trait = lifestyle_physician }
+								}
+							}
+							court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_physician }
+						}
+						else = {
+							court_tutor_improve_others_trait_xp_effect = { TRAIT = lifestyle_physician }
+						}
+					}
+					1 = { # Traveler trait
+						trigger = {
+							scope:target_character = {
+								has_court_position = travel_leader_court_position
+							}
+						}
+						if = {
+							limit = {
+								scope:target_character = { 
+									NOT = { has_trait = lifestyle_traveler }
+								}
+							}
+							court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_traveler }
+						}
+						else = {
+							court_tutor_improve_others_trait_track_xp_effect = { 
+								TRAIT = lifestyle_traveler
+								TRACK = travel
+							}
+						}
+					}
+					1 = { # Gardener trait
+						trigger = {
+							scope:target_character = {
+								OR = {
+									has_court_position = court_physician_court_position
+									has_court_position = travel_leader_court_position
+									has_court_position = court_scholar_court_position
+								}
+								NOT = { has_trait = lifestyle_gardener }
+							}
+						}
+						court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_gardener }
+					}
+					1 = { # Herbalist trait
+						trigger = {
+							scope:target_character = {
+								OR = {
+									has_court_position = court_physician_court_position
+									has_court_position = court_gardener_court_position
+									has_court_position = travel_leader_court_position
+									has_court_position = food_taster_court_position
+									has_court_position = cave_hermit_court_position
+								}
+								NOT = { has_trait = lifestyle_herbalist }
+							}
+						}
+						court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_herbalist }
+					}
+					1 = { # Reveler trait
+						trigger = {
+							scope:target_character = {
+								OR = {
+									has_court_position = travel_leader_court_position
+									has_court_position = court_poet_court_position
+									has_court_position = court_musician_court_position
+									has_court_position = court_brewmaster_court_position
+								}
+								NOT = { has_trait = lifestyle_reveler }
+							}
+						}
+						court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_reveler }
+					}
+					1 = { # Hunter trait
+						trigger = {
+							scope:target_character = {
+								OR = {
+									has_court_position = keeper_of_swans_court_position
+									has_court_position = travel_leader_court_position
+									has_court_position = master_of_hunt_court_position
+								}
+							}
+						}
+						if = {
+							limit = {
+								scope:target_character = { 
+									NOT = { has_trait = lifestyle_hunter }
+								}
+							}
+							court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_hunter }
+						}
+						else = {
+							court_tutor_improve_others_trait_track_xp_effect = { 
+								TRAIT = lifestyle_hunter
+								TRACK = hunter
+							}
+						}
+					}
+					1 = { # Blademaster trait
+						trigger = {
+							scope:target_character = {
+								OR = {
+									has_court_position = garuda_court_position
+									has_court_position = bodyguard_court_position
+									has_court_position = champion_court_position
+									has_court_position = master_assassin_court_position
+								}
+							}
+						}
+						if = {
+							limit = {
+								scope:target_character = { 
+									NOT = { has_trait = lifestyle_blademaster }
+								}
+							}
+							court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_blademaster }
+						}
+						else = {
+							court_tutor_improve_others_trait_xp_effect = { TRAIT = lifestyle_blademaster }
+						}
+					}
+					1 = { # Mystic trait
+						trigger = {
+							scope:target_character = {
+								OR = {
+									has_court_position = court_physician_court_position
+									has_court_position = cave_hermit_court_position
+								}
+							}
+						}
+						if = {
+							limit = {
+								scope:target_character = { 
+									NOT = { has_trait = lifestyle_mystic }
+								}
+							}
+							court_tutor_improve_others_trait_effect = { TRAIT = lifestyle_mystic }
+						}
+						else = {
+							court_tutor_improve_others_trait_xp_effect = { TRAIT = lifestyle_mystic }
+						}
+					}
+					1 = { # Confucian Education trait
+						trigger = {
+							has_trait = confucian_education
+							OR = {
+								scope:liege_character ?= scope:target_character
+								scope:heir_character ?= scope:target_character
+							}
+						}
+						if = {
+							limit = {
+								scope:target_character = { 
+									NOT = { has_trait = confucian_education }
+								}
+							}
+							court_tutor_improve_others_trait_effect = { TRAIT = confucian_education }
+						}
+						else = {
+							court_tutor_improve_others_trait_xp_effect = { TRAIT = confucian_education }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = 0 # Never used by AI
+	}
+}

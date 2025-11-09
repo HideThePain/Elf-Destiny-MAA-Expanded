@@ -1,0 +1,141 @@
+﻿##############
+# COURT POSITION TRIGGERS
+##############
+
+#Used to see if the scoped character has ANY court position that CHARACTER can hold
+character_can_be_employed_in_a_court_position_trigger = {
+	OR = {
+		AND = {
+			can_employ_court_position_type = court_physician_court_position
+			$CHARACTER$ = { can_be_employed_as = court_physician_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = master_of_horse_court_position
+			$CHARACTER$ = { can_be_employed_as = master_of_horse_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = master_of_hunt_court_position
+			$CHARACTER$ = { can_be_employed_as = master_of_hunt_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = keeper_of_swans_court_position
+			$CHARACTER$ = { can_be_employed_as = keeper_of_swans_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = travel_leader_court_position
+			$CHARACTER$ = { can_be_employed_as = travel_leader_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = court_jester_court_position
+			$CHARACTER$ = { can_be_employed_as = court_jester_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = high_almoner_court_position
+			$CHARACTER$ = { can_be_employed_as = high_almoner_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = seneschal_court_position
+			$CHARACTER$ = { can_be_employed_as = seneschal_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = court_tutor_court_position
+			$CHARACTER$ = { can_be_employed_as = court_tutor_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = court_guru_court_position
+			$CHARACTER$ = { can_be_employed_as = court_guru_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = cupbearer_court_position
+			$CHARACTER$ = { can_be_employed_as = cupbearer_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = chief_eunuch_court_position
+			$CHARACTER$ = { can_be_employed_as = chief_eunuch_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = antiquarian_court_position
+			$CHARACTER$ = { can_be_employed_as = antiquarian_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = royal_architect_court_position
+			$CHARACTER$ = { can_be_employed_as = royal_architect_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = lady_in_waiting_court_position
+			$CHARACTER$ = { can_be_employed_as = lady_in_waiting_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = court_poet_court_position
+			$CHARACTER$ = { can_be_employed_as = court_poet_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = court_musician_court_position
+			$CHARACTER$ = { can_be_employed_as = court_musician_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = bodyguard_court_position
+			$CHARACTER$ = { can_be_employed_as = bodyguard_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = champion_court_position
+			$CHARACTER$ = { can_be_employed_as = champion_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = food_taster_court_position
+			$CHARACTER$ = { can_be_employed_as = food_taster_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = executioner_court_position
+			$CHARACTER$ = { can_be_employed_as = executioner_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = garuda_court_position
+			$CHARACTER$ = { can_be_employed_as = garuda_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = wet_nurse_court_position
+			$CHARACTER$ = { can_be_employed_as = wet_nurse_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = akolouthos_court_position
+			$CHARACTER$ = { can_be_employed_as = akolouthos_court_position }
+		}
+		AND = {
+			can_employ_court_position_type = eryndar_court_position
+			$CHARACTER$ = { can_be_employed_as = eryndar_court_position }
+		}
+	}
+}
+
+
+#Used to check if the scoped character can hold any court position
+can_be_employed_in_any_court_position_trigger = {
+	OR = {
+		can_be_employed_as = court_physician_court_position
+		can_be_employed_as = master_of_horse_court_position
+		can_be_employed_as = master_of_hunt_court_position
+		can_be_employed_as = keeper_of_swans_court_position
+		can_be_employed_as = court_jester_court_position
+		can_be_employed_as = high_almoner_court_position
+		can_be_employed_as = seneschal_court_position
+		can_be_employed_as = court_tutor_court_position
+		can_be_employed_as = court_guru_court_position
+		can_be_employed_as = cupbearer_court_position
+		can_be_employed_as = chief_eunuch_court_position
+		can_be_employed_as = antiquarian_court_position
+		can_be_employed_as = royal_architect_court_position
+		can_be_employed_as = lady_in_waiting_court_position
+		can_be_employed_as = court_poet_court_position
+		can_be_employed_as = court_musician_court_position
+		can_be_employed_as = bodyguard_court_position
+		can_be_employed_as = champion_court_position
+		can_be_employed_as = food_taster_court_position
+		can_be_employed_as = executioner_court_position
+		can_be_employed_as = garuda_court_position
+		can_be_employed_as = travel_leader_court_position
+		can_be_employed_as = wet_nurse_court_position
+		can_be_employed_as = akolouthos_court_position
+		can_be_employed_as = eryndar_court_position
+	}
+}

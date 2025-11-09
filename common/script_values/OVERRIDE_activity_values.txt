@@ -1,0 +1,42 @@
+﻿# To be used in activity script files where we weight which characters from your court get added to your entourage
+standard_travel_entourage_additions = {
+	value = 0
+	if = {
+		limit = { is_available = no }
+		add = -1000
+	}
+	if = {
+		limit = {
+			scope:owner = { employs_court_position = bodyguard_court_position }
+			has_court_position = bodyguard_court_position
+		}
+		add = 500
+	}
+	if = {
+		limit = {
+			scope:owner = { employs_court_position = akolouthos_court_position }
+			has_court_position = akolouthos_court_position
+		}
+		add = 500
+	}
+	if = {
+		limit = {
+			scope:owner = { employs_court_position = eryndar_court_position }
+			has_court_position = eryndar_court_position
+		}
+		add = 500
+	}
+	if = {
+		limit = {
+			scope:owner = { employs_court_position = court_physician_court_position }
+			has_court_position = court_physician_court_position
+		}
+		add = 500
+	}
+	if = {
+		limit = {
+			bannable_serving_diarch_trigger = yes
+		}
+		subtract = 10000
+	}
+}

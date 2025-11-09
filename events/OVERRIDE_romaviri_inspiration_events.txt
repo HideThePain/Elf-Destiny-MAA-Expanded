@@ -1,4 +1,6 @@
-﻿scripted_effect fund_inspiration_0031_pick_options_to_show_effect = {
+﻿namespace = fund_inspiration
+
+scripted_effect fund_inspiration_0031_pick_options_to_show_effect = {
 	#What options should we show?
 	hidden_effect = {
 		random_list = {

@@ -1,0 +1,414 @@
+﻿standing_ruler = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = { 
+					OR = {
+						# Character shows up in their court as long as they are not away on an activity or otherwise unavailable. Special case is when they are holding court, which is why we check the variable here. 
+						has_character_flag = holding_court_character_flag
+						is_available = yes
+					}
+					age >= 4
+					is_incorrect_type_for_throne_trigger = { CHARACTER = scope:ruler }
+				}
+				add_to_list = characters
+			}
+		}
+	}
+	scripted_animation = { 
+		triggered_animation = {
+			trigger = {
+				has_title = title:e_byzantium
+				religion = religion:christianity_religion
+			}
+			animation = { scepter } # anim uses crucifix scepter
+		}
+		triggered_animation = {
+			trigger = { always = yes }
+			animation = { personality_honorable personality_content personality_rational }
+		}
+	}
+}
+
+standing_spouse = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = { 
+					exists = primary_spouse
+					primary_spouse = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+					}
+					is_spouse_incorrect_type_for_throne_trigger = { CHARACTER = scope:ruler }
+				}
+				primary_spouse = { add_to_list = characters }
+			}
+		}
+	}
+	scripted_animation = { 
+		triggered_animation = {
+			trigger = { always = yes }
+			animation = { personality_honorable personality_content personality_rational }
+		}
+	}
+}
+
+# Role is used in code to place people on throne
+ruler = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = { 
+					OR = {
+						# Check variable instead
+						has_character_flag = holding_court_character_flag
+						is_available = yes
+					}
+					age >= 4
+					NOT = {
+						is_incorrect_type_for_throne_trigger = { CHARACTER = scope:ruler }
+					}
+				}
+				add_to_list = characters
+			}
+		}
+	}
+
+	# ruler sits on the throne, so this animation parameter is ignored
+	# instead we use animation specific to the throne entity
+	# see game/gfx/court_scene/throne_animations/throne_animations.txt
+	scripted_animation = {
+		animation = throne_room_ruler
+	}
+}
+
+# Role is used in code to place people on throne
+spouse = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = { 
+					exists = primary_spouse
+					primary_spouse = {
+						is_available_healthy_adult = yes
+					}
+					NOT = {
+						is_spouse_incorrect_type_for_throne_trigger = { CHARACTER = scope:ruler }
+					}
+				}
+				primary_spouse = { add_to_list = characters }
+			}
+		}
+	}
+
+	# spouse sits on the throne, so this animation parameter is ignored
+	# instead we use animation specific to the throne entity
+	# see game/gfx/court_scene/throne_animations/throne_animations.txt
+	scripted_animation = {
+		animation = throne_room_ruler
+	}
+}
+
+adviser = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					diarch ?= {
+						is_available_healthy_adult = yes 
+						NOT = { has_short_disease_trigger = yes }
+					}
+				}
+				diarch = { add_to_list = characters }
+			}
+			else_if = {
+				limit = {
+					num_of_relation_guardian > 0
+					any_relation = {
+						type = guardian
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+				}
+				random_relation = {
+					type = guardian
+					limit = {
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					any_court_position_holder = {
+						type = court_astrologer_court_position
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+					}
+				}
+				random_court_position_holder = {
+					type = court_astrologer_court_position
+					limit = {
+						is_available_healthy_ai_adult = yes
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					any_councillor = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_non_spouse_councillor_trigger = yes
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+				}
+				random_councillor = {
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_non_spouse_councillor_trigger = yes
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					any_court_position_holder = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						NOT = { has_court_position = court_jester_court_position }
+						NOT = { has_court_position = executioner_court_position }
+						NOT = { has_court_position = bodyguard_court_position }
+						NOT = { has_court_position = champion_court_position }
+						NOT = { has_court_position = garuda_court_position }
+						NOT = { has_court_position = akolouthos_court_position }
+						NOT = { has_court_position = eryndar_court_position }
+					}
+				}
+				random_court_position_holder = {
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						NOT = { has_court_position = court_jester_court_position }
+						NOT = { has_court_position = executioner_court_position }
+						NOT = { has_court_position = bodyguard_court_position }
+						NOT = { has_court_position = champion_court_position }
+						NOT = { has_court_position = garuda_court_position }
+						NOT = { has_court_position = akolouthos_court_position }
+						NOT = { has_court_position = eryndar_court_position }
+					}
+					add_to_list = characters
+				}
+			}
+		}
+	}
+	scripted_animation = { 
+		triggered_animation = { 
+ 			trigger = {
+ 				scope:character = {
+					has_court_position = court_astrologer_court_position
+				}
+			}
+ 			animation = debating
+ 		}
+		triggered_animation = { 
+ 			trigger = { # advisor standing neutrally when there are court_events or the ruler is occupied
+ 				OR = {
+	 				court_event_ongoing_trigger = yes
+	 				scope:ruler = {
+	 					OR = {
+	 						is_available = no
+	 						age < 4
+	 						is_spouse_incorrect_type_for_throne_trigger = { CHARACTER = scope:ruler }
+	 						is_incorrect_type_for_throne_trigger = { CHARACTER = scope:ruler }
+ 						}
+	 				}
+ 				}
+			}
+ 			animation = { personality_honorable personality_content personality_rational }
+ 		}
+ 		triggered_animation = { # advisor leaning in to ruler when they're available
+ 			trigger = {
+				scope:ruler = {
+					has_title = title:e_byzantium
+				}
+ 				court_event_ongoing_trigger = no
+			}
+ 			animation = obsequious_bow
+		}
+ 		triggered_animation = { # advisor leaning in to ruler when they're available
+ 			trigger = {
+ 				court_event_ongoing_trigger = no
+			}
+ 			animation = throne_room_chancellor
+		}
+	}
+}
+
+special_guard = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					employs_court_position = garuda_court_position
+		        	any_court_position_holder = {
+				        type = garuda_court_position
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+		        }
+				random_court_position_holder = {
+					type = garuda_court_position
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					employs_court_position = executioner_court_position
+		        	any_court_position_holder = {
+				        type = executioner_court_position
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+		        }
+				random_court_position_holder = {
+					type = executioner_court_position
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					employs_court_position = akolouthos_court_position
+					any_court_position_holder = {
+				       	type = akolouthos_court_position
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+		        }
+				random_court_position_holder = {
+					type = akolouthos_court_position
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					employs_court_position = eryndar_court_position
+					any_court_position_holder = {
+				       	type = eryndar_court_position
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+		        }
+				random_court_position_holder = {
+					type = eryndar_court_position
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					employs_court_position = champion_court_position
+					any_court_position_holder = {
+				       	type = champion_court_position
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+		        }
+				random_court_position_holder = {
+					type = champion_court_position
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+			else_if = {
+				limit = {
+					employs_court_position = bodyguard_court_position
+					any_court_position_holder = {
+				       	type = bodyguard_court_position
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+		        }
+				random_court_position_holder = {
+					type = bodyguard_court_position
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+					}
+					add_to_list = characters
+				}
+			}
+
+			every_in_list = {
+				limit = {
+					OR = {
+						is_clergy = yes
+						has_trait = maimed
+					}
+				}
+				list = characters
+				remove_from_list = characters
+			}
+		}
+	}
+	scripted_animation = {
+		triggered_animation = {
+			trigger = { always = yes }
+			animation = { throne_room_one_handed_passive_1 throne_room_one_handed_passive_2 marshal }
+		}
+	}
+}

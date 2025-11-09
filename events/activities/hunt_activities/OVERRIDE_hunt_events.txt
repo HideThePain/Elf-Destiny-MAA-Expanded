@@ -1,0 +1,1547 @@
+﻿# Events for handling the Hunt activity
+
+namespace = hunt
+
+#######################
+#	You have a dog that helps you to fell an animal
+#	by Linnéa Thimrén
+#######################
+
+hunt.1023 = {
+    type = activity_event
+    title = hunt.1023.t
+    desc = hunt.1023.desc
+    theme = hunt_activity
+    left_portrait = {
+        character = root
+        animation = shock
+    }
+
+    trigger = {
+        any_owned_story = { type = story_cycle_pet_dog }
+    }
+
+    weight_multiplier = {
+        base = 0.5
+        modifier = { # more likely to fire if no cool characters have joined
+            add = 0.5
+            scope:activity = {
+                NOT = {
+                    any_attending_character = {
+                        this != root
+                        is_ai = yes
+                        is_adult = yes
+                        is_powerful_vassal_of = root
+                    }
+                }
+            }
+        }
+    }
+
+    immediate = {
+        random_owned_story = {
+            type = story_cycle_pet_dog
+            save_scope_as = story
+        }
+        hunt_activity_dangerous_game_effect = { PROVINCE = activity_location }
+        hunt_activity_success_change_effect = { CHANGE = increase_minor  }
+        if = {
+            limit = {
+                exists = court_position:akolouthos_court_position
+                court_position:akolouthos_court_position = { is_participant_in_activity = scope:activity }
+            }
+            court_position:akolouthos_court_position = { save_scope_as = bodyguard }
+        }
+        else_if = {
+            limit = {
+                exists = court_position:eryndar_court_position
+                court_position:eryndar_court_position = { is_participant_in_activity = scope:activity }
+            }
+            court_position:eryndar_court_position = { save_scope_as = bodyguard }
+        }
+        else_if = {
+            limit = {
+                exists = court_position:bodyguard_court_position
+                court_position:bodyguard_court_position = { is_participant_in_activity = scope:activity }
+            }
+            court_position:bodyguard_court_position = { save_scope_as = bodyguard }
+        }
+        hunter_progress_point_gain_effect = { CHANGE = 1 RANDOM_CHANGE = 1 } #Gives points towards ranking up the Hunter Lifestyle
+    }
+
+    option = { #Sic the dog on the animal!
+        name = hunt.1023.a
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_sicced_dog_log
+                score = 25
+                tags = { random neutral }
+                character = root
+
+                # Effect
+                root = {
+                    add_character_modifier = {
+                        modifier = modifier_hunt_dog_trophy_modifier
+                        years = 10
+                    }
+                    random_list = {
+                        80 = {
+                            desc = hunt.1023.a.good
+                            modifier = {
+                                add = 20
+                                has_character_modifier = dog_story_beasthound_modifier
+                            }
+                            send_interface_toast = {
+                                title = hunt.1023.a.good
+                                left_icon = root
+                                scope:activity = {
+                                    every_attending_character = {
+                                        limit = {
+                                            this != root
+                                        }
+                                        custom = all_hunt_participants
+                                        add_opinion = {
+                                            modifier = respect_opinion
+                                            target = root
+                                            opinion = 15
+                                        }
+                                    }
+                                }
+                                hunt_activity_success_change_effect = { CHANGE = increase_major }
+                            }
+                        }
+                        20 = { #Dog dies
+                            desc = hunt.1023.a.bad
+                            modifier = { #How old is the dog?
+                                add = 20
+                                scope:story.var:dog_age_variable > 10
+                            }
+                            modifier = { #How old is the dog?
+                                add = 20
+                                scope:story.var:dog_age_variable < 2
+                            }
+                            modifier = {#What animal is it?
+                                add = 20
+                                hunt_activity_large_game_trigger = { VAR = scope:activity.var:animal_type }
+                            }
+                            send_interface_toast = {
+                                title = hunt.1023.a.bad
+                                left_icon = root
+                                show_as_tooltip = {
+                                    remove_dog_story_modifiers_effect = yes
+                                }
+                                scope:story = {
+                                    hidden_effect = { end_story = yes }
+                                }
+                                hunt_activity_success_change_effect = { CHANGE = decrease_major }
+                            }
+                            stress_impact = {
+                                brave = minor_stress_impact_gain
+                                compassionate = minor_stress_impact_gain
+                                diligent = minor_stress_impact_gain
+                                arrogant = minor_stress_impact_gain
+                                craven = medium_stress_impact_loss
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 50
+            ai_value_modifier = {
+                ai_energy = 0.5
+            }
+        }
+    }
+
+    option = { #Nah
+        name = hunt.1023.b
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_fighting_dog_log
+                score = 25
+                tags = { random neutral }
+                character = root
+
+                #Effect
+                root = {
+                    add_character_modifier = {
+                        modifier = modifier_hunt_dog_fighting_modifier
+                        years = 5
+                    }
+                    hunt_activity_success_change_effect = { CHANGE = increase_medium }
+                    stress_impact = {
+                        craven = medium_stress_impact_gain
+                        brave = minor_stress_impact_loss
+                        compassionate = minor_stress_impact_loss
+                        diligent = minor_stress_impact_loss
+                        arrogant = minor_stress_impact_loss
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 50
+            ai_value_modifier = {
+                ai_boldness = 0.75
+                ai_energy = 0.5
+            }
+        }
+    }
+}
+
+#######################
+#	Murdered by hunting party
+#	by Joe Parkin
+#######################
+
+hunt.1080 = {
+    type = activity_event
+    title = {
+        desc = {
+            first_valid = {
+                triggered_desc = {
+                    trigger = {
+                        OR = {
+                            exists = scope:bodyguard_appears
+                            exists = scope:dog_appears
+                        }
+                    }
+                    desc = hunt.1080.t.bodyguard
+                }
+                desc = hunt.1080.t
+            }
+        }
+    }
+    desc = {
+        desc = {
+            first_valid = {
+                triggered_desc = {
+                    trigger = { exists = scope:accomplice }
+                    desc = hunt.1080.opening_accomplice
+                }
+                desc = hunt.1080.opening_lone
+            }
+        }
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    OR = {
+                        hunt_story_trigger = { STORY = ambush }
+                        hunt_story_trigger = { STORY = stealth }
+                    }
+                }
+                desc = hunt.1080.bow
+            }
+            triggered_desc = {
+                trigger = {
+                    hunt_story_trigger = { STORY = falconry }
+                }
+                desc = hunt.1080.falconry
+            }
+            desc = hunt.1080.chase
+        }
+        desc = {
+            first_valid = {
+                triggered_desc = {
+                    trigger = { exists = scope:accomplice }
+                    desc = hunt.1080.closing_accomplice
+                }
+                desc = hunt.1080.closing_lone
+            }
+        }
+        first_valid = {
+            triggered_desc = {
+                trigger = { exists = scope:bodyguard_betray }
+                desc = hunt.1080.bodyguard_betray
+            }
+            triggered_desc = {
+                trigger = { exists = scope:bodyguard_appears }
+                desc = hunt.1080.bodyguard_appears
+            }
+            triggered_desc = {
+                trigger = { exists = scope:dog_appears }
+                desc = hunt.1080.dog_appears
+            }
+            triggered_desc = {
+                trigger = { exists = scope:bodyguard }
+                desc = hunt.1080.bodyguard
+            }
+        }
+    }
+    theme = hunt_activity
+    left_portrait = {
+        character = root
+        animation = fear
+    }
+    right_portrait = {
+        character = scope:murderer
+        animation = assassin
+    }
+    center_portrait = {
+        character = scope:central_portrait
+        animation = aggressive_dagger
+    }
+    lower_right_portrait = scope:bodyguard
+
+    trigger = {
+        scope:activity = {
+            any_attending_character = {
+                OR = {
+                    hunt_murder_risk_trigger = yes
+                    hunt_potential_murder_risk_trigger = yes
+                }
+            }
+        }
+    }
+
+    weight_multiplier = {
+        base = 1
+        modifier = {
+            factor = 0.25
+            NOT = {
+                scope:activity = {
+                    any_attending_character = { hunt_murder_risk_trigger = yes }
+                }
+            }
+        }
+        modifier = {
+            factor = 2
+            exists = root.court_position:master_of_hunt_court_position
+            court_position:master_of_hunt_court_position = { hunt_murder_risk_trigger = yes }
+        }
+        modifier = {
+            factor = 2
+            exists = root.court_position:huntperson_camp_officer
+            court_position:huntperson_camp_officer = { hunt_murder_risk_trigger = yes }
+        }
+        modifier = {
+            factor = 1.5
+            intrigue < decent_skill_rating
+        }
+        modifier = {
+            has_trait = trusting
+            factor = 1.5
+        }
+        modifier = {
+            any_targeting_scheme = {
+                scheme_type = murder
+                OR = {
+                    scheme_owner = { is_participant_in_activity = scope:activity }
+                    any_scheme_agent_character = { is_participant_in_activity = scope:activity }
+                }
+                scheme_phase_duration >= 50
+            }
+            factor = 1.5
+        }
+    }
+
+    immediate = {
+        play_music_cue = "mx_cue_murder"
+        scope:activity = {
+            if = {
+                limit = {
+                    any_attending_character = { hunt_murder_risk_trigger = yes }
+                }
+                random_attending_character = {
+                    limit = {
+                        hunt_murder_risk_trigger = yes
+                        save_temporary_scope_as = murderer_temp
+                    }
+                    weight = {
+                        base = 1
+                        hunt_murderer_modifier = { MURDERER = scope:murderer_temp TARGET = root }
+                    }
+                    save_scope_as = murderer
+                    add_to_list = murderer_list
+                    add_to_list = murder_participants
+                }
+            }
+            else = {
+                random_attending_character = {
+                    limit = {
+                        hunt_potential_murder_risk_trigger = yes
+                        save_temporary_scope_as = murderer_temp
+                    }
+                    weight = {
+                        base = 1
+                        hunt_murderer_modifier = { MURDERER = scope:murderer_temp TARGET = root }
+                    }
+                    save_scope_as = murderer
+                    if = {
+                        limit = {
+                            is_court_position_employer = {
+                                court_position = bodyguard_court_position
+                                who = root
+                            }
+                        }
+                        save_scope_as = bodyguard_betray
+                    }
+                    else_if = {
+                        limit = {
+                            is_court_position_employer = {
+                                court_position = akolouthos_court_position
+                                who = root
+                            }
+                        }
+                        save_scope_as = bodyguard_betray
+                    }
+                    else_if = {
+                        limit = {
+                            is_court_position_employer = {
+                                court_position = eryndar_court_position
+                                who = root
+                            }
+                        }
+                        save_scope_as = bodyguard_betray
+                    }
+                    add_to_list = murderer_list
+                    add_to_list = murder_participants
+                }
+            }
+            if = {
+                limit = {
+                    any_attending_character = {
+                        hunt_murder_risk_trigger = yes
+                        hunt_accomplice_general_trigger = {
+                            MURDERER = scope:murderer
+                            TARGET = root
+                        }
+                    }
+                }
+                random_attending_character = {
+                    limit = {
+                        hunt_murder_risk_trigger = yes
+                        hunt_accomplice_general_trigger = {
+                            MURDERER = scope:murderer
+                            TARGET = root
+                        }
+                        save_temporary_scope_as = murderer_temp
+                    }
+                    weight = {
+                        base = 1
+                        hunt_murderer_modifier = { MURDERER = scope:murderer_temp TARGET = root }
+                        modifier = {
+                            factor = 2
+                            # Scheme
+                            is_scheming_against = {
+                                target = root
+                                type = murder
+                            }
+                        }
+                        modifier = {
+                            factor = 2
+                            # Intent
+                            AND = {
+                                hunt_murder_intent_target_trigger = yes
+                                intent_target = root
+                            }
+                        }
+                        modifier = {
+                            factor = 2
+                            # Feud
+                            house_has_feud_relation_with_trigger = { TARGET = root }
+                        }
+                    }
+                    save_scope_as = accomplice
+                    if = {
+                        limit = {
+                            is_court_position_employer = {
+                                court_position = bodyguard_court_position
+                                who = root
+                            }
+                        }
+                        save_scope_as = bodyguard_betray
+                    }
+                    else_if = {
+                        limit = {
+                            is_court_position_employer = {
+                                court_position = akolouthos_court_position
+                                who = root
+                            }
+                        }
+                        save_scope_as = bodyguard_betray
+                    }
+                    else_if = {
+                        limit = {
+                            is_court_position_employer = {
+                                court_position = eryndar_court_position
+                                who = root
+                            }
+                        }
+                        save_scope_as = bodyguard_betray
+                    }
+                    add_to_list = murderer_list
+                    add_to_list = murder_participants
+                }
+            }
+        }
+        if = {
+            limit = {
+                any_court_position_holder = { hunt_murder_bodyguard_appears_trigger = yes }
+            }
+            random_court_position_holder = {
+                limit = { hunt_murder_bodyguard_appears_trigger = yes }
+                save_scope_as = bodyguard
+                random = {
+                    chance = 25
+                    modifier = { add = intrigue }
+                    modifier = {
+                        add = 5
+                        aptitude = {
+                            court_position = master_of_hunt_court_position
+                            value >= 1
+                        }
+                    }
+                    modifier = {
+                        add = 5
+                        aptitude = {
+                            court_position = master_of_hunt_court_position
+                            value >= 2
+                        }
+                    }
+                    modifier = {
+                        add = 5
+                        aptitude = {
+                            court_position = master_of_hunt_court_position
+                            value >= 3
+                        }
+                    }
+                    modifier = {
+                        add = 5
+                        aptitude = {
+                            court_position = master_of_hunt_court_position
+                            value >= 4
+                        }
+                    }
+                    save_scope_as = bodyguard_appears
+                    add_to_list = murder_participants
+                }
+            }
+        }
+        if = {
+            limit = { exists = scope:accomplice }
+            scope:accomplice = { save_scope_as = central_portrait }
+        }
+        else_if = {
+            limit = { exists = scope:bodyguard }
+            scope:bodyguard = { save_scope_as = central_portrait }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    any_owned_story = { type = story_cycle_pet_dog }
+                }
+                random = {
+                    chance = 25
+                    modifier = {
+                        exists = scope:bodyguard_appears
+                        factor = 0
+                    }
+                    modifier = {
+                        add = 25
+                        has_character_modifier = dog_story_scenthound_modifier
+                    }
+                    modifier = {
+                        add = 25
+                        has_character_modifier = dog_story_beasthound_modifier
+                    }
+                    save_scope_as = dog_appears
+                }
+            }
+        }
+    }
+
+    option = {
+        name = {
+            trigger = { exists = scope:bodyguard_appears }
+            text = hunt.1080.a.bodyguard
+        }
+        name = {
+            trigger = { exists = scope:dog_appears }
+            text = hunt.1080.a.dog
+        }
+        name = {
+            trigger = {
+                exists = scope:accomplice
+                NOR = {
+                    exists = scope:bodyguard_appears
+                    exists = scope:dog_appears
+                }
+            }
+            text = hunt.1080.a.accomplice
+        }
+        name = {
+            trigger = {
+                NOR = {
+                    exists = scope:accomplice
+                    exists = scope:bodyguard_appears
+                    exists = scope:dog_appears
+                }
+            }
+            text = hunt.1080.a
+        }
+        if = {
+            limit = { exists = scope:accomplice }
+            duel = {
+                skill = prowess
+                value = hunt_murder_accomplice_prowess_value
+                1 = {
+                    desc = hunt.1080.a.duel_success_accomplice
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = 1
+                        min = 1
+                    }
+                    modifier = {
+                        exists = scope:bodyguard_appears
+                        add = {
+                            value = scope:bodyguard.prowess
+                            multiply = 1.5
+                        }
+                    }
+                    modifier = {
+                        exists = scope:dog_appears
+                        add = 10
+                    }
+                    min = 5
+                    custom_tooltip = hunt.1080.a.success_tt
+                    if = {
+                        limit = { exists = scope:accomplice }
+                        custom_tooltip = hunt.1080.a.success_accomplice_tt
+                    }
+                }
+                1 = {
+                    desc = hunt.1080.a.duel_failure_accomplice
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = -1
+                        min = 1
+                    }
+                    min = 5
+                    show_as_tooltip = {
+                        death = {
+                            death_reason = death_hunting_mysterious
+                            killer = scope:murderer
+                        }
+                        if = {
+                            limit = { exists = scope:bodyguard_appears }
+                            scope:bodyguard = {
+                                death = {
+                                    death_reason = death_hunting_mysterious
+                                    killer = scope:murderer
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else = {
+            duel = {
+                skill = prowess
+                target = scope:murderer
+                desc = hunt.1080.a.duel_success
+                1 = {
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = 1
+                        min = 1
+                    }
+                    modifier = {
+                        exists = scope:bodyguard_appears
+                        add = {
+                            value = scope:bodyguard.prowess
+                            multiply = 1.5
+                        }
+                    }
+                    min = 5
+                    custom_tooltip = hunt.1080.a.success_tt
+                    if = {
+                        limit = { exists = scope:accomplice }
+                        custom_tooltip = hunt.1080.a.success_accomplice_tt
+                    }
+                }
+                1 = {
+                    desc = hunt.1080.a.duel_failure
+                    compare_modifier = {
+                        value = scope:duel_value
+                        multiplier = -1
+                        min = 1
+                    }
+                    min = 5
+                    show_as_tooltip = {
+                        death = {
+                            death_reason = death_hunting_mysterious
+                            killer = scope:murderer
+                        }
+                        if = {
+                            limit = { exists = scope:bodyguard_appears }
+                            scope:bodyguard = {
+                                death = {
+                                    death_reason = death_hunting_mysterious
+                                    killer = scope:murderer
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    after = { trigger_event = hunt.1081 }
+}
+
+hunt.4009 = {
+    type = activity_event
+    title = hunt.4009.t
+    desc = hunt.4009.desc
+    theme = hunt_activity
+    left_portrait = {
+        character = root
+        animation = fear
+    }
+    center_portrait = {
+        character = scope:saving_participant
+        animation = aggressive_dagger
+    }
+    right_portrait = {
+        character = scope:schemer
+        animation = assassin
+    }
+
+    trigger = {
+        OR = {
+            any_targeting_scheme = { hunt_4009_scheme_trigger = yes }
+            scope:activity = {
+                any_attending_character = { hunt_4009_intent_trigger = yes }
+            }
+            hunt_4009_heir_trigger = yes
+        }
+    }
+
+    weight_multiplier = {
+        base = 1
+        modifier = {
+            add = 1
+            employs_court_position = master_of_hunt_court_position
+            court_position:master_of_hunt_court_position = {
+                is_alive = yes
+                is_participant_in_activity = scope:activity
+                OR = {
+                    is_scheming_against = { target = root type = murder }
+                    is_scheming_against = { target = root type = abduct }
+                    hunt_4009_intent_trigger = yes
+                    AND = {
+                        root = { hunt_4009_heir_trigger = yes }
+                        this = root.player_heir
+                    }
+                }
+            }
+        }
+        modifier = {
+            add = 1
+            employs_court_position = huntperson_camp_officer
+            court_position:huntperson_camp_officer = {
+                is_alive = yes
+                is_participant_in_activity = scope:activity
+                OR = {
+                    is_scheming_against = { target = root type = murder }
+                    is_scheming_against = { target = root type = abduct }
+                    hunt_4009_intent_trigger = yes
+                    AND = {
+                        root = { hunt_4009_heir_trigger = yes }
+                        this = root.player_heir
+                    }
+                }
+            }
+        }
+        modifier = {
+            add = 1
+            employs_court_position = huntperson_camp_officer
+            court_position:huntperson_camp_officer = {
+                is_alive = yes
+                is_participant_in_activity = scope:activity
+                OR = {
+                    is_scheming_against = { target = root type = murder }
+                    is_scheming_against = { target = root type = abduct }
+                    hunt_4009_intent_trigger = yes
+                    AND = {
+                        root = { hunt_4009_heir_trigger = yes }
+                        this = root.player_heir
+                    }
+                }
+            }
+        }
+    }
+
+    immediate = {
+        play_music_cue = "mx_cue_stress"
+        hidden_effect = {
+            random_list = {
+                10 = {
+                    trigger = {
+                        any_targeting_scheme = { hunt_4009_scheme_trigger = yes }
+                    }
+                    modifier = {
+                        add = 10
+                        any_targeting_scheme = {
+                            hunt_4009_scheme_trigger = yes
+                            OR = {
+                                scheme_owner = {
+                                    is_participant_in_activity = scope:activity
+                                    hunt_4009_personality_trigger = yes
+                                }
+                                any_scheme_agent_character = {
+                                    is_participant_in_activity = scope:activity
+                                    hunt_4009_personality_trigger = yes
+                                }
+                            }
+                        }
+                    }
+                    random_targeting_scheme = {
+                        limit = { hunt_4009_scheme_trigger = yes }
+                        random_list = {
+                            10 = {
+                                trigger = {
+                                    scheme_owner = {
+                                        is_participant_in_activity = scope:activity
+                                        save_temporary_scope_as = scheme_owner_temp
+                                    }
+                                }
+                                hunt_murderer_modifier = { MURDERER = scope:scheme_owner_temp TARGET = root }
+                                scheme_owner = { save_scope_as = schemer }
+                            }
+                            10 = {
+                                trigger = {
+                                    any_scheme_agent_character = { is_participant_in_activity = scope:activity }
+                                }
+                                random_scheme_agent_character = {
+                                    limit = {
+                                        is_participant_in_activity = scope:activity
+                                        save_temporary_scope_as = murderer_temp
+                                    }
+                                    weight = {
+                                        base = 1
+                                        hunt_murderer_modifier = { MURDERER = scope:murderer_temp TARGET = root }
+                                    }
+                                    save_scope_as = schemer
+                                }
+                            }
+                        }
+                        save_scope_as = scheme
+                    }
+                }
+                25 = {
+                    trigger = {
+                        scope:activity = {
+                            any_attending_character = {
+                                has_activity_intent = murder_attendee_intent
+                                intent_target ?= root
+                            }
+                        }
+                    }
+                    scope:activity = {
+                        random_attending_character = {
+                            limit = {
+                                has_activity_intent = murder_attendee_intent
+                                intent_target ?= root
+                                save_temporary_scope_as = murderer_temp
+                            }
+                            weight = {
+                                base = 1
+                                hunt_murderer_modifier = { MURDERER = scope:murderer_temp TARGET = root }
+                            }
+                            save_scope_as = schemer
+                        }
+                    }
+                }
+                5 = { # Heir
+                    trigger = { hunt_4009_heir_trigger = yes }
+                    modifier = {
+                        add = 5
+                        player_heir ?= {
+                            OR = {
+                                has_trait = callous
+                                has_trait = sadistic
+                                has_trait = ambitious
+                                has_relation_rival = root
+                                has_strong_claim_on = root.primary_title
+                            }
+                        }
+                    }
+                    player_heir = { save_scope_as = schemer }
+                }
+            }
+            if = { #Set a murder secret if it's a murder attempt
+                limit = {
+                    trigger_if = {
+                        limit = { exists = scope:scheme }
+                        NOT = {
+                            scope:scheme = { scheme_type = abduct }
+                        }
+                    }
+                }
+                scope:schemer = {
+                    add_secret = {
+                        type = secret_murder_attempt
+                        target = root
+                    }
+                    random_secret = {
+                        type = secret_murder_attempt
+                        limit = {
+                            secret_target = root
+                        }
+                        save_scope_as = murder_secret
+                        reveal_to_without_events_effect = { CHARACTER = root }
+                    }
+                }
+            }
+            #Find a participant to help you!
+            scope:activity = {
+                random_attending_character = {
+                    limit = {
+                        save_temporary_scope_as = saver_temp
+                        NOR = {
+                            this = root
+                            this = scope:schemer
+                            hunt_4009_intent_trigger = yes
+                            is_scheming_against = { target = root type = murder }
+                            is_scheming_against = { target = root type = abduct }
+                            has_any_bad_relationship_with_character_trigger = { CHARACTER = root }
+                            AND = {
+                                root = { hunt_4009_heir_trigger = yes }
+                                this = root.player_heir
+                            }
+                            opinion = {
+                                target = scope:schemer
+                                value >= 40
+                            }
+                        }
+                        prowess > root.prowess
+                        opinion = {
+                            target = root
+                            value >= 0
+                        }
+                    }
+                    weight = {
+                        base = 0
+                        modifier = {
+                            add = {
+                                value = prowess
+                                multiply = 0.5
+                            }
+                        }
+                        modifier = {
+                            add = 3
+                            has_trait = education_martial
+                        }
+                        modifier = {
+                            add = 25
+                            has_court_position = bodyguard_court_position
+                            exists = root.court_position:bodyguard_court_position
+                            this = root.court_position:bodyguard_court_position
+                        }
+                        modifier = {
+                            add = 25
+                            has_court_position = akolouthos_court_position
+                            exists = root.court_position:akolouthos_court_position
+                            this = root.court_position:akolouthos_court_position
+                        }
+                        modifier = {
+                            add = 25
+                            has_court_position = eryndar_court_position
+                            exists = root.court_position:eryndar_court_position
+                            this = root.court_position:eryndar_court_position
+                    }
+                    save_scope_as = saving_participant
+                }
+            }
+        }
+        hunt_activity_success_change_effect = { CHANGE = decrease_major }
+    }
+
+    option = { #Take them on: Murder
+        name = hunt.4009.a
+        trigger = {
+            trigger_if = {
+                limit = { exists = scope:scheme }
+                scope:scheme = { scheme_type = murder }
+            }
+        }
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_murder_defend_log
+                score = 25
+                tags = { random bad scheme intent }
+                character = root
+                target = scope:schemer
+
+                #Effect
+                root = {
+                    duel = {
+                        skill = prowess
+                        target = scope:schemer
+                        10 = { #Nothing happens but reveal
+                            desc = hunt.4009.a.success
+                            compare_modifier = {
+                                value = scope:duel_value
+                            }
+                            send_interface_toast = {
+                                title = hunt.4009.a.success
+                                left_icon = scope:schemer
+                            }
+                        }
+                        6 = { #They wound me
+                            desc = hunt.4009.a.failure
+                            compare_modifier = {
+                                value = scope:duel_value
+                                multiplier = -0.5
+                            }
+                            send_interface_toast = {
+                                title = hunt.4009.a.failure
+                                left_icon = scope:schemer
+                                increase_wounds_effect = { REASON = fight }
+                                if = {
+                                    limit = {
+                                        NOT = {
+                                            has_trait = wounded_3
+                                        }
+                                    }
+                                    add_character_modifier = {
+                                        modifier = watchful_modifier
+                                        days = watchful_modifier_duration
+                                    }
+                                }
+                            }
+                        }
+                        2 = { #Their scheme succeeds
+                            desc = hunt.4009.a.critical_failure
+                            compare_modifier = {
+                                value = scope:duel_value
+                                multiplier = -0.5
+                            }
+                            send_interface_toast = {
+                                title = hunt.4009.a.critical_failure
+                                left_icon = scope:schemer
+                                unknown_murder_effect = {
+                                    VICTIM = root
+                                    MURDERER = scope:schemer
+                                    REASON = death_hunting_mysterious
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 0
+            modifier = {
+                add = 50
+                prowess > scope:schemer.prowess
+            }
+        }
+    }
+
+    option = { #Take them on: Abduction
+        name = hunt.4009.a
+        trigger = {
+            exists = scope:scheme
+            scope:scheme = { scheme_type = abduct }
+        }
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_abduct_defend_log
+                score = 25
+                tags = { random bad scheme intent }
+                character = root
+                target = scope:schemer
+
+                #Effect
+                root = {
+                    duel = {
+                        skill = prowess
+                        target = scope:schemer
+                        10 = { #Nothing happens but reveal
+                            desc = hunt.4009.a.success
+                            compare_modifier = {
+                                value = scope:duel_value
+                            }
+                            send_interface_toast = {
+                                title = hunt.4009.a.success
+                                left_icon = scope:schemer
+
+                                add_opinion = {
+                                    target = scope:schemer
+                                    modifier = attempted_abduction_opinion
+                                }
+                                add_character_modifier = {
+                                    modifier = watchful_modifier
+                                    days = watchful_modifier_duration
+                                }
+                            }
+                            hunt_activity_success_change_effect = { CHANGE = increase_medium }
+                        }
+                        6 = { #They wound me
+                            desc = hunt.4009.a.failure
+                            compare_modifier = {
+                                value = scope:duel_value
+                                multiplier = -0.5
+                            }
+                            send_interface_toast = {
+                                title = hunt.4009.a.failure
+                                left_icon = scope:schemer
+                                increase_wounds_effect = { REASON = fight }
+                                if = {
+                                    limit = {
+                                        NOT = {
+                                            has_trait = wounded_3
+                                        }
+                                    }
+                                    add_opinion = {
+                                        target = scope:schemer
+                                        modifier = attempted_abduction_opinion
+                                    }
+                                    add_character_modifier = {
+                                        modifier = watchful_modifier
+                                        days = watchful_modifier_duration
+                                    }
+                                }
+                            }
+                        }
+                        2 = { #Their scheme succeeds
+                            desc = hunt.4009.a.critical_failure
+                            compare_modifier = {
+                                value = scope:duel_value
+                                multiplier = -0.5
+                            }
+                            hard_imprison_character_effect = {
+                                TARGET = root
+                                IMPRISONER = scope:schemer
+                            }
+                            add_opinion = {
+                                target = scope:schemer
+                                modifier = abducted_me_opinion
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 0
+            modifier = {
+                add = 50
+                prowess > scope:schemer.prowess
+            }
+        }
+    }
+
+    option = { #Call for help: Murder
+        name = hunt.4009.b
+        trigger = {
+            exists = scope:saving_participant
+            trigger_if = {
+                limit = { exists = scope:scheme }
+                scope:scheme = { scheme_type = murder }
+            }
+        }
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_murder_help_log
+                score = 25
+                tags = { random bad scheme intent }
+                character = root
+                target = scope:schemer
+
+                #Effect
+                root = {
+                    scope:murder_secret = {
+                        reveal_to_without_events_effect = { CHARACTER = scope:saving_participant }
+                    }
+                    add_prestige = medium_prestige_loss
+                    scope:saving_participant = { #The rescuer does the rescuing
+                        duel = {
+                            skill = prowess
+                            target = scope:schemer
+                            10 = { #They become wounded
+                                desc = hunt.4009.b.critical_success
+                                compare_modifier = {
+                                    value = scope:duel_value
+                                }
+
+                                root = {
+                                    send_interface_toast = {
+                                        title = hunt.4009.b.critical_success
+                                        left_icon = scope:schemer
+                                        add_character_modifier = {
+                                            modifier = watchful_modifier
+                                            days = watchful_modifier_duration
+                                        }
+                                        add_opinion = {
+                                            target = scope:saving_participant
+                                            modifier = grateful_opinion
+                                            opinion = 40
+                                        }
+
+                                        scope:schemer = {
+                                            increase_wounds_effect = { REASON = fight }
+                                        }
+                                    }
+                                }
+                                hunt_activity_success_change_effect = { CHANGE = increase_medium }
+                            }
+                            6 = {
+                                desc = hunt.4009.b.failure
+                                compare_modifier = {
+                                    value = scope:duel_value
+                                    multiplier = -0.5
+                                }
+                                root = {
+                                    send_interface_toast = {
+                                        title = hunt.4009.b.failure
+                                        left_icon = scope:schemer
+                                        scope:saving_participant = {
+                                            increase_wounds_effect = { REASON = fight }
+                                        }
+                                        add_character_modifier = {
+                                            modifier = watchful_modifier
+                                            days = watchful_modifier_duration
+                                        }
+                                    }
+                                }
+                            }
+                            2 = {
+                                desc = hunt.4009.b.critial_failure
+                                compare_modifier = {
+                                    value = scope:duel_value
+                                    multiplier = -0.5
+                                }
+                                root = {
+                                    send_interface_toast = {
+                                        left_icon = scope:schemer
+                                        title = hunt.4009.b.critial_failure
+
+                                        unknown_murder_effect = {
+                                            VICTIM = root
+                                            MURDERER = scope:schemer
+                                            REASON = death_hunting_mysterious
+                                        }
+                                        unknown_murder_effect = {
+                                            VICTIM = scope:saving_participant
+                                            MURDERER = scope:schemer
+                                            REASON = death_hunting_mysterious
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 0
+            modifier = {
+                add = 50
+                prowess <= scope:schemer.prowess
+            }
+            modifier = {
+                add = 25
+                scope:saving_participant.prowess > scope:schemer.prowess
+            }
+        }
+    }
+
+    option = { #Call for help: Abduction
+        name = hunt.4009.b
+        trigger = {
+            exists = scope:saving_participant
+            exists = scope:scheme
+            scope:scheme = { scheme_type = abduct }
+        }
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_abduct_help_log
+                score = 25
+                tags = { random bad scheme intent }
+                character = root
+                target = scope:schemer
+
+                #Effect
+                root = {
+                    add_prestige = medium_prestige_loss
+                    scope:saving_participant = { #The rescuer does the rescuing
+                        duel = {
+                            skill = prowess
+                            target = scope:schemer
+                            10 = { #They become wounded
+                                desc = hunt.4009.b.critical_success
+                                compare_modifier = {
+                                    value = scope:duel_value
+                                }
+
+                                root = {
+                                    send_interface_toast = {
+                                        title = hunt.4009.b.critical_success
+                                        left_icon = scope:schemer
+
+                                        add_opinion = {
+                                            target = scope:schemer
+                                            modifier = attempted_abduction_opinion
+                                        }
+                                        add_character_modifier = {
+                                            modifier = watchful_modifier
+                                            days = watchful_modifier_duration
+                                        }
+
+                                        scope:schemer = {
+                                            increase_wounds_effect = { REASON = fight }
+                                        }
+                                    }
+                                }
+                                hunt_activity_success_change_effect = { CHANGE = increase_medium }
+                            }
+                            6 = {
+                                desc = hunt.4009.b.failure
+                                compare_modifier = {
+                                    value = scope:duel_value
+                                    multiplier = -0.5
+                                }
+                                #Chance of the rescuer dying
+                                random = {
+                                    chance = {
+                                        value = 50
+                                        subtract = scope:saving_participant.prowess
+                                    }
+                                    unknown_murder_effect = {
+                                        VICTIM = scope:saving_participant
+                                        MURDERER = scope:schemer
+                                        REASON = death_hunting_mysterious
+                                    }
+                                }
+                                root = {
+                                    send_interface_toast = {
+                                        title = hunt.4009.b.failure
+                                        left_icon = scope:schemer
+                                        increase_wounds_effect = { REASON = fight }
+                                        add_opinion = {
+                                            target = scope:schemer
+                                            modifier = attempted_abduction_opinion
+                                        }
+                                        add_character_modifier = {
+                                            modifier = watchful_modifier
+                                            days = watchful_modifier_duration
+                                        }
+                                    }
+                                }
+                            }
+                            2 = {
+                                desc = hunt.4009.b.critial_failure
+                                compare_modifier = {
+                                    value = scope:duel_value
+                                    multiplier = -0.5
+                                }
+                                root = {
+                                    send_interface_toast = {
+                                        left_icon = scope:schemer
+                                        title = hunt.4009.b.critial_failure
+
+
+                                        hard_imprison_character_effect = {
+                                            TARGET = root
+                                            IMPRISONER = scope:schemer
+                                        }
+                                        add_opinion = {
+                                            target = scope:schemer
+                                            modifier = abducted_me_opinion
+                                        }
+
+                                        hard_imprison_character_effect = {
+                                            TARGET = scope:schemer
+                                            IMPRISONER = scope:schemer
+                                        }
+                                        scope:saving_participant = {
+                                            add_opinion = {
+                                                target = scope:schemer
+                                                modifier = abducted_me_opinion
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 0
+            modifier = {
+                add = 50
+                prowess <= scope:schemer.prowess
+            }
+            modifier = {
+                add = 25
+                scope:saving_participant.prowess > scope:schemer.prowess
+            }
+        }
+    }
+
+    option = { #Run! - Murder
+        name = hunt.4009.c
+        trigger = {
+            trigger_if = {
+                limit = { exists = scope:scheme }
+                scope:scheme = { scheme_type = murder }
+            }
+        }
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_murder_flee_log
+                score = 25
+                tags = { random bad scheme intent }
+                character = root
+                target = scope:schemer
+
+                #Effect
+                root = {
+                    random_list = {
+                        80 = {
+                            desc = hunt.4009.a.success
+                            send_interface_toast = {
+                                title = hunt.4009.a.success
+                                left_icon = scope:schemer
+
+                                scope:murder_secret = {
+                                    reveal_to = root
+                                }
+                                add_character_modifier = {
+                                    modifier = watchful_modifier
+                                    days = watchful_modifier_duration
+                                }
+                            }
+                            hunt_activity_success_change_effect = { CHANGE = increase_medium }
+                        }
+                        20 = {
+                            desc = hunt.4009.c.failure
+                            send_interface_toast = {
+                                title = hunt.4009.c.failure
+                                left_icon = scope:schemer
+
+                                unknown_murder_effect = {
+                                    VICTIM = root
+                                    MURDERER = scope:schemer
+                                    REASON = death_hunting_mysterious
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 0
+            #More likely the more scared I am of the schemer
+            modifier = {
+                add = 25
+                dread_modified_ai_boldness = {
+                    dreaded_character = scope:schemer
+                    value <= -45
+                }
+            }
+            modifier = {
+                add = 50
+                dread_modified_ai_boldness = {
+                    dreaded_character = scope:schemer
+                    value <= -75
+                }
+            }
+        }
+    }
+
+    option = { #Run! - Abduction
+        name = hunt.4009.c
+        trigger = {
+            exists = scope:scheme
+            scope:scheme = { scheme_type = abduct }
+        }
+        scope:activity = {
+            add_activity_log_entry = {
+                key = hunt_abduct_flee_log
+                score = 25
+                tags = { random bad scheme intent }
+                character = root
+                target = scope:schemer
+
+                #Effect
+                root = {
+                    random_list = {
+                        80 = {
+                            desc = hunt.4009.a.success
+                            send_interface_toast = {
+                                title = hunt.4009.a.success
+                                left_icon = scope:schemer
+
+                                add_opinion = {
+                                    target = scope:schemer
+                                    modifier = attempted_abduction_opinion
+                                }
+                                add_character_modifier = {
+                                    modifier = watchful_modifier
+                                    days = watchful_modifier_duration
+                                }
+                            }
+                            hunt_activity_success_change_effect = { CHANGE = increase_medium }
+                        }
+                        20 = {
+                            desc = hunt.4009.c.failure
+                            send_interface_toast = {
+                                title = hunt.4009.c.failure
+                                left_icon = scope:schemer
+
+                                hard_imprison_character_effect = {
+                                    TARGET = root
+                                    IMPRISONER = scope:schemer
+                                }
+                                add_opinion = {
+                                    target = scope:schemer
+                                    modifier = abducted_me_opinion
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ai_chance = {
+            base = 0
+            #More likely the more scared I am of the schemer
+            modifier = {
+                add = 25
+                dread_modified_ai_boldness = {
+                    dreaded_character = scope:schemer
+                    value <= -45
+                }
+            }
+            modifier = {
+                add = 50
+                dread_modified_ai_boldness = {
+                    dreaded_character = scope:schemer
+                    value <= -75
+                }
+            }
+        }
+    }
+
+    after = {
+        #Make sure the Scheme is exposed, whatever else happens
+        if = {
+            limit = { exists = scope:scheme }
+            scope:scheme = { expose_scheme = yes }
+        }
+    }
+}

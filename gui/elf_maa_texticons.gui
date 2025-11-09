@@ -207,9 +207,9 @@ texticon = {
 }
 
 texticon = {
-    icon = highguard_of_valor_icon
+    icon = highguard_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/highguard_of_valor.dds"
+        texture = "gfx/interface/icons/regimenttypes/highguard.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16

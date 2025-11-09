@@ -1,0 +1,332 @@
+﻿namespace = eryndar_events
+
+# Highguardian-eligible courtier gains Highguardian or Highguardian gains Loyal
+eryndar_events.1000 = {
+	hidden = yes
+
+	trigger = {
+		OR = {
+			# A highguardian who isn't loyal
+			any_courtier = {
+				has_trait = highguardian
+				NOT = { has_trait = loyal }
+			}
+			#An eligible Highguardian who doesn't have the trait
+			any_courtier = {
+				NOT = { has_trait = highguardian }
+				highguardian_trigger = yes
+			}
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			add = 1
+			any_court_position_holder = {
+				type = bodyguard_court_position
+				NOT = { has_trait = highguardian }
+				highguardian_trigger = yes
+			}
+		}
+		modifier = {
+			add = 1
+			any_court_position_holder = {
+				type = bodyguard_court_position
+				NOT = { has_trait = loyal }
+				has_trait = highguardian
+			}
+		}
+		modifier = {
+			add = 1
+			any_court_position_holder = {
+				type = eryndar_court_position
+				NOT = { has_trait = highguardian }
+				highguardian_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		random_court_position_holder = {
+			type = eryndar_court_position
+			save_scope_as = eryndar
+		}
+		#Most important that Highguardian Eryndar becomes Highguardian
+		if = {
+			limit = {
+				any_court_position_holder = {
+					type = eryndar_court_position
+					NOT = { has_trait = highguardian }
+					highguardian_trigger = yes
+				}
+			}
+			random_court_position_holder = {
+				type = eryndar_court_position
+				limit = {
+					NOT = { has_trait = highguardian }
+					highguardian_trigger = yes
+				}
+				save_scope_as = trait_getter
+			}
+			send_eryndar_message_highguardian = yes
+		}
+		#Second-most important: Highguardian bodyguard becomes Highguardian
+		else_if = {
+			limit = {
+				any_court_position_holder = {
+					type = bodyguard_court_position
+					NOT = { has_trait = highguardian }
+					highguardian_trigger = yes
+				}
+			}
+			random_court_position_holder = {
+				type = bodyguard_court_position
+				limit = {
+					NOT = { has_trait = highguardian }
+					highguardian_trigger = yes
+				}
+				save_scope_as = trait_getter
+			}
+			send_eryndar_message_highguardian = yes
+		}
+		#Then either add loyal to a Highguardian bodyguard or to Eryndar
+		else_if = {
+			limit = {
+				OR = {
+					any_court_position_holder = {
+						type = bodyguard_court_position
+						has_trait = highguardian
+						NOT = { has_trait = loyal }
+					}
+					any_court_position_holder = {
+						type = eryndar_court_position
+						has_trait = highguardian
+						NOT = { has_trait = loyal }
+					}
+				}
+			}
+			random_list = {
+				#Add loyal to a Highguardian bodyguard
+				10 = {
+					trigger = {
+						any_court_position_holder = {
+							type = bodyguard_court_position
+							has_trait = highguardian
+							NOT = { has_trait = loyal }
+						}
+					}
+					random_court_position_holder = {
+						type = bodyguard_court_position
+						limit = {
+							has_trait = highguardian
+							NOT = { has_trait = loyal }
+						}
+						save_scope_as = trait_getter
+					}
+					send_eryndar_message_loyal = yes
+				}
+				#Add loyal to a Highguardian eryndar
+				10 = {
+					trigger = {
+						any_court_position_holder = {
+							type = eryndar_court_position
+							has_trait = highguardian
+							NOT = { has_trait = loyal }
+						}
+					}
+					random_court_position_holder = {
+						type = eryndar_court_position
+						limit = {
+							has_trait = highguardian
+							NOT = { has_trait = loyal }
+						}
+						save_scope_as = trait_getter
+					}
+					send_eryndar_message_loyal = yes
+				}
+			}
+		}
+		#Add Highguardian to some non-Highguardian Highguardian
+		else_if = {
+			limit = {
+				any_courtier = {
+					NOT = { has_trait = highguardian }
+					highguardian_trigger = yes
+				}
+			}
+			random_courtier = {
+				limit = {
+					NOT = { has_trait = highguardian }
+					highguardian_trigger = yes
+				}
+				save_scope_as = trait_getter
+			}
+			send_eryndar_message_highguardian = yes
+		}
+		#Add loyal to some non-bodyguard Highguardian
+		else = {
+			random_courtier = {
+				limit = {
+					has_trait = highguardian
+					NOT = { has_trait = loyal }
+				}
+				save_scope_as = trait_getter
+			}
+			send_eryndar_message_loyal = yes
+		}
+	}
+}
+
+# Eryndar recruits Highguardian
+eryndar_events.1001 = {
+	hidden = yes
+
+	trigger = {
+		#Don't really need this if root is swarming in Highguardians already
+		NOT = {
+			any_courtier_or_guest = {
+				count >= 8
+				highguardian_trigger = yes
+			}
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		#Weigh up chances if Highguardians are needed to fill posts
+		modifier = {
+			add = 1
+			NOT = {
+				any_courtier_or_guest = {
+					count >= 3
+					highguardian_trigger = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		random_court_position_holder = {
+			type = eryndar_court_position
+			save_scope_as = eryndar
+		}
+		#Find a candidate in the local pool
+		if = {
+			limit = {
+				is_landed = yes
+				any_pool_character = {
+					province = root.capital_province
+					highguardian_trigger = yes
+					prowess > low_skill_rating
+				}
+			}
+			random_pool_character = {
+				province = root.capital_province
+				limit = {
+					highguardian_trigger = yes
+					prowess > low_skill_rating
+				}
+				save_scope_as = new_highguardian
+			}
+			scope:new_highguardian = {
+				if = {
+					limit = {
+						NOT = { has_trait = highguardian }
+					}
+					hidden_effect = {
+						add_trait = highguardian
+					}
+				}
+			}
+		}
+		#Find a candidate in pools of eryndar's culture
+		else_if = {
+			limit = {
+				scope:eryndar = {
+					highguardian_trigger = yes
+				}
+				exists = scope:eryndar.culture.culture_head
+				scope:eryndar.culture.culture_head = {
+					is_landed = yes
+				}
+				any_pool_character = {
+					province = scope:eryndar.culture.culture_head.capital_province
+					highguardian_trigger = yes
+					prowess >= low_skill_rating
+				}
+			}
+			scope:eryndar.culture.culture_head = {
+				save_scope_as = eryndar_culture_head
+			}
+			random_pool_character = {
+				province = scope:eryndar_culture_head.capital_province
+				limit = {
+					highguardian_trigger = yes
+					prowess > low_skill_rating
+				}
+				save_scope_as = new_highguardian
+			}
+			scope:new_highguardian = {
+				if = {
+					limit = {
+						NOT = { has_trait = highguardian }
+					}
+					hidden_effect = {
+						add_trait = highguardian
+					}
+				}
+			}
+		}
+		#Create a candidate
+		else_if = {
+			limit = {
+				scope:eryndar = {
+					highguardian_trigger = yes
+				}
+			}
+			create_character = {
+				template = highguardian_template
+				location = root.location
+				culture = scope:eryndar.culture
+				faith = scope:eryndar.faith
+				dynasty = none
+				save_scope_as = new_highguardian
+			}
+		}
+		else_if = {
+			limit = {
+				current_date < 990
+			}
+			#Norse
+			create_character = {
+				template = highguardian_template
+				location = root.location
+				culture = culture:norse
+				faith = root.faith
+				dynasty = none
+				save_scope_as = new_highguardian
+			}
+		}
+		else = {
+			#Anglo-Saxon
+			create_character = {
+				template = highguardian_template
+				location = root.location
+				culture = culture:anglo_saxon
+				faith = root.faith
+				dynasty = none
+				save_scope_as = new_highguardian
+			}
+		}
+		send_interface_message = {
+			type = event_martial_good_with_text
+			title = eryndar_events.1001
+			desc = eryndar_events.1001_notification_tooltip
+			tooltip = eryndar_effect_tooltip
+			left_icon = scope:new_highguardian
+			right_icon = scope:eryndar
+			add_courtier = scope:new_highguardian
+		}
+	}
+}

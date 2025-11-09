@@ -1,0 +1,321 @@
+﻿namespace = court_yearly
+
+court_yearly.4800 = {
+	type = character_event
+	title = court.4800.t
+	desc = court.4800.desc
+	cooldown = { years = 10 }
+	theme = court
+	trigger = {
+		has_royal_court = yes
+		has_dlc_feature = royal_court
+		OR = {
+			any_court_position_holder = {
+				type = bodyguard_court_position
+				is_available_ai_adult = yes
+			}
+			any_court_position_holder = {
+				type = akolouthos_court_position
+				is_available_ai_adult = yes
+			}
+			any_court_position_holder = {
+				type = eryndar_court_position
+				is_available_ai_adult = yes
+			}
+		}
+		
+		OR = {
+			AND = {
+				employs_court_position = court_jester_court_position
+				any_court_position_holder = {
+					type = court_jester_court_position
+					is_available_ai_adult = yes
+				}
+			}
+			AND = {
+				employs_court_position = keeper_of_swans_court_position
+				any_court_position_holder = {
+					type = keeper_of_swans_court_position
+					is_available_ai_adult = yes
+				}
+			}
+		}
+	}
+	left_portrait = {
+		character = scope:defenestrated_character
+		animation = flirtation
+	}
+	right_portrait = {
+		character = scope:defenestrating_bodyguard
+		animation = rage
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				employs_court_position = bodyguard_court_position
+			}
+			random_court_position_holder = {
+				type = akolouthos_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
+				save_scope_as = defenestrating_bodyguard
+			}
+		}
+		else = {
+			random_court_position_holder = {
+				type = bodyguard_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
+				save_scope_as = defenestrating_bodyguard
+			}
+		}
+
+		if = {
+			limit = {
+				employs_court_position = bodyguard_court_position
+			}
+			random_court_position_holder = {
+				type = eryndar_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
+				save_scope_as = defenestrating_bodyguard
+			}
+		}
+		else = {
+			random_court_position_holder = {
+				type = bodyguard_court_position
+				limit = {
+					is_available_ai_adult = yes
+				}
+				save_scope_as = defenestrating_bodyguard
+			}
+		}
+		
+		if = {
+			limit ={
+				employs_court_position = court_jester_court_position
+				any_court_position_holder = {
+					type = court_jester_court_position
+					is_available_ai_adult = yes
+				}
+			}
+			random_court_position_holder = {
+				type = court_jester_court_position
+				save_scope_as = defenestrated_character
+			}
+		}
+		else = {
+			random_court_position_holder = {
+				type = keeper_of_swans_court_position
+				save_scope_as = defenestrated_character
+			}
+		}
+	}
+
+	option = { 
+		name = court.4800.a
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			just = medium_stress_impact_gain
+			arbitrary = minor_stress_loss
+			sadistic = minor_stress_loss
+		}
+		random_list = {
+			10 = {
+				scope:defenestrated_character = {
+					increase_wounds_effect = { REASON = defenestration }
+					apply_maimed_trait_and_modifier_effect = yes
+					add_opinion = {
+						target = root
+						opinion = -20
+						modifier = hate_opinion
+					}
+					add_opinion = {
+						target = scope:defenestrating_bodyguard
+						opinion = -40
+						modifier = hate_opinion
+					}
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						type = event_toast_effect_neutral
+						left_icon = scope:defenestrated_character
+						title = court.4800.maimed_toast
+						show_as_tooltip = {
+							scope:defenestrated_character = {
+								increase_wounds_effect = { REASON = defenestration }
+								apply_maimed_trait_and_modifier_effect = yes
+							}
+						}
+					}
+				}
+			}
+			5 = {
+				scope:defenestrated_character = {
+					death = {
+						death_reason = death_defenestration
+						killer = scope:defenestrating_bodyguard
+					}
+				}
+				hidden_effect = {
+					send_interface_toast = {
+						type = event_toast_effect_neutral
+						left_icon = scope:defenestrated_character
+						title = court.4800.death_toast
+						show_as_tooltip = {
+							scope:defenestrated_character = {
+								death = {
+									death_reason = death_defenestration
+									killer = scope:defenestrating_bodyguard
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		add_dread = minor_dread_gain
+		scope:defenestrating_bodyguard = {
+			add_opinion = {
+				target = root
+				opinion = 10
+				modifier = respect_opinion
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_compassion = -0.5
+				ai_vengefulness = 0.5
+				ai_boldness = 0.25
+				ai_rationality = -0.5
+			}
+		}
+	}
+
+	option = {
+		name = court.4800.b
+		stress_impact = {
+			compassionate = minor_stress_gain
+			just = minor_stress_gain
+			sadistic = miniscule_stress_impact_loss
+		}
+		scope:defenestrated_character = {
+			increase_wounds_effect = { REASON = fight }
+			add_opinion = {
+				target = root
+				opinion = -5
+				modifier = scared_opinion
+			}
+			add_opinion = {
+				target = scope:defenestrating_bodyguard
+				opinion = -25
+				modifier = scared_opinion
+			}
+		}
+		scope:defenestrating_bodyguard = {
+			add_opinion = {
+				target = root
+				opinion = 10
+				modifier = respect_opinion
+			}
+		}
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_compassion = -0.25
+				ai_vengefulness = 0.25
+				ai_boldness = 0.25
+				ai_rationality = -0.25
+			}
+		}
+	}
+	
+	option = {
+		name = court.4800.c
+		if = {
+			limit = {
+				scope:defenestrating_bodyguard = {
+					has_court_position = bodyguard_court_position
+					
+				}
+			}
+			revoke_court_position = {
+				recipient = scope:defenestrating_bodyguard
+				court_position = bodyguard_court_position
+			}
+		}
+		else = {
+			revoke_court_position = {
+				recipient = scope:defenestrating_bodyguard
+				court_position = akolouthos_court_position
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:defenestrated_character
+			opinion = 30
+			modifier = grateful_opinion
+		}
+		reverse_add_opinion = {
+			target = scope:defenestrating_bodyguard
+			opinion = -30
+			modifier = insulted_opinion
+		}
+		add_martial_lifestyle_xp = medium_lifestyle_xp
+		add_prestige = minor_prestige_gain
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_rationality = 0.5
+			}
+		}
+	}
+
+	option = {
+		name = court.4800.d
+		if = {
+			limit = {
+				scope:defenestrating_bodyguard = {
+					has_court_position = bodyguard_court_position
+					
+				}
+			}
+			revoke_court_position = {
+				recipient = scope:defenestrating_bodyguard
+				court_position = bodyguard_court_position
+			}
+		}
+		else = {
+			revoke_court_position = {
+				recipient = scope:defenestrating_bodyguard
+				court_position = eryndar_court_position
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:defenestrated_character
+			opinion = 30
+			modifier = grateful_opinion
+		}
+		reverse_add_opinion = {
+			target = scope:defenestrating_bodyguard
+			opinion = -30
+			modifier = insulted_opinion
+		}
+		add_martial_lifestyle_xp = medium_lifestyle_xp
+		add_prestige = minor_prestige_gain
+		ai_chance = {
+			base = 50
+			ai_value_modifier = {
+				ai_rationality = 0.5
+			}
+		}
+	}
+}

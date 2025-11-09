@@ -12,7 +12,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -20,7 +20,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -28,7 +28,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -36,7 +36,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -44,7 +44,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -52,7 +52,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -60,7 +60,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -68,7 +68,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -76,7 +76,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -84,7 +84,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -92,7 +92,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -100,7 +100,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -108,7 +108,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -116,7 +116,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -124,7 +124,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -132,7 +132,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -140,7 +140,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -148,7 +148,7 @@ romaviri_empire_important_counties = {
                 set_important_location = {
                     title = title:h_romaviri_empire
                     title = title:h_eastern_romaviri_empire
-                    enter_realm_event = romaviri_empire_emperor_yearly.2000
+                    enter_realm_event = romaviri_emperor_yearly.2000
                 }
 
             }
@@ -254,3 +254,4 @@ on_action_romaviri_restoration_pulse = {
         romaviri_restoration.0024
     }
 }
+

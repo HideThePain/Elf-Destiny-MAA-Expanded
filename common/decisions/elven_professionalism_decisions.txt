@@ -155,7 +155,7 @@ revoke_elven_professionalism = { # reverse elven professionalism/legion for king
 		}
 }
 	
-found_highguard_of_valor_decision = {
+found_highguard_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_highguardian_guard.dds"
 	}
@@ -169,11 +169,11 @@ found_highguard_of_valor_decision = {
 
 	is_shown = {
 		has_ep3_dlc_trigger = yes
-		culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+		culture = { has_cultural_parameter = unlock_maa_highguard }
 		primary_title.tier >= tier_empire
 		NOT = {
 			# You have not already founded it for your current title
-			primary_title = { has_variable = founded_highguard_of_valor }
+			primary_title = { has_variable = founded_highguard }
 		}
 	}
 	
@@ -200,7 +200,7 @@ found_highguard_of_valor_decision = {
 	}
 
 	effect = {
-		primary_title = { set_variable = founded_highguard_of_valor }
+		primary_title = { set_variable = founded_highguard }
 		send_interface_toast = {
 			title = unlocked_highguardian_guard_desc_tt
 			type = event_toast_effect_neutral

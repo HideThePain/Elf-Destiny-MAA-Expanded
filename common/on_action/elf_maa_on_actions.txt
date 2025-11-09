@@ -1,4 +1,4 @@
-ep3_eryndar_on_action = {
+eryndar_on_action = {
     trigger = {
         has_ep3_dlc_trigger = yes
         employs_court_position = eryndar_court_position
@@ -11,8 +11,8 @@ ep3_eryndar_on_action = {
 
     random_events = {
         chance_to_happen = 33
-        100 = ep3_eryndar_events.1010 # eryndar enforces oaths
-        100 = ep3_eryndar_events.1011 # eryndar recruits Highguardians
+        100 = eryndar_events.1010 # eryndar enforces oaths
+        100 = eryndar_events.1011 # eryndar recruits Highguardians
     }
 }
 
@@ -77,4 +77,19 @@ on_yearly_elf_events = {
         # Varangian Guard
         400 = varangian.0001 # A Courtier wants to join the Varangian Guard
     }
+}
+
+on_yearly_thalanir_events = {
+    random_events = {
+        500 = thalanir_event.0001
+        500 = thalanir_event.0005
+        500 = thalanir_event.0010
+        500 = thalanir_event.0015
+        500 = thalanir_event.0020
+    }
+}
+
+on_yearly_random_pulse_eryndar = {
+    eryndar_on_action
+    delay = { days = { 25 44 } }
 }

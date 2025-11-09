@@ -1,0 +1,86 @@
+﻿hunt_entourage_base_set_weighting_value = {
+	if = {
+		limit = {
+			is_available_healthy_adult = yes
+			bannable_serving_diarch_trigger = no
+			OR = {
+				has_court_position = master_of_hunt_court_position
+				has_court_position = huntperson_camp_officer
+				has_court_position = bodyguard_court_position
+				has_court_position = akolouthos_court_position
+				has_court_position = eryndar_court_position
+				has_court_position = court_physician_court_position
+				has_any_good_relationship_with_character_trigger = { CHARACTER = scope:host }
+				has_trait = lifestyle_hunter
+			}
+			NAND = {
+				scope:special_option ?= flag:hunt_type_falconry
+				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			}
+		}
+		# Base
+		add = 50
+		add = ai_energy
+		add = ai_boldness
+		# We want to have MoH most of all.
+		if = {
+			limit = { has_court_position = master_of_hunt_court_position }
+			add = 100000
+		}
+		if = {
+			limit = { has_court_position = huntperson_camp_officer }
+			add = 100000
+		}
+		# We want bodyguards too.
+		if = {
+			limit = { has_court_position = bodyguard_court_position }
+			add = 50000
+		}
+		# And EP3 akolouthos
+		if = {
+			limit = { has_court_position = akolouthos_court_position }
+			add = 50000
+		}
+		# And EP3 eryndar
+		if = {
+			limit = { has_court_position = eryndar_court_position }
+			add = 50000
+		}
+		# We want doctors too.
+		if = {
+			limit = { has_court_position = court_physician_court_position }
+			add = 50000
+		}
+		# Adventurers bring their court.
+		if = {
+			limit = {
+				scope:host = { has_government = landless_adventurer_government }
+			}
+			add = 500
+		}
+		# We want friends too.
+		if = {
+			limit = {
+				has_any_good_relationship_with_character_trigger = { CHARACTER = scope:host }
+			}
+			add = 500
+		}
+		# Sex
+		if = {
+			limit = {
+				exists = scope:special_option
+				NOT = { scope:special_option = flag:hunt_type_falconry }
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+			divide = 2
+		}
+	}
+	if = {
+		limit = {
+			bannable_serving_diarch_trigger = yes
+		}
+		add = -1000
+	}
+}

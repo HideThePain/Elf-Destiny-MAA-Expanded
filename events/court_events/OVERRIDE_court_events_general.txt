@@ -1,0 +1,1143 @@
+﻿namespace = court
+
+##################################################
+# # RANGES
+# 0001 - 0099		Misc Events
+# 0100 - 0999 		James
+# 2001 - 2999		Ewan
+# 3000 - 4000		Bianca
+# 4001 - 5000		Isabella
+# 5001 - 5999		Linnea
+# 6000 - 6999		Claudia
+# 7000 - 8000		George
+# 8001 - 8999		Joe
+# 9000 - 9999		Oltner
+#
+##################################################
+
+
+
+##################################################
+# Example
+
+##################################################
+# 0001 - 0010	Example Event
+##################################################
+
+##################################################
+# Example Event
+# by Ewan Cowhig Croft
+# 0001 - 0010
+##################################################
+
+# Example court event for studying.
+#court.0001 = {
+#	# Court-type events only appear in the Royal Court view, and are optional to interact with.
+#	type = court_event
+#	# Desc and theming rules are as normal, but since there's no background, there's no need for background overrides.
+#	title = court.0001.t
+#	desc = court.0001.desc
+#	theme = court
+#	# Main portraits are unnecessary: we define this stuff via the court_scene block instead.
+#	# Secondary portraits may be used as usual.
+#	lower_left_portrait = scope:character_c
+#
+#	# Court events should be fired from one of their on_actions, but since this is an example, it's left orphaned.
+#	orphan = yes
+#
+#	# Here, we define how the event appears inside the court view.
+#	## This block exists in the root scope, so you can just define anyone you'd normally have access to/set up in the immediate block here.
+#	court_scene = {
+#		# Define which character will have the button for starting the event appear over the top of 'em.
+#		button_position_character = scope:character_a
+#		# Roles defined in \ck3\game\gfx\court_scene\character_roles\, if you want to change them or add new ones.
+#		roles = {
+#			# First, we take each scoped relevant scoped character.
+#			scope:character_a = {
+#				# Then we define their role, where they're positioned in the scene. The first character defines always takes the first slot and so on. Slot 1 and 2 look at each other. Slot 3 is beside Slot 2 and facing Slot 1 as well.
+#				group = event_group
+#				# Next, we select their animation override (if applicable: you can leave it to the generic default/role default if defined, though generally you'll want to define this).
+#
+#				# This can be a scripted animation block for animation selection based on triggers
+#				# scripted_animation = {
+#				# 	triggered_animation = {
+#				# 		trigger = {
+#				# 			scope:ruler = {
+#				# 				is_female = no
+#				# 			}
+#				# 		}
+#				#
+#				# 		both syntaxes are supported
+#				# 		animation = { rage anger sadness } # randomly chooses one of these animations
+#				# 		animation = sadness # selects just one animation
+#				# You can set a default animation if all triggers fail. Convention is to always have some always-valid trigger and not use this field if using triggered animations.
+#				animation = anger
+#			}
+#			scope:character_b = {
+#				group = event_group
+#				animation = rage
+#			}
+#			# Characters who are not physically present are referred to only via copy links or lower portraits, so we don't bother putting them here.
+#		}
+#	}
+#
+#	weight_multiplier = {
+#		base = 1
+#
+#		# Court weightings: plug in a court type that should see this event more often.
+#		ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_diplomatic }
+#	}
+#
+#	immediate = {
+#		# As with portraits, we do our general character setup stuff in this event.
+#		random_courtier_or_guest = { save_scope_as = character_a }
+#		random_courtier_or_guest = {
+#			limit = {
+#				this != scope:character_a
+#			}
+#			save_scope_as = character_b
+#		}
+#	}
+#
+#	# Court events, as with all events, require at least one option to display.
+#	option = {
+#		name = court.0001.a
+#	}
+#}
+
+
+
+##################################################
+# James
+
+##################################################
+# 0107			Court tutor reading a boring book to your ward
+# 0108			Copyright-friendly foreign Prince/Princess arrives in your court
+# 0109			Executioner multiclasses to physician
+# 0111			Intervention for your sex addiction
+# 0112			Executioner tries their hand at interior decoration
+##################################################
+
+
+#####################################
+# The Gallant Knight                #
+# by Linnéa Thimrén                 #
+#####################################
+
+scripted_trigger court_5060_knight_trigger = {
+    is_knight_of = root
+    basic_is_available_ai = yes
+    NOT = { has_character_flag = was_the_target_of_event_court_5060 }
+    exists = var:number_of_impressive_knight_things
+}
+
+#A knight has excelled during recent battles (injured or killed enemies) and you are expected to reward them
+court.5060 = {
+    type = court_event
+    title = court.5060.t
+    desc = court.5060.desc
+    theme = court
+
+    court_scene = {
+        button_position_character = scope:knight
+        roles = {
+            scope:knight = {
+                group = event_group
+                animation = personality_honorable
+            }
+        }
+    }
+
+    trigger = {
+        NOT = { has_character_flag = had_event_court_5060 }
+        age >= 10
+        has_variable_list = impressive_knights
+        any_in_list = {
+            variable = impressive_knights
+            court_5060_knight_trigger = yes
+            has_court_event_flag = no
+        }
+        any_held_title = {
+            title_tier = county
+            this != root.capital_county
+        }
+    }
+
+    weight_multiplier = {
+        base = 1
+        modifier = {
+            add = 0.5
+            any_in_list = {
+                variable = impressive_knights
+                court_5060_knight_trigger = yes
+                var:number_of_impressive_knight_things >= 2
+            }
+        }
+        modifier = {
+            add = 1
+            any_in_list = {
+                variable = impressive_knights
+                court_5060_knight_trigger = yes
+                var:number_of_impressive_knight_things >= 4
+            }
+        }
+
+        # Court weightings.
+        ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_warlike }
+    }
+
+    immediate = {
+        add_character_flag = {
+            flag = had_event_court_5060
+            years = 10
+        }
+        random_in_list = {
+            variable = impressive_knights
+            limit = {
+                court_5060_knight_trigger = yes
+            }
+            add_character_flag = {
+                flag = was_the_target_of_event_court_5060
+                years = 10
+            }
+
+            weight = {
+                base = 1
+                modifier = {
+                    is_acclaimed = yes
+                    add = 2
+                }
+                modifier = {
+                    add = {
+                        add = var:number_of_impressive_knight_things
+                        multiply = 2
+                    }
+                }
+            }
+            save_scope_as = knight
+            court_event_character_flag_effect = yes
+        }
+    }
+
+    option = { # Accolade
+        name = court.5060.c
+        trigger = {
+            scope:knight = {
+                is_acclaimed = yes
+            }
+        }
+        scope:knight = {
+            accolade_major_glory_gain_with_checks_effect = yes
+            add_opinion = {
+                target = root
+                modifier = friendliness_opinion
+                opinion = 20
+            }
+        }
+        ai_chance = {
+            base = 100
+            modifier = {
+                has_trait = gregarious
+                add = 25
+            }
+        }
+    }
+
+    option = { #Give minor title
+        trigger = {
+            OR = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = bodyguard_court_position
+                }
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = champion_court_position
+                }
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = akolouthos_court_position
+                }
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = eryndar_court_position
+                }
+            }
+        }
+        # employ them as champion or bodyguard
+        name = {
+            trigger = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = akolouthos_court_position
+                }
+            }
+            text = court.5060.d.akolouthos
+        }
+        name = {
+            trigger = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = eryndar_court_position
+                }
+            }
+            text = court.5060.d.eryndar
+        }
+        name = {
+            trigger = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = champion_court_position
+                }
+            }
+            text = court.5060.d.champion
+        }
+        name = {
+            trigger = {
+                NOT = {
+                    can_appoint_char_to_court_position = {
+                        CHAR = scope:knight
+                        COURT_POS = bodyguard_court_position
+                    }
+                }
+            }
+            text = court.5060.d.bodyguard
+        }
+
+        if = {
+            limit = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = akolouthos_court_position
+                }
+            }
+            employ_character_as_position_in_current_scope_court_effect = {
+                CHARACTER = scope:knight
+                POSITION = akolouthos
+            }
+        }
+        else_if = {
+            limit = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = eryndar_court_position
+                }
+            }
+            employ_character_as_position_in_current_scope_court_effect = {
+                CHARACTER = scope:knight
+                POSITION = eryndar
+            }
+        }
+        else_if = {
+            limit = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = champion_court_position
+                }
+            }
+            employ_character_as_position_in_current_scope_court_effect = {
+                CHARACTER = scope:knight
+                POSITION = champion
+            }
+        }
+        else_if = {
+            limit = {
+                can_appoint_char_to_court_position = {
+                    CHAR = scope:knight
+                    COURT_POS = bodyguard_court_position
+                }
+            }
+            employ_character_as_position_in_current_scope_court_effect = {
+                CHARACTER = scope:knight
+                POSITION = bodyguard
+            }
+        }
+        scope:knight = {
+            accolade_minor_glory_gain_with_checks_effect = yes
+        }
+        stress_impact = {
+            paranoid = medium_stress_impact_loss
+        }
+        ai_chance = {
+            base = 100
+            modifier = {
+                has_trait = paranoid
+                add = 50
+            }
+        }
+    }
+
+    option = { #Pat on the shoulder - opt out
+        name = court.5060.a
+        scope:knight = {
+            add_opinion = {
+                target = root
+                modifier = disappointed_opinion
+                opinion = -20
+            }
+        }
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = arrogant
+                add = 25
+            }
+            modifier = {
+                has_trait = vengeful
+                add = 25
+            }
+            modifier = {
+                has_trait = greedy
+                add = 25
+            }
+        }
+    }
+    after = {
+        scope:knight = {
+            clear_court_event_participation = yes
+        }
+    }
+}
+
+#########################
+# Underequipped			#
+# by Joe Parkin 		#
+#########################
+
+scripted_trigger court_8010_underequipped_trigger = {
+    is_available_healthy_ai_adult = yes
+    OR = {
+        NOT = {
+            any_character_artifact = { artifact_slot_type = primary_armament }
+        }
+        any_character_artifact = {
+            count = all
+            artifact_slot_type = primary_armament
+            OR = {
+                var:quality < 25
+                ep1_artifact_durability_lower_equal_percent_trigger = { PERCENT = 0.24 } # could be replaced by checking LOW_DURATION
+            }
+        }
+    }
+}
+
+court.8010 = {
+    type = court_event
+    title = court.8010.t
+    desc = {
+        desc = court.8010.desc.intro
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    scope:underequipped = {
+                        OR = {
+                            has_court_position = bodyguard_court_position
+                            has_court_position = akolouthos_court_position
+                            has_court_position = eryndar_court_position
+                        }
+                    }
+                }
+                desc = court.8010.desc.bodyguard
+            }
+            triggered_desc = {
+                trigger = {
+                    scope:underequipped = { has_court_position = champion_court_position }
+                }
+                desc = court.8010.desc.champion
+            }
+            desc = court.8010.desc.knight
+        }
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    scope:underequipped = {
+                        OR = {
+                            has_trait = brave
+                            has_trait = wrathful
+                            has_trait = arrogant
+                            has_trait = impatient
+                            has_trait = ambitious
+                        }
+                    }
+                }
+                desc = court.8010.desc.bold
+            }
+            desc = court.8010.desc.meek
+        }
+        desc = court.8010.desc.body
+        random_valid = {
+            triggered_desc = {
+                trigger = {
+                    scope:underequipped = {
+                        OR = {
+                            has_court_position = bodyguard_court_position
+                            has_court_position = akolouthos_court_position
+                            has_court_position = eryndar_court_position
+                            is_knight_of = root
+                        }
+                    }
+                }
+                desc = court.8010.desc.bodyguard_end
+            }
+            triggered_desc = {
+                trigger = {
+                    scope:underequipped = { has_court_position = champion_court_position }
+                }
+                desc = court.8010.desc.champion_end
+            }
+        }
+    }
+    theme = court
+    cooldown = { years = 10 }
+    court_scene = {
+        button_position_character = scope:underequipped
+        roles = {
+            scope:underequipped = {
+                group = event_group
+                animation = sadness
+            }
+            root = {
+                group = event_group
+                animation = idle
+            }
+        }
+    }
+
+    trigger = {
+        has_court_event_flag = no
+        OR = {
+            any_court_position_holder = {
+                type = bodyguard_court_position
+                court_8010_underequipped_trigger = yes
+                has_court_event_flag = no
+                location = root.location
+            }
+            any_court_position_holder = {
+                type = champion_court_position
+                court_8010_underequipped_trigger = yes
+                has_court_event_flag = no
+                location = root.location
+            }
+            any_court_position_holder = {
+                type = akolouthos_court_position
+                court_8010_underequipped_trigger = yes
+                has_court_event_flag = no
+                location = root.location
+            }
+            any_court_position_holder = {
+                type = eryndar_court_position
+                court_8010_underequipped_trigger = yes
+                has_court_event_flag = no
+                location = root.location
+            }
+            any_knight = {
+                court_8010_underequipped_trigger = yes
+                has_court_event_flag = no
+                is_landed = no
+                location = root.location
+            }
+        }
+    }
+
+    weight_multiplier = {
+        base = 1
+        # Court weightings.
+        ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_warlike }
+    }
+
+    immediate = {
+        court_event_character_flag_effect = yes
+        hidden_effect = {
+            random_list = {
+                4 = {
+                    trigger = {
+                        any_court_position_holder = {
+                            type = bodyguard_court_position
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                    }
+                    random_court_position_holder = {
+                        type = bodyguard_court_position
+                        limit = {
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                        save_scope_as = underequipped
+                        court_event_character_flag_effect = yes
+                    }
+                }
+                4 = {
+                    trigger = {
+                        any_court_position_holder = {
+                            type = champion_court_position
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                    }
+                    random_court_position_holder = {
+                        type = champion_court_position
+                        limit = {
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                        save_scope_as = underequipped
+                        court_event_character_flag_effect = yes
+                    }
+                }
+                8 = {
+                    trigger = {
+                        any_court_position_holder = {
+                            type = akolouthos_court_position
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                    }
+                    random_court_position_holder = {
+                        type = akolouthos_court_position
+                        limit = {
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                        save_scope_as = underequipped
+                        court_event_character_flag_effect = yes
+                    }
+                }
+                8 = {
+                    trigger = {
+                        any_court_position_holder = {
+                            type = eryndar_court_position
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                    }
+                    random_court_position_holder = {
+                        type = eryndar_court_position
+                        limit = {
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                        }
+                        save_scope_as = underequipped
+                        court_event_character_flag_effect = yes
+                    }
+                }
+                1 = {
+                    trigger = {
+                        any_knight = {
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                            is_landed = no
+                        }
+                    }
+                    random_knight = {
+                        limit = {
+                            court_8010_underequipped_trigger = yes
+                            location = root.location
+                            is_landed = no
+                        }
+                        save_scope_as = underequipped
+                        court_event_character_flag_effect = yes
+                    }
+                }
+            }
+        }
+        random_dummy_gender_effect = yes #To feed to the weapon effect since we don't have a creator
+        scope:underequipped = { set_signature_weapon_effect = yes } #To create an artifact of the "signature weapon" type
+        if = {
+            limit = {
+                any_character_artifact = {
+                    count > 1
+                    artifact_slot_type = primary_armament
+                }
+            }
+            ordered_character_artifact = {
+                limit = {
+                    is_equipped = no
+                    artifact_slot_type = primary_armament
+                }
+                order_by = {
+                    value = 0
+                    subtract = var:quality
+                }
+                save_scope_as = my_weapon
+            }
+        }
+    }
+
+    option = { # Have a sword made
+        name = court.8010.a
+        change_current_court_grandeur = medium_court_grandeur_gain
+        remove_short_term_gold = medium_gold_value
+        custom_tooltip = court.8010.a.tt
+        hidden_effect = {
+            scope:underequipped = {
+                if = {
+                    limit = { var:signature_weapon = flag:axe }
+                    create_artifact_weapon_effect = {
+                        OWNER = scope:underequipped
+                        CREATOR = scope:dummy_gender
+                        SET_WEAPON_TYPE = flag:artifact_weapon_type_axe
+                    }
+                }
+                else_if = {
+                    limit = { var:signature_weapon = flag:hammer }
+                    create_artifact_weapon_effect = {
+                        OWNER = scope:underequipped
+                        CREATOR = scope:dummy_gender
+                        SET_WEAPON_TYPE = flag:artifact_weapon_type_hammer
+                    }
+                }
+                else_if = {
+                    limit = { var:signature_weapon = flag:spear }
+                    create_artifact_weapon_effect = {
+                        OWNER = scope:underequipped
+                        CREATOR = scope:dummy_gender
+                        SET_WEAPON_TYPE = flag:artifact_weapon_type_spear
+                    }
+                }
+                else_if = {
+                    limit = { var:signature_weapon = flag:mace }
+                    create_artifact_weapon_effect = {
+                        OWNER = scope:underequipped
+                        CREATOR = scope:dummy_gender
+                        SET_WEAPON_TYPE = flag:artifact_weapon_type_mace
+                    }
+                }
+                else = { #For swords, but also as fallback - no daggers here
+                    create_artifact_weapon_effect = {
+                        OWNER = scope:underequipped
+                        CREATOR = scope:dummy_gender
+                        SET_WEAPON_TYPE = flag:artifact_weapon_type_sword
+                    }
+                }
+            }
+            if = {
+                limit = { exists = scope:newly_created_artifact } # To avoid errors
+                send_interface_toast = {
+                    title = court.8010.a.equipped_tt
+                    left_icon = scope:underequipped
+                    right_icon = scope:newly_created_artifact
+                    scope:newly_created_artifact = {
+                        set_owner = {
+                            target = scope:underequipped
+                            history = {
+                                location = root.capital_province
+                                actor = root
+                                recipient = scope:underequipped
+                                type = given
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        scope:underequipped = {
+            add_opinion = {
+                target = root
+                modifier = grateful_opinion
+                opinion = 20
+            }
+        }
+        stress_impact = {
+            greedy = major_stress_impact_gain # It's too expensive
+            callous = medium_stress_impact_gain # So?
+            arrogant = medium_stress_impact_gain
+            paranoid = medium_stress_impact_gain
+            fickle = minor_stress_impact_gain
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_greed = -1
+                ai_compassion = 1
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = greedy
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = callous
+            }
+        }
+    }
+
+    option = { # Give lesser owned sword
+        name = court.8010.c
+        trigger = { exists = scope:my_weapon }
+        add_prestige = major_prestige_gain
+        scope:underequipped = {
+            add_opinion = {
+                target = root
+                modifier = grateful_opinion
+                opinion = 20
+            }
+        }
+        send_interface_toast = {
+            title = court.8010.c.equipped_tt
+            left_icon = scope:underequipped
+            right_icon = scope:my_weapon
+            scope:my_weapon = {
+                set_owner = {
+                    target = scope:underequipped
+                    history = {
+                        location = root.capital_province
+                        actor = root
+                        recipient = scope:underequipped
+                        type = given
+                    }
+                }
+            }
+        }
+        stress_impact = {
+            greedy = major_stress_impact_gain # My precious?!
+            arrogant = medium_stress_impact_gain # My swords are too strong for you traveler
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_greed = -2
+                ai_compassion = 1
+            }
+            modifier = {	#Weight down for stress.
+                add = -30
+                has_trait = greedy
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = arrogant
+            }
+        }
+    }
+
+    option = { # Give a sword from the armory (opt out)
+        name = court.8010.d
+        change_current_court_grandeur = minor_court_grandeur_loss
+        custom_tooltip = court.8010.d.tt
+        scope:underequipped = {
+            if = {
+                limit = {
+                    any_character_artifact = {
+                        is_equipped = yes
+                        artifact_slot_type = primary_armament
+                        ep1_artifact_durability_lower_equal_percent_trigger = { PERCENT = 0.99 }
+                    }
+                }
+                random_character_artifact = {
+                    limit = {
+                        is_equipped = yes
+                        artifact_slot_type = primary_armament
+                        ep1_artifact_durability_lower_equal_percent_trigger = { PERCENT = 0.49 }
+                    }
+                    add_durability = {
+                        value = artifact_max_durability
+                        multiply = 0.25
+                    }
+                }
+            }
+        }
+        stress_impact = {
+            base = minor_stress_impact_loss
+        }
+        ai_chance = {
+            base = 50
+            ai_value_modifier = {
+                ai_greed = 2
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = generous
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = paranoid
+            }
+
+        }
+    }
+
+    after = {
+        clear_court_event_participation = yes
+        scope:underequipped = {
+            clear_court_event_participation = yes
+        }
+    }
+}
+
+court.8160 = {
+    type = court_event
+    title = court.8160.t
+    desc = {
+        desc = court.8160.desc.intro
+    }
+    theme = court
+    cooldown = { years = 10 }
+    court_scene = {
+        button_position_character = scope:knight_1
+        roles = {
+            scope:knight_1 = {
+                group = event_group
+                animation = rage
+            }
+            scope:knight_2 = {
+                group = event_group
+                animation = anger
+            }
+        }
+    }
+
+    trigger = {
+        any_knight = {
+            court_8160_knight_trigger = yes
+            has_court_event_flag = no
+            save_temporary_scope_as = temp_knight
+        }
+        any_knight = {
+            court_8160_knight_trigger = yes
+            has_court_event_flag = no
+            NOR = {
+                this = scope:temp_knight
+                is_close_or_extended_family_of = scope:temp_knight
+                has_relation_friend = scope:temp_knight
+            }
+        }
+    }
+
+    weight_multiplier = {
+        base = 1
+        # Court weightings.
+        ep1_weight_up_for_court_type_modifier = { COURT_TYPE = court_warlike }
+    }
+
+    immediate = {
+        every_knight = {
+            limit = { court_8160_knight_trigger = yes }
+            add_to_list = knight_list
+        }
+        ordered_in_list = {
+            list = knight_list
+            order_by = prowess
+            save_scope_as = knight_1
+            court_event_character_flag_effect = yes
+            assign_quirk_effect = yes
+        }
+        ordered_in_list = {
+            list = knight_list
+            limit = {
+                NOR = {
+                    this = scope:knight_1
+                    is_close_or_extended_family_of = scope:knight_1
+                    has_relation_friend = scope:knight_1
+                }
+                court_8160_knight_trigger = yes
+            }
+            order_by = prowess
+            save_scope_as = knight_2
+            court_event_character_flag_effect = yes
+            assign_quirk_effect = yes
+            if = {
+                limit = {
+                    NOT = { has_relation_rival = scope:knight_1 }
+                }
+                set_relation_rival = {
+                    target = scope:knight_1
+                    reason = rival_age_old_rivalry
+                }
+            }
+        }
+    }
+
+    option = { # employ them both
+        name = court.8160.a
+        trigger = {
+            OR = {
+                any_court_position_holder = {
+                    type = bodyguard_court_position
+                    count < 1
+                }
+                AND = {
+                    any_court_position_holder = {
+                        type = bodyguard_court_position
+                        count < 2
+                    }
+                    NOT = { employs_court_position = champion_court_position }
+                }
+                AND = {
+                    any_court_position_holder = {
+                        type = bodyguard_court_position
+                        count < 2
+                    }
+                    NOT = { employs_court_position = akolouthos_court_position }
+                    can_employ_court_position_type = akolouthos_court_position
+                }
+                AND = {
+                    any_court_position_holder = {
+                        type = bodyguard_court_position
+                        count < 2
+                    }
+                    NOT = { employs_court_position = eryndar_court_position }
+                    can_employ_court_position_type = eryndar_court_position
+                }
+            }
+        }
+        court_position_grant_effect = { POS = bodyguard CANDIDATE = scope:knight_1 EMPLOYER = root }
+        if = {
+            limit = {
+                any_court_position_holder = {
+                    type = bodyguard_court_position
+                    count = 1
+                }
+            }
+            court_position_grant_effect = { POS = bodyguard CANDIDATE = scope:knight_2 EMPLOYER = root }
+        }
+        else_if = {
+            limit = {
+                NOT = { employs_court_position = champion_court_position }
+            }
+            court_position_grant_effect = { POS = champion CANDIDATE = scope:knight_2 EMPLOYER = root }
+        }
+        else_if = {
+			limit = {
+                NOT = { employs_court_position = akolouthos_court_position }
+            }
+            court_position_grant_effect = { POS = akolouthos CANDIDATE = scope:knight_2 EMPLOYER = root }
+        }
+		else = {
+			court_position_grant_effect = { POS = eryndar CANDIDATE = scope:knight_2 EMPLOYER = root }
+		}
+        custom_tooltip = court.8160.a.tt
+        scope:knight_1 = { add_character_flag = competing_knight_position }
+        scope:knight_2 = { add_character_flag = competing_knight_position }
+        stress_impact = {
+            wrathful = medium_stress_impact_gain
+            fickle = medium_stress_impact_gain
+            arbitrary = medium_stress_impact_gain
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_compassion = 0.5
+                ai_sociability = 0.5
+            }
+        }
+    }
+
+
+    option = { # Make it a safe duel
+        name = court.8160.b
+        change_current_court_grandeur = minor_court_grandeur_gain
+        show_as_tooltip = {
+            random_list = {
+                2 = {
+                    modifier = { factor = scope:knight_1.prowess }
+                    show_chance = no
+                    desc = court.8160.a.tt_knight_1
+                    scope:knight_1 = { add_prestige = minor_prestige_gain }
+                    scope:knight_2 = {
+                        increase_wounds_effect = { REASON = duel }
+                    }
+                }
+                2 = {
+                    modifier = { factor = scope:knight_2.prowess }
+                    show_chance = no
+                    desc = court.8160.a.tt_knight_2
+                    scope:knight_2 = { add_prestige = minor_prestige_gain }
+                    scope:knight_1 = {
+                        increase_wounds_effect = { REASON = duel }
+                    }
+                }
+            }
+        }
+        configure_start_single_combat_effect = {
+            SC_INITIATOR = scope:knight_2
+            SC_ATTACKER = scope:knight_2
+            SC_DEFENDER = scope:knight_1
+            FATALITY = no
+            FIXED = no
+            LOCALE = throne_room
+            OUTPUT_EVENT = court.8162
+            INVALIDATION_EVENT = fp1_tbc.0102
+        }
+        stress_impact = {
+            craven = medium_stress_impact_gain
+            deceitful = medium_stress_impact_gain
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_honor = 1
+            }
+        }
+    }
+
+    option = { # Do not allow duel
+        name = court.8160.d
+        add_character_modifier = {
+            modifier = fostering_competitiveness_modifier
+            years = 10
+        }
+        reverse_add_opinion = {
+            target = scope:knight_1
+            modifier = disappointed_opinion
+            opinion = -5
+        }
+        reverse_add_opinion = {
+            target = scope:knight_2
+            modifier = disappointed_opinion
+            opinion = -5
+        }
+        stress_impact = {
+            arbitrary = medium_stress_impact_gain
+            wrathful = medium_stress_impact_gain
+            vengeful = medium_stress_impact_gain
+            fickle = medium_stress_impact_gain
+        }
+        ai_chance = {
+            base = 100
+            ai_value_modifier = {
+                ai_honor = 0.5
+                ai_rationality = 1
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = arbitrary
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = wrathful
+            }
+            modifier = {	#Weight down for stress.
+                add = -15
+                has_trait = vengeful
+            }
+        }
+    }
+    after = {
+        scope:knight_1 = {
+            clear_court_event_participation = yes
+        }
+        scope:knight_2 = {
+            clear_court_event_participation = yes
+        }
+    }
+}
+
+court.8162 = {
+    hidden = yes
+
+    immediate = {
+        scope:sc_victor.liege = {
+            send_interface_toast = {
+                title = hold_court.8031.t
+                left_icon = scope:sc_victor
+                right_icon = scope:sc_loser
+                scope:sc_victor = {
+                    add_prestige = minor_prestige_gain
+                    custom_tooltip = court.8162.tt
+                    add_character_flag = best_knight_position
+                }
+            }
+        }
+    }
+}

@@ -115,7 +115,7 @@ elven_swordguard = { # elven greatswords? hell yeah
 }
 
 
-highguard_of_valor = {
+highguard = {
     type = heavy_infantry
     stack = 50
 
@@ -139,7 +139,7 @@ highguard_of_valor = {
     }
 
     can_recruit = {
-        culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        culture = { has_cultural_parameter = unlock_maa_highguard }
         exists = scope:title
         scope:title = {
             has_variable = founded_highguardian_guard
@@ -153,7 +153,7 @@ highguard_of_valor = {
     }
 
     access_through_subject = {
-        culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        culture = { has_cultural_parameter = unlock_maa_highguard }
         is_any_elf_type = yes
     }
 
@@ -163,7 +163,7 @@ highguard_of_valor = {
     provision_cost = @provisions_cost_infantry_bankrupting
 
     ai_quality = { value = culture_ai_weight_heavy_infantry }
-    icon = highguard_of_valor
+    icon = highguard
 }
 
 exalted_bear_highriders = {

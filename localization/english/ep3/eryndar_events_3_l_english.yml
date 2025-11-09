@@ -1,9 +1,36 @@
 ﻿l_english:
 
-ep3_eryndar_events.1000: "Eryndar Steels the Varangians"
-ep3_eryndar_events.1000_varangian_notification_tooltip: "[eryndar.GetName] honors a redoubtable Varangos guardsman with [trait_getter.GetHerHis] ruby earring and dragon-emblazoned armor."
-ep3_eryndar_events.1000_loyal_notification_tooltip: "[eryndar.GetName] renews the Varangian oaths of loyalty unto death."
+eryndar_events.1000: "Eryndar Steels the Varangians"
+eryndar_events.1000_varangian_notification_tooltip: "[eryndar.GetName] honors a redoubtable Varangos guardsman with [trait_getter.GetHerHis] ruby earring and dragon-emblazoned armor."
+eryndar_events.1000_loyal_notification_tooltip: "[eryndar.GetName] renews the Varangian oaths of loyalty unto death."
 eryndar_effect_tooltip: "From [GetCourtPositionType('eryndar_court_position').GetName()] [court_position|E]"
 
-ep3_eryndar_events.1001: "Eryndar Recruits Varangian"
-ep3_eryndar_events.1001_notification_tooltip: "[eryndar.GetName] presents a worthy warrior, one who has traveled far to serve the [ROOT.Char.GetTitleAsNameNoTooltip]."
+eryndar_events.1001: "Eryndar Recruits Varangian"
+eryndar_events.1001_notification_tooltip: "[eryndar.GetName] presents a worthy warrior, one who has traveled far to serve the [ROOT.Char.GetTitleAsNameNoTooltip]."
+
+court.5060.d.eryndar: "[knight.GetSheHe|U] will serve as my $eryndar_court_position$!"
+eryndar_court_position:0 "Akolouthos"
+eryndar_employer_custom_effect_description: "$BULLET$Increases [GetTrait('varangian').GetName( GetNullCharacter )] [GetCourtPositionType('bodyguard_court_position').GetName()] [aptitude|E] (based on [aptitude|E])\n$BULLET$More eligible [courtiers|E] gain the [GetTrait('varangian').GetName( GetNullCharacter )] and [GetTrait('loyal').GetName( GetNullCharacter )] [traits|E]\n$BULLET$More Varangians will appear\n@warning_icon! #X The Varangians will claim some [gold_i] Gold after the Basileus's death.#!"
+eryndar_court_position_desc: "The $eryndar_court_position$ commands much of the Byzantine imperial guard, including the famed Varangians, who are most willing to die honorably for their master."
+eryndar_founded_varangians_trigger_tt: "You have founded the Varangians"
+court_position_eryndar_bonus: "[GetCourtPositionType('eryndar_court_position').GetName()]"
+
+relation_eryndar_male: "eryndar"
+relation_eryndar_female: "eryndar"
+
+relation_eryndar_male_possessive: "eryndar'"
+relation_eryndar_female_possessive: "eryndar'"
+
+culture_parameter_unlock_eryndar: "Can appoint the [GetCourtPositionType('eryndar_court_position').GetName()] [court_position|E], when the Highguard has been founded."
+
+
+unlocked_highguard_desc: "Unlocks the [court_position|E] $eryndar_court_position$ and the [GetMaA('highguards').GetName] [men_at_arms|E] for [GetTitleByKey('e_byzantium').GetName]."
+unlocked_highguard_desc_tt: "Highguard Founded"
+
+court_position_desc_eryndar: "leading the imperial guard, particularly the imposing Highguardians."
+court_position_eryndar: "[GetCourtPositionType('eryndar_court_position').GetName()]"
+
+eryndar_aptitude_tooltip: "[candidate.GetHerHisMy|U] [aptitude|E] is [candidate.GetCourtPositionAptitude( GetCourtPositionType( 'eryndar_court_position' ) )]"
+eryndar_old_holder_aptitude_tooltip: "[candidate.GetHerHisMy|U] [aptitude|E] is [candidate.GetCourtPositionAptitude( GetCourtPositionType( 'eryndar_court_position' ) )] #weak ([old_holder.GetFirstName] [old_holder.GetCourtPositionAptitude( GetCourtPositionType( 'eryndar_court_position' ) )])#!"
+eryndar_salary_tooltip: "[GetCourtPositionType( 'eryndar_court_position' ).GetName()] has a monthly salary of [gold_i][SCOPE.ScriptValue('medium_court_position_salary')|2]"
+

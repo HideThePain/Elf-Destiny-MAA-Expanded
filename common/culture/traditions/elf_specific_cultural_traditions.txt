@@ -793,6 +793,7 @@ tradition_romaviri_strategy = {
         children_can_be_born_in_the_purple = yes
         hosts_chariot_races = yes
         holds_triumphs = yes
+        unlock_eryndar = yes
     }
 
     character_modifier = {
@@ -921,7 +922,7 @@ tradition_romaviri_bureaucracy = {
     }
 
 	parameters = {
-        unlock_maa_highguard_of_valor = yes
+        unlock_maa_highguard = yes
         frontier_themes_borrow_neighbor_troops = yes
         reduced_bodyguard_aptitude = yes
         can_blind_prisoners = yes

@@ -1,9 +1,9 @@
-send_to_highguard_of_valor_interaction = {
+send_to_highguard_interaction = {
 	category = interaction_category_friendly
 	interface_priority = 60
-	icon = send_to_highguard_of_valor_interaction
+	icon = send_to_highguard_interaction
 
-	desc = send_to_highguard_of_valor_interaction_desc
+	desc = send_to_highguard_interaction_desc
 	use_diplomatic_range = no
 	common_interaction = yes
 	
@@ -65,7 +65,7 @@ send_to_highguard_of_valor_interaction = {
 						ARMY_OWNER = title:e_byzantium.holder
 					}
 				}
-				text = "not_allowed_in_highguard_of_valor"
+				text = "not_allowed_in_highguard"
 			}
 		}
 		trigger_if = {
@@ -104,12 +104,12 @@ send_to_highguard_of_valor_interaction = {
 			hidden_effect = {
 				send_interface_toast = {
 					type = event_toast_effect_neutral
-					title = send_to_highguard_of_valor_interaction_toast
+					title = send_to_highguard_interaction_toast
 
 					left_icon = scope:recipient					
 					right_icon = scope:emperor
 					
-					custom_tooltip = send_to_highguard_of_valor_interaction_toast_desc
+					custom_tooltip = send_to_highguard_interaction_toast_desc
 				}
 			}
 		}
@@ -124,7 +124,7 @@ send_to_highguard_of_valor_interaction = {
 				visit_court_of = scope:emperor
 				add_trait = highguardian
 				custom_description_no_bullet = {
-					text = send_to_highguard_of_valor_interaction_effect
+					text = send_to_highguard_interaction_effect
 				}
 			}
 		}

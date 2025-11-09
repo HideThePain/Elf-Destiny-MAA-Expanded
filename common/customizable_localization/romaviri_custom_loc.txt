@@ -241,3 +241,497 @@
 
 
 }
+
+GetTargetCourtPosition = {
+	type = character
+
+	text = {
+		trigger = { var:target_court_position ?= flag:royal_architect }
+		localization_key = court_position_architect
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:seneschal }
+		localization_key = court_position_seneschal
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_tutor }
+		localization_key = court_position_tutor
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:high_almoner }
+		localization_key = court_position_almoner
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_physician }
+		localization_key = court_position_physician
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:antiquarian }
+		localization_key = court_position_antiquarian
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:master_of_horse }
+		localization_key = court_position_horse
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:bodyguard }
+		localization_key = court_position_bodyguard
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:champion }
+		localization_key = court_position_champion
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:master_of_hunt }
+		localization_key = court_position_hunt
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_poet }
+		localization_key = court_position_poet
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_musician }
+		localization_key = court_position_musician
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:cupbearer }
+		localization_key = court_position_cupbearer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:lady_in_waiting }
+		localization_key = court_position_lady
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:chief_eunuch }
+		localization_key = court_position_eunuch
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_gardener }
+		localization_key = court_position_gardener
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_artificer }
+		localization_key = court_position_artificer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:cultural_emissary }
+		localization_key = court_position_emissary
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:chief_qadi }
+		localization_key = court_position_qadi
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:garuda }
+		localization_key = court_position_garuda
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:keeper_of_swans }
+		localization_key = court_position_keeper_of_swans
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:travel_leader }
+		localization_key = court_position_travel_leader
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:eryndar }
+		localization_key = court_position_eryndar
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:chronicler }
+		localization_key = court_position_chronicler
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:charioteer }
+		localization_key = court_position_charioteer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:bookmaker }
+		localization_key = court_position_bookmaker
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:executioner }
+		localization_key = court_position_executioner
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:food_taster }
+		localization_key = court_position_food_taster
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_jester }
+		localization_key = court_position_court_jester
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_astrologer }
+		localization_key = court_position_court_astrologer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:wet_nurse }
+		localization_key = court_position_wet_nurse
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:cave_hermit }
+		localization_key = court_position_cave_hermit
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:master_assassin }
+		localization_key = court_position_master_assassin
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_scholar }
+		localization_key = court_position_court_scholar
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:boyan }
+		localization_key = court_position_boyan
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:siege_engineer }
+		localization_key = court_position_siege_engineer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:yurtchi }
+		localization_key = court_position_yurtchi
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:cherbi }
+		localization_key = court_position_cherbi
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:yeke_jarquchi }
+		localization_key = court_position_yeke_jarquchi
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:foreign_emissary }
+		localization_key = court_position_foreign_emissary
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:keeper_of_the_horses }
+		localization_key = court_position_keeper_of_the_horses
+	}
+}
+
+GetTargetCourtPositionDesc = {
+	type = character
+
+	text = {
+		trigger = { var:target_court_position = flag:royal_architect }
+		localization_key = court_position_desc_architect
+	}
+	text = {
+		trigger = { var:target_court_position = flag:seneschal }
+		localization_key = court_position_desc_seneschal
+	}
+	text = {
+		trigger = { var:target_court_position = flag:court_tutor }
+		localization_key = court_position_desc_tutor
+	}
+	text = {
+		trigger = { var:target_court_position = flag:high_almoner }
+		localization_key = court_position_desc_almoner
+	}
+	text = {
+		trigger = { var:target_court_position = flag:court_physician }
+		localization_key = court_position_desc_physician
+	}
+	text = {
+		trigger = { var:target_court_position = flag:antiquarian }
+		localization_key = court_position_desc_antiquarian
+	}
+	text = {
+		trigger = { var:target_court_position = flag:master_of_horse }
+		localization_key = court_position_desc_horse
+	}
+	text = {
+		trigger = { var:target_court_position = flag:bodyguard }
+		localization_key = court_position_desc_bodyguard
+	}
+	text = {
+		trigger = { var:target_court_position = flag:champion }
+		localization_key = court_position_desc_champion
+	}
+	text = {
+		trigger = { var:target_court_position = flag:master_of_hunt }
+		localization_key = court_position_desc_hunt
+	}
+	text = {
+		trigger = { var:target_court_position = flag:court_poet }
+		localization_key = court_position_desc_poet
+	}
+	text = {
+		trigger = { var:target_court_position = flag:court_musician }
+		localization_key = court_position_desc_musician
+	}
+	text = {
+		trigger = { var:target_court_position = flag:cupbearer }
+		localization_key = court_position_desc_cupbearer
+	}
+	text = {
+		trigger = { var:target_court_position = flag:lady_in_waiting }
+		localization_key = court_position_desc_lady
+	}
+	text = {
+		trigger = { var:target_court_position = flag:chief_eunuch }
+		localization_key = court_position_desc_eunuch
+	}
+	text = {
+		trigger = { var:target_court_position = flag:court_gardener }
+		localization_key = court_position_desc_gardener
+	}
+	text = {
+		trigger = { var:target_court_position = flag:court_artificer }
+		localization_key = court_position_desc_artificer
+	}
+	text = {
+		trigger = { var:target_court_position = flag:cultural_emissary }
+		localization_key = court_position_desc_emissary
+	}
+	text = {
+		trigger = { var:target_court_position = flag:chief_qadi }
+		localization_key = court_position_desc_qadi
+	}
+	text = {
+		trigger = { var:target_court_position = flag:garuda }
+		localization_key = court_position_desc_garuda
+	}
+	text = {
+		trigger = { var:target_court_position = flag:keeper_of_swans }
+		localization_key = court_position_desc_keeper_of_swans
+	}
+	text = {
+		trigger = { var:target_court_position = flag:travel_leader }
+		localization_key = court_position_desc_travel_leader
+	}
+	text = {
+		trigger = { var:target_court_position = flag:akolouthos }
+		localization_key = court_position_desc_akolouthos
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:eryndar }
+		localization_key = court_position_desc_eryndar
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:chronicler }
+		localization_key = court_position_desc_chronicler
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:charioteer }
+		localization_key = court_position_desc_charioteer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:bookmaker }
+		localization_key = court_position_desc_bookmaker
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:executioner }
+		localization_key = court_position_desc_executioner
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:food_taster }
+		localization_key = court_position_desc_food_taster
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_jester }
+		localization_key = court_position_desc_court_jester
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_astrologer }
+		localization_key = court_position_desc_court_astrologer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:wet_nurse }
+		localization_key = court_position_desc_wet_nurse
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:cave_hermit }
+		localization_key = court_position_desc_cave_hermit
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:master_assassin }
+		localization_key = court_position_desc_master_assassin
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:court_scholar }
+		localization_key = court_position_desc_court_scholar
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:boyan }
+		localization_key = court_position_desc_boyan
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:siege_engineer }
+		localization_key = court_position_desc_siege_engineer
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:yurtchi }
+		localization_key = court_position_desc_yurtchi
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:cherbi }
+		localization_key = court_position_desc_cherbi
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:yeke_jarquchi }
+		localization_key = court_position_desc_yeke_jarquchi
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:foreign_emissary }
+		localization_key = court_position_desc_foreign_emissary
+	}
+	text = {
+		trigger = { var:target_court_position ?= flag:keeper_of_the_horses }
+		localization_key = court_position_desc_keeper_of_the_horses
+	}
+}
+
+GetCourtPositionSubject = {
+	type = character
+	random_valid = yes
+
+	text = {
+		trigger = { has_court_position = champion_court_position }
+		localization_key = court_position_subject_swords
+	}
+	text = {
+		trigger = { has_court_position = garuda_court_position }
+		localization_key = court_position_subject_honor
+	}
+	text = {
+		trigger = { has_court_position = bodyguard_court_position }
+		localization_key = court_position_subject_patrols
+	}
+	text = {
+		trigger = { has_court_position = akolouthos_court_position }
+		localization_key = court_position_subject_raiding
+	}
+	text = {
+		trigger = { has_court_position = eryndar_court_position }
+		localization_key = court_position_subject_raiding
+	}
+	text = {
+		trigger = { has_court_position = master_assassin_court_position }
+		localization_key = court_position_subject_daggers
+	}
+	text = {
+		trigger = { has_court_position = court_gardener_court_position }
+		localization_key = court_position_subject_flowers
+	}
+	text = {
+		trigger = { has_court_position = court_physician_court_position }
+		localization_key = court_position_subject_poultices
+	}
+	text = {
+		trigger = { has_court_position = court_artificer_court_position }
+		localization_key = court_position_subject_anvils
+	}
+	text = {
+		trigger = { has_court_position = antiquarian_court_position }
+		localization_key = court_position_subject_relics
+	}
+	text = {
+		trigger = { has_court_position = court_poet_court_position }
+		localization_key = court_position_subject_rhyming
+	}
+	text = {
+		trigger = { has_court_position = court_scholar_court_position }
+		localization_key = court_position_subject_astrology
+	}
+	text = {
+		trigger = { has_court_position = chronicler_court_position}
+		localization_key = court_position_subject_metaphors
+	}
+	text = {
+		trigger = { has_court_position = cultural_emissary_court_position }
+		localization_key = court_position_subject_delegations
+	}
+	text = {
+		trigger = { has_court_position = executioner_court_position }
+		localization_key = court_position_subject_axes
+	}
+	text = {
+		trigger = { has_court_position = keeper_of_swans_court_position }
+		localization_key = court_position_subject_waterfowl
+	}
+	text = {
+		trigger = { has_court_position = travel_leader_court_position }
+		localization_key = court_position_subject_caravans
+	}
+	text = {
+		trigger = { has_court_position = wet_nurse_court_position }
+		localization_key = court_position_subject_cribs
+	}
+	text = {
+		trigger = { 
+			OR = {
+				has_court_position = court_tutor_court_position 
+				has_court_position = court_guru_court_position 
+			}
+		}
+		localization_key = court_position_subject_teaching
+	}
+	text = {
+		trigger = { has_court_position = food_taster_court_position }
+		localization_key = court_position_subject_poisons
+	}
+	text = {
+		trigger = { has_court_position = master_of_hunt_court_position }
+		localization_key = court_position_subject_archery
+	}
+	text = {
+		trigger = { has_court_position = royal_architect_court_position }
+		localization_key = court_position_subject_archways
+	}
+	text = {
+		trigger = { has_court_position = high_almoner_court_position }
+		localization_key = court_position_subject_poor_houses
+	}
+	text = {
+		trigger = { has_court_position = seneschal_court_position }
+		localization_key = court_position_subject_sculleries
+	}
+	text = {
+		trigger = { has_court_position = cupbearer_court_position }
+		localization_key = court_position_subject_goblets
+	}
+	text = {
+		trigger = { has_court_position = chief_eunuch_court_position }
+		localization_key = court_position_subject_discretion
+	}
+	text = {
+		trigger = { has_court_position = court_jester_court_position }
+		localization_key = court_position_subject_jokes
+	}
+	text = {
+		trigger = { has_court_position = court_musician_court_position }
+		localization_key = court_position_subject_melody
+	}
+	text = {
+		trigger = { has_court_position = cave_hermit_court_position }
+		localization_key = court_position_subject_isolation
+	}
+	text = {
+		trigger = { has_court_position = master_of_horse_court_position }
+		localization_key = court_position_subject_saddles
+	}
+	text = {
+		trigger = { has_court_position = lady_in_waiting_court_position }
+		localization_key = court_position_subject_etiquette
+	}
+	text = {
+		trigger = { has_court_position = chief_qadi_court_position }
+		localization_key = court_position_subject_statutes
+	}
+	text = {
+		trigger = { has_court_position = charioteer_court_position }
+		localization_key = court_position_subject_race_horses
+	}
+	text = {
+		trigger = { has_court_position = bookmaker_court_position }
+		localization_key = court_position_subject_betting_odds
+	}
+	text = { 
+		trigger = { always = no }
+		fallback = yes
+		localization_key = court_position_subject_work
+	}
+}

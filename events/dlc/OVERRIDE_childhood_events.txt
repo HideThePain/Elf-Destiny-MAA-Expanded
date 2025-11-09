@@ -1,0 +1,257 @@
+﻿namespace = childhood
+
+# You have a bully... and a bodyguard!
+childhood.7400 = {
+    type = character_event
+    title = childhood.7400.t
+    desc = {
+        desc = childhood.7400.desc
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    father ?= {
+                        is_alive = no
+                    }
+                    NOT = {
+                        scope:bully = {
+                            father ?= root.father
+                        }
+                    }
+                }
+                desc = childhood.7400_father_dead
+            }
+            triggered_desc = {
+                trigger = {
+                    mother ?= {
+                        is_alive = no
+                    }
+                    NOT = {
+                        scope:bully = {
+                            mother ?= root.mother
+                        }
+                    }
+                }
+                desc = childhood.7400_mother_dead
+            }
+            desc = childhood.7400_none_dead
+        }
+        desc = childhood.7400.desc_2
+    }
+
+    theme = unfriendly
+    override_background = { reference = courtyard }
+    left_portrait = {
+        character = scope:bodyguard
+        animation = marshal
+    }
+    right_portrait = {
+        character = scope:bully
+        animation = shock
+    }
+
+    cooldown = { years = 5 }
+
+    trigger = {
+        has_dlc = "Friends and Foes"
+        is_available_child = yes
+        age >= 6
+        OR = {
+            AND = {
+                employs_court_position = bodyguard_court_position
+                any_court_position_holder = {
+                    type = bodyguard_court_position
+                    is_available = yes
+                }
+            }
+            AND = {
+                employs_court_position = akolouthos_court_position
+                any_court_position_holder = {
+                    type = akolouthos_court_position
+                    is_available = yes
+                }
+            }
+            AND = {
+                employs_court_position = eryndar_court_position
+                any_court_position_holder = {
+                    type = eryndar_court_position
+                    is_available = yes
+                }
+            }
+        }
+        any_relation = {
+            type = bully
+            is_available_ai_child = yes
+        }
+    }
+
+    immediate = {
+        if = {
+            limit = {
+                employs_court_position = bodyguard_court_position
+            }
+            random_court_position_holder = {
+                type = bodyguard_court_position
+                limit = {
+                    is_available = yes
+                }
+                save_scope_as = bodyguard
+            }
+        }
+        else = {
+            random_court_position_holder = {
+				OR = {
+					type = eryndar_court_position
+					type = akolouthos_court_position
+				}
+                limit = {
+                    is_available = yes
+                }
+                save_scope_as = bodyguard
+            }
+        }
+
+        random_relation = {
+            type = bully
+            limit = {
+                is_available_ai_child = yes
+            }
+            save_scope_as = bully
+        }
+    }
+
+    option = { # Threaten for a hook
+        name = childhood.7400.a
+
+        trigger = {
+            NOT = {
+                has_hook = scope:bully
+            }
+        }
+
+        add_hook = {
+            target = scope:bully
+            type = threat_hook
+        }
+
+        random = {
+            chance = 25
+            send_interface_toast = {
+                title = bully_stops
+                left_icon = scope:bully
+                remove_relation_bully = scope:bully
+            }
+        }
+
+        stress_impact = {
+            forgiving = medium_stress_impact_gain
+            honest = minor_stress_impact_gain
+            compassionate = minor_stress_impact_gain
+            content = minor_stress_impact_gain
+            charming = minor_stress_impact_gain
+        }
+        ai_chance = {
+            base = 100
+            modifier = {
+                factor = 0
+                OR = {
+                    has_trait = honest
+                    has_trait = forgiving
+                    has_trait = compassionate
+                }
+            }
+        }
+    }
+
+    option = { # Rough them up!
+        name = childhood.7400.b
+
+        add_prestige = medium_prestige_gain
+
+        scope:bully = {
+            add_opinion = {
+                modifier = hate_opinion
+                opinion = -40
+                target = root
+            }
+            increase_wounds_effect = { REASON = beaten }
+            hidden_effect = {
+                if = {
+                    limit = {
+                        can_set_relation_potential_rival_trigger = { CHARACTER = root }
+                    }
+                    set_relation_potential_rival = root
+                }
+            }
+
+            every_parent = {
+                custom = every_parent_of_bully
+                limit = { this != root }
+                add_opinion = {
+                    modifier = hurt_someone_close_to_me_crime
+                    target = root
+                }
+            }
+        }
+
+        random = {
+            chance = 50
+            send_interface_toast = {
+                title = bully_stops
+                left_icon = scope:bully
+                remove_relation_bully = scope:bully
+            }
+        }
+
+        stress_impact = {
+            forgiving = medium_stress_impact_gain
+            compassionate = medium_stress_impact_gain
+            patient = minor_stress_impact_gain
+            charming = minor_stress_impact_gain
+        }
+        ai_chance = {
+            base = 100
+            modifier = {
+                factor = 0
+                OR = {
+                    has_trait = patient
+                    has_trait = forgiving
+                    has_trait = compassionate
+                }
+            }
+        }
+    }
+
+    option = { # Teach them to be nice
+        name = childhood.7400.c
+
+        random = {
+            chance = 75
+            send_interface_toast = {
+                title = bully_stops
+                left_icon = scope:bully
+                remove_relation_bully = scope:bully
+            }
+        }
+
+        stress_impact = {
+            bossy = minor_stress_impact_gain
+            rowdy = minor_stress_impact_gain
+            vengeful = medium_stress_impact_gain
+            sadistic = medium_stress_impact_gain
+            callous = medium_stress_impact_gain
+        }
+        ai_chance = {
+            base = 100
+            modifier = {
+                factor = 0
+                OR = {
+                    has_trait = bossy
+                    has_trait = rowdy
+                    has_trait = vengeful
+                    has_trait = sadistic
+                    has_trait = callous
+                }
+            }
+        }
+    }
+}

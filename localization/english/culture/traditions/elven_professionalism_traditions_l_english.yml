@@ -13,9 +13,9 @@
  elven_swordguard:1 "Elven Swordguard"
  elven_swordguard_flavor:1 "The Elven Swordguard are the vanguard of the elven culture's army. Lightly armored and wielding greatswords, they are trained to strike quickly and decisively, cutting through enemy lines with ease."
  
- culture_parameter_unlock_maa_highguard_of_valor:0 "[GetMaA('highguard_of_valor').GetName] as [men_at_arms|E]"
- highguard_of_valor:1 "Highguard of Valor"
- highguard_of_valor_flavor:1 "The Highguard of Valor are the elite infantry of the elven culture's army. Clad in heavy armor and wielding the best equipment they can muster, they are the ideal image of discipline and martial mastery."
+ culture_parameter_unlock_maa_highguard:0 "[GetMaA('highguard').GetName] as [men_at_arms|E]"
+ highguard:1 "Highguard of Valor"
+ highguard_flavor:1 "The Highguard of Valor are the elite infantry of the elven culture's army. Clad in heavy armor and wielding the best equipment they can muster, they are the ideal image of discipline and martial mastery."
  
  culture_parameter_unlock_maa_exalted_bear_highriders:0 "[GetMaA('exalted_bear_highriders').GetName] as [men_at_arms|E]"
  exalted_bear_highriders:1 "Exalted Bear Highriders"

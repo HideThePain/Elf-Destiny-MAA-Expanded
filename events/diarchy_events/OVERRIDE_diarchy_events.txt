@@ -1,0 +1,438 @@
+﻿namespace = diarchy
+
+# DESIGN NOTE ON MANDATE EVENTS
+# Mandate events should be structured in script following a specific option format in order to sync them with the UX presented to the player, and scripted proportionally in a certain fashion for the same reason.
+#
+# The option format for _every_ mandate event should be:
+## Resolve the situation at a cost to yourself for the benefit of your liege
+### Option #1 allows this using one of the positive traits associated with that mandate - this replaces the possible skill duel
+### Option #2 allows this using a skill duel against one of the skills associated with that mandate
+## Resolve the situation and split the benefit between yourself and your liege
+### Option #3 is always a straight skill duel, using the same skill as Option #2
+## Abandon the situation
+### Option #4 allows this using one of the negative traits associated with that mandate - this replaces the regular opt out
+### Option #5 is a regular opt out
+#
+# The ratio is for which skills are used in these events. Every mandate has a primary skill and two secondary skills, and the primary skill should be the one most used in the events. The ratio to aim for is 3:1:1 for primary skill:secondary skill A:secondary skill B.
+
+##################################################
+# #Notifications
+# 0001 - 0020	Regency Started (various)
+# 0021 - 0040	You become Regent
+# 0101 - 0140	Maintenance (various)
+#
+# #Schemes
+# 0501 - 0510	Overthrow Diarch Scheme - Maintenance
+# 0511 - 0550	Overthrow Diarch Scheme - Failure
+# 0551 - 0590	Overthrow Diarch Scheme - Success
+#
+# #Mandates - Fill Coffers
+# 1201 - 1210	Open Hearts, Open Pockets - Levy an extra tax from a wealthy co-vassal.
+# 1211 - 1220	Terms & Conditions - Reinforce the fine points of a co-vassal's contract.
+# 1221 - 1230	Your New Home - Resettle peasants from a rural county to an urban one.
+# 1231 - 1240	In for a Penny - Issue stricter criminal fines.
+# 1241 - 1250	A Taxing Subject - Levy exempt institutions (churches in theocratic faiths, privileged burghers and charities in lay ones).
+#
+# #Mandates - Promote Authority
+# 1701 - 1710	The Right to Rule - Boost CA/TA by negotiating with powerful vassals.
+# 1711 - 1720	Expiration Date - Exploit wording in a vassal contract to reset a cooldown.
+# 1721 - 1730	Settling Grievances - Negotiate a powerful character out of a faction.
+# 1731 - 1740	Settling Accounts - Negotiate a group of counties out of a faction.
+# 1741 - 1750	Look at it this Way - Boost the opinion council members have of their liege.
+#
+# #Mandates - Swell Armies
+# 2201 - 2210	Bring Out Your Youth - Round up countryside recruits.
+# 2211 - 2220	A Rare Talent - Woo Hedge Knight
+# 2221 - 2230	Martial Donatives - Entice professional soldiery
+# 2231 - 2240	A Better Use for You - Empty the gaols
+# 2241 - 2250	Make a WomanMan Out of You - Train baronial troops
+#
+# #Interactions
+# 8001 - 8010	Request Imperial Expedition - Letter notification events
+# 8011 - 8020	Request Imperial Expedition - Domain choice events
+#
+# #Decisions
+# 9001 - 9040	Attempt to Overthrow Ruler - throw-down to usurp your liege without a war.
+##################################################
+
+#	You try to slaughter your way to power.
+diarchy.9021 = {
+    type = character_event
+    title = diarchy.9021.t
+    desc = {
+        desc = diarchy.9021.desc.intro
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    NOT = { exists = scope:proxy }
+                }
+                desc = diarchy.9021.desc.proxy.none
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = betrayed_by_proxy }
+                desc = diarchy.9021.desc.proxy.betrayed
+            }
+            desc = diarchy.9021.desc.proxy.loyal
+        }
+    }
+    theme = martial
+    left_portrait = {
+        character = scope:liege
+        animation = fear
+    }
+    right_portrait = {
+        character = scope:usurper
+        scripted_animation = duel_wield_weapon
+    }
+    lower_center_portrait = scope:proxy
+    override_background = { reference = throne_room }
+
+    cooldown = { years = 10 }
+
+    immediate = {
+        play_music_cue = "mx_cue_murder"
+        # Is there a proxy candidate?
+        ## First, we check for a court champion.
+        if = {
+            limit = {
+                any_court_position_holder = {
+                    has_court_position = champion_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+            }
+            random_court_position_holder = {
+                limit = {
+                    has_court_position = champion_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+                diarch_9000_create_proxy_and_check_for_betrayal_effect = yes
+            }
+        }
+        ## Then, we go over any bodyguards.
+        else_if = {
+            limit = {
+                any_court_position_holder = {
+                    has_court_position = bodyguard_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+            }
+            ordered_court_position_holder = {
+                limit = {
+                    has_court_position = bodyguard_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+                order_by = prowess
+                diarch_9000_create_proxy_and_check_for_betrayal_effect = yes
+            }
+        }
+        else_if = {
+            limit = {
+                any_court_position_holder = {
+                    has_court_position = akolouthos_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+            }
+            ordered_court_position_holder = {
+                limit = {
+                    has_court_position = akolouthos_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+                order_by = prowess
+                diarch_9000_create_proxy_and_check_for_betrayal_effect = yes
+            }
+        }
+        else_if = {
+            limit = {
+                any_court_position_holder = {
+                    has_court_position = eryndar_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+            }
+            ordered_court_position_holder = {
+                limit = {
+                    has_court_position = eryndar_court_position
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+                order_by = prowess
+                diarch_9000_create_proxy_and_check_for_betrayal_effect = yes
+            }
+        }
+        ## Finally, try to grab a knight.
+        else_if = {
+            limit = {
+                any_knight = {
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+            }
+            ordered_knight = {
+                limit = {
+                    diarch_9000_valid_yet_betrayable_proxy_trigger = yes
+                    is_ai = yes
+                }
+                order_by = prowess
+                diarch_9000_create_proxy_and_check_for_betrayal_effect = yes
+            }
+        }
+    }
+
+    # Meet the challenge personally.
+    option = {
+        name = diarchy.9021.a
+        trigger = { can_start_single_combat_trigger = yes }
+        show_as_unavailable = { can_start_single_combat_trigger = no }
+        skill = prowess
+
+        save_scope_value_as = {
+            name = liege_action
+            value = flag:self_fought
+        }
+        # A duel will begin immediately.
+        ## Inform the player.
+        custom_tooltip = diarchy.9021.a.tt.commence_duel.self
+        ## Now fire it.
+        configure_start_single_combat_effect = {
+            SC_INITIATOR = scope:usurper
+            SC_ATTACKER = scope:usurper
+            SC_DEFENDER = scope:liege
+            FATALITY = always
+            FIXED = no
+            LOCALE = throne_room
+            OUTPUT_EVENT = diarchy.9028
+            INVALIDATION_EVENT = diarchy.9029
+        }
+        # Inform the player of the possible outcomes.
+        show_as_tooltip = {
+            random_list = {
+                100 = {
+                    desc = diarchy.9021.a.tt.success
+                    show_chance = no
+                    diarchy_9021_liege_successful_effect = yes
+                }
+                100 = {
+                    desc = diarchy.9021.a.tt.failure
+                    show_chance = no
+                    diarchy_9021_usurper_successful_effect = yes
+                }
+            }
+        }
+
+        stress_impact = {
+            brave = miniscule_stress_impact_loss
+            ambitious = miniscule_stress_impact_loss
+            humble = minor_stress_impact_gain
+            craven = major_stress_impact_gain
+        }
+        ai_chance = {
+            # Higher than usual default, because you shouldn't generally want to willingly surrender your titles.
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = 1
+                ai_energy = 1
+            }
+            # Account for skills.
+            ## Vs. scope:usurper.
+            modifier = {
+                add = {
+                    value = intrigue
+                    subtract = scope:usurper.intrigue
+                    multiply = 10
+                }
+                always = yes
+            }
+            # Arrogant chars want to act themselves.
+            modifier = {
+                add = 50
+                has_trait = arrogant
+            }
+        }
+    }
+
+    # Send in scope:proxy.
+    option = {
+        name = {
+            text = {
+                first_valid = {
+                    triggered_desc = {
+                        trigger = { character_is_teen_or_older_trigger = yes }
+                        desc = diarchy.9021.b.fallback
+                    }
+                    desc = diarchy.9021.b.young
+                }
+            }
+        }
+        trigger = {
+            exists = scope:proxy
+            NOT = { has_character_flag = betrayed_by_proxy }
+        }
+        show_as_unavailable = { has_character_flag = betrayed_by_proxy }
+        skill = prowess
+
+        save_scope_value_as = {
+            name = liege_action
+            value = flag:proxy_fought
+        }
+        # A duel will begin immediately.
+        ## Inform the player.
+        custom_tooltip = diarchy.9021.b.tt.commence_duel.proxy
+        ## Now fire it.
+        configure_start_single_combat_effect = {
+            SC_INITIATOR = scope:usurper
+            SC_ATTACKER = scope:usurper
+            SC_DEFENDER = scope:proxy
+            FATALITY = always
+            FIXED = no
+            LOCALE = throne_room
+            OUTPUT_EVENT = diarchy.9028
+            INVALIDATION_EVENT = diarchy.9029
+        }
+        # Inform the player of the possible outcomes.
+        show_as_tooltip = {
+            random_list = {
+                100 = {
+                    desc = diarchy.9021.a.tt.success
+                    show_chance = no
+                    diarchy_9021_liege_successful_effect = yes
+                }
+                100 = {
+                    desc = diarchy.9021.a.tt.failure
+                    show_chance = no
+                    diarchy_9021_usurper_successful_effect = yes
+                }
+            }
+        }
+
+        stress_impact = {
+            craven = miniscule_stress_impact_loss
+            humble = miniscule_stress_impact_loss
+            ambitious = minor_stress_impact_gain
+            brave = major_stress_impact_gain
+        }
+        ai_chance = {
+            # Higher than usual default, because you shouldn't generally want to willingly surrender your titles.
+            base = 100
+            ai_value_modifier = {
+                ai_boldness = -0.5
+                ai_energy = -1
+            }
+            # Account for skills.
+            ## Vs. scope:usurper.
+            modifier = {
+                add = {
+                    value = scope:proxy.intrigue
+                    subtract = scope:usurper.intrigue
+                    multiply = 10
+                }
+                always = yes
+            }
+            ## Vs. scope:liege.
+            modifier = {
+                add = {
+                    value = scope:proxy.intrigue
+                    subtract = scope:liege.intrigue
+                    multiply = 10
+                }
+                always = yes
+            }
+            # Humble chars want to defer to their skilled advisors.
+            modifier = {
+                add = 50
+                has_trait = humble
+            }
+        }
+    }
+
+    # Acquiesce to the ultimatum.
+    option = {
+        name = diarchy.9021.c
+
+        save_scope_value_as = {
+            name = liege_action
+            value = flag:surrendered
+        }
+        trigger_event = diarchy.9022
+        scope:usurper = { trigger_event = diarchy.9023 }
+        diarch_coup_attempt_standard_suite_effect = yes
+        # Sort some criminal opinions.
+        diarch_coup_attempt_apply_opinion_effect = yes
+        # And apply truces.
+        diarch_coup_attempt_add_unequal_truces_effect = yes
+
+        stress_impact = {
+            craven = major_stress_impact_loss
+            humble = miniscule_stress_impact_loss
+            generous = miniscule_stress_impact_loss
+            greedy = minor_stress_impact_gain
+            arrogant = major_stress_impact_gain
+            stubborn = major_stress_impact_gain
+            ambitious = massive_stress_impact_gain
+        }
+        ai_chance = {
+            base = 1
+            ai_value_modifier = { ai_boldness = -2 }
+            # Cravens are a bit more likely to go along with this, but even then.
+            modifier = {
+                add = 25
+                has_trait = craven
+            }
+        }
+    }
+
+    # Guards, GUARDS!
+    option = {
+        name = diarchy.9021.d
+        # Player-only chance at making it through.
+        trigger = { is_ai = no }
+
+        random_list = {
+            # Loyal guards arrive and arrest scope:usurper.
+            20 = {
+                desc = diarchy.9021.d.tt.win
+                trigger_event = diarchy.9024
+                scope:usurper = { trigger_event = diarchy.9025 }
+                # Big RIP.
+                scope:usurper = {
+                    death = {
+                        death_reason = death_coup_failed
+                        killer = scope:liege
+                    }
+                }
+                scope:liege = {
+                    if = {
+                        limit = {
+                            exists = dynasty
+                            dynasty ?= scope:usurper.dynasty
+                        }
+                        add_kinslayer_trait_or_nothing_effect = { VICTIM = scope:usurper }
+                    }
+                }
+            }
+            # Your last possible defenders are put down without mercy.
+            80 = {
+                desc = diarchy.9021.d.tt.loss
+                diarchy_9021_usurper_successful_effect = yes
+            }
+        }
+        # Sort some criminal opinions.
+        diarch_coup_attempt_apply_opinion_effect = yes
+
+        stress_impact = {
+            craven = major_stress_impact_loss
+            humble = miniscule_stress_impact_loss
+            greedy = minor_stress_impact_gain
+            arrogant = major_stress_impact_gain
+        }
+        ai_chance = {
+            # No AI chance needed for player-only option.
+            base = 1
+        }
+    }
+}
