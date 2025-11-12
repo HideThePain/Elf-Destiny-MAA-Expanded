@@ -77,7 +77,7 @@ restore_romaviri_empire_decision = {
 			limit = {
 				has_ep3_dlc_trigger = yes
 			}
-			trigger_event = ep3_romaviri_restoration.0100
+			trigger_event = romaviri_restoration.0100
 		}
 		else = {
 			trigger_event = romaviri_restoration.0001
@@ -1776,14 +1776,14 @@ split_romaviri_empire_decision = {
 		if = {
 			limit = {
 				any_owned_story = { 
-					type = ep3_story_cycle_restoring_rome 
+					type = story_cycle_restoring_rome 
 					has_variable = romaviri_empire_hard_mode
 				}
 			}
 			custom_tooltip = {
 				text = ending_of_restore_rome_trials_tt
 				random_owned_story = {
-					limit = { story_type = ep3_story_cycle_restoring_rome }
+					limit = { story_type = story_cycle_restoring_rome }
 					remove_variable = romaviri_empire_hard_mode
 				}
 			}
