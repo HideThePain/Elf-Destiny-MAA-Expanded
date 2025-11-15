@@ -9,10 +9,12 @@ eryndar_events.1001: "Eryndar Recruits Varangian"
 eryndar_events.1001_notification_tooltip: "[eryndar.GetName] presents a worthy warrior, one who has traveled far to serve the [ROOT.Char.GetTitleAsNameNoTooltip]."
 
 court.5060.d.eryndar: "[knight.GetSheHe|U] will serve as my $eryndar_court_position$!"
-eryndar_court_position:0 "Akolouthos"
+
+eryndar_court_position:0 "Eryndar"
 eryndar_employer_custom_effect_description: "$BULLET$Increases [GetTrait('varangian').GetName( GetNullCharacter )] [GetCourtPositionType('bodyguard_court_position').GetName()] [aptitude|E] (based on [aptitude|E])\n$BULLET$More eligible [courtiers|E] gain the [GetTrait('varangian').GetName( GetNullCharacter )] and [GetTrait('loyal').GetName( GetNullCharacter )] [traits|E]\n$BULLET$More Varangians will appear\n@warning_icon! #X The Varangians will claim some [gold_i] Gold after the Basileus's death.#!"
 eryndar_court_position_desc: "The $eryndar_court_position$ commands much of the Byzantine imperial guard, including the famed Varangians, who are most willing to die honorably for their master."
-eryndar_founded_varangians_trigger_tt: "You have founded the Varangians"
+eryndar_founded_highguardians_trigger_tt: "You have founded the HIghguardians"
+
 court_position_eryndar_bonus: "[GetCourtPositionType('eryndar_court_position').GetName()]"
 
 relation_eryndar_male: "eryndar"

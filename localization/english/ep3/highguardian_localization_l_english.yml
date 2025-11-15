@@ -2,14 +2,7 @@
 CHARACTER_INTERACTION_NOT_ALLOWED_IN_HIGHGUARD:0 "They are not allowed to serve as a [knight|E] in the target [court|E]"
 
 
-court_position_fickle: "[GetTrait('fickle').GetName( ROOT.Char )]"
 court_position_highguard_trait: "[GetTrait('highguard').GetName( ROOT.Char )]"
-court_position_fp1_coastal_warriors: "Their [culture|E] has the [GetCultureTradition('tradition_fp1_coastal_warriors').GetName] [tradition|E]"
-
-akolouthos_court_position:0 "Akolouthos"
-akolouthos_employer_custom_effect_description: "$BULLET$Increases [GetTrait('highguard').GetName( GetNullCharacter )] [GetCourtPositionType('bodyguard_court_position').GetName()] [aptitude|E] (based on [aptitude|E])\n$BULLET$More eligible [courtiers|E] gain the [GetTrait('highguard').GetName( GetNullCharacter )] and [GetTrait('loyal').GetName( GetNullCharacter )] [traits|E]\n$BULLET$More Highguards will appear\n@warning_icon! #X The Highguards will claim some [gold_i] Gold after the Basileus's death.#!"
-akolouthos_court_position_desc: "The $akolouthos_court_position$ commands much of the Byzantine imperial guard, including the famed Highguards, who are most willing to die honorably for their master."
-akolouthos_founded_highguards_trigger_tt: "You have founded the Highguards"
 
 
 
@@ -20,10 +13,6 @@ poet_interesting_desc: "Is a [GetTrait('lifestyle_poet').GetName( GetNullCharact
 
 ALL_DYNASTY_MEMBERS_HAVE_MURDER_SAVE:2 "Major chance to [prevented_murder_prevent|E] one [GetScheme('murder').GetTypeName] [scheme|E] against each [dynasty|E] Member\n[interaction|E] Acceptance from [intimidated_i][intimidated|E] or [terrified_i][cowed|E]: #P +100%#!"
 LEGACY_DYNASTY_MEMBERS_GAIN_BONUS_TROOPS_WHEN_HIGHGUARDIAN_ADVENTURING:0 "Receive bonus troops above the cap when [highguard_adventuring|E]\n[dynast_interaction|E]: #V Send to the Highguard#!\n#weak The [dynast] gains the ability to pay [prestige] [prestige_i] in order to send away unlanded adult [dynasty] members to potentially gain [skills] and [traits]#!"
-
-
-
-send_to_highguard_interaction_effect_desc:1 "#weak While serving in the Highguard, [CHARACTER.GetShortUIName] might increase [CHARACTER.GetHerHis] [skills|E] or gain [traits|E] — but [CHARACTER.GetSheHe] might also become wounded, or worse. [CHARACTER.GetSheHe|U] will return within a few years, but cannot be recalled.#!"
 
 
 
@@ -51,11 +40,11 @@ mercenary_company_huscarls_of_the_sea:0 "Huscarls of the Sea"
 
 
 skoutatoi: "Skoutatoi"
-highguard_guards: "Highguards"
+highguards: "Highguards"
 handpicked_faithful: "Handpicked Faithful"
 
 skoutatoi_flavor: "#F The tall #EMP skouton#! shields these infantry array against the foe is their namesake. Yet their chief virtue in battle is discipline, which affords them good order in both advance and retreat.#!"
-highguard_guards_flavor: "#F These famed axe-wielding Germanic mercenaries are the unwavering core of the imperial host.\n\n@warning_icon! #X They will claim some [gold|E] after the Basileus's death.#!"
+highguards_flavor: "#F These famed axe-wielding Germanic mercenaries are the unwavering core of the imperial host.\n\n@warning_icon! #X They will claim some [gold|E] after the Basileus's death.#!"
 innovation_highguard_adventurers:0 "Highguard Adventurers"
 
 l_english:
@@ -63,11 +52,6 @@ l_english:
 CHARACTER_INTERACTION_NOT_ALLOWED_IN_HIGHGUARD:0 "They are not allowed to serve as a [knight|E] in the target [court|E]"
 
 court_position_highguard_trait: "[GetTrait('highguard').GetName( ROOT.Char )]"
-
-akolouthos_court_position:0 "Akolouthos"
-akolouthos_employer_custom_effect_description: "$BULLET$Increases [GetTrait('highguard').GetName( GetNullCharacter )] [GetCourtPositionType('bodyguard_court_position').GetName()] [aptitude|E] (based on [aptitude|E])\n$BULLET$More eligible [courtiers|E] gain the [GetTrait('highguard').GetName( GetNullCharacter )] and [GetTrait('loyal').GetName( GetNullCharacter )] [traits|E]\n$BULLET$More Highguards will appear\n@warning_icon! #X The Highguards will claim some [gold_i] Gold after the Basileus's death.#!"
-akolouthos_court_position_desc: "The $akolouthos_court_position$ commands much of the Byzantine imperial guard, including the famed Highguards, who are most willing to die honorably for their master."
-akolouthos_founded_highguards_trigger_tt: "You have founded the Highguards"
 
 highguard_interesting_desc: "Is a [GetTrait('highguard').GetName( GetNullCharacter )]"
 
@@ -86,8 +70,8 @@ found_highguard_memory_desc_third_perspective: "[owner.GetTitledFirstName] found
 
 mercenary_company_host_of_highguards:0 "Highguard Host"
 
-highguard_guards: "Highguards"
-highguard_guards_flavor: "#F These famed axe-wielding Germanic mercenaries are the unwavering core of the imperial host.\n\n@warning_icon! #X They will claim some [gold|E] after the Basileus's death.#!"
+highguards: "Highguards"
+highguards_flavor: "#F These famed axe-wielding Germanic mercenaries are the unwavering core of the imperial host.\n\n@warning_icon! #X They will claim some [gold|E] after the Basileus's death.#!"
 
 rival_highguard:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] started despising each other while serving together in the Highguard."
 
@@ -107,120 +91,60 @@ single_combat.0001.desc.opponent_response.stoic_veteran:0 "[my_foe.GetFirstNameP
 
 single_combat.0031.desc.sc_attacker.stoic_veteran:0 "In the Guard, we chiefly protected the Emperor against assassins, but most assassins flee at the sign of a heavily-armed Highguard. My opponent, to [sc_victor.GetHerHis] credit, doesn't seem phased by my intimidating appearance, and my stoic hewing is met by with determined parry after determined parry.\n\n"
 
-d_highguard_guard_article:0 "the "
-d_highguard_guard:0 "Highguard"
-d_highguard_guard_adj:0 "Highguard"
+d_highguard_article:0 "the "
+d_highguard:0 "Highguard"
+d_highguard_adj:0 "Highguard"
 
 trait_highguard:0 "Highguard"
 trait_highguard_desc:0 "This character has served in the Byzantine Army as part of the Highguard."
 trait_highguard_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has served in the Byzantine Army as part of the Highguard."
-
-PREVIOUS_HIGHGUARDIAN_ADVENTURES_COST:0 "Previous adventures"
-
-culture_parameter_unlock_maa_highguard_veterans:0 "Can recruit [GetMaA('highguard_veterans').GetName] as [men_at_arms|E]"
-culture_parameter_unlock_maa_highguard_guards: "[emperors|E] have access to the #high $found_highguard_guard_decision$#! [decision|E], which enables [GetMaA('highguard_guards').GetName] as [men_at_arms|E]"
-
 innovation_druzhina_desc:0 "Highguard soldiers have long served as imposing bodyguards for our monarchs, but they can just as easily serve as dedicated heavy infantry in our armies."
-
-culture_parameter_unlock_akolouthos: "Can appoint the [GetCourtPositionType('akolouthos_court_position').GetName()] [court_position|E], when the Highguard has been founded."
-
-CE1_ADVENTURER_TRUCE: "$FP1_HIGHGUARDIAN_ADVENTURER_INDEPENDENCE_TRUCE_NAME$"
-
-legend_sons_of_rurik_desc: "The Highguard Prince Rurik took his adventuring horde east and established the great Kingdom of Novgorod. It is his legendary blood that flows through our veins."
 
 racehorse_name_highguard:0 "[GetTrait('highguard').GetNameNoTooltip( ROOT.Char )]"
 
 #Highguard
-found_highguard_guard_decision: "Found the Highguard"
-found_highguard_guard_decision_desc: "For years, warriors from the remotest lands in the North have collected in Constantinople, attracted by our riches. They offer their services as mercenaries, an art at which they excel, and have no loyalties except those to coin and their own pride. If we could organize their presence around the Emperor, we would get an invincible military force at our personal service!"
-found_highguard_guard_decision_tooltip: "$found_highguard_guard_decision$"
-found_highguard_guard_decision_confirm: "Start recruiting"
-unlocked_highguard_guard_desc: "Unlocks the [court_position|E] $akolouthos_court_position$ and the [GetMaA('highguard_guards').GetName] [men_at_arms|E] for [GetTitleByKey('e_byzantium').GetName]."
-unlocked_highguard_guard_desc_tt: "Highguard Founded"
+found_highguard_decision: "Found the Highguard"
+found_highguard_decision_desc: "For years, warriors from the remotest lands in the North have collected in Constantinople, attracted by our riches. They offer their services as mercenaries, an art at which they excel, and have no loyalties except those to coin and their own pride. If we could organize their presence around the Emperor, we would get an invincible military force at our personal service!"
+found_highguard_decision_tooltip: "$found_highguard_decision$"
+found_highguard_decision_confirm: "Start recruiting"
+unlocked_highguard_desc: "Unlocks the [court_position|E] $akolouthos_court_position$ and the [GetMaA('highguards').GetName] [men_at_arms|E] for [GetTitleByKey('e_byzantium').GetName]."
+unlocked_highguard_desc_tt: "Highguard Founded"
 
-ep3_akolouthos_events.1000: "Akolouthos Steels the Highguards"
-ep3_akolouthos_events.1000_highguard_notification_tooltip: "[akolouthos.GetName] honors a redoubtable Varangos guardsman with [trait_getter.GetHerHis] ruby earring and dragon-emblazoned armor."
-ep3_akolouthos_events.1000_loyal_notification_tooltip: "[akolouthos.GetName] renews the Highguard oaths of loyalty unto death."
+disrespected_highguardians_modifier: "Disrespected the Highguardians"
+disrespected_highguardians_modifier_desc: "Challenging the Highguard's right to a bonus has seriously damaged their loyalty, and that of similar hired troops."
+major_gold_to_highguardians_tooltip: "You pay [gold_i]#negative_value 75#! due to #high 3#! Highguard [court_position|E] holders"
+medium_gold_to_highguardians_tooltip: "You pay [gold_i]#negative_value 50#! due to #high 2#! Highguard [court_position|E] holders"
+minor_gold_to_highguardians_tooltip: "You pay [gold_i]#negative_value 25#! to a Highguard [court_position|E] holder"
 
-ep3_akolouthos_events.1001: "Akolouthos Recruits Highguard"
-ep3_akolouthos_events.1001_notification_tooltip: "[akolouthos.GetName] presents a worthy warrior, one who has traveled far to serve the [ROOT.Char.GetTitleAsNameNoTooltip]."
+loyal_highguardians_modifier: "Valiant Highguardians"
+loyal_highguardians_modifier_desc: "Bolstered by unshakable Highguardians, this character's heavy infantry formations stand firm and strike hard."
 
-ep3_emperor_yearly.3000.t: "The Palace-Pillaging Right"
-ep3_emperor_yearly.3000.desc: "Hulking, hairy Highguards stagger about my new imperial halls, their arms laden with gold and jewels.\n\nWith [dead_emperor.GetTitledFirstNamePossessive] death, those who would have defended him to the last have taken to the treasure-chambers. It is their traditional right, and none dare stop these elite foreigners from claiming glittering bonuses.\n\nThis is the price paid to keep my [GetMaA('highguard_guards').GetName], my oathsworn hounds, content on their leashes.\n\n"
-ep3_emperor_yearly.3000.desc_leader: "And so, under [highguard_leader.GetFullName], they reach into the purse of [ROOT.Char.GetFaith.HighGodNamePossessive] chosen monarch."
-ep3_emperor_yearly.3000.desc_no_leader: "And so the Northmen reach into the purse of [ROOT.Char.GetFaith.HighGodNamePossessive] chosen monarch."
-ep3_emperor_yearly.3000.a: ""Stop them, eryndar! Recover my gold!""
-ep3_emperor_yearly.3000.a.flavor: ""[highguard_leader.GetFirstNameNoTooltip]! You were named leader of the Guard so you might control the Guard. #EMP Do so!#!""
-ep3_emperor_yearly.3000.b: "A custom or no, I will chastise these brutes!"
-ep3_emperor_yearly.3000.c: "Loyalty has its price."
-ep3_emperor_yearly.3000.c.flavor: "The Highguards forego regular rich salaries and travel far seeking this great windfall." 
+attentive_highguardians_modifier: "Dutiful Highguardians"
+attentive_highguardians_modifier_desc: "Rewarded well for their service, the Highguardians eschew brawling and carousing in favor of diligent protection."
 
-disrespected_highguards_modifier: "Disrespected the Highguards"
-disrespected_highguards_modifier_desc: "Challenging the Highguard's right to a bonus has seriously damaged their loyalty, and that of similar hired troops."
-major_gold_to_highguards_tooltip: "You pay [gold_i]#negative_value 75#! due to #high 3#! Highguard [court_position|E] holders"
-medium_gold_to_highguards_tooltip: "You pay [gold_i]#negative_value 50#! due to #high 2#! Highguard [court_position|E] holders"
-minor_gold_to_highguards_tooltip: "You pay [gold_i]#negative_value 25#! to a Highguard [court_position|E] holder"
-
-loyal_highguards_modifier: "Valiant Highguards"
-loyal_highguards_modifier_desc: "Bolstered by unshakable Highguards, this character's heavy infantry formations stand firm and strike hard."
-
-attentive_highguards_modifier: "Dutiful Highguards"
-attentive_highguards_modifier_desc: "Rewarded well for their service, the Highguard eschew brawling and carousing in favor of diligent protection."
-eager_highguard_army: "Highguard Throng"
-
-romaviri_empire_emperor_yearly.8050.b.byz: "I could use such a brazen highguard."
+eager_highguardian_army: "Highguard Throng"
 
 frankokratia_byz_slaughter_highguard_tooltip: "Amidst the carnage wrought by the raging Latins, #N [slaughtered_byzantines]#! nobles were slaughtered.\n\nHighguards led by [highguard_victim.GetShortUIName] defended the imperial family to the bitter end."
 
-ACHIEVEMENT_DESC_a_dangerous_business_achievement:1 "As a dwarf, win a [highguard_adventure|E] [war|E] anywhere outside of Europe"
-
-innovation_highguard_adventurers:0 "Highguard Adventurers"
-innovation_highguard_adventurers_desc:0 "What do we owe these lands we live in? Nothing! The realm's heart is its people, and do we not deserve the best soil, the greatest treasures, the finest palaces? Having them is as simple as #EMP taking#! them!"
-unlock_highguard_adventurer_cb:0 "Unlocks the [highguard_adventure|E] [casus_belli|E] during the [tribal|E] [era|E]"
-
 SteleCommemoratesAncestors_Highguard:1 "$SteleCommemoratesAncestors_Intro$. [second.MakeScope.Var('stele_container').Char.GetSheHe|U] was the favorite of the $greek$ King. $SteleCommemoratesCarver$."
-
-game_concept_highguard_adventure:0 "Highguard Adventure"
-game_concept_highguard_adventures:0 "Highguard Adventures"
-game_concept_highguard_adventuring:0 "Adventuring"
-game_concept_highguard_adventure_adventure:0 "Adventure"
-game_concept_highguard_adventure_desc:0 "This is a special type of [war|E], where the attacker intends to move their [realm|E] to the [war_target|E] wholesale.\n\nIf they win, they will immediately annex the appropriate [counties|E] and move their [capital|E] there. Their old vassals will go independent, and their old $game_concept_counties$ will be given to upstart local warlords. $game_concept_highguard_adventures$ are #EMP ONLY#! available to [duke|E] and $game_concept_count$-[title_tier|E] [rulers|E], becoming progressively more expensive with each successful $game_concept_highguard_adventure_adventure$.\n\nThis [casus_belli|E] is #EMP NEVER#! available after the $culture_era_tribal$ [era|E], and cannot be used against other [cultures|E] that can $game_concept_highguard_adventure_adventure$ or against neighboring $game_concept_rulers$.\n\n$north_germanic_group_collective_noun$ launching their first $game_concept_highguard_adventure$ receive up to [EmptyScope.ScriptValue('highguard_adventurers_standard_levy_cap_value')|0] bonus [special_troops|E], the amount going up with every same-[faith|E] same-[culture|E] county they completely control within [GetGeographicalRegion('dlc_fp1_region_core_mainland_scandinavia').GetName]."
-
-fp1_major_decisions.0011.desc:0 "From the $river_volga$ to the $river_dnieper$ and beyond, Highguards ply the rivers and byways of the lands of the $east_slavic_group_collective_noun$. We raid, we conquer, we intermix with the locals. When we feel the need, we found new settlements, or take them by force.\n\nTill today, these minor hubs have all competed to attract adventurers and warlords, seeking to attain true primacy over the rest of the Rus'.\n\nNo more! By my mighty deeds and fierce reputation, I shall attract Norse and Slav alike, building a capital worthy of [founder.GetPrimaryTitle.GetNameNoTier]!"
-
-capital_of_rus_misc_benefits_modifier:0 "Highguard Capital"
-capital_of_rus_misc_benefits_modifier_desc:0 "This settlement is #EMP the#! regional hub for Slavs and Norse alike, and enjoys ample benefits for being home to innumerable bands of adventurers, conquerors, and pirates."
-
-highguard_veterans:0 "Highguard Veterans"
-highguard_veterans_flavor:0 "#F Explorers, adventurers, warriors, and mercenaries from all around the far-flung Nordic colonies. Some have even served in the Highguard.#!"
-
-fp1_highguard_adventurer_conquest:0 "Highguard Adventurer"
-FP1_HIGHGUARDIAN_ADVENTURER_CB_NAME:0 "[highguard_adventure|E] against [DEFENDER.GetPrimaryTitle.GetNameNoTier]"
-FP1_HIGHGUARDIAN_ADVENTURER_CB_SPECIFIC_NAME:0 "[highguard_adventure|E] against the [DEFENDER.GetPrimaryTitle.GetBaseNameNoTier]"
-FP1_HIGHGUARDIAN_ADVENTURER_WAR_NAME: "[ConcatIfNeitherEmpty('$ORDER|q$', ' ')][ATTACKER.GetPrimaryTitle.GetAdjective] [highguard_adventure|E] against [DEFENDER.GetPrimaryTitle.GetNameNoTier]"
-FP1_HIGHGUARDIAN_ADVENTURER_WAR_NAME_BASE:0 "[ATTACKER.GetPrimaryTitle.GetAdjective][DEFENDER.GetPrimaryTitle.GetName]"
-fp1_highguard_adventurer_conquest.troops_raised.tt:0 "Adventurers flock to [capital_barony.GetNameNoTierNoTooltip]"
-FP1_HIGHGUARDIAN_ADVENTURER_INDEPENDENCE_TRUCE_NAME:0 "[SCOPE.sC('truce_loc').GetUINameNotMe|U] after [SCOPE.sC('attacker').GetUINameNotMe|U] abandoned [attacker.GetHerHis] lands"
 
 clan_unity_vaering.desc: "sent [unity_target.GetName] to the Highguard"
 
-ach_coronation.0015.d.byzantines: "Set loose the Highguards!"
+ach_coronation.0015.d.byzantines: "Set loose the Highguardians!"
 ach_coronation.0027.desc.char.highguard: "these strange cakes back from [stoner.GetHerHis] adventures among the [emperor_culture.GetCollectiveNoun]!\""
 
-court_position_desc_akolouthos: "leading the imperial guard, particularly the imposing Highguards."
-
-murder_save.0010.t:0 "$murder_save_header$ Highguards"
-murder_save.0010.desc:0 "My attempt on [target.GetTitledFirstNamePossessive] life has been thwarted!\n\nThe assassin was stopped by one of those insipid Highguards! I suppose the [target.GetTitleAsNameNoTooltip] got [target.GetHerHis] guard after all..."
-murder_save.0010.highguard_dies:0 "\n\nAt least the assassin got the better of the guard. [highguard.GetTitledFirstName] won't get in my way again."
+murder_save.0010.t:0 "$murder_save_header$ Highguardians"
+murder_save.0010.desc:0 "My attempt on [target.GetTitledFirstNamePossessive] life has been thwarted!\n\nThe assassin was stopped by one of those insipid Highguardians! I suppose the [target.GetTitleAsNameNoTooltip] got [target.GetHerHis] guard after all..."
+murder_save.0010.highguardian_dies:0 "\n\nAt least the assassin got the better of the guard. [highguard.GetTitledFirstName] won't get in my way again."
 
 murder_save.1010.desc:0 "An assassin has made an attempt on my life! Thankfully, [highguard.GetFirstName], a member of my Highguard, was right outside my chambers and swiftly intervened. [highguard.GetSheHe|U] made quick work of the assassin before I came to any harm."
-murder_save.1010.highguard_dies:0 "Tragically, [highguard.GetFirstNameNoTooltip] suffered fatal wounds in the process."
+murder_save.1010.highguardian_dies:0 "Tragically, [highguard.GetFirstNameNoTooltip] suffered fatal wounds in the process."
 
 highguard_arrived.title:0 "A New Highguard"
 highguard_arrived.desc:0 "[highguard_candidate.GetShortUIName|U] has joined the Highguard"
 
 highguard.0002.t:0 "The Highguard"
-highguard.0002.opening:0 "By the time [highguard_candidate.Custom2('MyCharacterIntroduction', ROOT.Char )] comes to me with [highguard_candidate.GetHerHis] plan, [highguard_candidate.GetSheHe] seems to have already made up [highguard_candidate.GetHerHis] mind.\n\n"Serving with the Highguards in"
+highguard.0002.opening:0 "By the time [highguard_candidate.Custom2('MyCharacterIntroduction', ROOT.Char )] comes to me with [highguard_candidate.GetHerHis] plan, [highguard_candidate.GetSheHe] seems to have already made up [highguard_candidate.GetHerHis] mind.\n\n"Serving with the Highguardianss in"
 highguard.0002.miklagard:0 "Miklagard"
 highguard.0002.elsewhere:0 "the Emperor's guard"
 highguard.0002.end:0 "will bring both wealth and glory!"\n\nI cannot deny that part, but I could deny [highguard_candidate.GetHerHis] request. On the other hand, would it be right to stop someone in their pursuit of glory?"
@@ -237,25 +161,17 @@ highguard.3001.t:0 "Highguard: An Honorable Death"
 highguard.3001.desc:0 "[highguard.Custom2('MyCharacterIntroduction', ROOT.Char)] has died while serving in the Highguard!\n\nI have received a missive from the [emperor.GetTitledFirstName] praising [highguard.GetHerHis] name, and describing how [highguard.GetSheHe] fought valiantly to save the life of the [emperor.GetTitleAsNameNoTooltip] from vicious assassins.\n\nNothing can ever bring [highguard.GetFirstNameNoTooltip] back, but the posthumous reward of gold from the [emperor.GetTitleAsNameNoTooltip] helps ease the sorrow."
 highguard.3001.a:0 "Brave until the end, [highguard.GetFirstNameNoTooltip]..."
 
-COURT_MACHINATIONS: "[target.GetShortUINameNoTooltip] is a fellow courtier: $VALUE|=+0$"
 HIGHGUARDIAN_LOYALTY: "[target.GetShortUINameNoTooltip] has the sworn loyalty of the Highguards: $VALUE|=+0$"
 
 scheme_agent_aptitude.trait.highguard: "[GetTrait('highguard').GetName( GetNullCharacter )]"
 
 SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_HIGHGUARDIAN:0 "Having served in distant Miklagard, [ROOT.Char.GetHerHis] adventurous spirit is likely to inspire [ROOT.Char.GetHerHis] [ROOT.Char.Custom('GetSubjectPlural')]."
 
-send_to_highguard_guard_interaction:0 "Send to the Highguard #weak (Dynasty)#!"
-send_to_highguard_guard_interaction_desc:0 "$dynasty_interaction_header$Send [recipient.GetShortUINameNoTooltip] away to gain glory and fortune in the Highguard. Who knows, it might even help build character!"
-send_to_highguard_guard_interaction_toast:1 "[recipient.GetShortUIName] left for the Highguard"
+send_to_highguard_interaction:0 "Send to the Highguard #weak (Dynasty)#!"
+send_to_highguard_interaction_desc:0 "$dynasty_interaction_header$Send [recipient.GetShortUINameNoTooltip] away to gain glory and fortune in the Highguard. Who knows, it might even help build character!"
+send_to_highguard_interaction_toast:1 "[recipient.GetShortUIName] left for the Highguard"
 
-PORTRAIT_MODIFIER_custom_headgear_female_headgear_secular_fp1_imperial_01:0 "@wrath_icon! Highguard Imperial Crown"
-PORTRAIT_MODIFIER_custom_beards_male_beard_fp1_05:0 "@wrath_icon! Grizzled Highguard"
+PORTRAIT_MODIFIER_custom_headgear_female_headgear_secular_fp1_imperial_01:0 "@wrath_icon! Highguardian Imperial Crown"
+PORTRAIT_MODIFIER_custom_beards_male_beard_fp1_05:0 "@wrath_icon! Grizzled Highguardian"
 
 BattlePoiDescriptionLocHighguard: "The battle came to an end when a group of highguards led by $BattlePoiBraveKnight$ pushed through the battle lines and deep into the enemy formation,"
-
-action_reactive_advice_highguard_adventure:0 "$open_tutorial_lesson$$reactive_advice_highguard_adventure_step_1$"
-action_reactive_advice_highguard_adventure_desc:0 "You are able to start a Highguard Adventure.\nOpen this to learn more about this special kind of war."
-action_reactive_advice_highguard_adventure_click:0 "$click_to_open_lesson$"
-reactive_advice_highguard_adventure:0 "$game_concept_highguard_adventures$"
-reactive_advice_highguard_adventure_step_1:0 "$game_concept_highguard_adventures$"
-reactive_advice_highguard_adventure_desc:0 "You are able to declare a [highguard_adventure|E].\n\nFor the duration of the $culture_era_tribal$ [era|E] this type of war is available to allow you to start a new life in a distant land, far from the cold shores of your homeland.\n\nSuccessful $game_concept_highguard_adventures$ will not only relocate your realm to a foreign location, it will also leave all your existing lands independent, including your vassals.\n\nYour first [highguard_adventure|E] undertaken as a $north_germanic_group$ ruler will also call on additional troops from owned same-[faith|E] same-[culture|E] counties in [GetGeographicalRegion('dlc_fp1_region_core_mainland_scandinavia').GetName] to help you conquer your new home."
