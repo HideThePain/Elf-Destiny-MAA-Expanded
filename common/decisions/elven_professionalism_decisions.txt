@@ -180,12 +180,40 @@ found_highguard_decision = {
 	is_valid = {
 		prestige_level >= 3
 		OR = {
-			any_realm_county = { culture = culture:norse }
+			any_realm_county = {
+				OR = {
+					culture = culture:elf
+					culture = culture:elf_culture_serelion
+					culture = culture:elf_culture_gwynthorn
+					culture = culture:elf_culture_daelurin
+					culture = culture:elf_culture_thundarael
+					culture = culture:elf_culture_valerith
+					culture = culture:elf_culture_lormelis
+				}
+			}
 			any_courtier = {
 				count >= 5
-				culture = culture:norse
+				OR = {
+					culture = culture:elf
+					culture = culture:elf_culture_serelion
+					culture = culture:elf_culture_gwynthorn
+					culture = culture:elf_culture_daelurin
+					culture = culture:elf_culture_thundarael
+					culture = culture:elf_culture_valerith
+					culture = culture:elf_culture_lormelis
+				}
 			}
-			any_ally = { culture = culture:norse }
+			any_ally = {
+				OR = {
+					culture = culture:elf
+					culture = culture:elf_culture_serelion
+					culture = culture:elf_culture_gwynthorn
+					culture = culture:elf_culture_daelurin
+					culture = culture:elf_culture_thundarael
+					culture = culture:elf_culture_valerith
+					culture = culture:elf_culture_lormelis
+				}
+			}
 		}
 	}
 
