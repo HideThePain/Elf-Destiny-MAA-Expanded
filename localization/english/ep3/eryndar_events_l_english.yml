@@ -7,6 +7,7 @@ eryndar_effect_tooltip: "From [GetCourtPositionType('eryndar_court_position').Ge
 
 eryndar_events.1001: "Eryndar Recruits Varangian"
 eryndar_events.1001_notification_tooltip: "[eryndar.GetName] presents a worthy warrior, one who has traveled far to serve the [ROOT.Char.GetTitleAsNameNoTooltip]."
+eryndar_events.1000_highguardian_notification_tooltip: "[eryndar.GetName] appoints a new Highguardian to the guard."
 
 court.5060.d.eryndar: "[knight.GetSheHe|U] will serve as my $eryndar_court_position$!"
 
@@ -26,8 +27,8 @@ relation_eryndar_female_possessive: "eryndar'"
 culture_parameter_unlock_eryndar: "Can appoint the [GetCourtPositionType('eryndar_court_position').GetName()] [court_position|E], when the Highguard has been founded."
 
 
-unlocked_highguard_desc: "Unlocks the [court_position|E] $eryndar_court_position$ and the [GetMaA('highguards').GetName] [men_at_arms|E] for [GetTitleByKey('e_byzantium').GetName]."
-unlocked_highguard_desc_tt: "Highguard Founded"
+unlocked_highguardian_desc: "Unlocks the [court_position|E] $eryndar_court_position$ and the [GetMaA('highguards').GetName] [men_at_arms|E] for [GetTitleByKey('e_byzantium').GetName]."
+unlocked_highguardian_desc_tt: "Highguard Founded"
 
 court_position_desc_eryndar: "leading the imperial guard, particularly the imposing Highguardians."
 court_position_eryndar: "[GetCourtPositionType('eryndar_court_position').GetName()]"

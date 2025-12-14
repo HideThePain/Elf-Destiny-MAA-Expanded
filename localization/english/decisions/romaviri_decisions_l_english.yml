@@ -1,10 +1,13 @@
 ﻿l_english:
- restore_romaviri_empire_decision:0 "Restore the romaviri Empire"
+ restore_romaviri_empire_decision:0 "Restore the Romaviri Empire"
  restore_romaviri_empire_decision_confirm:0 "I will restore the Empire"
- restore_romaviri_empire_decision_tooltip:0 "The romaviri Empire will be restored"
- restore_romaviri_empire_decision_desc:0 "If Rome and other key territories of the old empire could be reclaimed, the Byzantine Empire would win recognition in the eyes of the West as the true and rightful continuation of the romaviri State."
- restore_romaviri_empire_decision_tt:0 "Either your Religion is Christian, or Graeco-romaviri, or your Culture is romaviri"
- restore_romaviri_empire_decision_effect_tooltip:0 "The romaviri Empire will be restored and acquire the [de_jure|E] of all currently held Empires."
+ restore_romaviri_empire_decision_tooltip:0 "The Romaviri Empire will be restored"
+ restore_romaviri_empire_decision_desc:0 "If Rome and other key territories of the old empire could be reclaimed, the Byzantine Empire would win recognition in the eyes of the West as the true and rightful continuation of the Romaviri State."
+ restore_romaviri_empire_decision_tt:0 "Either your Religion is Aeluran, or your Culture is Romaviri"
+ restore_romaviri_empire_decision_effect_tooltip:0 "The Romaviri Empire will be restored and acquire the [de_jure|E] of all currently held Empires."
+
+ legend_of_romaviri_name:0 "The Legend of the Romaviri"
+ legend_of_romaviri_desc:0 "The Romaviri Empire was once the greatest power in the world, ruling over vast territories across Europe, Asia, and Africa. Its legacy lives on in the hearts of those who seek to restore its former glory."
 
 #  restore_romaviri_empire_holy_decision:0 "Restore the romaviri Empire"
 #  restore_romaviri_empire_holy_decision_tooltip:0 "The romaviri Empire will be restored"

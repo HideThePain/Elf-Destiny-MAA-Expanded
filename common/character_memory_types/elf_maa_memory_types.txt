@@ -4,19 +4,19 @@ found_highguard_memory = {
 
 	description = {
 		random_valid = {
-			desc = found_highguard_memory_desc
+			desc = found_highguardian_memory_desc
 		}
 	}
 
 	second_perspective_description = {
 		random_valid = {
-			desc = found_highguard_memory_desc_second_perspective
+			desc = found_highguardian_memory_desc_second_perspective
 		}
 	}
 
 	third_perspective_description = {
 		random_valid = {
-			desc = found_highguard_memory_desc_third_perspective
+			desc = found_highguardian_memory_desc_third_perspective
 		}
 	}
 

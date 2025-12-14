@@ -3,7 +3,7 @@ send_to_highguard_interaction = {
 	interface_priority = 60
 	icon = send_to_highguard_interaction
 
-	desc = send_to_highguard_interaction_desc
+	desc = send_to_highguardian_interaction_desc
 	use_diplomatic_range = no
 	common_interaction = yes
 	
@@ -44,6 +44,7 @@ send_to_highguard_interaction = {
 			is_ruler = no
 			is_adult = yes
 			is_married = no
+			is_any_elf_type = yes
 			NOT = {
 				has_trait = highguardian
 			}
@@ -104,12 +105,12 @@ send_to_highguard_interaction = {
 			hidden_effect = {
 				send_interface_toast = {
 					type = event_toast_effect_neutral
-					title = send_to_highguard_interaction_toast
+					title = send_to_highguardian_interaction_toast
 
-					left_icon = scope:recipient					
+					left_icon = scope:recipient                    
 					right_icon = scope:emperor
-					
-					custom_tooltip = send_to_highguard_interaction_toast_desc
+                    
+					custom_tooltip = send_to_highguardian_interaction_toast_desc
 				}
 			}
 		}
@@ -123,8 +124,8 @@ send_to_highguard_interaction = {
 			scope:highguardian_candidate = {
 				visit_court_of = scope:emperor
 				add_trait = highguardian
-				custom_description_no_bullet = {
-					text = send_to_highguard_interaction_effect
+					custom_description_no_bullet = {
+					text = send_to_highguardian_interaction_effect
 				}
 			}
 		}

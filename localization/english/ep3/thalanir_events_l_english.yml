@@ -1,7 +1,7 @@
 ﻿l_english:
  
- thalanir_court_position: "Eparch"
- thalanir_court_position_desc: "The Eparch is the main administrator and ultimate authority of the capital, second only to the reigning monarch."
+ thalanir_court_position: "Thalanir"
+ thalanir_court_position_desc: "The Thalanir is the main administrator and ultimate authority of the capital, second only to the reigning monarch."
  thalanir_appease_populace: "Appease Populace"
  thalanir_appease_populace_desc: "The [GetCourtPositionType('thalanir_court_position').GetNameNoTooltip()] will attend to the needs of the citizens of the capital."
  thalanir_support_troops: "Support Troops"

@@ -75,7 +75,7 @@ murder_save.0010 = {
 		desc = murder_save.0010.desc
 		triggered_desc = {
 			trigger = { exists = local_var:highguard_dies }
-			desc = murder_save.0010.highguard_dies
+			desc = murder_save.0010.highguardian_dies
 		}
 	}
 	theme = murder_scheme
@@ -183,7 +183,7 @@ murder_save.1010 = {
 		desc = murder_save.1010.desc
 		triggered_desc = {
 			trigger = { exists = local_var:highguard_dies }
-			desc = murder_save.1010.highguard_dies
+			desc = murder_save.1010.highguardian_dies
 		}
 		triggered_desc = {
 			trigger = { exists = scope:scheme_discovered }
@@ -207,7 +207,7 @@ murder_save.1010 = {
 			save_scope_as = emperor
 			scope:highguard.liege = {
 				trigger_event = {
-					id = highguard.3001
+					id = highguardian.3001
 					days = 1
 				}
 			}

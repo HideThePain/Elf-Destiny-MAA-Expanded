@@ -27,8 +27,8 @@
 		any_held_title = { # must be king or above
 			tier >= tier_kingdom
 		}
-	}
-
+		    desc = found_highguardian_decision_desc
+		    selection_tooltip = found_highguardian_decision_tooltip
 	# Following conditions Will be shown as a validation error tooltip when False
 	is_valid_showing_failures_only = {
 		NOT = {
@@ -92,7 +92,7 @@ adopt_elven_legion = { # elven legionary system for emperors
 		is_landed = yes
 	}
 
-	cost = {
+					title = unlocked_highguardian_desc_tt
 		prestige = 2000
 		gold = 500
 	}
@@ -163,8 +163,8 @@ found_highguard_decision = {
 
 	sort_order = 100
 
-	desc = found_highguard_decision_desc
-	selection_tooltip = found_highguard_decision_tooltip
+	desc = found_highguardian_decision_desc
+	selection_tooltip = found_highguardian_decision_tooltip
 	decision_group_type = roman
 
 	is_shown = {
@@ -230,10 +230,10 @@ found_highguard_decision = {
 	effect = {
 		primary_title = { set_variable = founded_highguard }
 		send_interface_toast = {
-			title = unlocked_highguard_desc_tt
+			title = unlocked_highguardian_desc_tt
 			type = event_toast_effect_neutral
 			left_icon = root
-			custom_tooltip = unlocked_highguard_desc
+			custom_tooltip = unlocked_highguardian_desc
 		}
 		create_character_memory = {
 			type = found_highguardian_memory

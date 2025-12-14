@@ -1,46 +1,46 @@
-# Used for handling the highguardian guard
-highguardian_ongoing = {
-	trigger = {
-		has_character_flag = is_currently_highguardian
-	}
-	effect = {
+# # Used for handling the highguardian guard
+# highguardian_ongoing = {
+# 	trigger = {
+# 		has_character_flag = is_currently_highguardian
+# 	}
+# 	effect = {
 
-		#Verify if the character became landed: in that case, remove the flag
-		if = {
-			limit = {
-				is_ruler = yes
-			}
-			remove_character_flag = is_currently_highguardian
-		}
-		else = {
-			#debug_log = "Fired the highguardian_ongoing pulse"
-			#debug_log_scopes = yes
-			change_variable = { # NOTE: Will *not* be relevant to non-delayed trigger evaluations for the events below
-				name = years_as_highguardian
-				add = 1
-			}
-			trigger_event = {
-				on_action = highguardian_ongoing
-				days = { 340 380 }
-			}
-		}
-	}
-	random_events = {
-		500 = 0
-		500 = highguardian.1001 # Return home
-		100 = highguardian.2001 # Become Best Friends with another highguardian
-		100 = highguardian.2002 # Become Lover with another highguardian
-		100 = highguardian.2003 # Become Friends with a local ruler
-		100 = highguardian.2004 # Become Rival with a local ruler
-		300 = highguardian.2005 # Marry Lover
-		100 = highguardian.2008 # Get wounded
-		100 = highguardian.2011 # Get local Lover
-		200 = highguardian.2012 # Increase Prowess
-		200 = highguardian.2013 # Increase Martial
-		200 = highguardian.2014 # Increase Learning
-		200 = highguardian.2015 # Increase Diplomacy
-		50 = highguardian.2016 # Become Brave
-		50 = highguardian.2017 # Become Ambitious
-		50 = highguardian.2018 # Become Diligent
-	}
-}
+# 		#Verify if the character became landed: in that case, remove the flag
+# 		if = {
+# 			limit = {
+# 				is_ruler = yes
+# 			}
+# 			remove_character_flag = is_currently_highguardian
+# 		}
+# 		else = {
+# 			#debug_log = "Fired the highguardian_ongoing pulse"
+# 			#debug_log_scopes = yes
+# 			change_variable = { # NOTE: Will *not* be relevant to non-delayed trigger evaluations for the events below
+# 				name = years_as_highguardian
+# 				add = 1
+# 			}
+# 			trigger_event = {
+# 				on_action = highguardian_ongoing
+# 				days = { 340 380 }
+# 			}
+# 		}
+# 	}
+# 	random_events = {
+# 		500 = 0
+# 		500 = highguardian.1001 # Return home
+# 		100 = highguardian.2001 # Become Best Friends with another highguardian
+# 		100 = highguardian.2002 # Become Lover with another highguardian
+# 		100 = highguardian.2003 # Become Friends with a local ruler
+# 		100 = highguardian.2004 # Become Rival with a local ruler
+# 		300 = highguardian.2005 # Marry Lover
+# 		100 = highguardian.2008 # Get wounded
+# 		100 = highguardian.2011 # Get local Lover
+# 		200 = highguardian.2012 # Increase Prowess
+# 		200 = highguardian.2013 # Increase Martial
+# 		200 = highguardian.2014 # Increase Learning
+# 		200 = highguardian.2015 # Increase Diplomacy
+# 		50 = highguardian.2016 # Become Brave
+# 		50 = highguardian.2017 # Become Ambitious
+# 		50 = highguardian.2018 # Become Diligent
+# 	}
+# }

@@ -22,14 +22,16 @@ setting_fp1_scandi_adventurers_off:0 "Off"
 
 
 war_memory_cb_vassalization:0 "vassalization war"
-war_memory_cb_highguard:0 "Highguard adventure"
+war_memory_cb_highguardian:0 "Highguard adventure"
 war_memory_cb_border:0 "border war"
 
 reformed_ere_memory_desc_third_perspective: "[owner.GetTitledFirstName] recreated [GetTitleByKey('e_byzantium').GetName] after its disintegration"
-found_highguard_memory: "Founded the Highguard"
-found_highguard_memory_desc: "I founded the Highguard"
-found_highguard_memory_desc_second_perspective: "you founded the Highguard"
-found_highguard_memory_desc_third_perspective: "[owner.GetTitledFirstName] founded the Highguard"
+
+# Alias with "highguardian" spelling used in some decision/event keys
+found_highguardian_memory: "Founded the Highguard"
+found_highguardian_memory_desc: "I founded the Highguard"
+found_highguardian_memory_desc_second_perspective: "you founded the Highguard"
+found_highguardian_memory_desc_third_perspective: "[owner.GetTitledFirstName] founded the Highguard"
 grain_dole_memory: "Re-established the Grain Dole in Constantinople"
 
 
@@ -57,32 +59,22 @@ highguard_interesting_desc: "Is a [GetTrait('highguard').GetName( GetNullCharact
 
 LEGACY_DYNASTY_MEMBERS_GAIN_BONUS_TROOPS_WHEN_HIGHGUARDIAN_ADVENTURING:0 "Receive bonus troops above the cap when [highguard_adventuring|E]\n[dynast_interaction|E]: #V Send to the Highguard#!\n#weak The [dynast] gains the ability to pay [prestige] [prestige_i] in order to send away unlanded adult [dynasty] members to potentially gain [skills] and [traits]#!"
 
-send_to_highguard_interaction_effect_desc:1 "#weak While serving in the Highguard, [CHARACTER.GetShortUIName] might increase [CHARACTER.GetHerHis] [skills|E] or gain [traits|E] — but [CHARACTER.GetSheHe] might also become wounded, or worse. [CHARACTER.GetSheHe|U] will return within a few years, but cannot be recalled.#!"
+send_to_highguardian_interaction_effect_desc:1 "#weak While serving in the Highguard, [CHARACTER.GetShortUIName] might increase [CHARACTER.GetHerHis] [skills|E] or gain [traits|E] — but [CHARACTER.GetSheHe] might also become wounded, or worse. [CHARACTER.GetSheHe|U] will return within a few years, but cannot be recalled.#!"
 
 setting_fp1_scandi_adventurers_apocalyptic_desc:1 "Scandinavian adventurers will try to target Russia and the North Sea every year, AI characters do not require specific traits to launch [highguard_adventures|E]."
 
 war_memory_cb_highguard:0 "Highguard adventure"
 
-found_highguard_memory: "Founded the Highguard"
-found_highguard_memory_desc: "I founded the Highguard"
-found_highguard_memory_desc_second_perspective: "you founded the Highguard"
-found_highguard_memory_desc_third_perspective: "[owner.GetTitledFirstName] founded the Highguard"
+found_highguardian_memory: "Founded the Highguard"
+found_highguardian_memory_desc: "I founded the Highguard"
+found_highguardian_memory_desc_second_perspective: "you founded the Highguard"
+found_highguardian_memory_desc_third_perspective: "[owner.GetTitledFirstName] founded the Highguard"
 
 mercenary_company_host_of_highguards:0 "Highguard Host"
 
 highguards: "Highguards"
 highguards_flavor: "#F These famed axe-wielding Germanic mercenaries are the unwavering core of the imperial host.\n\n@warning_icon! #X They will claim some [gold|E] after the Basileus's death.#!"
 
-rival_highguard:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] started despising each other while serving together in the Highguard."
-
-best_friend_highguard:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] formed an unbreakable bond while serving together in the highguard guard."
-friend_highguard:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] became friends while serving together in the highguard guard."
-
-lover_highguard_local:0 "[CHARACTER.GetShortUIName|U] met [TARGET_CHARACTER.GetShortUIName], a local, while serving in the Highguard."
-lover_highguard_local_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] met [CHARACTER.GetShortUIName], a local, while serving in the Highguard."
-
-lover_highguard_lover:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUINamePossessive] served in the Highguard together, and grew #EMP very#! close."
-lover_highguard_lover_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] and [CHARACTER.GetShortUINamePossessive] served in the Highguard together, and grew #EMP very#! close."
 
 single_combat.0001.stoic_veteran.other_highguard:0 "Shame to [my_foe.Custom('SignatureWeaponKillType')] a loyal Guards[my_foe.GetWomanMan], [my_foe.Custom('SisterBrother')]."
 single_combat.0001.tt.stoic_veteran:0 "#BOL Stoic Veteran:#! using your Highguard experience, you hew at [my_foe.GetFirstNameNoTooltip]"
@@ -103,12 +95,12 @@ innovation_druzhina_desc:0 "Highguard soldiers have long served as imposing body
 racehorse_name_highguard:0 "[GetTrait('highguard').GetNameNoTooltip( ROOT.Char )]"
 
 #Highguard
-found_highguard_decision: "Found the Highguard"
-found_highguard_decision_desc: "For years, warriors from the remotest lands in the North have collected in Constantinople, attracted by our riches. They offer their services as mercenaries, an art at which they excel, and have no loyalties except those to coin and their own pride. If we could organize their presence around the Emperor, we would get an invincible military force at our personal service!"
-found_highguard_decision_tooltip: "$found_highguard_decision$"
-found_highguard_decision_confirm: "Start recruiting"
-unlocked_highguard_desc: "Unlocks the [court_position|E] $akolouthos_court_position$ and the [GetMaA('highguards').GetName] [men_at_arms|E] for [GetTitleByKey('e_byzantium').GetName]."
-unlocked_highguard_desc_tt: "Highguard Founded"
+found_highguardian_decision: "Found the Highguard"
+found_highguardian_decision_desc: "For years, warriors from the remotest lands in the North have collected in Constantinople, attracted by our riches. They offer their services as mercenaries, an art at which they excel, and have no loyalties except those to coin and their own pride. If we could organize their presence around the Emperor, we would get an invincible military force at our personal service!"
+found_highguardian_decision_tooltip: "$found_highguardian_decision$"
+found_highguardian_decision_confirm: "Start recruiting"
+unlocked_highguardian_desc: "Unlocks the [court_position|E] $akolouthos_court_position$ and the [GetMaA('highguards').GetName] [men_at_arms|E] for [GetTitleByKey('e_byzantium').GetName]."
+unlocked_highguardian_desc_tt: "Highguard Founded"
 
 disrespected_highguardians_modifier: "Disrespected the Highguardians"
 disrespected_highguardians_modifier_desc: "Challenging the Highguard's right to a bonus has seriously damaged their loyalty, and that of similar hired troops."
@@ -140,26 +132,44 @@ murder_save.0010.highguardian_dies:0 "\n\nAt least the assassin got the better o
 murder_save.1010.desc:0 "An assassin has made an attempt on my life! Thankfully, [highguard.GetFirstName], a member of my Highguard, was right outside my chambers and swiftly intervened. [highguard.GetSheHe|U] made quick work of the assassin before I came to any harm."
 murder_save.1010.highguardian_dies:0 "Tragically, [highguard.GetFirstNameNoTooltip] suffered fatal wounds in the process."
 
-highguard_arrived.title:0 "A New Highguard"
-highguard_arrived.desc:0 "[highguard_candidate.GetShortUIName|U] has joined the Highguard"
 
-highguard.0002.t:0 "The Highguard"
-highguard.0002.opening:0 "By the time [highguard_candidate.Custom2('MyCharacterIntroduction', ROOT.Char )] comes to me with [highguard_candidate.GetHerHis] plan, [highguard_candidate.GetSheHe] seems to have already made up [highguard_candidate.GetHerHis] mind.\n\n"Serving with the Highguardianss in"
-highguard.0002.miklagard:0 "Miklagard"
-highguard.0002.elsewhere:0 "the Emperor's guard"
-highguard.0002.end:0 "will bring both wealth and glory!"\n\nI cannot deny that part, but I could deny [highguard_candidate.GetHerHis] request. On the other hand, would it be right to stop someone in their pursuit of glory?"
-highguard.0002.a:0 "Go, with [ROOT.Char.GetFaith.WarGodNamePossessive] blessing!"
-highguard.0002.b:0 "No, I forbid it! You are needed here."
+# Duplicate "highguard" localizations for event keys that use the "highguardian" prefix
+highguardian.0002.t:0 "The Highguard"
+highguardian.0002.opening:0 "By the time [highguardian_candidate.Custom2('MyCharacterIntroduction', ROOT.Char )] comes to me with [highguardian_candidate.GetHerHis] plan, [highguardian_candidate.GetSheHe] seems to have already made up [highguardian_candidate.GetHerHis] mind.\n\n\"Serving with the Highguardianss in"
+highguardian.0002.miklagard:0 "Miklagard"
+highguardian.0002.elsewhere:0 "the Emperor's guard"
+highguardian.0002.end:0 "will bring both wealth and glory!"\n\nI cannot deny that part, but I could deny [highguardian_candidate.GetHerHis] request. On the other hand, would it be right to stop someone in their pursuit of glory?"
+highguardian.0002.a:0 "Go, with [ROOT.Char.GetFaith.WarGodNamePossessive] blessing!"
+highguardian.0002.b:0 "No, I forbid it! You are needed here."
 
-highguard.1002.t:0 "Returning From the Highguard"
-highguard.1002.opening:0 "I barely recognize [returning_highguard.Custom2('MyCharacterIntroduction', ROOT.Char )] when [returning_highguard.GetSheHe] appears in my [SelectLocalization( IsLandlessAdventurer( ROOT.Char ), 'camp', 'great_hall')]."
-highguard.1002.new_partner:0 "And I certainly don't recognize the [partner.GetWomanMan] at [returning_highguard.GetHerHis] side!"
-highguard.1002.ending:0 "\n\n"I am back, [returning_highguard.Custom2('RelationToMeShort', ROOT.Char )]!" [returning_highguard.GetFirstNameNoTooltip] bellows. "There was many a time I thought I would never see your likes again, but I have returned at last."\n\nAs strange as it is to see my [ROOT.Char.Custom2('RelationToMeShort', returning_highguard )] after all these years, I cannot deny that I am impressed with [returning_highguard.GetHerHis] [emperor.GetCulture.GetNameNoTooltip] dress, [returning_highguard.GetHerHis] foreign jewelry, and the heavy coffer [returning_highguard.GetSheHe] has brought with [returning_highguard.GetHerHim]."
-highguard.1002.a:0 "Welcome home, [returning_highguard.GetFirstNameNoTooltip]!"
+highguardian_arrived.title:0 "A New Highguard"
+highguardian_arrived.desc:0 "[highguardian_candidate.GetShortUIName|U] has joined the Highguard"
 
-highguard.3001.t:0 "Highguard: An Honorable Death"
-highguard.3001.desc:0 "[highguard.Custom2('MyCharacterIntroduction', ROOT.Char)] has died while serving in the Highguard!\n\nI have received a missive from the [emperor.GetTitledFirstName] praising [highguard.GetHerHis] name, and describing how [highguard.GetSheHe] fought valiantly to save the life of the [emperor.GetTitleAsNameNoTooltip] from vicious assassins.\n\nNothing can ever bring [highguard.GetFirstNameNoTooltip] back, but the posthumous reward of gold from the [emperor.GetTitleAsNameNoTooltip] helps ease the sorrow."
-highguard.3001.a:0 "Brave until the end, [highguard.GetFirstNameNoTooltip]..."
+highguardian.1002.t:0 "Returning From the Highguard"
+highguardian.1002.opening:0 "I barely recognize [returning_highguard.Custom2('MyCharacterIntroduction', ROOT.Char )] when [returning_highguard.GetSheHe] appears in my [SelectLocalization( IsLandlessAdventurer( ROOT.Char ), 'camp', 'great_hall')]."
+highguardian.1002.new_partner:0 "And I certainly don't recognize the [partner.GetWomanMan] at [returning_highguard.GetHerHis] side!"
+highguardian.1002.ending:0 "\n\n\"I am back, [returning_highguard.Custom2('RelationToMeShort', ROOT.Char )]!\" [returning_highguard.GetFirstNameNoTooltip] bellows. \"There was many a time I thought I would never see your likes again, but I have returned at last.\"\n\nAs strange as it is to see my [ROOT.Char.Custom2('RelationToMeShort', returning_highguard )] after all these years, I cannot deny that I am impressed with [returning_highguard.GetHerHis] [emperor.GetCulture.GetNameNoTooltip] dress, [returning_highguard.GetHerHis] foreign jewelry, and the heavy coffer [returning_highguard.GetSheHe] has brought with [returning_highguard.GetHerHim]."
+highguardian.1002.a:0 "Welcome home, [returning_highguard.GetFirstNameNoTooltip]!"
+
+highguardian.3001.t:0 "Highguard: An Honorable Death"
+highguardian.3001.desc:0 "[highguardian.Custom2('MyCharacterIntroduction', ROOT.Char)] has died while serving in the Highguard!\n\nI have received a missive from the [emperor.GetTitledFirstName] praising [highguardian.GetHerHis] name, and describing how [highguardian.GetSheHe] fought valiantly to save the life of the [emperor.GetTitleAsNameNoTooltip] from vicious assassins.\n\nNothing can ever bring [highguardian.GetFirstNameNoTooltip] back, but the posthumous reward of gold from the [emperor.GetTitleAsNameNoTooltip] helps ease the sorrow."
+highguardian.3001.a:0 "Brave until the end, [highguardian.GetFirstNameNoTooltip]..."
+
+# Relationship / ongoing event reasons (duplicates of highguard_* keys but matching event "reason" lookups)
+best_friend_highguardian:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] formed an unbreakable bond while serving together in the highguard guard."
+friend_highguardian:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] became friends while serving together in the highguard guard."
+rival_highguardian:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUIName] started despising each other while serving together in the Highguard."
+lover_highguardian_local:0 "[CHARACTER.GetShortUIName|U] met [TARGET_CHARACTER.GetShortUIName], a local, while serving in the Highguard."
+lover_highguardian_local_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] met [CHARACTER.GetShortUIName], a local, while serving in the Highguard."
+lover_highguardian_lover:0 "[CHARACTER.GetShortUIName|U] and [TARGET_CHARACTER.GetShortUINamePossessive] served in the Highguard together, and grew #EMP very#! close."
+lover_highguardian_lover_corresponding:0 "[TARGET_CHARACTER.GetShortUIName|U] and [CHARACTER.GetShortUINamePossessive] served in the Highguard together, and grew #EMP very#! close."
+
+# Single-combat localization for highguardian combat move
+single_combat.0001.highguardian.general:0 "Using my Highguard experience, I hew at [my_foe.GetFirstNameNoTooltip]"
+single_combat.0001.highguardian.other_highguardian:0 "Shame to [my_foe.Custom('SignatureWeaponKillType')] a fellow Highguard, [my_foe.Custom('SisterBrother')]."
+single_combat.0001.tt.highguardian:0 "#BOL Highguardian:#! using your Highguard experience, you hew at [my_foe.GetFirstNameNoTooltip]"
+
+
 
 HIGHGUARDIAN_LOYALTY: "[target.GetShortUINameNoTooltip] has the sworn loyalty of the Highguards: $VALUE|=+0$"
 
@@ -167,9 +177,9 @@ scheme_agent_aptitude.trait.highguard: "[GetTrait('highguard').GetName( GetNullC
 
 SUCCESSION_EVENT_WINDOW_HEIR_TRAIT_HIGHGUARDIAN:0 "Having served in distant Miklagard, [ROOT.Char.GetHerHis] adventurous spirit is likely to inspire [ROOT.Char.GetHerHis] [ROOT.Char.Custom('GetSubjectPlural')]."
 
-send_to_highguard_interaction:0 "Send to the Highguard #weak (Dynasty)#!"
-send_to_highguard_interaction_desc:0 "$dynasty_interaction_header$Send [recipient.GetShortUINameNoTooltip] away to gain glory and fortune in the Highguard. Who knows, it might even help build character!"
-send_to_highguard_interaction_toast:1 "[recipient.GetShortUIName] left for the Highguard"
+send_to_highguardian_interaction:0 "Send to the Highguard #weak (Dynasty)#!"
+send_to_highguardian_interaction_desc:0 "$dynasty_interaction_header$Send [recipient.GetShortUINameNoTooltip] away to gain glory and fortune in the Highguard. Who knows, it might even help build character!"
+send_to_highguardian_interaction_toast:1 "[recipient.GetShortUIName] left for the Highguard"
 
 PORTRAIT_MODIFIER_custom_headgear_female_headgear_secular_fp1_imperial_01:0 "@wrath_icon! Highguardian Imperial Crown"
 PORTRAIT_MODIFIER_custom_beards_male_beard_fp1_05:0 "@wrath_icon! Grizzled Highguardian"
