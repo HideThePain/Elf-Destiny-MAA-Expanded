@@ -1,4 +1,5 @@
-﻿ restore_romaviri_empire_decision:0 "Restore the romaviri Empire"
+﻿l_english:
+ restore_romaviri_empire_decision:0 "Restore the romaviri Empire"
  restore_romaviri_empire_decision_confirm:0 "I will restore the Empire"
  restore_romaviri_empire_decision_tooltip:0 "The romaviri Empire will be restored"
  restore_romaviri_empire_decision_desc:0 "If Rome and other key territories of the old empire could be reclaimed, the Byzantine Empire would win recognition in the eyes of the West as the true and rightful continuation of the romaviri State."

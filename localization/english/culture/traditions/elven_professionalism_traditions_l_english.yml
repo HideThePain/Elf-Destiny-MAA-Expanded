@@ -7,19 +7,19 @@
  
  culture_parameter_unlock_maa_elven_shieldguard:0 "[GetMaA('elven_shieldguard').GetName] as [men_at_arms|E]"
  elven_shieldguard:1 "Elven Shieldguard"
- elven_shieldguard_flavor:1 "The Elven Shieldguard are the elite heavy infantry of the elven culture's army, wielding large shields and spears. They are trained to hold the line against any foe, and are known for their unbreakable discipline and unwavering loyalty to their commanders."
+ elven_shieldguard_flavor:1 "The Elven Shieldguard are the elite heavy infantry of the elven army, wielding large shields and spears. They are trained to hold the line against any foe, and are known for their unbreakable discipline and unwavering loyalty to their commanders."
  
  culture_parameter_unlock_maa_elven_swordguard:0 "[GetMaA('elven_swordguard').GetName] as [men_at_arms|E]"
  elven_swordguard:1 "Elven Swordguard"
- elven_swordguard_flavor:1 "The Elven Swordguard are the vanguard of the elven culture's army. Lightly armored and wielding greatswords, they are trained to strike quickly and decisively, cutting through enemy lines with ease."
+ elven_swordguard_flavor:1 "The Elven Swordguard are the vanguard of the elven army. Lightly armored and wielding greatswords, they are trained to strike quickly and decisively, cutting through enemy lines with ease."
  
  culture_parameter_unlock_maa_highguard:0 "[GetMaA('highguard').GetName] as [men_at_arms|E]"
- highguard:1 "Highguard of Valor"
- highguard_flavor:1 "The Highguard of Valor are the elite infantry of the elven culture's army. Clad in heavy armor and wielding the best equipment they can muster, they are the ideal image of discipline and martial mastery."
+ highguard:1 "Highguard"
+ highguard_flavor:1 "The Highguard are the elite infantry of the elven army. Clad in heavy armor and wielding the best equipment they can muster, they are the ideal image of discipline and martial mastery."
  
  culture_parameter_unlock_maa_exalted_bear_highriders:0 "[GetMaA('exalted_bear_highriders').GetName] as [men_at_arms|E]"
  exalted_bear_highriders:1 "Exalted Bear Highriders"
- exalted_bear_highriders_flavor:1 "The Exalted Bear Highriders are the elite cavalry of more... rustic elven culture armies. Riding into battle on the backs of massive bears, they can terrify even the most stalwart foe."
+ exalted_bear_highriders_flavor:1 "The Exalted Bear Highriders are the elite cavalry of more... rustic elven armies. Riding into battle on the backs of massive bears, they can terrify even the most stalwart foe."
  
  culture_parameter_unlock_maa_griffin_knights:0 "[GetMaA('griffin_knights').GetName] as [men_at_arms|E]"
  griffin_knights:1 "Griffin Knights"
@@ -27,7 +27,7 @@
  
  culture_parameter_unlock_maa_honored_drake_lancers:0 "[GetMaA('honored_drake_lancers').GetName] as [men_at_arms|E]"
  honored_drake_lancers:1 "Honored Drake Lancers"
- honored_drake_lancers_flavor:1 "The Honored Drake Lancers are possibly the rarest force in any elven culture army. With drakes believed to be long-since wiped out, the elves that ride them are a sight to behold."
+ honored_drake_lancers_flavor:1 "The Honored Drake Lancers are possibly the rarest force in any elven army. With drakes believed to be long-since wiped out, the elves that ride them are a sight to behold."
  
  culture_parameter_elven_professionalism_decision:0 "Characters of this culture may take the Elven Professionalism Decision to increase the number of men-at-arms that they can field, but reduce the number of levies that they can raise."
  
