@@ -1,1310 +1,1314 @@
 ﻿#Restoring the Roman Empire (as Byzantium)
 restore_romaviri_empire_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/ep3_decision_romaviri_restoration.dds"
-	}
-	desc = restore_romaviri_empire_decision_desc
-	selection_tooltip = restore_romaviri_empire_decision_tooltip
-	decision_group_type = elf
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_decision_romaviri_restoration.dds"
+    }
+    desc = restore_romaviri_empire_decision_desc
+    selection_tooltip = restore_romaviri_empire_decision_tooltip
+    decision_group_type = elf
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 120
-		hegemony = 0
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 120
+        hegemony = 0
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		has_title = title:e_byzantium
-		NOT = { primary_title = title:e_hre }
-		NOT = { primary_title = title:e_italy }
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_romaviri_empire
-			}
-		}
-		OR = {
-			government_has_flag = government_is_feudal
-			government_has_flag = government_is_republic
-			government_has_flag = government_is_clan
-			government_allows = administrative
-		}
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        has_title = title:e_byzantium
+        NOT = { primary_title = title:e_hre }
+        NOT = { primary_title = title:e_italy }
+        NOT = {  #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_restored_romaviri_empire
+            }
+        }
+        OR = {
+            government_has_flag = government_is_feudal
+            government_has_flag = government_is_republic
+            government_has_flag = government_is_clan
+            government_allows = administrative
+        }
+    }
 
-	is_valid = {
-		prestige_level >= max_prestige_level
+    is_valid = {
+        prestige_level >= max_prestige_level
 
-		completely_controls = title:d_latium
-		completely_controls = title:d_venice
-		completely_controls = title:d_romagna
-		completely_controls = title:d_sicily
-		completely_controls = title:d_genoa
-		completely_controls = title:d_capua
-		completely_controls = title:d_apulia
-		completely_controls = title:d_thrace
-		completely_controls = title:d_antioch
-		completely_controls = title:d_palestine
-		completely_controls = title:d_alexandria
-		completely_controls = title:d_athens
-		completely_controls = title:d_tunis
-		completely_controls = title:d_croatia
-		completely_controls = title:d_thessalonika
-	}
+        completely_controls = title:d_latium
+        completely_controls = title:d_venice
+        completely_controls = title:d_romagna
+        completely_controls = title:d_sicily
+        completely_controls = title:d_genoa
+        completely_controls = title:d_capua
+        completely_controls = title:d_apulia
+        completely_controls = title:d_thrace
+        completely_controls = title:d_antioch
+        completely_controls = title:d_palestine
+        completely_controls = title:d_alexandria
+        completely_controls = title:d_athens
+        completely_controls = title:d_tunis
+        completely_controls = title:d_croatia
+        completely_controls = title:d_thessalonika
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
 
-		OR = {
-			religion = { is_in_family = rf_spark }
-			culture = { has_cultural_pillar = heritage_elf }
-		}
-	}
+        OR = {
+            religion = { is_in_family = rf_spark }
+            culture = { has_cultural_pillar = heritage_elf }
+        }
+    }
 
-	effect = {
-		custom_tooltip = restore_romaviri_empire_decision_effect_tooltip
-		show_as_tooltip = {
-			create_romaviri_empire_scripted_effect = yes
-		}
-		if = {
-			limit = {
-				has_ep3_dlc_trigger = yes
-			}
-			trigger_event = romaviri_restoration.0100
-		}
-		else = {
-			trigger_event = romaviri_restoration.0001
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_romaviri_empire
-			}
-			set_global_variable = {
-				name = flag_restored_romaviri_empire
-				value = root
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    effect = {
+        custom_tooltip = restore_romaviri_empire_decision_effect_tooltip
+        show_as_tooltip = {
+            create_romaviri_empire_scripted_effect = yes
+        }
+        if = {
+            limit = {
+                has_ep3_dlc_trigger = yes
+            }
+            trigger_event = romaviri_restoration.0100
+        }
+        else = {
+            trigger_event = romaviri_restoration.0001
+        }
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_restored_romaviri_empire
+            }
+            set_global_variable = {
+                name = flag_restored_romaviri_empire
+                value = root
+            }
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 100
+    }
 }
 
 #Restoring the Roman Empire (as HRE)
 restore_romaviri_empire_holy_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
-	}
-	desc = restore_romaviri_empire_holy_decision_desc
-	selection_tooltip = restore_romaviri_empire_decision_tooltip
-	# Deliberately left in the major group rather than the Roman one.
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+    }
+    desc = restore_romaviri_empire_holy_decision_desc
+    selection_tooltip = restore_romaviri_empire_decision_tooltip
+    # Deliberately left in the major group rather than the Roman one.
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 120
-		hegemony = 0
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 120
+        hegemony = 0
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		has_title = title:e_hre
-		OR = {
-			NOT = { has_title = title:e_byzantium } # Prioritize Byzaboos
-			primary_title = title:e_hre
-		}
-		NOT = { primary_title = title:e_italy }
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_romaviri_empire
-			}
-		}
-		OR = {
-			government_has_flag = government_is_feudal
-			government_has_flag = government_is_republic
-			government_has_flag = government_is_clan
-			government_has_flag = government_is_administrative
-		}
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        has_title = title:e_hre
+        OR = {
+            NOT = { has_title = title:e_byzantium } # Prioritize Byzaboos
+            primary_title = title:e_hre
+        }
+        NOT = { primary_title = title:e_italy }
+        NOT = {  #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_restored_romaviri_empire
+            }
+        }
+        OR = {
+            government_has_flag = government_is_feudal
+            government_has_flag = government_is_republic
+            government_has_flag = government_is_clan
+            government_has_flag = government_is_administrative
+        }
+    }
 
-	is_valid = {
-		prestige_level >= max_prestige_level
-		completely_controls = title:d_latium
-		completely_controls = title:d_venice
-		completely_controls = title:d_romagna
-		completely_controls = title:d_sicily
-		completely_controls = title:d_genoa
-		completely_controls = title:d_capua
-		completely_controls = title:d_apulia
-		completely_controls = title:d_thrace
-		completely_controls = title:d_antioch
-		completely_controls = title:d_palestine
-		completely_controls = title:d_alexandria
-		completely_controls = title:d_athens
-		completely_controls = title:d_tunis
-		completely_controls = title:d_croatia
-		completely_controls = title:d_thessalonika
-	}
+    is_valid = {
+        prestige_level >= max_prestige_level
+        completely_controls = title:d_latium
+        completely_controls = title:d_venice
+        completely_controls = title:d_romagna
+        completely_controls = title:d_sicily
+        completely_controls = title:d_genoa
+        completely_controls = title:d_capua
+        completely_controls = title:d_apulia
+        completely_controls = title:d_thrace
+        completely_controls = title:d_antioch
+        completely_controls = title:d_palestine
+        completely_controls = title:d_alexandria
+        completely_controls = title:d_athens
+        completely_controls = title:d_tunis
+        completely_controls = title:d_croatia
+        completely_controls = title:d_thessalonika
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
 
-		OR = {
-			religion = { is_in_family = rf_abrahamic }
-			religion = religion:hellenism_religion
-			culture = { has_cultural_pillar = heritage_latin }
-			culture = { has_cultural_pillar = heritage_byzantine }
-		}
-	}
+        OR = {
+            religion = { is_in_family = rf_abrahamic }
+            religion = religion:hellenism_religion
+            culture = { has_cultural_pillar = heritage_latin }
+            culture = { has_cultural_pillar = heritage_byzantine }
+        }
+    }
 
-	effect = {
-		custom_tooltip = restore_romaviri_empire_decision_effect_tooltip
-		show_as_tooltip = {
-			create_romaviri_empire_holy_scripted_effect = yes
-		}
-		trigger_event = {
-			id = romaviri_restoration.0003
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_romaviri_empire
-			}
-			set_global_variable = {
-				name = flag_restored_romaviri_empire
-				value = root
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    effect = {
+        custom_tooltip = restore_romaviri_empire_decision_effect_tooltip
+        show_as_tooltip = {
+            create_romaviri_empire_holy_scripted_effect = yes
+        }
+        trigger_event = {
+            id = romaviri_restoration.0003
+        }
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_restored_romaviri_empire
+            }
+            set_global_variable = {
+                name = flag_restored_romaviri_empire
+                value = root
+            }
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 100
+    }
 }
 
 #Restoring the Roman Empire (as Italia)
 restore_romaviri_empire_italian_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
-	}
-	desc = restore_romaviri_empire_italian_decision_desc
-	selection_tooltip = restore_romaviri_empire_decision_tooltip
-	# Deliberately left in the major group rather than the Roman one.
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+    }
+    desc = restore_romaviri_empire_italian_decision_desc
+    selection_tooltip = restore_romaviri_empire_decision_tooltip
+    # Deliberately left in the major group rather than the Roman one.
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 120
-		hegemony = 0
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 120
+        hegemony = 0
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		has_title = title:e_italy
-		OR = {
-			NAND = {
-				has_title = title:e_byzantium #Prioritize Byzaboos
-				has_title = title:e_hre #And the Germans
-			}
-			primary_title = title:e_italy
-		}
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_romaviri_empire
-			}
-		}
-		culture = { has_cultural_pillar = heritage_latin }
-		is_target_in_global_variable_list = { #Only available after unifying Italy.
-			name = unavailable_unique_decisions
-			target = flag:flag_unified_italian_empire
-		}
-		OR = {
-			government_has_flag = government_is_feudal
-			government_has_flag = government_is_republic
-			government_has_flag = government_is_clan
-			government_has_flag = government_is_administrative
-		}
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        has_title = title:e_italy
+        OR = {
+            NAND = {
+                has_title = title:e_byzantium #Prioritize Byzaboos
+                has_title = title:e_hre #And the Germans
+            }
+            primary_title = title:e_italy
+        }
+        NOT = {  #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_restored_romaviri_empire
+            }
+        }
+        culture = { has_cultural_pillar = heritage_latin }
+        is_target_in_global_variable_list = { #Only available after unifying Italy.
+            name = unavailable_unique_decisions
+            target = flag:flag_unified_italian_empire
+        }
+        OR = {
+            government_has_flag = government_is_feudal
+            government_has_flag = government_is_republic
+            government_has_flag = government_is_clan
+            government_has_flag = government_is_administrative
+        }
+    }
 
-	is_valid = {
-		prestige_level >= max_prestige_level
-		
-		completely_controls = title:d_latium
-		completely_controls = title:d_venice
-		completely_controls = title:d_romagna
-		completely_controls = title:d_sicily
-		completely_controls = title:d_genoa
-		completely_controls = title:d_capua
-		completely_controls = title:d_apulia
-		completely_controls = title:d_thrace
-		completely_controls = title:d_antioch
-		completely_controls = title:d_palestine
-		completely_controls = title:d_alexandria
-		completely_controls = title:d_athens
-		completely_controls = title:d_tunis
-		completely_controls = title:d_croatia
-		completely_controls = title:d_thessalonika
-	}
+    is_valid = {
+        prestige_level >= max_prestige_level
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
+        completely_controls = title:d_latium
+        completely_controls = title:d_venice
+        completely_controls = title:d_romagna
+        completely_controls = title:d_sicily
+        completely_controls = title:d_genoa
+        completely_controls = title:d_capua
+        completely_controls = title:d_apulia
+        completely_controls = title:d_thrace
+        completely_controls = title:d_antioch
+        completely_controls = title:d_palestine
+        completely_controls = title:d_alexandria
+        completely_controls = title:d_athens
+        completely_controls = title:d_tunis
+        completely_controls = title:d_croatia
+        completely_controls = title:d_thessalonika
+    }
 
-		OR = {
-			religion = { is_in_family = rf_abrahamic }
-			religion = religion:hellenism_religion
-			culture = { has_cultural_pillar = heritage_latin }
-			culture = { has_cultural_pillar = heritage_byzantine }
-		}
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
 
-	effect = {
-		custom_tooltip = restore_romaviri_empire_decision_effect_tooltip
-		show_as_tooltip = {
-			create_romaviri_empire_italy_scripted_effect = yes
-		}
-		trigger_event = {
-			id = romaviri_restoration.0150
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_romaviri_empire
-			}
-			set_global_variable = {
-				name = flag_restored_romaviri_empire
-				value = root
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+        OR = {
+            religion = { is_in_family = rf_abrahamic }
+            religion = religion:hellenism_religion
+            culture = { has_cultural_pillar = heritage_latin }
+            culture = { has_cultural_pillar = heritage_byzantine }
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    effect = {
+        custom_tooltip = restore_romaviri_empire_decision_effect_tooltip
+        show_as_tooltip = {
+            create_romaviri_empire_italy_scripted_effect = yes
+        }
+        trigger_event = {
+            id = romaviri_restoration.0150
+        }
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_restored_romaviri_empire
+            }
+            set_global_variable = {
+                name = flag_restored_romaviri_empire
+                value = root
+            }
+        }
+    }
+
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 100
+    }
 }
 
 #Restore the real Roman Empire
 form_rum_sultanate_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_concession.dds"
-	}
-	desc = form_rum_sultanate_decision_desc
-	selection_tooltip = form_rum_sultanate_decision_tooltip
-	# Deliberately left in the major group rather than the Roman one.
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_concession.dds"
+    }
+    desc = form_rum_sultanate_decision_desc
+    selection_tooltip = form_rum_sultanate_decision_tooltip
+    # Deliberately left in the major group rather than the Roman one.
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 120
-		kingdom = 120
-		empire = 0
-		hegemony = 0
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 120
+        kingdom = 120
+        empire = 0
+        hegemony = 0
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		is_landed = yes # Laamps don't need to know about this
-		OR = {
-			religion = religion:islam_religion
-			culture = { has_cultural_pillar = heritage_turkic }
-		}
-		NOT = { culture = culture:greek }
-		NOT = { faith.religion = religion:christianity_religion }
-		OR = {
-			top_liege = this
-			top_liege = { faith.religion = faith:ashari.religion }
-		}
-		capital_province = {
-			OR = {
-				geographical_region = world_persian_empire
-				geographical_region = world_asia_minor
-				geographical_region = custom_greater_armenia
-			}
-		}
-		NOR = {
-			exists = title:k_rum.holder
-			top_liege = { is_romaviri_emperor_trigger = yes }
-		}
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_formed_rum_sultanate
-			}
-		}
-		OR = {
-			highest_held_title_tier < 4 #Dukes or lower, splitting off from Persia.
-			AND = {
-				highest_held_title_tier < 5
-				top_liege = this #Or just a fancy way to get a new King title.
-			}
-		}
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        is_landed = yes # Laamps don't need to know about this
+        OR = {
+            religion = religion:islam_religion
+            culture = { has_cultural_pillar = heritage_turkic }
+        }
+        NOT = { culture = culture:greek }
+        NOT = { faith.religion = religion:christianity_religion }
+        OR = {
+            top_liege = this
+            top_liege = { faith.religion = faith:ashari.religion }
+        }
+        capital_province = {
+            OR = {
+                geographical_region = world_persian_empire
+                geographical_region = world_asia_minor
+                geographical_region = custom_greater_armenia
+            }
+        }
+        NOR = {
+            exists = title:k_rum.holder
+            top_liege = { is_romaviri_emperor_trigger = yes }
+        }
+        NOR = {
+            exists = title:k_rum.holder
+            top_liege = { is_roman_emperor_trigger = yes }
+        }
+        NOT = {  #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_formed_rum_sultanate
+            }
+        }
+        OR = {
+            highest_held_title_tier < 4 #Dukes or lower, splitting off from Persia.
+            AND = {
+                highest_held_title_tier < 5
+                top_liege = this #Or just a fancy way to get a new King title.
+            }
+        }
+    }
 
-	is_valid = {
-		prestige_level >= high_prestige_level
-		piety_level >= high_piety_level
-		completely_controls = title:d_cibyrrhaeot
-		completely_controls = title:d_anatolia
-		completely_controls = title:d_cappadocia
-		completely_controls = title:d_charsianon
-		completely_controls = title:d_paphlagonia
-		completely_controls = title:d_armeniac
-		completely_controls = title:d_chaldia
-	}
+    is_valid = {
+        prestige_level >= high_prestige_level
+        piety_level >= high_piety_level
+        completely_controls = title:d_cibyrrhaeot
+        completely_controls = title:d_anatolia
+        completely_controls = title:d_cappadocia
+        completely_controls = title:d_charsianon
+        completely_controls = title:d_paphlagonia
+        completely_controls = title:d_armeniac
+        completely_controls = title:d_chaldia
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		is_at_war = no
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        is_at_war = no
+    }
 
-	effect = {
-		custom_tooltip = form_rum_sultanate_decision_effect_tooltip
-		gain_heroic_legend_seed_tooltip_effect = yes
-		show_as_tooltip = {
-			create_rum_scripted_effect = yes
-		}
-		trigger_event = {
-			id = middle_east_decisions.0014
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_formed_rum_sultanate
-			}
-			set_global_variable = {
-				name = flag_formed_rum_sultanate
-				value = root
-			}
-		}
-	}
+    effect = {
+        custom_tooltip = form_rum_sultanate_decision_effect_tooltip
+        gain_heroic_legend_seed_tooltip_effect = yes
+        show_as_tooltip = {
+            create_rum_scripted_effect = yes
+        }
+        trigger_event = {
+            id = middle_east_decisions.0014
+        }
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_formed_rum_sultanate
+            }
+            set_global_variable = {
+                name = flag_formed_rum_sultanate
+                value = root
+            }
+        }
+    }
 
-	ai_potential = {
-		always = yes
-	}
+    ai_potential = {
+        always = yes
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    ai_will_do = {
+        base = 100
+    }
 }
 
 mend_the_great_schism_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-	}
-	desc = mend_the_great_schism_decision_desc
-	selection_tooltip = mend_the_great_schism_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = mend_the_great_schism_decision_desc
+    selection_tooltip = mend_the_great_schism_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 120
-		hegemony = 120
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 120
+        hegemony = 120
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		faith.religion = faith:catholic.religion #Christian Only
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_mended_great_schism
-			}
-		}
-		highest_held_title_tier > 4 #Only Emperors
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        faith.religion = faith:catholic.religion #Christian Only
+        NOT = {  #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_mended_great_schism
+            }
+        }
+        highest_held_title_tier > 4 #Only Emperors
+    }
 
-	is_valid = {
-		piety_level >= max_piety_level
-		completely_controls = title:c_byzantion
-		completely_controls = title:c_antiocheia
-		completely_controls = title:c_jerusalem
-		completely_controls = title:c_alexandria
-		completely_controls = title:c_roma
-		custom_description = {
-			text = "mend_schism_byzantion_bishop"
-			title:c_byzantion.holder.faith = root.faith  #Either own County directly, or have a vassal of same religion.
-		}
-		custom_description = {
-			text = "mend_schism_antiocheia_bishop"
-			title:c_antiocheia.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
-		}
-		custom_description = {
-			text = "mend_schism_jerusalem_bishop"
-			title:c_jerusalem.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
-		}
-		custom_description = {
-			text = "mend_schism_alexandria_bishop"
-			title:c_alexandria.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
-		}
-		custom_description = {
-			text = "mend_schism_roma_bishop"
-			title:c_roma.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
-		}
-		custom_description = {
-			text = "mend_schism_no_rite"
-			root.faith = { NOT = { has_doctrine_parameter = maintains_head_of_faith_on_creation } }
-		}
-	}
+    is_valid = {
+        piety_level >= max_piety_level
+        completely_controls = title:c_byzantion
+        completely_controls = title:c_antiocheia
+        completely_controls = title:c_jerusalem
+        completely_controls = title:c_alexandria
+        completely_controls = title:c_roma
+        custom_description = {
+            text = "mend_schism_byzantion_bishop"
+            title:c_byzantion.holder.faith = root.faith  #Either own County directly, or have a vassal of same religion.
+        }
+        custom_description = {
+            text = "mend_schism_antiocheia_bishop"
+            title:c_antiocheia.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+        }
+        custom_description = {
+            text = "mend_schism_jerusalem_bishop"
+            title:c_jerusalem.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+        }
+        custom_description = {
+            text = "mend_schism_alexandria_bishop"
+            title:c_alexandria.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+        }
+        custom_description = {
+            text = "mend_schism_roma_bishop"
+            title:c_roma.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+        }
+        custom_description = {
+            text = "mend_schism_no_rite"
+            root.faith = { NOT = { has_doctrine_parameter = maintains_head_of_faith_on_creation } }
+        }
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+    }
 
-	effect = {
-		gain_holy_legend_seed_tooltip_effect = yes
-		custom_tooltip = mend_the_great_schism_decision_effect_tooltip
-		show_as_tooltip = {
-			mend_great_schism_scripted_effect = yes
-		}
-		trigger_event = romaviri_restoration.0100
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_mended_great_schism
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    effect = {
+        gain_holy_legend_seed_tooltip_effect = yes
+        custom_tooltip = mend_the_great_schism_decision_effect_tooltip
+        show_as_tooltip = {
+            mend_great_schism_scripted_effect = yes
+        }
+        trigger_event = romaviri_restoration.0100
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_mended_great_schism
+            }
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 100
+    }
 }
 
 set_capital_constantinople_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	}
-	desc = set_capital_constantinople_decision_desc
-	selection_tooltip = set_capital_constantinople_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+    }
+    desc = set_capital_constantinople_decision_desc
+    selection_tooltip = set_capital_constantinople_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 12
-		hegemony = 0
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 12
+        hegemony = 0
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		has_title = title:e_byzantium
-		NOT = { capital_county = { this = title:c_byzantion } }
-		OR = {
-			title:c_byzantion.holder = { 	
-				any_liege_or_above = { this = root }
-			}
-			title:c_byzantion.holder = { this = root }
-		}
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        has_title = title:e_byzantium
+        NOT = { capital_county = { this = title:c_byzantion } }
+        OR = {
+            title:c_byzantion.holder = {
+                any_liege_or_above = { this = root }
+            }
+            title:c_byzantion.holder = { this = root }
+        }
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+    }
 
-	effect = {
-		if = { #Usurp if not held personally.
-			limit = {
-				NOT = { title:c_byzantion.holder = { this = root } }
-			}
-			title:c_byzantion.holder = { save_scope_as = target_for_denunciation }
-			create_title_and_vassal_change = {
-				type = returned
-				save_scope_as = change
-				add_claim_on_loss = no
-			}
-			title:c_byzantion = {
-				change_title_holder = {
-					holder = root
-					change = scope:change
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
+    effect = {
+        if = { #Usurp if not held personally.
+            limit = {
+                NOT = { title:c_byzantion.holder = { this = root } }
+            }
+            title:c_byzantion.holder = { save_scope_as = target_for_denunciation }
+            create_title_and_vassal_change = {
+                type = returned
+                save_scope_as = change
+                add_claim_on_loss = no
+            }
+            title:c_byzantion = {
+                change_title_holder = {
+                    holder = root
+                    change = scope:change
+                }
+            }
+            resolve_title_and_vassal_change = scope:change
 
-		}
-		set_realm_capital = title:c_byzantion
-		if = {
-			limit = {
-				exists = scope:target_for_denunciation
-			}
-			scope:target_for_denunciation = {
-				trigger_event = {
-					id = romaviri_restoration.1204
-				}
-			}
-		}
-	}
-	ai_potential = {
-		primary_title.tier = tier_empire
-		has_title = title:e_byzantium
-	}
+        }
+        set_realm_capital = title:c_byzantion
+        if = {
+            limit = {
+                exists = scope:target_for_denunciation
+            }
+            scope:target_for_denunciation = {
+                trigger_event = {
+                    id = romaviri_restoration.1204
+                }
+            }
+        }
+    }
+    ai_potential = {
+        primary_title.tier = tier_empire
+        has_title = title:e_byzantium
+    }
 
-	ai_will_do = { #Do it always, for coherence.
-		base = 100
-		modifier = {
-			title:c_byzantion.holder = {
-				is_ai = no
-				any_realm_county = {
-					count < 2
-					holder = title:c_byzantion.holder
-				}
-			}
-			factor = 0
-		}
-	}
+    ai_will_do = { #Do it always, for coherence.
+        base = 100
+        modifier = {
+            title:c_byzantion.holder = {
+                is_ai = no
+                any_realm_county = {
+                    count < 2
+                    holder = title:c_byzantion.holder
+                }
+            }
+            factor = 0
+        }
+    }
 }
 
 set_capital_rome_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	}
-	desc = set_capital_rome_decision_desc
-	selection_tooltip = set_capital_rome_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+    }
+    desc = set_capital_rome_decision_desc
+    selection_tooltip = set_capital_rome_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 0
-		hegemony = 12
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 0
+        hegemony = 12
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		has_title = title:h_romaviri_empire
-		NOT = { capital_county = { this = title:c_roma } }
-		OR = {
-			title:c_roma.holder = { 	
-				any_liege_or_above = { this = root }
-			}
-			title:c_roma.holder = { this = root }
-		}
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        has_title = title:h_romaviri_empire
+        NOT = { capital_county = { this = title:c_roma } }
+        OR = {
+            title:c_roma.holder = {
+                any_liege_or_above = { this = root }
+            }
+            title:c_roma.holder = { this = root }
+        }
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+    }
 
-	effect = {
-		if = { #Usurp if not held personally.
-			limit = {
-				NOT = { title:c_roma.holder = { this = root } }
-			}
-			create_title_and_vassal_change = {
-				type = returned
-				save_scope_as = change
-				add_claim_on_loss = no
-			}
-			title:c_roma = {
-				change_title_holder = {
-					holder = root
-					change = scope:change
-				}
-			}
-			resolve_title_and_vassal_change = scope:change
+    effect = {
+        if = { #Usurp if not held personally.
+            limit = {
+                NOT = { title:c_roma.holder = { this = root } }
+            }
+            create_title_and_vassal_change = {
+                type = returned
+                save_scope_as = change
+                add_claim_on_loss = no
+            }
+            title:c_roma = {
+                change_title_holder = {
+                    holder = root
+                    change = scope:change
+                }
+            }
+            resolve_title_and_vassal_change = scope:change
 
-		}
-		set_realm_capital = title:c_roma
-	}
-	
-	ai_potential = {
-		has_title = title:h_romaviri_empire
-	}
+        }
+        set_realm_capital = title:c_roma
+    }
 
-	ai_will_do = { #Do it always, for coherence.
-		base = 100
-	}
+    ai_potential = {
+        has_title = title:h_romaviri_empire
+    }
+
+    ai_will_do = { #Do it always, for coherence.
+        base = 100
+    }
 }
 
 establish_iconoclast_patriarchate_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-	}
-	desc = establish_iconoclast_patriarchate_decision_desc
-	selection_tooltip = establish_iconoclast_patriarchate_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = establish_iconoclast_patriarchate_decision_desc
+    selection_tooltip = establish_iconoclast_patriarchate_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 60
+        empire = 60
+        hegemony = 60
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		faith = faith:iconoclast
-		NOT = { faith = { exists = religious_head } }
-		highest_held_title_tier > 3 #Only Kings and Emperors
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        faith = faith:iconoclast
+        NOT = { faith = { exists = religious_head } }
+        highest_held_title_tier > 3 #Only Kings and Emperors
+    }
 
-	is_valid = {
-		completely_controls = title:c_byzantion
-		piety_level >= medium_piety_level
-	}
+    is_valid = {
+        completely_controls = title:c_byzantion
+        piety_level >= medium_piety_level
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+    }
 
-	effect = {
-		custom_tooltip = establish_iconoclast_patriarchate_decision_effect_tooltip
-		trigger_event = {
-			id = romaviri_restoration.0120
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    effect = {
+        custom_tooltip = establish_iconoclast_patriarchate_decision_effect_tooltip
+        trigger_event = {
+            id = romaviri_restoration.0120
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-		ai_value_modifier = {
-			ai_zeal = 5.0
-		}
-		modifier = {
-			factor = 0
-			has_trait = cynical
-		}
-	}
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 100
+        ai_value_modifier = {
+            ai_zeal = 5.0
+        }
+        modifier = {
+            factor = 0
+            has_trait = cynical
+        }
+    }
 }
 
 restore_ecumenical_patriarchate_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-	}
-	desc = restore_ecumenical_patriarchate_decision_desc
-	selection_tooltip = restore_ecumenical_patriarchate_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = restore_ecumenical_patriarchate_decision_desc
+    selection_tooltip = restore_ecumenical_patriarchate_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 60
+        empire = 60
+        hegemony = 60
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		faith = faith:orthodox
-		NOT = { faith = { exists = religious_head } }
-		highest_held_title_tier > 3 #Only Kings and Emperors
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        faith = faith:orthodox
+        NOT = { faith = { exists = religious_head } }
+        highest_held_title_tier > 3 #Only Kings and Emperors
+    }
 
-	is_valid = {
-		completely_controls = title:c_byzantion
-		piety_level >= medium_piety_level
-	}
+    is_valid = {
+        completely_controls = title:c_byzantion
+        piety_level >= medium_piety_level
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+    }
 
-	effect = {
-		custom_tooltip = restore_ecumenical_patriarchate_decision_effect_tooltip
-		trigger_event = {
-			id = romaviri_restoration.0122
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    effect = {
+        custom_tooltip = restore_ecumenical_patriarchate_decision_effect_tooltip
+        trigger_event = {
+            id = romaviri_restoration.0122
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-		ai_value_modifier = {
-			ai_zeal = 5.0
-		}
-		modifier = {
-			factor = 0
-			has_trait = cynical
-		}
-	}
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 100
+        ai_value_modifier = {
+            ai_zeal = 5.0
+        }
+        modifier = {
+            factor = 0
+            has_trait = cynical
+        }
+    }
 }
 
 restore_papacy_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-	}
-	desc = restore_papacy_decision_desc
-	selection_tooltip = restore_papacy_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = restore_papacy_decision_desc
+    selection_tooltip = restore_papacy_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 12
+        empire = 12
+        hegemony = 12
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		faith = faith:catholic
-		NOT = { faith = { exists = religious_head } }
-		highest_held_title_tier > 3 #Only Kings and Emperors
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        faith = faith:catholic
+        NOT = { faith = { exists = religious_head } }
+        highest_held_title_tier > 3 #Only Kings and Emperors
+    }
 
-	is_valid = {
-		completely_controls = title:c_roma
-		completely_controls = title:d_latium
-		completely_controls = title:d_spoleto
-		completely_controls = title:d_ancona
-		completely_controls = title:d_romagna
-		piety_level >= high_piety_level
-	}
+    is_valid = {
+        completely_controls = title:c_roma
+        completely_controls = title:d_latium
+        completely_controls = title:d_spoleto
+        completely_controls = title:d_ancona
+        completely_controls = title:d_romagna
+        piety_level >= high_piety_level
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+    }
 
-	effect = {
-		custom_tooltip = restore_papacy_decision_effect_tooltip
-		show_as_tooltip = {
-			restore_papacy_scripted_effect = yes
-		}
-		trigger_event = {
-			id = romaviri_restoration.0124
-		}
-	}
-	
-	ai_potential = {
-		faith = faith:catholic
-		highest_held_title_tier > 3 #Only Kings and Emperors
-		NOT = { faith = { exists = religious_head } }
-	}
+    effect = {
+        custom_tooltip = restore_papacy_decision_effect_tooltip
+        show_as_tooltip = {
+            restore_papacy_scripted_effect = yes
+        }
+        trigger_event = {
+            id = romaviri_restoration.0124
+        }
+    }
 
-	ai_will_do = { #Always do it when possible.
-		base = 100
-		ai_value_modifier = {
-			ai_zeal = 1.0
-		}
-		modifier = {
-			factor = 0
-			has_trait = cynical
-		}
-	}
+    ai_potential = {
+        faith = faith:catholic
+        highest_held_title_tier > 3 #Only Kings and Emperors
+        NOT = { faith = { exists = religious_head } }
+    }
+
+    ai_will_do = { #Always do it when possible.
+        base = 100
+        ai_value_modifier = {
+            ai_zeal = 1.0
+        }
+        modifier = {
+            factor = 0
+            has_trait = cynical
+        }
+    }
 }
 
 restore_pope_in_rome_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-	}
-	desc = restore_pope_in_rome_decision_desc
-	selection_tooltip = restore_pope_in_rome_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = restore_pope_in_rome_decision_desc
+    selection_tooltip = restore_pope_in_rome_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 12
-		empire = 12
-		hegemony = 12
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 12
+        empire = 12
+        hegemony = 12
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		faith = faith:catholic
-		NOR = {
-			has_title = title:k_papal_state
-			is_romaviri_emperor_excluding_byzantium_trigger = yes
-		}
-		NOT = { title:c_roma.holder = { has_title = title:k_papal_state } }
-		NOT = { capital_county = { this = title:c_roma } }
-		title:k_papal_state.holder = {
-			NOT = { 	
-				has_opinion_modifier = { #Not accepting it if you conquered it yourself.
-					target = root
-					modifier = declared_war
-				}
-			}
-			NOT = { 	
-				has_opinion_modifier = { #Not accepting it if you conquered it yourself.
-					target = root
-					modifier = revoked_title
-				}
-			}
-		}
-		NOT = { has_character_flag = flag_already_given_rome_once }
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        faith = faith:catholic
+        NOR = {
+            has_title = title:k_papal_state
+            is_romaviri_emperor_excluding_byzantium_trigger = yes
+        }
+        NOT = { title:c_roma.holder = { has_title = title:k_papal_state } }
+        NOT = { capital_county = { this = title:c_roma } }
+        title:k_papal_state.holder = {
+            NOT = {
+                has_opinion_modifier = { #Not accepting it if you conquered it yourself.
+                    target = root
+                    modifier = declared_war
+                }
+            }
+            NOT = {
+                has_opinion_modifier = { #Not accepting it if you conquered it yourself.
+                    target = root
+                    modifier = revoked_title
+                }
+            }
+        }
+        NOT = { has_character_flag = flag_already_given_rome_once }
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-		highest_held_title_tier > 3 #Only Kings and Emperors
-		custom_tooltip = {
-			text = hof_exists_tt
-			faith = { exists = religious_head }
-		}
-		custom_tooltip = {
-			text = rome_held_by_you_or_vassal_tt
-			OR = {
-				title:c_roma.holder = { 	
-					any_liege_or_above = { this = root }
-				}
-				title:c_roma.holder = { this = root }
-			}
-		}
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+        highest_held_title_tier > 3 #Only Kings and Emperors
+        custom_tooltip = {
+            text = hof_exists_tt
+            faith = { exists = religious_head }
+        }
+        custom_tooltip = {
+            text = rome_held_by_you_or_vassal_tt
+            OR = {
+                title:c_roma.holder = {
+                    any_liege_or_above = { this = root }
+                }
+                title:c_roma.holder = { this = root }
+            }
+        }
+    }
 
-	effect = {
-		add_piety = 1000
-		add_character_flag = flag_already_given_rome_once
-		create_title_and_vassal_change = {
-			type = returned
-			save_scope_as = change
-			add_claim_on_loss = no
-		}
-		title:c_roma = {
-			change_title_holder = {
-				holder = title:k_papal_state.holder
-				change = scope:change
-			}
-		}
-		resolve_title_and_vassal_change = scope:change
+    effect = {
+        add_piety = 1000
+        add_character_flag = flag_already_given_rome_once
+        create_title_and_vassal_change = {
+            type = returned
+            save_scope_as = change
+            add_claim_on_loss = no
+        }
+        title:c_roma = {
+            change_title_holder = {
+                holder = title:k_papal_state.holder
+                change = scope:change
+            }
+        }
+        resolve_title_and_vassal_change = scope:change
 
-		title:k_papal_state.holder = {
-			set_realm_capital = title:c_roma
-			add_opinion = {
-				target = prev
-				modifier = restored_papacy_opinion
-			}
-		}
-	}
-	
-	ai_potential = {
-		faith = faith:catholic
-		highest_held_title_tier > 3 #Only Kings and Emperors
-	}
+        title:k_papal_state.holder = {
+            set_realm_capital = title:c_roma
+            add_opinion = {
+                target = prev
+                modifier = restored_papacy_opinion
+            }
+        }
+    }
 
-	ai_will_do = { #Do it always, for coherence.
-		base = 100
-		modifier = {
-			factor = 0
-			title:c_roma.holder = {
-				OR = {
-					is_ai = no
-					any_liege_or_above = { is_ai = no }  # AI will never take Rome province away from a player.
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			has_trait = cynical
-		}
-		modifier = {
-			factor = 0
-			has_title = title:e_italy
-		}
-	}
+    ai_potential = {
+        faith = faith:catholic
+        highest_held_title_tier > 3 #Only Kings and Emperors
+    }
+
+    ai_will_do = { #Do it always, for coherence.
+        base = 100
+        modifier = {
+            factor = 0
+            title:c_roma.holder = {
+                OR = {
+                    is_ai = no
+                    any_liege_or_above = { is_ai = no }  # AI will never take Rome province away from a player.
+                }
+            }
+        }
+        modifier = {
+            factor = 0
+            has_trait = cynical
+        }
+        modifier = {
+            factor = 0
+            has_title = title:e_italy
+        }
+    }
 }
 
 dismantle_papacy_decision = { #For Muslims and Pagans.
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-	}
-	desc = dismantle_papacy_decision_desc
-	selection_tooltip = dismantle_papacy_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+    }
+    desc = dismantle_papacy_decision_desc
+    selection_tooltip = dismantle_papacy_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 60
+        empire = 60
+        hegemony = 60
+    }
 
-	is_shown = {
-		is_ruler = yes
-		is_playable_character = yes
-		faith:catholic = {
-			has_doctrine = doctrine_spiritual_head
-		}
-		faith:catholic = {
-			faith_hostility_level = {
-				target = root.faith
-				value >= faith_hostile_level
-			}
-		}
-		highest_held_title_tier > 3 #Only Kings and Emperors
-		capital_province = { #Indians could not possibly care...
-			OR = {
-				geographical_region = world_europe
-				geographical_region = world_middle_east
-				geographical_region = world_africa_north
-			}
-		}
-	}
+    is_shown = {
+        is_ruler = yes
+        is_playable_character = yes
+        faith:catholic = {
+            has_doctrine = doctrine_spiritual_head
+        }
+        faith:catholic = {
+            faith_hostility_level = {
+                target = root.faith
+                value >= faith_hostile_level
+            }
+        }
+        highest_held_title_tier > 3 #Only Kings and Emperors
+        capital_province = { #Indians could not possibly care...
+            OR = {
+                geographical_region = world_europe
+                geographical_region = world_middle_east
+                geographical_region = world_africa_north
+            }
+        }
+    }
 
-	is_valid = {
-		trigger_if = {
-			limit = {
-				exists = title:k_papal_state.holder
-			}
-			title:k_papal_state.holder = { is_playable_character = no } #If he fled elsewhere, it cannot be done, the Pope must be landless.
-			title:k_papal_state.holder = { is_at_war = no } #Shouldn't be possible during a Crusade
-		}
-		completely_controls_region = world_europe_south_italy
-	}
+    is_valid = {
+        trigger_if = {
+            limit = {
+                exists = title:k_papal_state.holder
+            }
+            title:k_papal_state.holder = { is_playable_character = no } #If he fled elsewhere, it cannot be done, the Pope must be landless.
+            title:k_papal_state.holder = { is_at_war = no } #Shouldn't be possible during a Crusade
+        }
+        completely_controls_region = world_europe_south_italy
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+    }
 
-	effect = {
-		custom_tooltip = dismantle_papacy_decision_effect_tooltip
-		gain_holy_legend_seed_tooltip_effect = yes
-		hidden_effect = {
-			legend_seed_great_deed_faith_effect = {
-				ANTAGONIST = title:k_papal_state.holder
-				OLD_FAITH = title:k_papal_state.holder.faith
-			}
-		}
-		show_as_tooltip = {
-			destroy_papacy_scripted_effect = yes
-		}
-		trigger_event = {
-			id = romaviri_restoration.0130
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    effect = {
+        custom_tooltip = dismantle_papacy_decision_effect_tooltip
+        gain_holy_legend_seed_tooltip_effect = yes
+        hidden_effect = {
+            legend_seed_great_deed_faith_effect = {
+                ANTAGONIST = title:k_papal_state.holder
+                OLD_FAITH = title:k_papal_state.holder.faith
+            }
+        }
+        show_as_tooltip = {
+            destroy_papacy_scripted_effect = yes
+        }
+        trigger_event = {
+            id = romaviri_restoration.0130
+        }
+    }
 
-	ai_will_do = { #Do it always.
-		base = 100
-	}
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = { #Do it always.
+        base = 100
+    }
 }
 
 #Uniting Italy
 unify_italian_empire_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
-	}
-	desc = unify_italian_empire_decision_desc
-	selection_tooltip = unify_italian_empire_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+    }
+    desc = unify_italian_empire_decision_desc
+    selection_tooltip = unify_italian_empire_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 120
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 120
+        kingdom = 120
+        empire = 120
+        hegemony = 120
+    }
 
-	is_shown = {
-		culture = { has_cultural_pillar = heritage_latin }
-		is_ruler = yes
-		is_playable_character = yes
-		highest_held_title_tier > 2 #Dukes and above
-		capital_province = { geographical_region = world_europe_south_italy }
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_unified_italian_empire
-			}
-		}
-		NOT = {  #Too late.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_restored_romaviri_empire
-			}
-		}
-		NOT = {  #Too late.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_reformed_carolingian_empire
-			}
-		}
-	}
+    is_shown = {
+        culture = { has_cultural_pillar = heritage_latin }
+        is_ruler = yes
+        is_playable_character = yes
+        highest_held_title_tier > 2 #Dukes and above
+        capital_province = { geographical_region = world_europe_south_italy }
+        NOT = {  #Can only do it once.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_unified_italian_empire
+            }
+        }
+        NOT = {  #Too late.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_restored_romaviri_empire
+            }
+        }
+        NOT = {  #Too late.
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_reformed_carolingian_empire
+            }
+        }
+    }
 
-	is_valid = {
-		prestige_level >= very_high_prestige_level
-		has_title = title:e_italy
-		#All the Peninsula
-		completely_controls_region = world_europe_south_italy
-		#And Illyria
-		completely_controls_region = custom_romaviri_illyricum
-	}
+    is_valid = {
+        prestige_level >= very_high_prestige_level
+        has_title = title:e_italy
+        #All the Peninsula
+        completely_controls_region = world_europe_south_italy
+        #And Illyria
+        completely_controls_region = custom_romaviri_illyricum
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-		is_at_war = no
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+        is_at_war = no
+    }
 
-	effect = {
-		gain_heroic_legend_seed_tooltip_effect = yes
-		custom_tooltip = unify_italian_empire_decision_effect_tooltip
-		trigger_event = {
-			id = romaviri_restoration.0140
-		}
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_unified_italian_empire
-			}
-			set_global_variable = {
-				name = flag_unified_italian_empire
-				value = root
-			}
-		}
-	}
-	
-	ai_potential = {
-		always = yes
-	}
+    effect = {
+        gain_heroic_legend_seed_tooltip_effect = yes
+        custom_tooltip = unify_italian_empire_decision_effect_tooltip
+        trigger_event = {
+            id = romaviri_restoration.0140
+        }
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_unified_italian_empire
+            }
+            set_global_variable = {
+                name = flag_unified_italian_empire
+                value = root
+            }
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    ai_potential = {
+        always = yes
+    }
+
+    ai_will_do = {
+        base = 100
+    }
 }
 
 #Roman Empires showdown decision.
 dismantle_holy_pretender_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	}
-	desc = dismantle_holy_pretender_decision_desc
-	selection_tooltip = dismantle_holy_pretender_decision_tooltip
-	decision_group_type = romaviri
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+    }
+    desc = dismantle_holy_pretender_decision_desc
+    selection_tooltip = dismantle_holy_pretender_decision_tooltip
+    decision_group_type = romaviri
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 120
-		hegemony = 120
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 120
+        hegemony = 120
+    }
 
-	is_shown = {
-		exists = title:e_hre.holder #Must exist in the first place...
-		NOT = {
-			root = title:e_hre.holder #That'd be awkward...
-		}
-		OR = {
-			culture = { has_cultural_pillar = heritage_byzantine }
-			culture = { has_cultural_pillar = heritage_latin }
-		}
-		is_ruler = yes
-		is_playable_character = yes
-		is_romaviri_emperor_trigger = yes
-		NOR = { #Once an Emperor throws the challenge, he has only one chance to dismantle the Empire.
-			has_character_flag = flag_emperor_challenging_hre #Applied below.
-			has_character_flag = flag_emperor_challenged_hre #Applied in war.
-		}
-	}
+    is_shown = {
+        exists = title:e_hre.holder #Must exist in the first place...
+        NOT = {
+            root = title:e_hre.holder #That'd be awkward...
+        }
+        OR = {
+            culture = { has_cultural_pillar = heritage_byzantine }
+            culture = { has_cultural_pillar = heritage_latin }
+        }
+        is_ruler = yes
+        is_playable_character = yes
+        is_romaviri_emperor_trigger = yes
+        NOR = { #Once an Emperor throws the challenge, he has only one chance to dismantle the Empire.
+            has_character_flag = flag_emperor_challenging_hre #Applied below.
+            has_character_flag = flag_emperor_challenged_hre #Applied in war.
+        }
+    }
 
-	is_valid = {
-		prestige_level >= max_prestige_level
-		#All the Italian Peninsula
-		completely_controls_region = world_europe_south_italy
-		#And Lotharingia (the Rhine).
-		completely_controls = title:d_luxembourg
-		completely_controls = title:d_brabant
-		completely_controls = title:d_julich
-		completely_controls = title:d_upper_lorraine
-		completely_controls = title:d_lower_lorraine
-	}
+    is_valid = {
+        prestige_level >= max_prestige_level
+        #All the Italian Peninsula
+        completely_controls_region = world_europe_south_italy
+        #And Lotharingia (the Rhine).
+        completely_controls = title:d_luxembourg
+        completely_controls = title:d_brabant
+        completely_controls = title:d_julich
+        completely_controls = title:d_upper_lorraine
+        completely_controls = title:d_lower_lorraine
+    }
 
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-		is_at_war = no
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+        is_at_war = no
+    }
 
-	cost = {
-		prestige = 2000
-	}
+    cost = {
+        prestige = 2000
+    }
 
-	effect = {
-		custom_tooltip = dismantle_holy_pretender_decision_effect_tooltip
-		trigger_event = {
-			id = romaviri_restoration.0160
-		}
-	}
-	
-	ai_potential = {
-		has_trait = ambitious
-	}
+    effect = {
+        custom_tooltip = dismantle_holy_pretender_decision_effect_tooltip
+        trigger_event = {
+            id = romaviri_restoration.0160
+        }
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    ai_potential = {
+        has_trait = ambitious
+    }
+
+    ai_will_do = {
+        base = 100
+    }
 }
 
 dismantle_byz_pretender_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	}
-	desc = dismantle_byz_pretender_decision_desc
-	selection_tooltip = dismantle_byz_pretender_decision_tooltip
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+    }
+    desc = dismantle_byz_pretender_decision_desc
+    selection_tooltip = dismantle_byz_pretender_decision_tooltip
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 120
-		hegemony = 120
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 120
+        hegemony = 120
+    }
 
-	is_shown = {
-		exists = title:e_byzantium.holder #Must exist in the first place...
-		NOT = {
-			root = title:e_byzantium.holder #That'd be awkward...
-		}
-		OR = {
-			culture = { has_cultural_pillar = heritage_frankish }
-			culture = { has_cultural_pillar = heritage_central_germanic }
-			culture = { has_cultural_pillar = heritage_latin }
-		}
-		is_ruler = yes
-		is_playable_character = yes
-		is_romaviri_emperor_trigger = yes
-		NOR = { #Once an Emperor throws the challenge, he has only one chance to dismantle the Empire.
-			has_character_flag = flag_emperor_challenging_byz #Applied below.
-			has_character_flag = flag_emperor_challenged_byz #Applied in war.
-		}
-	}
+    is_shown = {
+        exists = title:e_byzantium.holder #Must exist in the first place...
+        NOT = {
+            root = title:e_byzantium.holder #That'd be awkward...
+        }
+        OR = {
+            culture = { has_cultural_pillar = heritage_frankish }
+            culture = { has_cultural_pillar = heritage_central_germanic }
+            culture = { has_cultural_pillar = heritage_latin }
+        }
+        is_ruler = yes
+        is_playable_character = yes
+        is_romaviri_emperor_trigger = yes
+        NOR = { #Once an Emperor throws the challenge, he has only one chance to dismantle the Empire.
+            has_character_flag = flag_emperor_challenging_byz #Applied below.
+            has_character_flag = flag_emperor_challenged_byz #Applied in war.
+        }
+    }
 
-	is_valid = {
-		prestige_level >= max_prestige_level
-		#All the Italian Peninsula
-		completely_controls_region = world_europe_south_italy
-		#And Epirus/Hellas (Greek foothold).
-		completely_controls = title:d_dyrrachion
-		completely_controls = title:d_cephalonia
-		completely_controls = title:d_epirus
-		completely_controls = title:d_athens
-		completely_controls = title:d_achaia
-	}
-	
-	is_valid_showing_failures_only = {
-		is_landed = yes
-		is_capable_adult = yes
-		is_imprisoned = no
-		top_liege = this
-		is_at_war = no
-	}
+    is_valid = {
+        prestige_level >= max_prestige_level
+        #All the Italian Peninsula
+        completely_controls_region = world_europe_south_italy
+        #And Epirus/Hellas (Greek foothold).
+        completely_controls = title:d_dyrrachion
+        completely_controls = title:d_cephalonia
+        completely_controls = title:d_epirus
+        completely_controls = title:d_athens
+        completely_controls = title:d_achaia
+    }
 
-	cost = {
-		prestige = 2000
-	}
+    is_valid_showing_failures_only = {
+        is_landed = yes
+        is_capable_adult = yes
+        is_imprisoned = no
+        top_liege = this
+        is_at_war = no
+    }
 
-	effect = {
-		custom_tooltip = dismantle_byz_pretender_decision_effect_tooltip
-		trigger_event = {
-			id = romaviri_restoration.0170
-		}
-	}
-	
-	ai_potential = {
-		has_trait = ambitious
-	}
+    cost = {
+        prestige = 2000
+    }
 
-	ai_will_do = {
-		base = 100
-	}
+    effect = {
+        custom_tooltip = dismantle_byz_pretender_decision_effect_tooltip
+        trigger_event = {
+            id = romaviri_restoration.0170
+        }
+    }
+
+    ai_potential = {
+        has_trait = ambitious
+    }
+
+    ai_will_do = {
+        base = 100
+    }
 }
 
 #############################################
@@ -1313,589 +1317,601 @@ dismantle_byz_pretender_decision = {
 #############################################
 
 rebuke_romaviri_revanchism_sicily = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
-	}
-	decision_group_type = major
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_legitimacy.dds"
+    }
+    decision_group_type = major
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 120
-		kingdom = 120
-		empire = 120
-		hegemony = 120
-	}
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 120
+        kingdom = 120
+        empire = 120
+        hegemony = 120
+    }
 
-	desc = rebuke_romaviri_revanchism_sicily_desc
-	selection_tooltip = rebuke_romaviri_revanchism_sicily_tooltip
+    desc = rebuke_romaviri_revanchism_sicily_desc
+    selection_tooltip = rebuke_romaviri_revanchism_sicily_tooltip
 
-	is_shown = {
-		# Standard filter checks.
-		is_playable_character = yes
-		# Sicily is still under the ERE.
-		title:e_byzantium = { is_de_jure_liege_or_above_target = title:k_sicily }
-		# Has land in Sicily.
-		any_held_title = {
-			title_tier = county
-			title_province = { geographical_region = custom_sicily }
-		}
-		# Outside the ERE.
-		NOR = {
-			has_title = title:e_byzantium
-			any_liege_or_above = { has_title = title:e_byzantium }
-		}
-		# Aaaaaaand it's already happened in 1178.
-		NOT = { game_start_date >= 1178.10.1 }
-		# Not repeatable.
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_rebuked_romaviri_claim_to_sicily
-			}
-		}
-	}
+    is_shown = {
+        # Standard filter checks.
+        is_playable_character = yes
+        # Sicily is still under the ERE.
+        title:e_byzantium = { is_de_jure_liege_or_above_target = title:k_sicily }
+        # Has land in Sicily.
+        any_held_title = {
+            title_tier = county
+            title_province = { geographical_region = custom_sicily }
+        }
+        # Outside the ERE.
+        NOR = {
+            has_title = title:e_byzantium
+            any_liege_or_above = { has_title = title:e_byzantium }
+        }
+        # Aaaaaaand it's already happened in 1178.
+        NOT = { game_start_date >= 1178.10.1 }
+        # Not repeatable.
+        NOT = {
+            is_target_in_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_rebuked_romaviri_claim_to_sicily
+            }
+        }
+    }
 
-	is_valid = {
-		# Must be independent.
-		top_liege = this
-		# Should have a decent prestige level.
-		prestige_level >= high_prestige_level
-		OR = {
-			# You've got most things and no ERE.
-			AND = {
-				custom_tooltip = {
-					text = rebuke_romaviri_revanchism_sicily.tt.requirements.lower_tally
-					any_county_in_region = {
-						region = custom_sicily
-						count >= rebuke_romaviri_revanchism_sicily_requirements_some_ere_county_value
-						rebuke_romaviri_revanchism_counties_controlled_trigger = yes
-					}
-				}
-				custom_tooltip = {
-					text = rebuke_romaviri_revanchism_sicily.tt.requirements.ere_booted
-					NOT = {
-						any_county_in_region = {
-							region = custom_sicily
-							rebuke_romaviri_revanchism_counties_controlled_by_ere_trigger = yes
-						}
-					}
-				}
-			}
-			# You've got even more things but there's still some ERE.
-			custom_tooltip = {
-				text = rebuke_romaviri_revanchism_sicily.tt.requirements.higher_tally
-				any_county_in_region = {
-					region = custom_sicily
-					count >= rebuke_romaviri_revanchism_sicily_requirements_no_ere_county_value
-					rebuke_romaviri_revanchism_counties_controlled_trigger = yes
-				}
-			}
-		}
-		title:k_sicily = {
-			OR = {
-				custom_tooltip = {
-					text = rebuke_romaviri_revanchism_sicily.tt.sicily_has_no_holder
-					is_title_created = no
-				}
-				holder = root
-			}
-		}
-		custom_tooltip = {
-			text = rebuke_romaviri_revanchism_sicily.tt.requirements.ere_cant_be_revanchising
-			OR = {
-				NOT = {
-					is_target_in_global_variable_list = {
-						name = unavailable_unique_decisions
-						target = flag:retake_eastern_provinces_decision
-					}
-				}
-				NOT = { exists = title:e_byzantium.holder }
-			}
-		}
-		custom_tooltip = {
-			text = rebuke_romaviri_revanchism_sicily.tt.requirements.ere_not_in_italy
-			NOT = {
-				any_county_in_region = {
-					region = world_europe_south_italy
-					count >= rebuke_romaviri_revanchism_sicily_requirements_no_ere_in_italy_county_value
-					rebuke_romaviri_revanchism_counties_controlled_by_ere_trigger = yes
-				}
-			}
-		}
-	}
+    is_valid = {
+        # Must be independent.
+        top_liege = this
+        # Should have a decent prestige level.
+        prestige_level >= high_prestige_level
+        OR = {
+            # You've got most things and no ERE.
+            AND = {
+                custom_tooltip = {
+                    text = rebuke_romaviri_revanchism_sicily.tt.requirements.lower_tally
+                    any_county_in_region = {
+                        region = custom_sicily
+                        count >= rebuke_romaviri_revanchism_sicily_requirements_some_ere_county_value
+                        rebuke_romaviri_revanchism_counties_controlled_trigger = yes
+                    }
+                }
+                custom_tooltip = {
+                    text = rebuke_romaviri_revanchism_sicily.tt.requirements.ere_booted
+                    NOT = {
+                        any_county_in_region = {
+                            region = custom_sicily
+                            rebuke_romaviri_revanchism_counties_controlled_by_ere_trigger = yes
+                        }
+                    }
+                }
+            }
+            # You've got even more things but there's still some ERE.
+            custom_tooltip = {
+                text = rebuke_romaviri_revanchism_sicily.tt.requirements.higher_tally
+                any_county_in_region = {
+                    region = custom_sicily
+                    count >= rebuke_romaviri_revanchism_sicily_requirements_no_ere_county_value
+                    rebuke_romaviri_revanchism_counties_controlled_trigger = yes
+                }
+            }
+        }
+        title:k_sicily = {
+            OR = {
+                custom_tooltip = {
+                    text = rebuke_romaviri_revanchism_sicily.tt.sicily_has_no_holder
+                    is_title_created = no
+                }
+                holder = root
+            }
+        }
+        custom_tooltip = {
+            text = rebuke_romaviri_revanchism_sicily.tt.requirements.ere_cant_be_revanchising
+            OR = {
+                NOT = {
+                    is_target_in_global_variable_list = {
+                        name = unavailable_unique_decisions
+                        target = flag:retake_eastern_provinces_decision
+                    }
+                }
+                NOT = { exists = title:e_byzantium.holder }
+            }
+        }
+        custom_tooltip = {
+            text = rebuke_romaviri_revanchism_sicily.tt.requirements.ere_not_in_italy
+            NOT = {
+                any_county_in_region = {
+                    region = world_europe_south_italy
+                    count >= rebuke_romaviri_revanchism_sicily_requirements_no_ere_in_italy_county_value
+                    rebuke_romaviri_revanchism_counties_controlled_by_ere_trigger = yes
+                }
+            }
+        }
+    }
 
-	is_valid_showing_failures_only = { is_available_at_peace_adult = yes }
+    is_valid_showing_failures_only = { is_available_at_peace_adult = yes }
 
-	effect = {
-		save_scope_as = taker
-		show_as_tooltip = {
-			random_list = {
-				100 = {
-					show_chance = no
-					desc = rebuke_romaviri_revanchism_sicily.tt.effects.option.1
-					title:k_sicily = { set_de_jure_liege_title = title:e_italy }
-				}
-				100 = {
-					show_chance = no
-					desc = rebuke_romaviri_revanchism_sicily.tt.effects.option.2
-					title:k_sicily = { set_de_jure_liege_title = title:e_maghreb }
-				}
-				100 = {
-					show_chance = no
-					desc = rebuke_romaviri_revanchism_sicily.tt.effects.option.3
-					trigger = { rebuke_romaviri_revanchism_sicily_controls_unlisted_empire_trigger = yes }
-					title:k_sicily = { set_de_jure_liege_title = root.primary_title }
-				}
-			}
-			add_prestige_experience = rebuke_romaviri_revanchism_sicily_fame_reward_value
-		}
-		trigger_event = romaviri_restoration.1211
-		# Notifying other players is done in scope:taker's event, as scope:taker may change the circumstances of the decision with their option choice.
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_rebuked_romaviri_claim_to_sicily
-			}
-		}
-	}
+    effect = {
+        save_scope_as = taker
+        show_as_tooltip = {
+            random_list = {
+                100 = {
+                    show_chance = no
+                    desc = rebuke_romaviri_revanchism_sicily.tt.effects.option.1
+                    title:k_sicily = { set_de_jure_liege_title = title:e_italy }
+                }
+                100 = {
+                    show_chance = no
+                    desc = rebuke_romaviri_revanchism_sicily.tt.effects.option.2
+                    title:k_sicily = { set_de_jure_liege_title = title:e_maghreb }
+                }
+                100 = {
+                    show_chance = no
+                    desc = rebuke_romaviri_revanchism_sicily.tt.effects.option.3
+                    trigger = { rebuke_romaviri_revanchism_sicily_controls_unlisted_empire_trigger = yes }
+                    title:k_sicily = { set_de_jure_liege_title = root.primary_title }
+                }
+            }
+            add_prestige_experience = rebuke_romaviri_revanchism_sicily_fame_reward_value
+        }
+        trigger_event = romaviri_restoration.1211
+        # Notifying other players is done in scope:taker's event, as scope:taker may change the circumstances of the decision with their option choice.
+        hidden_effect = {
+            add_to_global_variable_list = {
+                name = unavailable_unique_decisions
+                target = flag:flag_rebuked_romaviri_claim_to_sicily
+            }
+        }
+    }
 
-	cost = { prestige = 1000 }
+    cost = { prestige = 1000 }
 
-	ai_potential = { always = yes }
+    ai_potential = { always = yes }
 
-	# We always want them to do this if they can.
-	ai_will_do = { base = 1000 }
+    # We always want them to do this if they can.
+    ai_will_do = { base = 1000 }
 }
 
-introduce_a_new_fashion_at_court_decision_romaviri = {
-	picture = {
-		trigger = {
-			NOR = {
-				government_has_flag = government_is_tribal
-				government_has_flag = government_is_theocracy
-				government_has_flag = government_is_nomadic
-				top_liege ?= { government_has_flag = government_is_tribal }
-				top_liege ?= { government_has_flag = government_is_theocracy }
-			}
-			OR = {
-				culture = { has_cultural_pillar = heritage_elf }
-				top_liege ?= {
-					OR = {
-						culture = { has_cultural_pillar = heritage_elf }
-						capital_barony ?= title:b_constantinople
-						primary_title ?= title:h_romaviri_empire
-						primary_title ?= title:h_eastern_romaviri_empire
-					}
-				}
-			}
-		}
-		reference = "gfx/interface/illustrations/decisions/ep3_cerimonial_decision.dds"
-	}
-	picture = {
-		trigger = {
-			government_has_flag = government_is_nomadic
-		}
-		reference = "gfx/interface/illustrations/event_scenes/mpo_tent_interior_mongol.dds"
-	}
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
-	}
-	desc = introduce_a_new_fashion_at_court_decision_desc
-	selection_tooltip = introduce_a_new_fashion_at_court_decision_tooltip
-	cooldown = { years = 5 }
-	sort_order = 80
+introduce_a_new_fashion_at_court_decision = {
+    picture = {
+        trigger = {
+            NOR = {
+                government_has_flag = government_is_tribal
+                government_has_flag = government_is_theocracy
+                government_has_flag = government_is_nomadic
+                top_liege ?= { government_has_flag = government_is_tribal }
+                top_liege ?= { government_has_flag = government_is_theocracy }
+            }
+            OR = {
+                culture = { has_cultural_pillar = heritage_elf }
+                top_liege ?= {
+                    OR = {
+                        culture = { has_cultural_pillar = heritage_elf }
+                        capital_barony ?= title:b_constantinople
+                        primary_title ?= title:h_romaviri_empire
+                        primary_title ?= title:h_eastern_romaviri_empire
+                    }
+                }
+            }
+            OR = {
+                culture = { has_cultural_pillar = heritage_byzantine }
+                top_liege ?= {
+                    OR = {
+                        culture = { has_cultural_pillar = heritage_byzantine }
+                        capital_barony ?= title:b_constantinople
+                        primary_title ?= title:e_byzantium
+                        primary_title ?= title:h_roman_empire
+                        primary_title ?= title:h_eastern_roman_empire
+                    }
+                }
+            }
+        }
+        reference = "gfx/interface/illustrations/decisions/ep3_cerimonial_decision.dds"
+    }
+    picture = {
+        trigger = {
+            government_has_flag = government_is_nomadic
+        }
+        reference = "gfx/interface/illustrations/event_scenes/mpo_tent_interior_mongol.dds"
+    }
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
+    }
+    desc = introduce_a_new_fashion_at_court_decision_desc
+    selection_tooltip = introduce_a_new_fashion_at_court_decision_tooltip
+    cooldown = { years = 5 }
+    sort_order = 80
 
-	is_shown = {
-		NOT = { has_title = title:k_fashion } # Kingdom of Fashion is very much the end-game of this interaction
-		NOT = { faith = { has_doctrine_parameter = naked_adherents_active } } # Must wear clothes
-		NOT = { culture = { has_cultural_parameter = naked_culture_active } } # Must wear clothes
-		is_available_at_peace_adult = yes
-		is_landed = yes
-		# Either has a royal court with high fashion or is part of a royal court with high fashion
-		OR = {
-			AND = {
-				has_royal_court = yes
-				has_dlc_feature = royal_court
-				OR = {
-					amenity_level = {
-						target = court_fashion
-						value >= 4
-					}
-					has_nickname = nick_prince_of_fashion
-				}
-			}
-			AND = {
-				liege = { has_royal_court = yes }
-				has_royal_court = no # Narrative flow of the event is a bit weird if it's unclear which royal court it's taking place in
-				OR = {
-					liege = {
-						amenity_level = {
-							target = court_fashion
-							value >= 4
-						}
-					}
-					has_nickname = nick_prince_of_fashion
-				}
-			}
-		}
-		trigger_if = {
-			limit = {
-				OR = {
-					government_has_flag = government_is_celestial
-					government_has_flag = government_is_meritocratic
-				}
-			}
-			this = top_liege
-		}
-	}
+    is_shown = {
+        NOT = { has_title = title:k_fashion } # Kingdom of Fashion is very much the end-game of this interaction
+        NOT = { faith = { has_doctrine_parameter = naked_adherents_active } } # Must wear clothes
+        NOT = { culture = { has_cultural_parameter = naked_culture_active } } # Must wear clothes
+        is_available_at_peace_adult = yes
+        is_landed = yes
+        # Either has a royal court with high fashion or is part of a royal court with high fashion
+        OR = {
+            AND = {
+                has_royal_court = yes
+                has_dlc_feature = royal_court
+                OR = {
+                    amenity_level = {
+                        target = court_fashion
+                        value >= 4
+                    }
+                    has_nickname = nick_prince_of_fashion
+                }
+            }
+            AND = {
+                liege = { has_royal_court = yes }
+                has_royal_court = no # Narrative flow of the event is a bit weird if it's unclear which royal court it's taking place in
+                OR = {
+                    liege = {
+                        amenity_level = {
+                            target = court_fashion
+                            value >= 4
+                        }
+                    }
+                    has_nickname = nick_prince_of_fashion
+                }
+            }
+        }
+        trigger_if = {
+            limit = {
+                OR = {
+                    government_has_flag = government_is_celestial
+                    government_has_flag = government_is_meritocratic
+                }
+            }
+            this = top_liege
+        }
+    }
 
-	is_valid_showing_failures_only = {
-		# Standard checks
-		is_available_at_peace_adult = yes
-		# Court does not currently have a fashion trend
-		trigger_if = {
-			limit = {
-				OR = {
-					AND = {
-						root = { has_royal_court = yes }
-						root = { has_character_flag = fashion_trend_flag }
-					}
-					AND = {
-						exists = root.liege
-						liege != root
-						root.liege = { has_royal_court = yes }
-						root = { has_royal_court = no }
-						root.liege = { has_character_flag = fashion_trend_flag }
-					}
-				}
-			}
-			custom_description = {
-				text = court_already_has_a_fashion_tend_tt
-				always = no
-			}
-		}
-		any_courtier_or_guest = {
-			NOT = { faith = { has_doctrine_parameter = naked_adherents_active } }
-			is_available_at_peace_adult = yes
-		}
-	}
+    is_valid_showing_failures_only = {
+        # Standard checks
+        is_available_at_peace_adult = yes
+        # Court does not currently have a fashion trend
+        trigger_if = {
+            limit = {
+                OR = {
+                    AND = {
+                        root = { has_royal_court = yes }
+                        root = { has_character_flag = fashion_trend_flag }
+                    }
+                    AND = {
+                        exists = root.liege
+                        liege != root
+                        root.liege = { has_royal_court = yes }
+                        root = { has_royal_court = no }
+                        root.liege = { has_character_flag = fashion_trend_flag }
+                    }
+                }
+            }
+            custom_description = {
+                text = court_already_has_a_fashion_tend_tt
+                always = no
+            }
+        }
+        any_courtier_or_guest = {
+            NOT = { faith = { has_doctrine_parameter = naked_adherents_active } }
+            is_available_at_peace_adult = yes
+        }
+    }
 
-	effect = {
-		hidden_effect = {
-			if = {
-				limit = {
-					has_royal_court = yes
-				}
-				add_character_flag = {
-					flag = fashion_trend_flag
-					years = 3
-				}
-			}
-			else = {
-				liege = {
-					add_character_flag = {
-						flag = fashion_trend_flag
-						years = 3
-					}
-				}
-			}
-			random_list = {
-				# Determine what the strange fashion choice is
-				10 = {
-					add_character_flag = { flag = flag_big_collar years = 1 }
-				}
-				10 = {
-					add_character_flag = { flag = flag_head_dress years = 1 }
-				}
-				10 = {
-					add_character_flag = { flag = flag_gold_boots years = 1 }
-				}
-				10 = {
-					add_character_flag = { flag = flag_sleeveless years = 1 }
-				}
-				10 = {
-					add_character_flag = { flag = flag_commoner_clothes years = 1 }
-				}
-			}
-			save_scope_as = actor
-			# Get someone to potentially oppose the fashion choice
-			random_courtier_or_guest = {
-				limit = {
-					NOT = { faith = { has_doctrine_parameter = naked_adherents_active } }
-					is_available_at_peace_adult = yes
-				}
-				weight = {
-					base = 1
-					compare_modifier = { # Diplo duel should look for high diplo characters
-						value = diplomacy
-						multiplier = 0.25
-					}
-					modifier = { # Rivals should want to insult their rival
-						has_relation_rival = root
-						add = 10
-					}
-					modifier = { # Increase visibility for other players
-						is_ai = no
-						factor = 2
-					}
-				}
-				save_scope_as = recipient
-				trigger_event = court_amenities_interactions.0010
-			}
-		}
-		custom_tooltip = {
-			text = introduce_new_fashion_duel_tooltip
-		}
-	}
+    effect = {
+        hidden_effect = {
+            if = {
+                limit = {
+                    has_royal_court = yes
+                }
+                add_character_flag = {
+                    flag = fashion_trend_flag
+                    years = 3
+                }
+            }
+            else = {
+                liege = {
+                    add_character_flag = {
+                        flag = fashion_trend_flag
+                        years = 3
+                    }
+                }
+            }
+            random_list = {
+                # Determine what the strange fashion choice is
+                10 = {
+                    add_character_flag = { flag = flag_big_collar years = 1 }
+                }
+                10 = {
+                    add_character_flag = { flag = flag_head_dress years = 1 }
+                }
+                10 = {
+                    add_character_flag = { flag = flag_gold_boots years = 1 }
+                }
+                10 = {
+                    add_character_flag = { flag = flag_sleeveless years = 1 }
+                }
+                10 = {
+                    add_character_flag = { flag = flag_commoner_clothes years = 1 }
+                }
+            }
+            save_scope_as = actor
+            # Get someone to potentially oppose the fashion choice
+            random_courtier_or_guest = {
+                limit = {
+                    NOT = { faith = { has_doctrine_parameter = naked_adherents_active } }
+                    is_available_at_peace_adult = yes
+                }
+                weight = {
+                    base = 1
+                    compare_modifier = { # Diplo duel should look for high diplo characters
+                        value = diplomacy
+                        multiplier = 0.25
+                    }
+                    modifier = { # Rivals should want to insult their rival
+                        has_relation_rival = root
+                        add = 10
+                    }
+                    modifier = { # Increase visibility for other players
+                        is_ai = no
+                        factor = 2
+                    }
+                }
+                save_scope_as = recipient
+                trigger_event = court_amenities_interactions.0010
+            }
+        }
+        custom_tooltip = {
+            text = introduce_new_fashion_duel_tooltip
+        }
+    }
 
-	cost = {
-		gold = minor_gold_value
-		prestige = medium_prestige_value
-	}
+    cost = {
+        gold = minor_gold_value
+        prestige = medium_prestige_value
+    }
 
-	# Fashion trends last for five years
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 60
-		kingdom = 60
-		empire = 60
-		hegemony = 60
-	}
+    # Fashion trends last for five years
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 60
+        kingdom = 60
+        empire = 60
+        hegemony = 60
+    }
 
-	ai_potential = {
-		# Has enough gold.
-		short_term_gold >= minor_gold_value
-		liege = { # Shouldn't snipe the opportunity away from the player
-			is_ai = yes
-		}
-	}
+    ai_potential = {
+        # Has enough gold.
+        short_term_gold >= minor_gold_value
+        liege = { # Shouldn't snipe the opportunity away from the player
+            is_ai = yes
+        }
+    }
 
-	ai_will_do = {
-		base = 25
-		# You're a fashionista
-		modifier = {
-			add = 50
-			has_trait = seducer
-		}
-		modifier = {
-			add = 50
-			has_trait = avaricious
-		}
-	}
+    ai_will_do = {
+        base = 25
+        # You're a fashionista
+        modifier = {
+            add = 50
+            has_trait = seducer
+        }
+        modifier = {
+            add = 50
+            has_trait = avaricious
+        }
+    }
 }
 
 split_romaviri_empire_decision = {
-	picture = {
-		reference = "gfx/interface/illustrations/decisions/ep3_decision_hold_triumph.dds"
-	}
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/ep3_decision_hold_triumph.dds"
+    }
 
-	ai_check_interval_by_tier = {
-		barony = 0
-		county = 0
-		duchy = 0
-		kingdom = 0
-		empire = 0
-		hegemony = 360
-	}
-	sort_order = 110
+    ai_check_interval_by_tier = {
+        barony = 0
+        county = 0
+        duchy = 0
+        kingdom = 0
+        empire = 0
+        hegemony = 360
+    }
+    sort_order = 110
 
-	desc = split_romaviri_empire_decision_desc
-	selection_tooltip = split_romaviri_empire_decision_selection_tooltip
-	decision_group_type = romaviri
+    desc = split_romaviri_empire_decision_desc
+    selection_tooltip = split_romaviri_empire_decision_selection_tooltip
+    decision_group_type = romaviri
 
-	is_shown = {
-		has_ep3_dlc_trigger = yes
-		primary_title = title:h_romaviri_empire
-		NOT = { exists = title:h_eastern_romaviri_empire.holder }
-	}
+    is_shown = {
+        has_ep3_dlc_trigger = yes
+        primary_title = title:h_romaviri_empire
+        NOT = { exists = title:h_eastern_romaviri_empire.holder }
+    }
 
-	is_valid = {
-		realm_size >= 150
-		capital_county = title:c_roma
-		has_title = title:c_byzantion
-	}
+    is_valid = {
+        realm_size >= 150
+        capital_county = title:c_roma
+        has_title = title:c_byzantion
+    }
 
-	is_valid_showing_failures_only = {
-		NOT = { exists = involved_activity }
-		is_imprisoned = no
-	}
+    is_valid_showing_failures_only = {
+        NOT = { exists = involved_activity }
+        is_imprisoned = no
+    }
 
-	cost = {}
+    cost = {}
 
-	effect = {
-		if = {
-			limit = {
-				has_active_diarchy = yes
-				has_diarchy_type = co_emperorship
-			}
-			diarch = { save_scope_as = new_holder }
-		}
-		if = {
-			limit = {
-				any_powerful_family = {
-					this != root.house
-					count >= 1
-					exists = house_head
-				}
-			}
-			ordered_powerful_family = {
-				limit = { this != root.house }
-				order_by = house_power_score
-				house_head = { save_scope_as = new_holder }
-			}
-		}
-		else = {
-			ordered_powerful_vassal = {
-				order_by = max_military_strength
-				save_scope_as = new_holder
-			}
-		}
-		custom_tooltip = {
-			text = form_eastern_romaviri_empire_tt
-			create_eastern_romaviri_empire_scripted_effect = yes
-		}
-		title:h_romaviri_empire = {
-			set_title_name = h_romaviri_empire_western
-		}
+    effect = {
+        if = {
+            limit = {
+                has_active_diarchy = yes
+                has_diarchy_type = co_emperorship
+            }
+            diarch = { save_scope_as = new_holder }
+        }
+        if = {
+            limit = {
+                any_powerful_family = {
+                    this != root.house
+                    count >= 1
+                    exists = house_head
+                }
+            }
+            ordered_powerful_family = {
+                limit = { this != root.house }
+                order_by = house_power_score
+                house_head = { save_scope_as = new_holder }
+            }
+        }
+        else = {
+            ordered_powerful_vassal = {
+                order_by = max_military_strength
+                save_scope_as = new_holder
+            }
+        }
+        custom_tooltip = {
+            text = form_eastern_romaviri_empire_tt
+            create_eastern_romaviri_empire_scripted_effect = yes
+        }
+        title:h_romaviri_empire = {
+            set_title_name = h_romaviri_empire_western
+        }
 
-		# Add truce with new Byzantine Emperor
-		add_truce_both_ways = {
-			character = scope:new_holder
-			years = 10
-			name = TRUCE_COLLABORATION
-		}
+        # Add truce with new Byzantine Emperor
+        add_truce_both_ways = {
+            character = scope:new_holder
+            years = 10
+            name = TRUCE_COLLABORATION
+        }
 
-		# Some additional bonuses
-		change_influence = {
-			value = monumental_influence_gain
-			multiply = 2
-		}
+        # Some additional bonuses
+        change_influence = {
+            value = monumental_influence_gain
+            multiply = 2
+        }
 
-		if = {
-			limit = {
-				any_owned_story = { 
-					type = story_cycle_restoring_rome 
-					has_variable = romaviri_empire_hard_mode
-				}
-			}
-			custom_tooltip = {
-				text = ending_of_restore_rome_trials_tt
-				random_owned_story = {
-					limit = { story_type = story_cycle_restoring_rome }
-					remove_variable = romaviri_empire_hard_mode
-				}
-			}
-		}
-	}
+        if = {
+            limit = {
+                any_owned_story = {
+                    type = story_cycle_restoring_rome
+                    has_variable = romaviri_empire_hard_mode
+                }
+            }
+            custom_tooltip = {
+                text = ending_of_restore_rome_trials_tt
+                random_owned_story = {
+                    limit = { story_type = story_cycle_restoring_rome }
+                    remove_variable = romaviri_empire_hard_mode
+                }
+            }
+        }
+    }
 
-	ai_potential = {
-		primary_title = title:h_romaviri_empire
-	}
+    ai_potential = {
+        primary_title = title:h_romaviri_empire
+    }
 
-	ai_will_do = {
-		base = 50
-	}
+    ai_will_do = {
+        base = 50
+    }
 }
 
 middle_east_decisions.0014 = {
-	type = character_event
-	title = middle_east_decisions.0014.t
-	desc = middle_east_decisions.0014.desc
-	theme = realm
-	left_portrait = {
-		character = root
-		animation = personality_greedy
-	}
-	right_portrait = {
-		character = scope:roman_emperor
-		animation = disbelief
-	}
-	lower_left_portrait = scope:former_liege
+    type = character_event
+    title = middle_east_decisions.0014.t
+    desc = middle_east_decisions.0014.desc
+    theme = realm
+    left_portrait = {
+        character = root
+        animation = personality_greedy
+    }
+    right_portrait = {
+        character = scope:roman_emperor
+        animation = disbelief
+    }
+    lower_left_portrait = scope:former_liege
 
-	immediate = {
-		play_music_cue = "mx_cue_positive_effect"
-		save_scope_as = scoped_ruler
-		if = {
-			limit = { top_liege != this }
-			liege = { save_scope_as = former_liege }
-		}
-		if = {
-			limit = { exists = title:e_byzantium.holder }
-			title:e_byzantium.holder = { save_scope_as = roman_emperor }
-		}
-		else_if = {
-			limit = { exists = title:h_roman_empire.holder }
-			title:h_roman_empire.holder = { save_scope_as = roman_emperor }
-		}
-		else_if = {
-			limit = { exists = title:h_eastern_roman_empire.holder }
-			title:h_eastern_roman_empire.holder = { save_scope_as = roman_emperor }
-		}
-		else_if = {
-			limit = { exists = title:h_romaviri_empire.holder }
-			title:h_romaviri_empire.holder = { save_scope_as = roman_emperor }
-		}
-		else_if = {
-			limit = { exists = title:h_eastern_romaviri_empire.holder }
-			title:h_eastern_romaviri_empire.holder = { save_scope_as = roman_emperor }
-		}
+    immediate = {
+        play_music_cue = "mx_cue_positive_effect"
+        save_scope_as = scoped_ruler
+        if = {
+            limit = { top_liege != this }
+            liege = { save_scope_as = former_liege }
+        }
+        if = {
+            limit = { exists = title:e_byzantium.holder }
+            title:e_byzantium.holder = { save_scope_as = roman_emperor }
+        }
+        else_if = {
+            limit = { exists = title:h_roman_empire.holder }
+            title:h_roman_empire.holder = { save_scope_as = roman_emperor }
+        }
+        else_if = {
+            limit = { exists = title:h_eastern_roman_empire.holder }
+            title:h_eastern_roman_empire.holder = { save_scope_as = roman_emperor }
+        }
+        else_if = {
+            limit = { exists = title:h_romaviri_empire.holder }
+            title:h_romaviri_empire.holder = { save_scope_as = roman_emperor }
+        }
+        else_if = {
+            limit = { exists = title:h_eastern_romaviri_empire.holder }
+            title:h_eastern_romaviri_empire.holder = { save_scope_as = roman_emperor }
+        }
 
-		legend_seed_new_title_effect = yes
-		# De jure shifts.
+        legend_seed_new_title_effect = yes
+        # De jure shifts.
 
-		# k_anatolia: d_cilicia d_cibyrrhaeot d_anatolia d_cappadocia
-		# k_pontus: d_paphlagonia d_armeniac d_sebasteia d_charsianon d_chaldia
-		# k_armenia: d_greater_armenia d_vaspurakan d_mesopotamia d_edessa
-		hidden_effect = {
-			title:d_cilicia = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_cibyrrhaeot = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_anatolia = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_cappadocia = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_paphlagonia = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_armeniac = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_sebasteia = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_charsianon = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			title:d_chaldia = {
-				set_de_jure_liege_title = title:k_rum
-			}
-			every_held_title = { # Should shift all dejure of all Duchies owned at the time.
-				title_tier = duchy
-				set_de_jure_liege_title = title:k_rum
-			}
-		}
-	}
+        # k_anatolia: d_cilicia d_cibyrrhaeot d_anatolia d_cappadocia
+        # k_pontus: d_paphlagonia d_armeniac d_sebasteia d_charsianon d_chaldia
+        # k_armenia: d_greater_armenia d_vaspurakan d_mesopotamia d_edessa
+        hidden_effect = {
+            title:d_cilicia = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_cibyrrhaeot = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_anatolia = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_cappadocia = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_paphlagonia = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_armeniac = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_sebasteia = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_charsianon = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            title:d_chaldia = {
+                set_de_jure_liege_title = title:k_rum
+            }
+            every_held_title = { # Should shift all dejure of all Duchies owned at the time.
+                title_tier = duchy
+                set_de_jure_liege_title = title:k_rum
+            }
+        }
+    }
 
-	option = {
-		name = middle_east_decisions.0014.a
-		create_rum_scripted_effect = yes
-		# Send narrative fluff to other players (if any).
-		every_player = {
-			limit = {
-				this != root
-				OR = {
-					top_liege = scope:former_liege
-					is_roman_emperor_trigger = yes
-				}
-			}
-			trigger_event = middle_east_decisions.0015
-		}
-	}
+    option = {
+        name = middle_east_decisions.0014.a
+        create_rum_scripted_effect = yes
+        # Send narrative fluff to other players (if any).
+        every_player = {
+            limit = {
+                this != root
+                OR = {
+                    top_liege = scope:former_liege
+                    is_roman_emperor_trigger = yes
+                }
+            }
+            trigger_event = middle_east_decisions.0015
+        }
+    }
 }
