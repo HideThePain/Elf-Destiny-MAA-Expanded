@@ -95,8 +95,8 @@
  serelion_longbowmen:0 "Serelion Longbowmen"
  serelion_longbowmen_flavor:0 "#F Renowned for their precision and agility, the Serelion Longbowmen are expert archers trained in forest and hill warfare. Their long-range volleys strike with deadly accuracy."
  
- masters_of_the_serelion_sword:0 "Masters of the Serelion Sword"
- masters_of_the_serelion_sword_flavor:0 "#F These elite swordsmen embody the martial traditions of Serelion nobility. Their prowess in melee combat is unmatched, making them formidable on open and rough terrain alike."
+ serelion_swordsmen:0 "Masters of the Serelion Sword"
+ serelion_swordsmen_flavor:0 "#F These elite swordsmen embody the martial traditions of Serelion nobility. Their prowess in melee combat is unmatched, making them formidable on open and rough terrain alike."
  
  cavalrymen_of_the_serelions:0 "Cavalrymen of the Serellions"
  cavalrymen_of_the_serelions_flavor:0 "#F Noble riders armored in polished steel, the Cavalrymen of the Serellions deliver decisive charges that scatter enemy lines. Their training makes them especially effective in open terrain."

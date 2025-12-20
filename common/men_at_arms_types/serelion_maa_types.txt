@@ -51,7 +51,7 @@
 }
 
 
-masters_of_the_serelion_sword = {
+serelion_swordsmen = {
     type = heavy_infantry
     stack = 10
 
@@ -101,7 +101,7 @@ masters_of_the_serelion_sword = {
     provision_cost = @provisions_cost_infantry_elite
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = masters_of_the_serelion_sword
+    icon = serelion_swordsmen
 }
 
 

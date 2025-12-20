@@ -308,9 +308,9 @@ texticon = {
 }
 
 texticon = {
-    icon = masters_of_the_serelion_sword_icon
+    icon = serelion_swordsmen_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/masters_of_the_serelion_sword.dds"
+        texture = "gfx/interface/icons/regimenttypes/serelion_swordsmen.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
