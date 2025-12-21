@@ -2,10 +2,10 @@
     type = archers
     stack = 50
 
-    damage = 150
-    toughness = 50
-    pursuit = 40
-    screen = 0
+    damage = 200
+    toughness =28
+    pursuit = 20
+    screen = 15
 
     terrain_bonus = {
         forest = { damage = 60 toughness = 20 pursuit = 20 screen = 20}
@@ -15,10 +15,10 @@
 
     counters = {
         skirmishers = 1
-        light_cavalry = 1
         heavy_infantry = 1
-        archers = 1
         pikemen = 1
+        flying_units = 0.5
+        archer_cavalry = 0.5
     }
 
     can_recruit = {
@@ -45,13 +45,13 @@
     icon = valerith_rangers
 }
 
-valerith_shining_priests = {
+valerith_shining_clerics = {
     type = spark_wielders
-    stack = 50
+    stack = 40
 
     damage = 40
     toughness = 100
-    pursuit = 20
+    pursuit = 0
     screen = 40
 
     terrain_bonus = {
@@ -61,13 +61,10 @@ valerith_shining_priests = {
     }
 
     counters = {
-        light_cavalry = 1
-        skirmishers = 1
-        archers = 1
-        pikemen = 1
-        heavy_infantry = 1
-        heavy_cavalry = 1
-        elephant_cavalry = 1
+        light_cavalry = 1.5
+        skirmishers = 1.5
+        archers = 1.5
+        pikemen = 1.5
         spark_wielders = 1
     }
 
@@ -92,7 +89,7 @@ valerith_shining_priests = {
     provision_cost = @provisions_cost_infantry_cheap
 
     ai_quality = { value = @cultural_spark_religion_maa_extra_ai_score }
-    icon = valerith_shining_priests
+    icon = valerith_shining_clerics
 }
 
 
@@ -100,8 +97,8 @@ valerith_gendarmes = {
     type = heavy_cavalry
     stack = 25
 
-    damage = 400
-    toughness = 140
+    damage = 300
+    toughness = 75
     pursuit = 20
     screen = 20
 
@@ -112,9 +109,8 @@ valerith_gendarmes = {
     }
     counters = {
         archers = 2
-        skirmishers = 2
-        pikemen = 1
-        light_cavalry = 1
+        gunpowder = 2
+        archer_cavalry = 1
     }
 
     can_recruit = {

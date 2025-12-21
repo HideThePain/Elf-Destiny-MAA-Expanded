@@ -1,9 +1,9 @@
 ﻿lormelis_sirens_of_war = {
     type = spark_wielders
-    stack = 50
+    stack = 30
 
-    damage = 60
-    toughness = 50
+    damage = 180
+    toughness = 40
     pursuit = 40
     screen = 50
 
@@ -18,14 +18,14 @@
     }
 
     counters = {
-        light_cavalry = 1
-        skirmishers = 1
-        archers = 1
-        pikemen = 1
-        heavy_infantry = 1
-        heavy_cavalry = 1
-        elephant_cavalry = 1
-        spark_wielders = 1
+        light_cavalry = 0.5
+        skirmishers = 0.5
+        archers = 0.5
+        pikemen = 0.5
+        heavy_infantry = 0.5
+        heavy_cavalry = 0.5
+        elephant_cavalry = 0.5
+        spark_wielders = 0.5
     }
 
     can_recruit = {
@@ -57,7 +57,7 @@ lormelis_tideborn_raiders = {
     type = skirmishers
     stack = 50
 
-    damage = 70
+    damage = 80
     toughness = 60
     pursuit = 40
     screen = 20
@@ -73,9 +73,10 @@ lormelis_tideborn_raiders = {
     }
 
     counters = {
-        archers = 1
-        skirmishers = 1
+        heavy_infantry = 1
         light_cavalry = 1
+        heavy_cavalry = 1
+        elephant_cavalry = 1
     }
 
     can_recruit = {
@@ -104,10 +105,10 @@ lormelis_tideborn_raiders = {
 
 lormelis_atlantean_leviathans = {
     type = heavy_infantry
-    stack = 25
+    stack = 20
 
-    damage = 355
-    toughness = 230
+    damage = 200
+    toughness = 150
     pursuit = 20
     screen = 10
 
@@ -126,6 +127,8 @@ lormelis_atlantean_leviathans = {
         archers = 1
         pikemen = 0.5
         skirmishers = 0.5
+        flying_units = 0.5
+        gunpowder = 1
     }
 
     can_recruit = {

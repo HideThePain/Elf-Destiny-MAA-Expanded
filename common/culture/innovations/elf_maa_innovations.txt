@@ -94,7 +94,7 @@ innovation_astrion_maa = {
 	}
 
 	unlock_maa = astrion_enchanted_crossbowmen
-	unlock_maa = astrion_exalted_bear_highriders
+	unlock_maa = astrion_elven_bear_riders
 	unlock_maa = astrion_heavy_halberdiers
 
 	flag = global_maa

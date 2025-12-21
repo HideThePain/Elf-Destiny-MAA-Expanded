@@ -147,9 +147,9 @@ texticon = {
 }
 
 texticon = {
-    icon = exalted_bear_highriders_icon
+    icon = elven_bear_riders_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/exalted_bear_highriders.dds"
+        texture = "gfx/interface/icons/regimenttypes/elven_bear_riders.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -187,9 +187,9 @@ texticon = {
 }
 
 texticon = {
-    icon = gwynthorn_noble_infantry_icon
+    icon = gwynthorn_noble_protectors_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/gwynthorn_noble_infantry.dds"
+        texture = "gfx/interface/icons/regimenttypes/gwynthorn_noble_protectors.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -207,9 +207,9 @@ texticon = {
 }
 
 texticon = {
-    icon = highguard_of_valor_icon
+    icon = highguard_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/highguard_of_valor.dds"
+        texture = "gfx/interface/icons/regimenttypes/highguard.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -217,14 +217,24 @@ texticon = {
 }
 
 texticon = {
-    icon = honored_drake_lancers_icon
+    icon = honored_drake_masters_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/honored_drake_lancers.dds"
+        texture = "gfx/interface/icons/regimenttypes/honored_drake_masters.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
     }
 }
+
+texticon = {
+    icon = thundarael_winged_warriors_icon
+    iconsize = {
+        texture = "gfx/interface/icons/regimenttypes/thundarael_winged_warriors.dds"
+        size = { 25 25 }
+        offset = { 0 6 }
+        fontsize = 16
+    }
+} 
 
 texticon = {
     icon = knights_of_the_tree_icon
@@ -308,9 +318,9 @@ texticon = {
 }
 
 texticon = {
-    icon = masters_of_the_serelion_sword_icon
+    icon = serelion_swordsmasters_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/masters_of_the_serelion_sword.dds"
+        texture = "gfx/interface/icons/regimenttypes/serelion_swordsmasters.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -349,9 +359,9 @@ texticon = {
 }
 
 texticon = {
-    icon = serelion_longbowmen_icon
+    icon = serelion_longbow_knights_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/serelion_longbowmen.dds"
+        texture = "gfx/interface/icons/regimenttypes/serelion_longbow_knights.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -426,15 +436,7 @@ texticon = {
     }
 }
 
-texticon = {
-    icon = thundarael_winged_warriors_icon
-    iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/thundarael_winged_warriors.dds"
-        size = { 25 25 }
-        offset = { 0 6 }
-        fontsize = 16
-    }
-}
+
 
 texticon = {
     icon = tuathan_seelie_archers_icon
@@ -497,9 +499,9 @@ texticon = {
 }
 
 texticon = {
-    icon = valerith_shining_priests_icon
+    icon = valerith_shining_clerics_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/valerith_shining_priests.dds"
+        texture = "gfx/interface/icons/regimenttypes/valerith_shining_clerics.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -507,9 +509,9 @@ texticon = {
 }
 
 texticon = {
-    icon = warriors_of_the_daelurin_icon
+    icon = ️daelurin_whitevale_warriors_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/warriors_of_the_daelurin.dds"
+        texture = "gfx/interface/icons/regimenttypes/️daelurin_whitevale_warriors.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -537,9 +539,9 @@ texticon = {
 }
 
 texticon = {
-    icon = astrion_exalted_bear_highriders_icon
+    icon = astrion_elven_bear_riders_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/astrion_exalted_bear_highriders.dds"
+        texture = "gfx/interface/icons/regimenttypes/astrion_elven_bear_riders.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16

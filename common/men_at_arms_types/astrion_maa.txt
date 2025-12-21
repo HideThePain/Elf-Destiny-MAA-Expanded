@@ -1,4 +1,4 @@
-astrion_exalted_bear_highriders = {
+astrion_elven_bear_riders = {
     type = elephant_cavalry
     stack = 10
 
@@ -44,7 +44,7 @@ astrion_exalted_bear_highriders = {
     provision_cost = @provisions_cost_cavalry_expensive
 
     ai_quality = { value = culture_ai_weight_heavy_cavalry }
-    icon = astrion_exalted_bear_highriders
+    icon = astrion_elven_bear_riders
 }
 
 astrion_enchanted_crossbowmen = {

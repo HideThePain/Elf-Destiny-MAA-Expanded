@@ -1,11 +1,11 @@
-﻿warriors_of_the_daelurin = {
+﻿️daelurin_whitevale_warriors = {
     type = heavy_infantry
     stack = 50
 
-    damage = 160
-    toughness = 120
+    damage = 120
+    toughness = 60
     pursuit = 0
-    screen = 30
+    screen = 25
 
     terrain_bonus = {
         mountains = { damage = 40 toughness = 40 pursuit = 20 screen = 30 }
@@ -24,8 +24,8 @@
     }
 
     counters = {
-        heavy_infantry = 2
-        pikemen = 2
+        heavy_infantry = 0.5
+        pikemen = 0.5
     }
 
     can_recruit = {
@@ -49,17 +49,17 @@
     provision_cost = @provisions_cost_infantry_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = warriors_of_the_daelurin
+    icon = ️daelurin_whitevale_warriors
 }
 
 daelurin_wolf_riders = {
     type = light_cavalry
     stack = 25
 
-    damage = 150
+    damage = 200
     toughness = 120
-    pursuit = 130
-    screen = 60
+    pursuit = 60
+    screen = 25
 
     terrain_bonus = {
         forest = { damage = 40 pursuit = 40 screen = 40 }
@@ -77,9 +77,9 @@ daelurin_wolf_riders = {
     }
 
     counters = {
-        archers = 1
-        light_cavalry = 1
-        skirmishers = 2
+        archers = 0.5
+        light_cavalry = 0.5
+        skirmishers = 0.5
     }
 
     can_recruit = {
@@ -110,9 +110,9 @@ daelurin_highlanders = {
     type = skirmishers
     stack = 50
 
-    damage = 80
+    damage = 135
     toughness = 50
-    pursuit = 50
+    pursuit = 30
     screen = 20
     terrain_bonus = {
         forest = { damage = 20 toughness = 40 pursuit = 20 }
@@ -130,10 +130,9 @@ daelurin_highlanders = {
     }
 
     counters = {
-        archers = 1
-        light_cavalry = 1
-        skirmishers = 1.5
+        skirmishers = 0.5
         heavy_infantry = 0.5
+        heavy_cavalry = 0.5
     }
 
     can_recruit = {

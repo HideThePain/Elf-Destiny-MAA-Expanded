@@ -22,12 +22,12 @@
 
 elven_shieldguard = {
     type = pikemen
-    stack = 50
+    stack = 80
 
-    damage = 115
-    toughness = 145
+    damage = 40
+    toughness = 35
     pursuit = 0
-    screen = 60
+    screen = 40
 
     terrain_bonus = {
         forest = { damage = 20 toughness = 20  pursuit = 20 screen = 30 }
@@ -40,8 +40,6 @@ elven_shieldguard = {
         heavy_cavalry = 1
         camel_cavalry = 1
         elephant_cavalry = 1
-        skirmishers = 0.5
-        archers = 0.5
     }
 
     can_recruit = {
@@ -70,10 +68,10 @@ elven_shieldguard = {
 
 elven_swordguard = { # elven greatswords? hell yeah
     type = skirmishers
-    stack = 50
+    stack = 80
 
-    damage = 70
-    toughness = 45
+    damage = 75
+    toughness = 20
     pursuit = 35
     screen = 15
 
@@ -86,8 +84,6 @@ elven_swordguard = { # elven greatswords? hell yeah
     counters = {
         heavy_infantry = 1
         pikemen = 1
-        # skirmishers = 1 # optional, off for now
-        archers = 0.5
     }
 
     can_recruit = {
@@ -115,12 +111,12 @@ elven_swordguard = { # elven greatswords? hell yeah
 }
 
 
-highguard_of_valor = {
+highguard = {
     type = heavy_infantry
-    stack = 50
+    stack = 80
 
-    damage = 150
-    toughness = 90
+    damage = 50
+    toughness = 32
     pursuit = 10
     screen = 20
 
@@ -128,18 +124,20 @@ highguard_of_valor = {
         forest = { damage = 40 toughness = 20 pursuit = 40 screen = 20 }
         taiga = { damage = 40 toughness = 20 pursuit = 40 screen = 20 }
         jungle = { damage = 40 toughness = 20 pursuit = 40 screen = 20 }
+
+        plains = { damage = 40 toughness = 60  pursuit = 10 screen = 20 }
+        drylands = { damage = 40 toughness = 60  pursuit = 10 screen = 20 }
+        steppe = { damage = 40 toughness = 60  pursuit = 10 screen = 20 }
+        farmlands = { damage = 40 toughness = 60  pursuit = 10 screen = 20 }
     }
 
     counters = {
-        archer_cavalry = 1
         pikemen = 1
-        light_cavalry = 1
         archers = 1
-        # heavy_infantry = 1 # Optional: uncomment if you want equal footing with heavy infantry
     }
 
     can_recruit = {
-        culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        culture = { has_cultural_parameter = unlock_maa_highguard }
         is_any_elf_type = yes
     }
 
@@ -149,7 +147,7 @@ highguard_of_valor = {
     }
 
     access_through_subject = {
-        culture = { has_cultural_parameter = unlock_maa_highguard_of_valor }
+        culture = { has_cultural_parameter = unlock_maa_highguard }
         is_any_elf_type = yes
     }
 
@@ -159,19 +157,19 @@ highguard_of_valor = {
     provision_cost = @provisions_cost_infantry_bankrupting
 
     ai_quality = { value = culture_ai_weight_heavy_infantry }
-    icon = highguard_of_valor
+    icon = highguard
 }
 
-exalted_bear_highriders = {
+elven_bear_riders = {
     type = elephant_cavalry
-    stack = 10
+    stack = 30
 
-    damage = 700
-    toughness = 400
-    pursuit = 120
+    damage = 160
+    toughness = 55
+    pursuit = 30
     screen = 20
 
-    siege_value = 0.3
+    siege_value = 0.1
 
     terrain_bonus = {
         forest = { damage = 100 toughness = 50 pursuit = 20 screen = 20 }
@@ -185,15 +183,14 @@ exalted_bear_highriders = {
     }
 
     counters = {
-        heavy_cavalry = 2
+        heavy_cavalry = 1
         heavy_infantry = 1
         skirmishers = 1
-        pikemen = 0.5
-        elephant_cavalry = 0.5
+        light_cavalry = 1
     }
 
     can_recruit = {
-        culture = { has_cultural_parameter = unlock_maa_exalted_bear_highriders }
+        culture = { has_cultural_parameter = unlock_maa_elven_bear_riders }
         is_any_elf_type = yes
     }
 
@@ -203,7 +200,7 @@ exalted_bear_highriders = {
     }
 
     access_through_subject = {
-        culture = { has_cultural_parameter = unlock_maa_exalted_bear_highriders }
+        culture = { has_cultural_parameter = unlock_maa_elven_bear_riders }
         is_any_elf_type = yes
     }
 
@@ -213,16 +210,16 @@ exalted_bear_highriders = {
     provision_cost = @provisions_cost_cavalry_expensive
 
     ai_quality = { value = culture_ai_weight_heavy_cavalry }
-    icon = exalted_bear_highriders
+    icon = elven_bear_riders
 }
 
 griffin_knights = {
     type = heavy_cavalry
-    stack = 25
+    stack = 20
 
-    damage = 350
-    toughness = 80
-    pursuit = 120
+    damage = 250
+    toughness = 75
+    pursuit = 80
     screen = 40
     siege_value = 0.2
 
@@ -233,10 +230,11 @@ griffin_knights = {
     }
 
     counters = {
-        archers = 2
-        skirmishers = 1.5
-        pikemen = 0.5
-        heavy_infantry = 0.5
+        light_cavalry = 1
+        heavy_cavalry = 1
+        camel_cavalry = 1
+        elephant_cavalry = 1
+        archer_cavalry = 1
     }
 
     can_recruit = {
@@ -263,13 +261,13 @@ griffin_knights = {
     icon = griffin_knights
 }
 
-honored_drake_lancers = {
+honored_drake_masters = {
     type = elephant_cavalry
-    stack = 5
+    stack = 2
 
-    damage = 1400
-    toughness = 800
-    pursuit = 60
+    damage = 1600
+    toughness = 1000
+    pursuit = 30
     screen = 20
     siege_value = 0.5
 
@@ -280,14 +278,16 @@ honored_drake_lancers = {
     }
 
     counters = {
-        heavy_infantry = 2
-        light_cavalry = 1.5
+        heavy_infantry = 1
+        light_cavalry = 0.5
         pikemen = 1
         heavy_cavalry = 0.5
+        skirmishers = 1
+        archers = 0.5
     }
 
     can_recruit = {
-        culture = { has_cultural_parameter = unlock_maa_honored_drake_lancers }
+        culture = { has_cultural_parameter = unlock_maa_honored_drake_masters }
         is_any_elf_type = yes
     }
 
@@ -297,7 +297,7 @@ honored_drake_lancers = {
     }
 
     access_through_subject = {
-        culture = { has_cultural_parameter = unlock_maa_honored_drake_lancers }
+        culture = { has_cultural_parameter = unlock_maa_honored_drake_masters }
         is_any_elf_type = yes
     }
 
@@ -307,5 +307,94 @@ honored_drake_lancers = {
     provision_cost = @provisions_cost_cavalry_expensive
 
     ai_quality = { value = culture_ai_weight_elephant_cavalry }
-    icon = honored_drake_lancers
+    icon = honored_drake_masters
+}
+
+feywind_cavaliers = {
+    type = light_cavalry
+    stack = 80
+
+    damage = 50
+    toughness = 18
+    pursuit = 60
+    screen = 30
+
+    terrain_bonus = {
+        forest = { damage = 10 toughness = 12 pursuit = 50 screen = 10 }
+        taiga = { damage = 10 toughness = 12 pursuit = 50 screen = 10 }
+        jungle = { damage = 10 toughness = 12 pursuit = 50 screen = 10 }
+    }
+
+    counters = {
+        archers = 1
+        gunpowder = 1
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_feywind_cavaliers }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_feywind_cavaliers }
+        is_any_elf_type = yes
+    }
+
+    buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }
+    low_maintenance_cost = { gold = elf_very_heavy_cavalry_low_maint_cost }
+    high_maintenance_cost = { gold = elf_very_heavy_cavalry_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_expensive
+
+    ai_quality = { value = culture_ai_weight_elephant_cavalry }
+    icon = feywind_cavaliers
+}
+
+crescentglade_knights = {
+    type = heavy_cavalry
+    stack = 40
+
+    damage = 120
+    toughness = 44
+    pursuit = 40
+    screen = 40
+
+    terrain_bonus = {
+        forest = { damage = 50 toughness = 16 pursuit = 20 screen = 20 }
+        taiga = { damage = 50 toughness = 16 pursuit = 20 screen = 20 }
+        jungle = { damage = 50 toughness = 16 pursuit = 20 screen = 20 }
+    }
+
+    counters = {
+        skirmishers = 1
+        heavy_infantry = 1
+        archer_cavalry = 0.5
+    }
+
+    can_recruit = {
+        culture = { has_cultural_parameter = unlock_maa_crescentglade_knights }
+        is_any_elf_type = yes
+    }
+
+    should_show_when_unavailable = {
+        government_allows = subject_men_at_arms
+        is_any_elf_type = yes
+    }
+
+    access_through_subject = {
+        culture = { has_cultural_parameter = unlock_maa_crescentglade_knights }
+        is_any_elf_type = yes
+    }
+
+    buy_cost = { gold = elf_very_heavy_cavalry_recruitment_cost }
+    low_maintenance_cost = { gold = elf_very_heavy_cavalry_low_maint_cost }
+    high_maintenance_cost = { gold = elf_very_heavy_cavalry_high_maint_cost }
+    provision_cost = @provisions_cost_cavalry_expensive
+
+    ai_quality = { value = culture_ai_weight_elephant_cavalry }
+    icon = feywind_cavaliers
 }

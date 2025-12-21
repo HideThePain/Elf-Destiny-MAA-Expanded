@@ -1,0 +1,140 @@
+﻿@cultural_spark_religion_maa_extra_ai_score = 80 
+
+@provisions_cost_infantry_cheap = 3
+@provisions_cost_infantry_moderate = 7
+@provisions_cost_infantry_expensive = 12
+@provisions_cost_infantry_bankrupting = 15
+
+@provisions_cost_cavalry_cheap = 7
+@provisions_cost_cavalry_moderate = 15
+@provisions_cost_cavalry_expensive = 21
+@provisions_cost_cavalry_bankrupting = 30
+
+@provisions_cost_special_cheap = 6
+@provisions_cost_special_moderate = 12
+@provisions_cost_special_expensive = 18
+@provisions_cost_special_bankrupting = 24
+
+# - Todo: could make a distinction between aeluran trained and wild spark wielders
+# - Todo: make an elite squad for accolade
+aeluran_war_magi = {
+	type = spark_wielders
+	icon = aeluran_war_magi
+	
+	# They are an elite squad of smaller troop numbers
+	stack = 50 # Size of one sub-regiment
+	hired_stack_size = 50 # size of sub-regiment for the purpose of hired troops. If not set, this will be the same as the "stack" value
+	max = 4
+
+	# They are a bit of a glass cannon
+	damage = 200
+	toughness = 20
+	# Their magics can hold off troops well on the retreat
+	pursuit = 10
+	screen = 100
+
+	siege_tier = 3
+	siege_value = 0.1
+
+	# Nature empowers them
+	terrain_bonus = {
+		taiga = { damage = 25 pursuit = 15 screen = 15}
+		forest = { damage = 25 pursuit = 15 screen = 15 }
+		jungle = { damage = 25 pursuit = 15 screen = 15}
+		wetlands = { damage = 25 pursuit = 15 screen = 15 }
+	}
+
+	# Their Magic makes them a menace on the field, it counters everything
+	counters = {
+		skirmishers = 2
+		pikemen = 2
+		archers = 2
+		light_cavalry = 1
+		heavy_infantry = 2
+		heavy_cavalry = 1
+		camel_cavalry = 1
+		elephant_cavalry = 1
+		archer_cavalry = 0.25
+		flying_units = 0.25
+		gunpowder = 1
+	}
+
+	can_recruit = {
+		# always = yes
+		OR = {
+			has_trait = aeluran_sister 
+			has_trait = aeluran_matron 
+			has_trait = aeluran_high_matriarch 
+		}
+		is_any_elf_type = yes
+	}
+
+	# bought with gold
+	buy_cost = { gold = spark_wielder_recruitment_cost }
+
+	# maintained with piety
+	low_maintenance_cost = { piety = spark_wielder_low_maint_cost }
+	high_maintenance_cost = { piety = spark_wielder_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_cheap
+
+	ai_quality = { value = @cultural_spark_religion_maa_extra_ai_score }
+}
+
+
+aeluran_artillery = {
+	type = spark_wielders
+	icon = aeluran_artillery
+	
+	# They are an elite squad of smaller troop numbers
+	stack = 25 # Size of one sub-regiment
+	hired_stack_size = 25 # size of sub-regiment for the purpose of hired troops. If not set, this will be the same as the "stack" value
+	max = 4
+
+	# They are a bit of a glass cannon
+	damage = 50
+	toughness = 10
+
+	siege_tier = 3
+	siege_value = 0.35
+	
+	# Nature empowers them
+	terrain_bonus = {
+		taiga = { damage = 25 pursuit = 15 screen = 15}
+		forest = { damage = 25 pursuit = 15 screen = 15 }
+		jungle = { damage = 25 pursuit = 15 screen = 15 }
+		wetlands = { damage = 25 pursuit = 15 screen = 15 }
+	}
+
+	# Their Magic makes them a menace on the field, it counters everything
+	counters = {
+		skirmishers = 0.5
+		pikemen = 0.5
+		archers = 0.5
+		light_cavalry = 0.25
+		heavy_infantry = 0.5
+		heavy_cavalry = 0.25
+		camel_cavalry = 0.25
+		elephant_cavalry = 0.25
+		gunpowder = 1
+	}
+
+	can_recruit = {
+		# always = yes
+		OR = {
+			has_trait = aeluran_sister 
+			has_trait = aeluran_matron 
+			has_trait = aeluran_high_matriarch 
+		}
+		is_any_elf_type = yes
+	}
+
+	# bought with gold
+	buy_cost = { gold = spark_wielder_recruitment_cost }
+
+	# maintained with piety
+	low_maintenance_cost = { piety = spark_wielder_low_maint_cost }
+	high_maintenance_cost = { piety = spark_wielder_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_cheap
+	
+	ai_quality = { value = @cultural_spark_religion_maa_extra_ai_score }
+}

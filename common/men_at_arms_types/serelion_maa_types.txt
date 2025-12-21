@@ -1,11 +1,11 @@
-﻿serelion_longbowmen = {
+﻿serelion_longbow_knights = {
     type = archers
     stack = 25
 
-    damage = 350
-    toughness = 130
-    pursuit = 10
-    screen = 0
+    damage = 720
+    toughness = 30
+    pursuit = 15
+    screen = 25
 
     terrain_bonus = {
         forest = { damage = 80 toughness = 20 pursuit = 20 screen = 20 }
@@ -20,10 +20,9 @@
 
     counters = {
         skirmishers = 1
-        light_cavalry = 2
-        archer_cavalry = 2
-        heavy_cavalry = 2
         archers = 1
+        flying_units = 0.5
+        gunpowder = 1
     }
 
     can_recruit = {
@@ -47,18 +46,18 @@
     provision_cost = @provisions_cost_special_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = serelion_longbowmen
+    icon = serelion_longbow_knights
 }
 
 
-masters_of_the_serelion_sword = {
+serelion_swordsmasters = {
     type = heavy_infantry
     stack = 10
 
-    damage = 1200
-    toughness = 1000
-    pursuit = 50
-    screen = 100
+    damage = 800
+    toughness = 160
+    pursuit = 10
+    screen = 30
 
     terrain_bonus = {
         forest = { toughness = 80 damage = 80 pursuit = 80 screen = 80 }
@@ -73,9 +72,6 @@ masters_of_the_serelion_sword = {
 
     counters = {
         skirmishers = 1
-        archers = 1
-        light_cavalry = 1
-        heavy_cavalry = 1
         pikemen = 1
         heavy_infantry = 1
     }
@@ -101,18 +97,18 @@ masters_of_the_serelion_sword = {
     provision_cost = @provisions_cost_infantry_elite
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = masters_of_the_serelion_sword
+    icon = serelion_swordsmasters
 }
 
 
-cavalrymen_of_the_serelions = {
+serelion_paladins = {
     type = heavy_cavalry
     stack = 15
 
-    damage = 755
-    toughness = 260
-    pursuit = 70
-    screen = 60
+    damage = 400
+    toughness = 150
+    pursuit = 20
+    screen = 20
 
     terrain_bonus = {
         forest = { damage = 160 toughness = 20 pursuit = 20 screen = 20 }
@@ -127,8 +123,8 @@ cavalrymen_of_the_serelions = {
 
     counters = {
         archers = 2
-        skirmishers = 2
-        pikemen = 1
+        gunpowder = 1
+        heavy_cavalry = 1
         light_cavalry = 1
     }
 

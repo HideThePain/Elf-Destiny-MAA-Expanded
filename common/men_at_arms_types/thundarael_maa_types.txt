@@ -2,10 +2,10 @@
     type = heavy_infantry
     stack = 50
 
-    damage = 200
-    toughness = 70
-    pursuit = 30
-    screen = 0
+    damage = 120
+    toughness = 48
+    pursuit = 0
+    screen = 20
 
     terrain_bonus = {
         forest = { damage = 20 toughness = 20 pursuit = 20 screen = 20 }
@@ -19,9 +19,9 @@
     }
 
     counters = {
-        heavy_infantry = 1
-        archers = 1
-        skirmishers = 0.5
+        archers = 0.5
+        skirmishers = 1
+        pikemen = 1
     }
 
     can_recruit = {
@@ -48,15 +48,14 @@
     icon = thundarael_moon_knights
 }
 
-
 thundarael_winged_warriors = {
     type = skirmishers
     stack = 50
 
-    damage = 75
-    toughness = 80
-    pursuit = 30
-    screen = 10
+    damage = 144
+    toughness = 40
+    pursuit = 10
+    screen = 15
 
     terrain_bonus = {
         forest = { damage = 30 toughness = 30  pursuit = 30 screen = 30 }
@@ -71,8 +70,8 @@ thundarael_winged_warriors = {
 
     counters = {
         archers = 1.5
-        skirmishers = 1
-        light_cavalry = 0.8
+        heavy_infantry = 1
+        pikeman = 0.5
     }
 
     can_recruit = {
@@ -102,13 +101,13 @@ thundarael_winged_warriors = {
 thundarael_griffin_riders = {
 
     type = heavy_cavalry
-    stack = 25
+    stack = 20
 
-    damage = 380
-    toughness = 100
-    pursuit = 100
-    screen = 30
-    siege_value = 0.3
+    damage = 280
+    toughness = 80
+    pursuit = 80
+    screen = 40
+    siege_value = 0.2
 
     terrain_bonus = {
         forest = { damage = 60 toughness = 20 pursuit = 60 screen = 20 }
@@ -122,9 +121,11 @@ thundarael_griffin_riders = {
     }
 
     counters = {
-        archers = 2
-        skirmishers = 1.5
-        pikemen = 0.5
+        light_cavalry = 1
+        heavy_cavalry = 1
+        camel_cavalry = 1
+        elephant_cavalry = 1
+        archer_cavalry = 1
     }
 
     can_recruit = {

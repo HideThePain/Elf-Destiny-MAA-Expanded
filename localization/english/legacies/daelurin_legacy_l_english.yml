@@ -8,7 +8,7 @@
 #  daelurin_legacy_4_name: "Crushing Blows"
 #  daelurin_legacy_5_name: "Living Legends"
 
-#  LEGACY_DYNASTY_DAELURIN_UNLOCK_UNITS: "Unlocks the [GetMaA('warriors_of_the_daelurin').GetName], [GetMaA('wolf_riders').GetName], and [GetMaA('daelurin_highlanders').GetName] [men_at_arms|E] unique to House Daelurin"
+#  LEGACY_DYNASTY_DAELURIN_UNLOCK_UNITS: "Unlocks the [GetMaA('️daelurin_whitevale_warriors').GetName], [GetMaA('wolf_riders').GetName], and [GetMaA('daelurin_highlanders').GetName] [men_at_arms|E] unique to House Daelurin"
 
 #  LEGACY_DYNASTY_DAELURIN_WAKING_THE_BLOOD: "[prowess|E] for [dynasty_members|E]: #P +2#! and increased chance of inheriting the [GetTrait('strong').GetName] or [GetTrait('giant').GetName] traits"
 

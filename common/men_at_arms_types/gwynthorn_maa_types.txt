@@ -1,9 +1,9 @@
-﻿gwynthorn_warriors = {
+﻿gwynthorn_axeguard = {
     type = heavy_infantry
     stack = 50
 
-    damage = 160
-    toughness = 100
+    damage = 131
+    toughness = 42
     pursuit = 30
     screen = 10
 
@@ -17,10 +17,9 @@
         wetlands = { damage = 50 toughness = 10 pursuit = 30 screen = 10 }
     }
     counters = {
-        archers = 2
-        skirmishers = 1
         light_cavalry = 0.75
         heavy_cavalry = 0.5
+        pikeman = 1
     }
 
     can_recruit = {
@@ -52,9 +51,9 @@ gwynthorn_horse_archers = {
     type = archer_cavalry
     stack = 50
 
-    damage = 160
-    toughness = 60
-    pursuit = 120
+    damage = 180
+    toughness = 28
+    pursuit = 75
     screen = 40
 
     terrain_bonus = {
@@ -72,7 +71,6 @@ gwynthorn_horse_archers = {
         skirmishers = 1
         archers = 1
         heavy_infantry = 1
-        pikemen = 1
     }
 
     can_recruit = {
@@ -99,7 +97,7 @@ gwynthorn_horse_archers = {
     icon = gwynthorn_horse_archers
 }
 
-gwynthorn_noble_infantry = {
+gwynthorn_noble_protectors = {
     type = pikemen
     stack = 50
 
@@ -145,5 +143,5 @@ gwynthorn_noble_infantry = {
     provision_cost = @provisions_cost_infantry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = gwynthorn_noble_infantry
+    icon = gwynthorn_noble_protectors
 }
