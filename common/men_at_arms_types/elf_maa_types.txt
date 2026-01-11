@@ -131,6 +131,7 @@ wolf_riders = {
         skirmishers = 1
         heavy_infantry = 1
         light_cavalry = 1
+		camel_cavalry = 1
     }
 
     can_recruit = {
@@ -179,6 +180,7 @@ direwolf_riders = {
         skirmishers = 1
         heavy_infantry = 1
         light_cavalry = 1
+		camel_cavalry = 1
     }
 
     can_recruit = {
@@ -280,7 +282,7 @@ warband_ravagers = {
     }
 
     counters = {
-        heavy_infantry = 1
+        heavy_infantry = 1.5
     }
 
     can_recruit = {
@@ -362,7 +364,7 @@ feywind_cavaliers = {
     type = light_cavalry
     stack = 80
 
-    damage = 50
+    damage = 60
     toughness = 18
     pursuit = 60
     screen = 30
@@ -380,6 +382,7 @@ feywind_cavaliers = {
     counters = {
         archers = 1
         gunpowder = 1
+		heavy_infantry = 1
     }
 
     can_recruit = {
