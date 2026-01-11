@@ -201,7 +201,7 @@ phoenix_magi = {   #actually cryophoenix, shoots ice, better in water
     }
 
     can_recruit = {
-        culture = { has_cultural_parameter = unlock_maa_phoenix_magi }
+        has_trait = royal_elf_thundarael
         is_any_elf_type = yes
     }
 
@@ -211,7 +211,7 @@ phoenix_magi = {   #actually cryophoenix, shoots ice, better in water
     }
 
     access_through_subject = {
-        culture = { has_cultural_parameter = unlock_maa_phoenix_magi }
+        has_trait = royal_elf_thundarael
         is_any_elf_type = yes
     }
 
