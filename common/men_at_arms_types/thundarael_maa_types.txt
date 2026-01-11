@@ -151,8 +151,8 @@ thundarael_griffin_riders = {
     }
 
     buy_cost = { prestige = 2000 }
-    low_maintenance_cost = { gold = 1.5 }
-    high_maintenance_cost = { gold = 2.5 }
+    low_maintenance_cost = { gold = 1.8 }
+    high_maintenance_cost = { gold = 3 }
     provision_cost = @provisions_cost_cavalry_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
