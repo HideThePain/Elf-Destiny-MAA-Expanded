@@ -162,12 +162,14 @@ thundarael_griffin_riders = {
 phoenix_magi = {   #actually cryophoenix, shoots ice, better in water
     type = flying_units
     stack = 5
-    max_regiments = 1
+    max = 1
 
     damage = 2000
     toughness = 500
     pursuit = 20
     screen = 20
+
+    siege_tier = 4
     siege_value = 0.5
 
     terrain_bonus = {
