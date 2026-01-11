@@ -276,12 +276,14 @@ griffin_knights = {
 honored_drake_masters = {
     type = flying_units
     stack = 4
-    max_regiments = 1
+    max = 1
 
     damage = 1600
     toughness = 1000
     pursuit = 80
     screen = 20
+
+    siege_tier = 4
     siege_value = 0.5
 
     terrain_bonus = {
@@ -382,6 +384,6 @@ crescentglade_knights = {
     high_maintenance_cost = { gold = elf_very_heavy_cavalry_high_maint_cost }
     provision_cost = @provisions_cost_cavalry_expensive
 
-    ai_quality = { value = culture_ai_weight_elephant_cavalry }
-    icon = feywind_cavaliers
+    ai_quality = { value = culture_ai_weight_archer_cavalry }
+    icon = crescentglade_knights
 }
