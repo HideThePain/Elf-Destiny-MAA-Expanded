@@ -336,7 +336,7 @@ honored_drake_masters = {
 }
 
 crescentglade_knights = {
-    type = heavy_cavalry
+    type = archer_cavalry
     stack = 40
 
     damage = 120
