@@ -246,7 +246,7 @@ griffin_knights = {
         heavy_cavalry = 1
         camel_cavalry = 1
         elephant_cavalry = 1
-        archer_cavalry = 1
+        archer_cavalry = 0.5
     }
 
     can_recruit = {
