@@ -54,9 +54,6 @@ aeluran_war_magi = {
 		heavy_cavalry = 1
 		camel_cavalry = 1
 		elephant_cavalry = 1
-		archer_cavalry = 0.25
-		flying_units = 0.25
-		gunpowder = 2
 	}
 
 	can_recruit = {
@@ -117,7 +114,6 @@ aeluran_artillery = {
 		heavy_cavalry = 0.25
 		camel_cavalry = 0.25
 		elephant_cavalry = 0.25
-		gunpowder = 0.5
 	}
 
 	can_recruit = {
