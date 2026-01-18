@@ -52,7 +52,7 @@ astrion_enchanted_crossbowmen = {
     stack = 50
 
     damage = 130
-    toughness = 42
+    toughness = 40
     pursuit = 15
     screen = 10
 
