@@ -1,27 +1,26 @@
-﻿romaviri_palatines = {
+﻿romaviri_palatini = {
     type = heavy_infantry
-    stack = 25
+    stack = 40
 
-    damage = 360
-    toughness = 240
+    damage = 115
+    toughness = 75
     pursuit = 5
     screen = 15
 
     terrain_bonus = {
-        forest = { damage = 15 toughness = 30  pursuit = 15 screen = 15 }
-        taiga = { damage = 15 toughness = 30  pursuit = 15 screen = 15 }
-        jungle = { damage = 15 toughness = 30  pursuit = 15 screen = 15 }
+        forest = { damage = 5 toughness = 10  pursuit = 5 screen = 5 }
+        taiga = { damage = 5 toughness = 10  pursuit = 5 screen = 5 }
+        jungle = { damage = 5 toughness = 10  pursuit = 5 screen = 5 }
 
-        plains = { damage = 60 toughness = 30  pursuit = 30 screen = 30 }
-        drylands = { damage = 60 toughness = 30  pursuit = 30 screen = 30 }
-        steppe = { damage = 60 toughness = 30  pursuit = 30 screen = 30 }
-        farmlands = { damage = 60 toughness = 30  pursuit = 30 screen = 30 }
+        plains = { damage = 40 toughness = 20 pursuit = 5 screen = 5 }
+        drylands = { damage = 40 toughness = 20 pursuit = 5 screen = 5 }
+        steppe = { damage = 40 toughness = 20 pursuit = 5 screen = 5 }
+        farmlands = { damage = 40 toughness = 20 pursuit = 5 screen = 5 }
     }
 
     counters = {
         heavy_infantry = 1
         pikemen = 1
-        archers = 1
     }
 
     should_show_when_unavailable = {
@@ -34,40 +33,39 @@
         is_any_elf_type = yes
     }
 
-    buy_cost = { gold = heavy_infantry_recruitment_cost }
-    low_maintenance_cost = { gold = heavy_infantry_low_maint_cost }
-    high_maintenance_cost = { gold = heavy_infantry_high_maint_cost }
+    buy_cost = { gold = 150 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     provision_cost = @provisions_cost_infantry_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = romaviri_palatines
+    icon = romaviri_palatini
 }
 
-romaviri_turms = {
+romaviri_turmae = {
     type = archer_cavalry
-    stack = 15
+    stack = 30
 
-    damage = 500
-    toughness = 250
-    pursuit = 140
-    screen = 140
+    damage = 170
+    toughness = 80
+    pursuit = 40
+    screen = 40
 
     terrain_bonus = {
-        forest = { damage = 100 }
-        taiga = { damage = 100 }
-        jungle = { damage = 100 }
+        forest = { damage = 20 }
+        taiga = { damage = 20 }
+        jungle = { damage = 20 }
 
-        steppe = { damage = 200 toughness = 20 pursuit = 20 screen = 20 }
-        plains = { damage = 200 toughness = 20 pursuit = 20 screen = 20 }
-        drylands = { damage = 200 toughness = 20 pursuit = 20 screen = 20 }
-        farmlands = { damage = 200 toughness = 20 pursuit = 20 screen = 20 }
+        steppe = { damage = 60 toughness = 5 pursuit = 40 screen = 40 }
+        plains = { damage = 60 toughness = 5 pursuit = 40 screen = 40 }
+        drylands = { damage = 60 toughness = 5 pursuit = 40 screen = 40 }
+        farmlands = { damage = 60 toughness = 5 pursuit = 40 screen = 40 }
     }
 
     counters = {
         archers = 1
-        light_cavalry = 1.5
-        heavy_cavalry = 0.5
-        skirmishers = 2
+        heavy_cavalry = 1
+        skirmishers = 1
     }
 
     should_show_when_unavailable = {
@@ -86,34 +84,35 @@ romaviri_turms = {
     provision_cost = @provisions_cost_cavalry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = romaviri_turms
+    icon = romaviri_turmae
 }
 
 romaviri_steel_archers = {
     type = archers
-    stack = 25
+    stack = 50
 
-    damage = 320
-    toughness = 120
+    damage = 188
+    toughness = 28
     pursuit = 50
     screen = 0
 
     terrain_bonus = {
-        forest = { damage = 100 toughness = 25  pursuit = 10 }
-        taiga = { damage = 100 toughness = 25  pursuit = 10 }
-        jungle = { damage = 100 toughness = 25  pursuit = 10 }
+        forest = { damage = 10 toughness = 15  pursuit = 10 }
+        taiga = { damage = 10 toughness = 15  pursuit = 10 }
+        jungle = { damage = 10 toughness = 15  pursuit = 10 }
 
-        farmlands = { damage = 160 toughness = 40 pursuit = 20 screen = 20 }
-        plains = { damage = 160 toughness = 40 pursuit = 20 screen = 20 }
-        drylands = { damage = 160 toughness = 40 pursuit = 20 screen = 20 }
-        steppe = { damage = 160 toughness = 40 pursuit = 20 screen = 20 }
+        farmlands = { damage = 30 toughness = 8 pursuit = 20 screen = 20 }
+        plains = { damage = 30 toughness = 8 pursuit = 20 screen = 20 }
+        drylands = { damage = 30 toughness = 8 pursuit = 20 screen = 20 }
+        steppe = { damage = 30 toughness = 8 pursuit = 20 screen = 20 }
     }
 
     counters = {
-        archers = 1
+        archers = 0.5
         light_cavalry = 1
-        skirmishers = 1.5
-        heavy_infantry = 0.5
+        skirmishers = 1
+        archer_cavalry = 0.5
+        flying_units = 0.5
     }
 
     should_show_when_unavailable = {
@@ -126,9 +125,9 @@ romaviri_steel_archers = {
         is_any_elf_type = yes
     }
 
-    buy_cost = { gold = warband_ravagers_recruitment_cost }
-    low_maintenance_cost = { gold = warband_ravagers_low_maint_cost }
-    high_maintenance_cost = { gold = warband_ravagers_high_maint_cost }
+    buy_cost = { gold = 150 }
+    low_maintenance_cost = { gold = 0.7 }
+    high_maintenance_cost = { gold = 2.1 }
     provision_cost = @provisions_cost_special_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
