@@ -8,9 +8,9 @@
     screen = 20
 
     terrain_bonus = {
-        forest = { damage = 30 toughness = 15 pursuit = 30 screen = 15}
-        taiga = { damage = 30 toughness = 15 pursuit = 30 screen = 15}
-        jungle = { damage = 30 toughness = 15 pursuit = 30 screen = 15}
+        forest = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
+        taiga = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
+        jungle = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
     }
 
     counters = {
@@ -51,9 +51,9 @@ deepwood_elven_solar_dancers = {
     screen = 40
 
     terrain_bonus = {
-        forest = { damage = 30 toughness = 10 pursuit = 20 screen = 10 }
-        taiga = { damage = 30 toughness = 10 pursuit = 20 screen = 10 }
-        jungle = { damage = 30 toughness = 10 pursuit = 20 screen = 10 }
+        forest = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
+        taiga = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
+        jungle = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
     }
 
     counters = {
@@ -97,9 +97,9 @@ deepwood_elven_hornets = {
     screen = 20
 
     terrain_bonus = {
-        forest = { damage = 25 toughness = 20 pursuit = 20 screen = 20}
-        taiga = { damage = 25 toughness = 20 pursuit = 20 screen = 20}
-        jungle = { damage = 25 toughness = 20 pursuit = 20 screen = 20}
+        forest = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
+        taiga = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
+        jungle = { damage = 40 toughness = 20 pursuit = 40 screen = 20}
     }
     counters = {
         light_cavalry = 1
