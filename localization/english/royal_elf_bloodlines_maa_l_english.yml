@@ -30,9 +30,9 @@
  daelurin_highlanders_flavor:0 "#F Hardened skirmishers from the highlands, these fighters wield immense axes and unshakable loyalty to their kin."
  
  ### Gwynthorn Elves ###
- gwynthorn_warriors:0 "Gwynthorn Warriors"
- gwynthorn_warriors_flavor:0 "#F Elite forest-bound heavy infantry trained in the ancient traditions of the Gwynthorn. Their discipline and resilience make them deadly in rough terrain."
- 
+ gwynthorn_axeguard:0 "Gwynthorn Axeguard"
+ gwynthorn_axeguard_flavor:0 "#F Elite forest-bound heavy infantry trained in the ancient traditions of the Gwynthorn. Their discipline and resilience make them deadly in rough terrain."
+
  gwynthorn_horse_archers:0 "Gwynthorn Horse Archers"
  gwynthorn_horse_archers_flavor:0 "#F Swift and precise, these mounted archers combine elven agility with mobile tactics, harassing enemies from afar before vanishing into the woods."
  
