@@ -66,7 +66,7 @@ serelion_swordsmasters = {
 
         plains = { damage = 80 toughness = 16  pursuit = 10 screen = 10 }
         hills = { damage = 80 toughness = 16  pursuit = 10 screen = 10 }
-        moutains = { damage = 80 toughness = 16  pursuit = 10 screen = 10 }
+        mountains = { damage = 80 toughness = 16  pursuit = 10 screen = 10 }
         farmlands = { damage = 80 toughness = 16  pursuit = 10 screen = 10 }
     }
 
