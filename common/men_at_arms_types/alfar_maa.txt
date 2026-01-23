@@ -94,7 +94,7 @@ alfar_tribal_outriders = {
     provision_cost = @provisions_cost_cavalry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = alfar_tribal_climbers
+    icon = alfar_tribal_outriders
 }
 
 alfar_mountain_archers = {
