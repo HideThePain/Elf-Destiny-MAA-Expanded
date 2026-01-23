@@ -75,8 +75,8 @@
  valerith_rangers:0 "Rangers"
  valerith_rangers_flavor:0 "#F Silent and deadly, the Valerith Rangers are masters of forest warfare. With unmatched marksmanship and keen instincts, they rain death from the shadows before vanishing into the trees."
  
- valerith_shining_clerics:0 "Shining Priests"
- valerith_shining_clerics_flavor:0 "#F Mystic warriors devoted to the spark, the Shining Priests wield sacred power to shield allies and disorient foes. Their mere presence on the battlefield inspires awe and dread."
+ valerith_shining_clerics:0 "Shining Clerics"
+ valerith_shining_clerics_flavor:0 "#F Mystic warriors devoted to the spark, the Shining Clerics wield sacred power to shield allies and disorient foes. Their mere presence on the battlefield inspires awe and dread."
  
  valerith_gendarmes:0 "Valerith Gendarmes"
  valerith_gendarmes_flavor:0 "#F The shining elite of Valerith chivalry, these heavily armored cavalry strike with refined precision. Proud, swift, and utterly lethal in open terrain, they embody the martial nobility of their house."
@@ -92,10 +92,10 @@
  thundarael_griffin_riders_flavor:0 "#F Soaring above the battlefield on the backs of majestic griffins, these elite cavalry units deliver devastating charges from the sky. Though vulnerable in dense forests, their impact on open terrain is legendary."
  
  ### Serelion Elves ###
- serelion_longbow_knights:0 "Serelion Longbowmen"
- serelion_longbow_knights_flavor:0 "#F Renowned for their precision and agility, the Serelion Longbowmen are expert archers trained in forest and hill warfare. Their long-range volleys strike with deadly accuracy."
- 
- serelion_swordsmasters:0 "Masters of the Serelion Sword"
+ serelion_longbow_knights:0 "Serelion Longbow Knights"
+ serelion_longbow_knights_flavor:0 "#F Renowned for their precision and agility, the Serelion Longbow Knights are expert archers trained in forest and hill warfare. Their long-range volleys strike with deadly accuracy."
+
+ serelion_swordsmasters:0 "Serelion Swordsmasters"
  serelion_swordsmasters_flavor:0 "#F These elite swordsmen embody the martial traditions of Serelion nobility. Their prowess in melee combat is unmatched, making them formidable on open and rough terrain alike."
  
  serelion_paladins:0 "Serelion Paladins"
