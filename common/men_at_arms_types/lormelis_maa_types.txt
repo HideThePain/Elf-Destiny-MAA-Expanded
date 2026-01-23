@@ -251,5 +251,5 @@ lormelis_serpent_archers = {
     provision_cost = @provisions_cost_cavalry_cheap
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = archers_of_the_lormelis
+    icon = lormelis_serpent_archers
 }
