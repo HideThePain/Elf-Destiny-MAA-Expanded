@@ -282,7 +282,7 @@
 #     icon = kessertine_lancers
 # }
 
-# aeluran_justiciar = {
+# aeluran_justiciars = {
 #     type = heavy_infantry
 #     stack = 100
 
