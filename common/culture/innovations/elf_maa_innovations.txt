@@ -9,8 +9,8 @@ innovation_romaviri_maa = {
 		has_cultural_parameter = unlock_maa_romaviri_innovation
 	}
 
-	unlock_maa = romaviri_palatines
-	unlock_maa = romaviri_turms
+	unlock_maa = romaviri_palatini
+	unlock_maa = romaviri_turmae
 	unlock_maa = romaviri_steel_archers
 
 	flag = global_maa
@@ -58,7 +58,7 @@ innovation_alfar_maa = {
 	}
 	
 	unlock_maa = alfar_warriors_of_the_old_ways
-	unlock_maa = alfar_tribal_climbers
+	unlock_maa = alfar_tribal_outriders
 	unlock_maa = alfar_mountain_archers
 
 	flag = global_maa
