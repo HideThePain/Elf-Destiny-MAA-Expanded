@@ -1,4 +1,4 @@
-astrion_elven_bear_riders = {
+﻿astrion_elven_bear_riders = {
     type = elephant_cavalry
     stack = 15
 

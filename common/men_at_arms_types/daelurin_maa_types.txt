@@ -159,63 +159,63 @@ daelurin_highlanders = {
     icon = daelurin_highlanders
 }
 
-fendaer_wolf_champions = {   #ultimate unit for daelurin
-    type = heavy_cavalry
-    stack = 10
-    max = 1
+# fendaer_wolf_champions = {   #ultimate unit for daelurin
+#     type = heavy_cavalry
+#     stack = 10
+#     max = 1
 
-    damage = 900
-    toughness = 300
-    pursuit = 100
-    screen = 40
+#     damage = 900
+#     toughness = 300
+#     pursuit = 100
+#     screen = 40
 
-    terrain_bonus = {
-        forest = { damage = 50 pursuit = 50 screen = 50 }
-        taiga = { damage = 50 pursuit = 50 screen = 50 }
-        jungle = { damage = 50 pursuit = 50 screen = 50 }
+#     terrain_bonus = {
+#         forest = { damage = 50 pursuit = 50 screen = 50 }
+#         taiga = { damage = 50 pursuit = 50 screen = 50 }
+#         jungle = { damage = 50 pursuit = 50 screen = 50 }
 
-        mountains = { damage = 40 toughness = 40 pursuit = 75 screen = 25 }
-        hills = { damage = 40 toughness = 40 pursuit = 75 screen = 25 }
-        desert_mountains = { damage = 40 toughness = 40 pursuit = 75 screen = 25 }
-    }
+#         mountains = { damage = 40 toughness = 40 pursuit = 75 screen = 25 }
+#         hills = { damage = 40 toughness = 40 pursuit = 75 screen = 25 }
+#         desert_mountains = { damage = 40 toughness = 40 pursuit = 75 screen = 25 }
+#     }
 
-    winter_bonus = {
-        normal_winter = { damage = 125 toughness = 125 pursuit = 30 screen = 20  }
-        harsh_winter = { damage = 125 toughness = 125 pursuit = 30 screen = 20  }
-    }
+#     winter_bonus = {
+#         normal_winter = { damage = 125 toughness = 125 pursuit = 30 screen = 20  }
+#         harsh_winter = { damage = 125 toughness = 125 pursuit = 30 screen = 20  }
+#     }
 
-    counters = {
-        heavy_infantry = 1.25
-        pikemen = 1.25
-        skirmishers = 1.25
-        archers = 1.25
-        light_cavalry = 1.25
-        heavy_cavalry = 1.25
-        camel_cavalry = 1.25
-        elephant_cavalry = 1.25
-        archer_cavalry = 1.25
-		spark_wielders = 1.25
-    }
-    can_recruit = {
-        has_trait = royal_elf_daelurin
-        is_any_elf_type = yes
-    }
+#     counters = {
+#         heavy_infantry = 1.25
+#         pikemen = 1.25
+#         skirmishers = 1.25
+#         archers = 1.25
+#         light_cavalry = 1.25
+#         heavy_cavalry = 1.25
+#         camel_cavalry = 1.25
+#         elephant_cavalry = 1.25
+#         archer_cavalry = 1.25
+# 		spark_wielders = 1.25
+#     }
+#     can_recruit = {
+#         has_trait = royal_elf_daelurin
+#         is_any_elf_type = yes
+#     }
 
-    should_show_when_unavailable = {
-        government_allows = subject_men_at_arms
-        is_any_elf_type = yes
-    }
+#     should_show_when_unavailable = {
+#         government_allows = subject_men_at_arms
+#         is_any_elf_type = yes
+#     }
 
-    access_through_subject = {
-        has_trait = royal_elf_daelurin
-        is_any_elf_type = yes
-    }
+#     access_through_subject = {
+#         has_trait = royal_elf_daelurin
+#         is_any_elf_type = yes
+#     }
 
-    buy_cost = { piety = 4000 }
-    low_maintenance_cost = { gold = 4 }
-    high_maintenance_cost = { gold = 8 }
-    provision_cost = @provisions_cost_cavalry_bankrupting
+#     buy_cost = { piety = 4000 }
+#     low_maintenance_cost = { gold = 4 }
+#     high_maintenance_cost = { gold = 8 }
+#     provision_cost = @provisions_cost_cavalry_bankrupting
 
-    ai_quality = { value = culture_ai_weight_heavy_cavalry }
-    icon = fendaer_wolf_champions
-}
+#     ai_quality = { value = culture_ai_weight_heavy_cavalry }
+#     icon = fendaer_wolf_champions
+# }

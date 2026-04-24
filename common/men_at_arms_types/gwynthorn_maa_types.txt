@@ -148,58 +148,58 @@ gwynthorn_noble_protectors = {
     icon = gwynthorn_noble_protectors
 }
 
-ancients_of_the_forest = {   #ultimate unit for gwynthorn
-    type = spark_wielders
-    stack = 6
-    max = 1
+# ancients_of_the_forest = {   #ultimate unit for gwynthorn
+#     type = spark_wielders
+#     stack = 6
+#     max = 1
 
-    damage = 820
-    toughness = 820
-    screen = 120
+#     damage = 820
+#     toughness = 820
+#     screen = 120
     
-    siege_tier = 4
-	siege_value = 0.5
+#     siege_tier = 4
+# 	siege_value = 0.5
 
-    terrain_bonus = {
-        forest = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
-        taiga = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
-        jungle = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
-		wetlands = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
-        farmlands = { damage = 50 pursuit = 10 screen = 10 }
-        floodplains = { damage = 50 pursuit = 10 screen = 10 }
-    }
+#     terrain_bonus = {
+#         forest = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
+#         taiga = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
+#         jungle = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
+# 		wetlands = { damage = 100 toughness = 100 pursuit = 30 screen = 10 }
+#         farmlands = { damage = 50 pursuit = 10 screen = 10 }
+#         floodplains = { damage = 50 pursuit = 10 screen = 10 }
+#     }
 
-    counters = {
-        heavy_infantry = 0.75
-        pikemen = 0.75
-        skirmishers = 0.75
-        archers = 0.75
-        light_cavalry = 1.25
-        heavy_cavalry = 1.25
-        camel_cavalry = 1.25
-        elephant_cavalry = 1.25
-        archer_cavalry = 1.25
-    }
-    can_recruit = {
-        has_trait = royal_elf_gwynthorn
-        is_any_elf_type = yes
-    }
+#     counters = {
+#         heavy_infantry = 0.75
+#         pikemen = 0.75
+#         skirmishers = 0.75
+#         archers = 0.75
+#         light_cavalry = 1.25
+#         heavy_cavalry = 1.25
+#         camel_cavalry = 1.25
+#         elephant_cavalry = 1.25
+#         archer_cavalry = 1.25
+#     }
+#     can_recruit = {
+#         has_trait = royal_elf_gwynthorn
+#         is_any_elf_type = yes
+#     }
 
-    should_show_when_unavailable = {
-        government_allows = subject_men_at_arms
-        is_any_elf_type = yes
-    }
+#     should_show_when_unavailable = {
+#         government_allows = subject_men_at_arms
+#         is_any_elf_type = yes
+#     }
 
-    access_through_subject = {
-        has_trait = royal_elf_gwynthorn
-        is_any_elf_type = yes
-    }
+#     access_through_subject = {
+#         has_trait = royal_elf_gwynthorn
+#         is_any_elf_type = yes
+#     }
 
-    buy_cost = { piety = 4000 }
-    low_maintenance_cost = { gold = 4 }
-    high_maintenance_cost = { gold = 8 }
-    provision_cost = @provisions_cost_cavalry_bankrupting
+#     buy_cost = { piety = 4000 }
+#     low_maintenance_cost = { gold = 4 }
+#     high_maintenance_cost = { gold = 8 }
+#     provision_cost = @provisions_cost_cavalry_bankrupting
 
-    ai_quality = { value = culture_ai_weight_light_cavalry }
-    icon = ancients_of_the_forest
-}
+#     ai_quality = { value = culture_ai_weight_light_cavalry }
+#     icon = ancients_of_the_forest
+# }

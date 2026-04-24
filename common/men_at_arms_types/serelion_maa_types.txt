@@ -152,62 +152,62 @@ serelion_paladins = {
     icon = cavalrymen_of_the_serelions
 }
 
-basilisk_enchantress = {   #land dragon type for serelion
-    type = elephant_cavalry
-    stack = 4
-    max = 1
+# basilisk_enchantress = {   #land dragon type for serelion
+#     type = elephant_cavalry
+#     stack = 4
+#     max = 1
 
-    damage = 2000
-    toughness = 800
-    pursuit = 10
-    screen = 40
+#     damage = 2000
+#     toughness = 800
+#     pursuit = 10
+#     screen = 40
 
-    siege_tier = 4
-    siege_value = 0.5
+#     siege_tier = 4
+#     siege_value = 0.5
 
-    terrain_bonus = {
-        forest = { damage = 100 toughness = 30 pursuit = 20 screen = 10 }
-        taiga = { damage = 100 toughness = 30 pursuit = 20 screen = 10 }
-        jungle = { damage = 100 toughness = 30 pursuit = 20 screen = 10 }
-        plains = { damage = 250 pursuit = 10 screen = 10 }
-        drylands = { damage = 250 pursuit = 10 screen = 10 }
-        steppe = { damage = 250 pursuit = 10 screen = 10 }
-        farmlands = { damage = 250 pursuit = 10 screen = 10 }
-        floodplains = { damage = 300 pursuit = 40 screen = 40 }
-        wetlands = { damage = 300 pursuit = 40 screen = 40 }
-    }
+#     terrain_bonus = {
+#         forest = { damage = 100 toughness = 30 pursuit = 20 screen = 10 }
+#         taiga = { damage = 100 toughness = 30 pursuit = 20 screen = 10 }
+#         jungle = { damage = 100 toughness = 30 pursuit = 20 screen = 10 }
+#         plains = { damage = 250 pursuit = 10 screen = 10 }
+#         drylands = { damage = 250 pursuit = 10 screen = 10 }
+#         steppe = { damage = 250 pursuit = 10 screen = 10 }
+#         farmlands = { damage = 250 pursuit = 10 screen = 10 }
+#         floodplains = { damage = 300 pursuit = 40 screen = 40 }
+#         wetlands = { damage = 300 pursuit = 40 screen = 40 }
+#     }
 
-    counters = {
-        heavy_infantry = 1
-        pikemen = 1
-        skirmishers = 1
-        archers = 1
-        light_cavalry = 1
-        heavy_cavalry = 1
-        camel_cavalry = 1
-        elephant_cavalry = 1
-        archer_cavalry = 1
-    }
-    can_recruit = {
-        has_trait = royal_elf_serelion
-        is_any_elf_type = yes
-    }
+#     counters = {
+#         heavy_infantry = 1
+#         pikemen = 1
+#         skirmishers = 1
+#         archers = 1
+#         light_cavalry = 1
+#         heavy_cavalry = 1
+#         camel_cavalry = 1
+#         elephant_cavalry = 1
+#         archer_cavalry = 1
+#     }
+#     can_recruit = {
+#         has_trait = royal_elf_serelion
+#         is_any_elf_type = yes
+#     }
 
-    should_show_when_unavailable = {
-        government_allows = subject_men_at_arms
-        is_any_elf_type = yes
-    }
+#     should_show_when_unavailable = {
+#         government_allows = subject_men_at_arms
+#         is_any_elf_type = yes
+#     }
 
-    access_through_subject = {
-        has_trait = royal_elf_serelion
-        is_any_elf_type = yes
-    }
+#     access_through_subject = {
+#         has_trait = royal_elf_serelion
+#         is_any_elf_type = yes
+#     }
 
-    buy_cost = { piety = 4000 }
-    low_maintenance_cost = { gold = 4 }
-    high_maintenance_cost = { gold = 8 }
-    provision_cost = @provisions_cost_cavalry_bankrupting
+#     buy_cost = { piety = 4000 }
+#     low_maintenance_cost = { gold = 4 }
+#     high_maintenance_cost = { gold = 8 }
+#     provision_cost = @provisions_cost_cavalry_bankrupting
 
-    ai_quality = { value = culture_ai_weight_elephant_cavalry }
-    icon = basilisk_enchantress
-}
+#     ai_quality = { value = culture_ai_weight_elephant_cavalry }
+#     icon = basilisk_enchantress
+# }

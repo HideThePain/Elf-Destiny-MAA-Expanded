@@ -1,4 +1,4 @@
-# Flying unit game concepts and troop-type textures
+﻿# Flying unit game concepts and troop-type textures
 
 # General concepts
 flying_units = {}

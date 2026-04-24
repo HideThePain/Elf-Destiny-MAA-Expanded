@@ -6,5 +6,5 @@ tags={
 	"Alternative History"
 }
 name="Elf Destiny MAA Expanded"
-supported_version="1.18.*"
+supported_version="1.19.*"
 remote_file_id="3549364354"
