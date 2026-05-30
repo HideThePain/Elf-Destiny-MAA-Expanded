@@ -69,7 +69,7 @@ elven_spearguard = {
     icon = elven_spearguard
 }
 
-elven_swordguard = { # elven greatswords? hell yeah
+elven_swordguard = {
     type = skirmishers
     stack = 80
 

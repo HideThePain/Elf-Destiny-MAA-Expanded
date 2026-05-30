@@ -149,7 +149,7 @@ serelion_paladins = {
     provision_cost = @provisions_cost_cavalry_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = cavalrymen_of_the_serelions
+    icon = serelion_paladins
 }
 
 # basilisk_enchantress = {   #land dragon type for serelion

@@ -1,4 +1,4 @@
-﻿️daelurin_whitevale_warriors = {
+﻿daelurin_whitevale_warriors = {
     type = heavy_infantry
     stack = 50
 
@@ -49,7 +49,7 @@
     provision_cost = @provisions_cost_infantry_expensive
 
     ai_quality = { value = @cultural_spark_maa_extra_ai_score }
-    icon = ️daelurin_whitevale_warriors
+    icon = daelurin_whitevale_warriors
 }
 
 daelurin_wolf_riders = {

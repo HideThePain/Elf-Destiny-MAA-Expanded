@@ -57,9 +57,9 @@ texticon = {
     }
 }
 texticon = {
-    icon = cavalrymen_of_the_serelions_icon
+    icon = serelion_paladins_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/cavalrymen_of_the_serelions.dds"
+        texture = "gfx/interface/icons/regimenttypes/serelion_paladins.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
@@ -509,9 +509,9 @@ texticon = {
 }
 
 texticon = {
-    icon = ️daelurin_whitevale_warriors_icon
+    icon = daelurin_whitevale_warriors_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/️daelurin_whitevale_warriors.dds"
+        texture = "gfx/interface/icons/regimenttypes/daelurin_whitevale_warriors.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
