@@ -12,7 +12,7 @@
   spark_wielders_damage_mult:0 "$spark_wielders_damage_add$"
   spark_wielders_max_size_add:0 "Max Size of [spark_wielders|E] [regiments|E]"
 	spark_wielders_siege_value_mult:0 "[siege_weapon|E] Effectiveness"
-	spark_wielders_siege_value_add:0 "[siege_weapon|E] [siege_progress|E]""
+	spark_wielders_siege_value_add:0 "[siege_weapon|E] [siege_progress|E]"
 
 	stationed_spark_wielders_screen_add:2 "[stationed|E] [spark_wielders|E] [screen|E]"
   stationed_spark_wielders_screen_mult:0 "$spark_wielders_screen_add$"
@@ -23,7 +23,7 @@
   stationed_spark_wielders_damage_add:2 "[stationed|E] [spark_wielders|E] [damage|E]"
   stationed_spark_wielders_damage_mult:0 "$spark_wielders_damage_add$"
 	stationed_spark_wielders_siege_value_mult:0 "[stationed|E] [siege_weapon|E] Effectiveness"
-	stationed_spark_wielders_siege_value_add:0 "[stationed|E] [siege_weapon|E] [siege_progress|E]""
+	stationed_spark_wielders_siege_value_add:0 "[stationed|E] [siege_weapon|E] [siege_progress|E]"
 
   spark_wielders_recruitment_cost_mult:0 "[spark_wielders|E] Recruitment Cost"
 	spark_wielders_maintenance_mult:0 "[spark_wielders|E] Maintenance"
