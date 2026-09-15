@@ -1,7 +1,7 @@
 ﻿texticon = {
-    icon = alfar_tribal_climbers_icon
+    icon = alfar_tribal_outriders_icon
     iconsize = {
-        texture = "gfx/interface/icons/regimenttypes/alfar_tribal_climbers.dds"
+        texture = "gfx/interface/icons/regimenttypes/alfar_tribal_outriders.dds"
         size = { 25 25 }
         offset = { 0 6 }
         fontsize = 16
